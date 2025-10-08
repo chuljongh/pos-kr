@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>카페 키오스크 도입할 이유: 카페 선결제 현황과 자동화 수단</title>
+    <meta name="description" content="카페·식당 점주 81%가 선결제를 받고 있지만, 관리 방식은 아직 수기에 머물러 있습니다. 고객이 원하는 편리한 선결제 관리를 위한 알뜰결제 키오스크 완벽 가이드.">
+    <meta name="keywords" content="카페 선결제, 카페 키오스크, 알뜰결제 키오스크, 선불충전 키오스크, 식당 키오스크, 카페 상품권, 카페 선불카드">
+    <link rel="icon" href="favicon.webp">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+<link rel="canonical" href="https://giftcoin.kr/cafe-kiosk.html" />
+	<meta name="description" content="성공적인 카페 창업을 위한 필수 아이템, 선불충전 키오스크 도입 효과와 실제 성공 사례를 확인해보세요. 매출 증대와 단골 확보의 비밀." />
+    <meta name="keywords" content="카페 키오스크, 카페 창업, 선불충전, 단골 확보, 카페 매출 증대"/>
+	<link rel="preload" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+	<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"></noscript>
+    
+    <link rel="stylesheet" type="text/css" href="./css/style.min.css">
+	<link rel="stylesheet" type="text/css" href="./css/sub.css">
+    <link rel="shortcut icon" href="favicon.webp" />
+	<style>
+    footer.bg-gray-100 {
+        background-color: #f3f4f6; /* bg-gray-100 */
+        padding-top: 3rem; /* py-12 */
+        padding-bottom: 3rem; /* py-12 */
+        padding-left: 10%; /* px-4 */
+        padding-right: 1rem; /* px-4 */
+    }
+    footer .max-w-6xl {
+        max-width: 72rem; /* max-w-6xl */
+        text-align: left;
+        color: #374151; /* text-gray-700 */
+    }
+    footer .max-w-6xl p {
+        font-weight: bold; /* User request for bold text */
+    }
+    footer .mt-4 {
+        margin-top: 1rem; /* mt-4 */
+    }
+    footer .mt-1 {
+        margin-top: 0.25rem; /* mt-1 */
+    }
+	</style>
+    <style>
+        .blog-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .section-title {
+            font-size: 2.8rem;
+            font-weight: 600;
+            margin: 3rem 0 1.5rem;
+            color: #0056b3;
+        }
+        .section-content {
+            font-size: 2.4rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+        .flex-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 80px;
+            gap: 40px;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .flex-section.reverse {
+            flex-direction: row-reverse;
+        }
+        .stats-highlight {
+            background: #fff4f1;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .stats-highlight ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .stats-highlight li {
+            font-size: 2.4rem;
+            color: #e94519;
+            margin: 10px 0;
+            font-weight: 500;
+        }
+        .content-block {
+            flex: 1;
+        }
+        .chart-block {
+            flex: 1;
+            min-height: 340px;
+            position: relative;
+        }
+        
+        .next-button-wrap {
+            display: flex;
+            justify-content: center;
+            margin: 3rem auto 1rem;
+            gap: 20px;
+            text-align: center;
+        }
+        .next-button {
+            display: inline-flex;
+            align-items: center;
+            padding: 1.6rem 3.2rem;
+            border-radius: 4px;
+            border: solid 1px #e94519;
+			width: fit-content;
+            background-color: #fff;
+            font-size: 2rem;
+            font-weight: 500;
+            line-height: 1.5;
+            color: #e94519;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .next-button:hover {
+            background-color: #fff4f1;
+        }
+        .next-button svg {
+            margin-left: 1.2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .flex-section {
+                flex-direction: column !important;
+                padding: 20px;
+            }
+			.section-content {      /* 여기에 추가 */
+				font-size: 2.8rem;  /* 1.92rem보다 활자 크게 */
+			}
+			.stats-highlight li {
+				font-size: 2.8rem;
+			}
+            .content-block, .chart-block {
+                width: 100%;
+            }
+            .chart-block {
+                min-height: 300px;
+            }
+            .next-button-wrap {
+                flex-direction: column;
+                gap: 10px;
+		       align-items: center;  /* 추가 */
+            }
+			.next-button {
+				width: fit-content;
+			}
+        }
+
+        /* 첫 번째 차트 크기 조정 */
+        .blog-content > section:first-of-type .chart-block {
+            min-height: 442px; /* 340px * 1.3 */
+        }
+
+        @media (max-width: 768px) {
+            .blog-content > section:first-of-type .chart-block {
+                min-height: 390px; /* 300px * 1.3 */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <!-- 헤더 부분 -->
+        <header id="header">
+            <div class="inner">
+                <h1 class="header-logo"><a href="index.html"><img src="./images/common/header_logo@2x.webp" alt="GiftCoin"></a></h1>
+
+                <button type="button" class="btn-hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <div class="mobile-menu">
+                    <ul class="header-nav">
+                        <li><a href="cafe-kiosk.html">WHY</a></li>
+                        <li><a href="kiosk-guide.html">선택4단계</a></li>
+                        <li><a href="quote.html">추천받기</a></li>
+                        <li><a href="kiosk-own.html">Q&A</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+        <!-- 상단 비주얼 영역 -->
+        <section class="sect-wrap" id="subVisual1">
+            <div class="inner">
+                <div class="visual-title aos-init" data-aos="fade-left" data-aos-delay="100" data-aos-once="false">
+                    왜, 알뜰결제 키오스크 도입해야 할까요?<br>현황과 고객의 속내로 알아보기
+                </div>
+            </div>
+        </section>
+
+        <div class="blog-content">
+            <!-- 섹션 1: 현황 -->
+            <section class="flex-section">
+                <div class="content-block">
+                    <h2 class="section-title">창업의 숨겨진 진실: 선결제는 필수</h2>
+                    <div class="section-content">
+                        <p>카페·식당 210여개 매장을 방문 조사한 결과, 무려 81%의 점주들이 이미 선결제를 받고 있었어요. 이는 더 이상 선결제가 '선택'이 아닌 '필수'라는 것을 의미하죠.</p>
+                        <div class="stats-highlight">
+                            <ul>
+                                <li>▶ 선결제 운영 매장: 81%</li>
+                                <li>▶ 평균 선결제 고객수: 3.5팀</li>
+                                <li>▶ 평균 선결제 잔액: 14만원</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="chart-block">
+                    <canvas id="mainChart"></canvas>
+                </div>
+            </section>
+
+            <!-- 섹션 2: 현재 관리 방식 -->
+            <section class="flex-section reverse">
+                <div class="content-block">
+                    <h2 class="section-title">현재 선결제 관리 방식의 한계</h2>
+                    <div class="section-content">
+                        <p>대부분의 매장에서는 아직도 수기 장부나 POS 메모 기능으로 선결제를 관리하고 있어요. 하지만, 고객들은 수기관리 불신(69%)과 타인 도용 우려(68%)가 할인율 부족(54%)이나 선결제 금액 부담(55%)보다 더 큰 걸림돌로 작용한다고 지적했어요.</p>
+                        <div class="stats-highlight">
+                            <ul>
+                                <li>▶ 장부 기록 방식: 48.2%</li>
+                                <li>▶ POS 메모 활용: 30.4%</li>
+                                <li>▶ 기타 방식: 21.4%</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="chart-block">
+                    <canvas id="detailChart"></canvas>
+                </div>
+            </section>
+
+            <!-- 섹션 3: 고객 니즈 -->
+            <section class="flex-section">
+                <div class="content-block">
+                    <h2 class="section-title">고객들이 진정으로 원하는 것</h2>
+                    <div class="section-content">
+                        <p>이용자 설문 조사 결과, 고객들은 단순한 할인을 넘어 더 많은 기능을 원하고 있는데요. 특히, 안전하고 편리한 관리 시스템의 지원이 필요하다는 것을 보여주었어요.</p>
+                        <div class="stats-highlight">
+                            <ul>
+                                <li>▶ 선결제 할인 혜택: 81%</li>
+                                <li>▶ 환불/잔액 확인: 76%</li>
+                                <li>▶ 선물/이전 가능성: 68%</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="chart-block">
+                    <canvas id="customerChart"></canvas>
+                </div>
+            </section>
+
+            <!-- 섹션 4: 솔루션 -->
+            <section class="flex-section reverse">
+                <div class="content-block">
+                    <h2 class="section-title">알뜰결제 키오스크: 모두를 위한 해결책</h2>
+                    <div class="section-content">
+                        <p>이러한 문제들을 해결하기 위해 GiftCoin의 알뜰결제 키오스크가 탄생했어요. 선결제부터 사용까지 모든 과정을 자동화하여 점주와 고객 모두의 니즈를 충족하지요.</p>
+                        <div class="stats-highlight">
+                            <ul>
+                                <li>▶ 매출: 도입 3개월 후 10~15% 증가</li>
+                                <li>▶ 고객 만족도: 앱 리뷰 평점 4.8/5.0</li>
+                                <li>▶ 점주 선호도: 82% 도입 희망</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="chart-block">
+            <canvas id="solutionChart"></canvas>
+        </div>
+    </section>
+
+    <!-- 다음 버튼 영역 -->
+    <div class="next-button-wrap">
+        <a href="index.html" class="next-button">
+            선불충전에 대해 둘러보기
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M19 12l-7-7M19 12l-7 7"/>
+            </svg>
+        </a>
+        <a href="kiosk-guide.html" class="next-button">
+            키오스크 결정위한 4단계
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M19 12l-7-7M19 12l-7 7"/>
+            </svg>
+        </a>
+    </div>
+</div>
+
+		<section class="sect-wrap" id="subBehind2">
+			<div class="inner">
+				<i class="trim"><img src="./images/sub/sub_behind2_trim.webp" alt="카페선결제,선결제키오스크,카페창업"></i>
+				<div class="sect-title aos-init" data-aos="fade-up" data-aos-delay="100" data-aos-once="false">Behind Story</div>
+				<div class="sect-text aos-init" data-aos="fade-up" data-aos-delay="100" data-aos-once="false">
+					<p>회사 주변 카페에서 자주 선결제했는데요.</p>
+					<p>‘더 많이 차감된 듯 하다’ 싶을 때도 있고, ‘왠지 더 남았다’는 생각이 들 때도 있었어요.</p>
+				</div>
+				<div class="sect-text aos-init" data-aos="fade-up" data-aos-delay="100" data-aos-once="false">
+					<p>한번은 금요일 오전에 선결제하고 워크샵을 떠났어요.</p>
+					<p>월요일날 주문하는데, “한잔 사용 가능하네요”라고 알려주세요.</p>
+				</div>
+				<div class="sect-text aos-init" data-aos="fade-up" data-aos-delay="100" data-aos-once="false">
+					<p>경악하며 ‘대안이 없나?’ 고민한 결과 탄생한 것이 GiftCoin서비스예요.</p>
+				</div>
+				<i class="percent"><img src="./images/sub/sub_behind2_percent@2x.webp" alt="선불카드,선결제키오스크,포인트적립카드"></i>
+				<i class="card"><img src="./images/sub/sub_behind2_card@2x.webp" alt="선불충전키오스크,상품권제작"></i>
+				<i class="tag"><img src="./images/sub/sub_behind2_tag@2x.webp" alt="알뜰결제키오스크,선불카드제작"></i>
+				<i class="illust"><img src="./images/sub/sub_behind2_illust@2x.webp" alt="키오스크,선불카드,기프트카드"></i>
+			</div>
+		</section><!-- // sect-wrap -->
+
+<!-- 푸터 -->
+    <footer class="bg-gray-100 py-12 px-4">
+<div class="max-w-6xl mx-auto text-left text-gray-700">
+    <p><a href="../terms.html" target="_blank">이용약관</a> | <a href="../privacy.html" target="_blank">개인정보 처리 방침</a></p>
+    <p class="mt-4">(주)글로벌시스텍</p>
+    <p class="mt-4">Address : 경기도 고양시 일산동구 일산로 38, 306호</p>
+    <p class="mt-1">Contact : <a href="mailto:hi@pos.kr" class="text-primary hover:underline">hi@pos.kr</a></p>
+    <p class="mt-4">사업자등록번호 : 330-86-03289</p>
+    <p class="mt-1">대표자 : 강홍기</p>
+</div>
+</footer>
+
+<a href="tel:010-5415-4415" class="fab-button floating-element">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+    </svg>
+</a>
+</div>
+
+<script>
+// ... (chart rendering scripts remain the same) ...
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    // Chart 1: mainChart
+    new Chart(document.getElementById('mainChart'), {
+        type: 'doughnut',
+        data: {
+            labels: ['선결제 운영', '미운영'],
+            datasets: [{
+                data: [81, 19],
+                backgroundColor: ['#3b82f6', '#e5e7eb'],
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { position: 'bottom' },
+                title: { display: true, text: '선결제 운영 매장 비율' }
+            }
+        }
+    });
+
+                // Chart 2: detailChart - 선결제를 막는 요인
+                new Chart(document.getElementById('detailChart'), {
+                    type: 'bar',
+                    data: {
+                        labels: ['수기 관리에 대한 불신', '타인 도용에 대한 우려', '공유/선물 기능 부재', '이사/전직/분실 우려', '할인 혜택 부족', '개인정보 제공 거부감'],
+                        datasets: [{
+                            label: '응답 비율 (%)',
+                            data: [69, 68, 62, 59, 55, 41],
+                            backgroundColor: '#f97316',
+                        }]
+                    },
+                    options: {
+                        indexAxis: 'y', // 가로 막대그래프
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { display: false },
+                            title: { display: true, text: '선결제 이용을 막는 요인' }
+                        },
+                        scales: {
+                            x: {
+                                beginAtZero: true,
+                                max: 100
+                            }
+                        }
+                    }
+                });
+                // Chart 3: customerChart - 고객이 원하는 기능
+                new Chart(document.getElementById('customerChart'), {
+                    type: 'bar',
+                    data: {
+                        labels: ['선결제 할인 혜택', '손쉬운 환불/잔액 관리', '선물/이전 가능성', '사용 내역 확인', '다양한 결제수단'],
+                        datasets: [{
+                            label: '고객 요구사항 (%)',
+                            data: [81, 75, 68, 59, 43],
+                            backgroundColor: '#10b981',
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { display: false },
+                            title: { display: true, text: '고객이 선결제 시스템에 원하는 기능' }
+                        },
+                        scales: { y: { beginAtZero: true, max: 100 } }
+                    }
+                });
+                // Chart 4: solutionChart - 키오스크 도입 후 매출 변화
+                new Chart(document.getElementById('solutionChart'), {
+                    type: 'line',
+                    data: {
+                        labels: ['도입 전', '1개월 후', '2개월 후', '3개월 후'],
+                        datasets: [{
+                            label: '매출 변화 추이',
+                            data: [100, 105, 110, 115],
+                            borderColor: '#8b5cf6',
+                            backgroundColor: 'rgba(139, 92, 246, 0.1)',
+                            fill: true,
+                            tension: 0.1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { display: false },
+                            title: { display: true, text: '키오스크 도입 후 매출 변화' }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: false,
+                                min: 95
+                            }
+                        }
+                    }
+                });});
+</script>
+
+<!-- Floating Contact Form -->
+<form id="quickContactFloating" class="floating-contact-form floating-element">
+<div class="phone-input-wrapper">
+    <span class="floating-prefix">010-</span>
+    <input type="tel" id="phoneFloating" placeholder="번호를 입력하세요" required>
+</div>
+<button type="submit">문의하기</button>
+</form>
+<div id="quickSuccessMessageFloating" class="floating-success-message floating-element">네, 곧 연락드리겠습니다.</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+const form = document.getElementById('quickContactFloating');
+const successMessage = document.getElementById('quickSuccessMessageFloating');
+const phoneInput = document.getElementById('phoneFloating');
+
+if (form && successMessage) {
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const googleFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSf9S701YGCcLbKTzQAyTzLfDJToD-lhfXdJFU4_ngsQf4l8GQ/formResponse';
+        const formData = new FormData();
+        const fullPhoneNumber = '010-' + (phoneInput ? phoneInput.value : '');
+        formData.append('entry.587577130', fullPhoneNumber);
+
+        fetch(googleFormUrl, {
+            method: 'POST',
+            body: formData,
+            mode: 'no-cors'
+        }).catch(error => console.error('Error submitting to Google Form:', error));
+
+        if(phoneInput) {
+            phoneInput.value = '';
+        }
+
+        form.style.display = 'none';
+        successMessage.style.display = 'flex';
+        
+        setTimeout(() => {
+            successMessage.style.display = 'none';
+            form.style.display = 'flex';
+        }, 5000);
+    });
+}
+
+if (phoneInput) {
+    phoneInput.addEventListener('input', function(e) {
+        let value = e.target.value.replace(/-/g, '');
+        let formattedValue = '';
+
+        if (value.length > 4) {
+            formattedValue = value.substring(0, 4) + '-' + value.substring(4, 8);
+        } else {
+            formattedValue = value;
+        }
+        
+        e.target.value = formattedValue;
+    });
+}
+});
+</script>
+
+<script src="js/main.min.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="RFID 카드/리더기를 버리고 스마트폰 QR코드로 구내식당·함바 식수 관리를 시작하세요. 비용 절감, 부정 사용 방지, 청구 대행 지원.">
+    <meta name="keywords" content="모바일식권, 구내식당, 함바식당, 식수관리, QR코드식권, 모바일식수관리, 식대정산, RFID대체, 바코드대체, 카드리더기, 부정사용방지, 로스율제로">
+    <title>유일한 **모바일 구내식당·함바 식수 관리 자동화** 솔루션</title>
+    <link rel="icon" href="../cafe/favicon.webp">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563eb',
+                        'primary-darker': '#1e40af',
+                        secondary: '#1e40af',
+                        accent: '#10b981'
+                    },
+                    fontFamily: {
+                        sans: ['Noto Sans KR', 'system-ui', 'sans-serif']
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.8s ease-in-out',
+                        'slide-up': 'slideUp 0.6s ease-out'
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        section[id] {
+            scroll-margin-top: 4rem; /* 헤더 높이만큼 여백 확보 */
+        }
+        #menu-toggle span {
+            filter: drop-shadow(0 1px 2px rgb(0 0 0 / 0.9));
+        }
+        #menu-toggle.is-active span:nth-child(1) {
+            transform: translateY(7px) rotate(135deg);
+        }
+        #menu-toggle.is-active span:nth-child(2) {
+            opacity: 0;
+        }
+        #menu-toggle.is-active span:nth-child(3) {
+            transform: translateY(-7px) rotate(-135deg);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Mobile Hamburger Menu -->
+    <div class="lg:hidden fixed top-6 right-6 z-50">
+        <button id="menu-toggle" class="relative w-5 h-4">
+            <span class="block absolute w-full h-0.5 bg-white rounded-full transition-all duration-300 ease-in-out top-0"></span>
+            <span class="block absolute w-full h-0.5 bg-white rounded-full transition-all duration-300 ease-in-out top-1/2 -translate-y-1/2"></span>
+            <span class="block absolute w-full h-0.5 bg-white rounded-full transition-all duration-300 ease-in-out bottom-0"></span>
+        </button>
+        <div id="mobile-dropdown" class="hidden absolute top-10 right-0">
+            <ul class="py-2 text-right space-y-2">
+                <li><a href="#features" class="px-4 py-2 text-white font-bold text-xs whitespace-nowrap [text-shadow:0_2px_4px_rgb(0_0_0_/_0.9)]">도입 이유</a></li>
+                <li><a href="#use-cases" class="px-4 py-2 text-white font-bold text-xs whitespace-nowrap [text-shadow:0_2px_4px_rgb(0_0_0_/_0.9)]">구현 사례</a></li>
+                <li><a href="#support" class="px-4 py-2 text-white font-bold text-xs whitespace-nowrap [text-shadow:0_2px_4px_rgb(0_0_0_/_0.9)]">역할과 지원</a></li>
+                <li><a href="#comparison" class="px-4 py-2 text-white font-bold text-xs whitespace-nowrap [text-shadow:0_2px_4px_rgb(0_0_0_/_0.9)]">비교</a></li>
+                <li><a href="#how-to" class="px-4 py-2 text-white font-bold text-xs whitespace-nowrap [text-shadow:0_2px_4px_rgb(0_0_0_/_0.9)]">사용 방법</a></li>
+                <li><a href="#faq" class="px-4 py-2 text-white font-bold text-xs whitespace-nowrap [text-shadow:0_2px_4px_rgb(0_0_0_/_0.9)]">FAQ</a></li>
+                <li><a href="#contact" class="px-4 py-2 text-white font-bold text-xs whitespace-nowrap [text-shadow:0_2px_4px_rgb(0_0_0_/_0.9)]">무료 문의</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 우측 플로팅 네비게이션 (데스크탑) -->
+    <nav id="page-nav" class="fixed top-1/2 right-8 transform -translate-y-1/2 z-40 hidden lg:block">
+        <ul class="space-y-2">
+            <li><a href="#features" class="nav-link text-gray-500 hover:text-primary font-semibold transition-colors duration-300 flex items-center justify-end gap-3" data-section="features"><span>도입 이유</span><div class="w-2 h-2 rounded-full bg-gray-400 transition-all duration-300"></div></a></li>
+            <li><a href="#use-cases" class="nav-link text-gray-500 hover:text-primary font-semibold transition-colors duration-300 flex items-center justify-end gap-3" data-section="use-cases"><span>구현 사례</span><div class="w-2 h-2 rounded-full bg-gray-400 transition-all duration-300"></div></a></li>
+            <li><a href="#support" class="nav-link text-gray-500 hover:text-primary font-semibold transition-colors duration-300 flex items-center justify-end gap-3" data-section="support"><span>역할과 지원</span><div class="w-2 h-2 rounded-full bg-gray-400 transition-all duration-300"></div></a></li>
+            <li><a href="#comparison" class="nav-link text-gray-500 hover:text-primary font-semibold transition-colors duration-300 flex items-center justify-end gap-3" data-section="comparison"><span>비교</span><div class="w-2 h-2 rounded-full bg-gray-400 transition-all duration-300"></div></a></li>
+            <li><a href="#how-to" class="nav-link text-gray-500 hover:text-primary font-semibold transition-colors duration-300 flex items-center justify-end gap-3" data-section="how-to"><span>사용 방법</span><div class="w-2 h-2 rounded-full bg-gray-400 transition-all duration-300"></div></a></li>
+            <li><a href="#faq" class="nav-link text-gray-500 hover:text-primary font-semibold transition-colors duration-300 flex items-center justify-end gap-3" data-section="faq"><span>FAQ</span><div class="w-2 h-2 rounded-full bg-gray-400 transition-all duration-300"></div></a></li>
+            <li><a href="#contact" class="nav-link text-gray-500 hover:text-primary font-semibold transition-colors duration-300 flex items-center justify-end gap-3" data-section="contact"><span>무료 문의</span><div class="w-2 h-2 rounded-full bg-gray-400 transition-all duration-300"></div></a></li>
+        </ul>
+    </nav>
+
+    <!-- 히어로 섹션 -->
+    <section class="bg-gray-900 py-40 px-4 relative overflow-hidden bg-[url('images/main.webp')] bg-no-repeat bg-cover bg-left md:bg-center bg-fixed">
+        <!-- 배경 패턴 -->
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.03"%3E%3Ccircle cx="30" cy="30" r="1.5"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-40"></div>
+        
+        <div class="max-w-6xl mx-auto text-center relative z-10">
+            <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white mb-12 leading-tight">
+                모바일 <span class="text-blue-400">구내식당·함바 식수 관리</span><br>( 국내 유일 )
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-300 mb-20 max-w-6xl mx-auto leading-relaxed font-medium">
+                사장님 스마트폰이 QR코드 스캐너가 되고,<br>이용자 스마트폰은 모바일 식권이 됩니다.<br>#RF카드_X #리더기_X #PC_X
+            </p>
+            <!-- 레이아웃 높이 유지를 위한 공간 -->
+            <div class="h-24"></div>
+        </div>
+    </section>
+
+    <!-- 특징 기능 섹션 -->
+    <section id="features" class="py-40 px-4 bg-white animate-fade-in relative z-20">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-24">
+                <div class="inline-flex items-center justify-center w-20 h-20 bg-primary rounded-full mb-12">
+                    <span class="text-white font-extrabold text-3xl">1</span>
+                </div>
+                <h2 class="text-5xl md:text-6xl font-extrabold text-gray-900 mb-12 leading-tight">
+                    왜, <span class="text-primary">모바일 식권 시스템</span>을 도입해야 할까요?
+                </h2>
+                <p class="text-xl text-gray-600 max-w-5xl mx-auto leading-relaxed">
+                    비싸고 불편한 RFID카드·바코드·수기 장부를 버리고, <strong class="text-gray-900">구내식당·함바식당 식수 관리</strong>용 모바일 앱 솔루션으로 전환하세요.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-12 mb-20">
+                <div class="bg-white p-12 rounded-3xl shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 border border-gray-100 animate-slide-up">
+                    <div class="flex items-center mb-8">
+                        <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mr-8 flex-shrink-0">
+                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z"/>
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.734 6.234 6 7.009 6 8c0 .99.734 1.766 1.324 2.246.48.408 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.266 13.766 14 12.991 14 12c0-.99-.734-1.766-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z" clip-rule="evenodd"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-extrabold text-gray-900">비용 절감</h3>
+                    </div>
+                    <p class="text-lg text-gray-600 leading-relaxed">카드·리더기 비용 제거, 월간 프로그램 비용 0원</p>
+                </div>
+                <div class="bg-white p-12 rounded-3xl shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 border border-gray-100 animate-slide-up">
+                    <div class="flex items-center mb-8">
+                        <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mr-8 flex-shrink-0">
+                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M4 4a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2H4zm2 2a1 1 0 000 2h8a1 1 0 100-2H6zm0 3a1 1 0 000 2h8a1 1 0 100-2H6zm0 3a1 1 0 000 2h4a1 1 0 100-2H6z" clip-rule="evenodd"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-extrabold text-gray-900">모든 계약 방식 수용</h3>
+                    </div>
+                    <p class="text-lg text-gray-600 leading-relaxed">고객 회사별 계약 형태에 맞춰 선·후불/할인 적용</p>
+                </div>
+                <div class="bg-white p-12 rounded-3xl shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 border border-gray-100 animate-slide-up">
+                    <div class="flex items-center mb-8">
+                        <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mr-8 flex-shrink-0">
+                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-extrabold text-gray-900">사장님 업무 지원</h3>
+                    </div>
+                    <p class="text-lg text-gray-600 leading-relaxed">고객사 직원별 안내, 개인별 예산 할당·배포, 대금 청구 대행</p>
+                </div>
+                <div class="bg-white p-12 rounded-3xl shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 border border-gray-100 animate-slide-up">
+                    <div class="flex items-center mb-8">
+                        <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center mr-8 flex-shrink-0">
+                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"/>
+                                <path d="M6 6h8v8H6V6z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-extrabold text-gray-900">업무 간소화</h3>
+                    </div>
+                    <p class="text-lg text-gray-600 leading-relaxed">고객사 직원별 카드 매칭 및 배포와 재발급 작업 간소화</p>
+                </div>
+                <div class="bg-white p-12 rounded-3xl shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 border border-gray-100 animate-slide-up">
+                    <div class="flex items-center mb-8">
+                        <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center mr-8 flex-shrink-0">
+                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M12 2.25a.75.75 0 01.36.09l7 3.5a.75.75 0 01.41.66V11c0 6.03-4.35 9.72-7.54 10.94a.75.75 0 01-.54 0C8.18 20.72 3.83 17.03 3.83 11V6.5a.75.75 0 01.41-.66l7-3.5a.75.75 0 01.36-.09zm3.53 6.22a.75.75 0 10-1.06-1.06L11 10.88 9.53 9.41a.75.75 0 10-1.06 1.06l2 2a.75.75 0 001.06 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-extrabold text-gray-900">부정 사용 원천 방지</h3>
+                    </div>
+                    <p class="text-lg text-gray-600 leading-relaxed">번호별 QR로 <strong class="text-primary">로스율 0%</strong> 식수 관리 및 탐지 AI 고도화중</p>
+                </div>
+                <div class="bg-white p-12 rounded-3xl shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 border border-gray-100 animate-slide-up">
+                    <div class="flex items-center mb-8">
+                        <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center mr-8 flex-shrink-0">
+                            <!-- 티켓(식권) 아이콘: 본문은 채움, 세로 절취선은 관통 홀로 표현 -->
+                            <svg class="w-8 h-8 text-white" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                      d="M2.25 7.5A2.25 2.25 0 0 1 4.5 5.25h15a2.25 2.25 0 0 1 2.25 2.25v1.125a2.625 2.625 0 0 0 0 5.25V16.5A2.25 2.25 0 0 1 19.5 18.75h-15A2.25 2.25 0 0 1 2.25 16.5v-1.125a2.625 2.625 0 0 0 0-5.25V7.5z
+                                         M15 7.25a1 1 0 1 1 0 2a1 1 0 0 1 0-2zm0 3.5a1 1 0 1 1 0 2a1 1 0 0 1 0-2zm0 3.5a1 1 0 1 1 0 2a1 1 0 0 1 0-2zm0 3.5a1 1 0 1 1 0 2a1 1 0 0 1 0-2z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-extrabold text-gray-900">온전한 모바일식권</h3>
+                    </div>
+                    <p class="text-lg text-gray-600 leading-relaxed">분실 위험없이 수천명의 장부 작성과 확인을 자동화</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 활용 환경 섹션 -->
+    <section id="use-cases" class="py-40 px-4 bg-gray-50 animate-fade-in">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-24">
+                <div class="inline-flex items-center justify-center w-20 h-20 bg-primary rounded-full mb-12">
+                    <span class="text-white font-extrabold text-3xl">2</span>
+                </div>
+                <h2 class="text-5xl md:text-6xl font-extrabold text-gray-900 mb-12 leading-tight">
+                    구내식당·함바식당 <span class="text-primary">상황별 결제</span> 구현 사례
+                </h2>
+                <p class="text-xl text-gray-600 max-w-5xl mx-auto leading-relaxed">
+                    각 현장별 결제 상황에 맞춰 전용 식당부터 외부인 카드 결제까지 완벽하게 지원됩니다.
+                </p>
+            </div>
+
+            <!-- 이미지 섹션: 전용 sticky → 복합 overlay -->
+            <div class="space-y-8">
+                <div class="text-center">
+                    <h3 class="text-3xl font-extrabold text-gray-900">① 직원 전용 식당</h3>
+                </div>
+                <div class="relative">
+                    <!-- 전용: 상단 고정 -->
+                    <div class="sticky top-0 z-10">
+                        <div class="-mx-[calc(50vw-50%)]">
+                            <div class="w-[100vw] aspect-[2/1] relative">
+                                <img src="images/qr_payment.webp" alt="함바식당 모바일 식권 QR코드 전용 결제 화면" class="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 전용 식당 설명 문장 -->
+                    <div class="relative z-20 -mx-[calc(50vw-50%)]">
+                        <div class="max-w-7xl mx-auto px-4">
+                            <div class="text-center mt-8">
+                                <h3 class="text-2xl md:text-3xl text-white drop-shadow-xl font-extrabold mb-6">지정된 인원만 식사하는 전용식당</h3>
+                                <div class="space-y-3 text-lg md:text-xl text-white drop-shadow-xl font-semibold">
+                                    <p>사장님/관리자 : 앱을 열어 QR 리더를 세워두세요.</p>
+                                    <p>고객사 직원 : 앱의 QR코드를 스캔하고 입장해요.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 스크롤 공간 확보 -->
+                    <div class="h-[100vh]"></div>
+
+                    <!-- 겸용: 위로 덮어 올라오기 -->
+                    <div class="relative z-30 -mx-[calc(50vw-50%)]">
+                        <!-- 흰색 배경의 겸용 식당 타이틀 바 -->
+                        <div class="bg-white">
+                            <div class="max-w-7xl mx-auto py-12 text-center">
+                                <h3 class="text-3xl font-extrabold text-gray-900">② 겸용 식당</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--겸용: 상단 고정 -->
+                    <div class="sticky top-0 z-30">
+                        <div class="-mx-[calc(50vw-50%)]">
+                            <div class="w-[100vw] aspect-[2/1] relative">
+                                <img src="images/Kiosk_payment.webp" alt="중형 식당의 키오스크에서 카드 및 스마트폰 QR코드로 결제하는 방식" class="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 겸용 식당 설명 문장 -->
+                    <div class="relative z-40 -mx-[calc(50vw-50%)]">
+                        <div class="max-w-7xl mx-auto px-4">
+                            <div class="text-center mt-8">
+                                <h3 class="text-2xl md:text-3xl text-white drop-shadow-xl font-extrabold mb-6">겸용 식당 (고정고객 + 외부고객)</h3>
+                                <div class="space-y-3 text-lg md:text-xl text-white drop-shadow-xl font-semibold">
+                                    <p>사장님 : 키오스크를 세워두세요.</p>
+                                    <p>고객사 직원 : 키오스크에 앱 QR을 스캔해요.</p>
+                                    <p>외부 고객 : KIOSK에서 신용카드로 결제해요.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 스크롤 공간 확보 -->
+                    <div class="h-[100vh]"></div>
+
+                    <!-- 복합: 위로 덮어 올라오기 -->
+                    <div class="relative z-30 -mx-[calc(50vw-50%)]">
+                        <!-- 흰색 배경의 복합 식당 타이틀 바 -->
+                        <div class="bg-white">
+                            <div class="max-w-7xl mx-auto py-12 text-center">
+                                <h3 class="text-3xl font-extrabold text-gray-900">③ 대형 식당</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--복합: 상단 고정 -->
+                    <div class="sticky top-0 z-30">
+                        <div class="-mx-[calc(50vw-50%)]">
+                            <div class="w-[100vw] aspect-[2/1] relative">
+                                <img src="images/kiosk_qr.webp" alt="대형 구내식당·함바식당은 키오스크와 스마트폰 QR코드 스캐너를 여러대 설치하여 결제 편의 제공" class="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 복합 식당 설명 문장 -->
+                    <div class="relative z-40 -mx-[calc(50vw-50%)]">
+                        <div class="max-w-7xl mx-auto px-4">
+                            <div class="text-center mt-8">
+                                <h3 class="text-2xl md:text-3xl text-white drop-shadow-xl font-extrabold mb-6">대형 식당 (식수 인원이 많은 경우)</h3>
+                                <div class="space-y-3 text-lg md:text-xl text-white drop-shadow-xl font-semibold">
+                                    <p>사장님 : 키오스크 및 앱 QR리더를 여러대 세워두세요.</p>
+                                    <p>고객사 직원 : 대기줄 짧은 곳에 앱 QR을 스캔해요.</p>
+                                    <p>외부 고객 : KIOSK에서 신용카드로 결제해요.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 스크롤 공간 확보 -->
+                    <div class="h-[100vh]"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 역할과 지원 섹션 -->
+    <section id="support" class="py-40 px-4 bg-white animate-fade-in">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-24">
+                <div class="inline-flex items-center justify-center w-20 h-20 bg-primary rounded-full mb-12">
+                    <span class="text-white font-extrabold text-3xl">3</span>
+                </div>
+                <h2 class="text-5xl md:text-6xl font-extrabold text-gray-900 mb-12 leading-tight">
+                    고객사별 <span class="text-primary">전자식권</span> 역할과 업무 지원까지
+                </h2>
+                <p class="text-xl text-gray-600 max-w-5xl mx-auto leading-relaxed">
+                    구내식당·함바식당을 이용하는 고객사와의 계약 형태나 방식에 맞춰 유연하게 적용하실 수 있어요.
+                </p>
+            </div>
+            <div class="grid lg:grid-cols-2 gap-20">
+                <div class="bg-white p-16 rounded-3xl shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 border border-gray-100 animate-slide-up">
+                    <div class="flex items-center mb-12">
+                        <div class="w-24 h-24 bg-primary rounded-3xl flex items-center justify-center mr-8">
+                            <svg class="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4zM18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-3xl font-extrabold text-gray-900">모든 결제 형태 완벽 적용</h3>
+                            <p class="text-xl text-gray-600 font-semibold">(유연한 식대 정책)</p>
+                        </div>
+                    </div>
+                    <ul class="space-y-10">
+                        <li class="flex items-start">
+                            <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mr-8 mt-1 flex-shrink-0">
+                                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-primary mb-2">선불 정산</h4>
+                                <p class="text-lg text-gray-700">고객사가 결제한 금액 내에서 직원별 한도 부여</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mr-8 mt-1 flex-shrink-0">
+                                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-primary mb-2">후불 정산</h4>
+                                <p class="text-lg text-gray-700">직원별 일일·월간 한도를 지정하고, 월말 정산</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mr-8 mt-1 flex-shrink-0">
+                                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-primary mb-2">할인율 적용</h4>
+                                <p class="text-lg text-gray-700">고객사별 식사 단가 차등 적용</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mr-8 mt-1 flex-shrink-0">
+                                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-primary mb-2">복합 결제 지원</h4>
+                                <p class="text-lg text-gray-700">예산 내 식권 결제 + 카드 결제 병행 가능</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white p-16 rounded-3xl shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 border border-gray-100 animate-slide-up">
+                    <div class="flex items-center mb-12">
+                        <div class="w-24 h-24 bg-accent rounded-3xl flex items-center justify-center mr-8">
+                            <svg class="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 110 2h-3a1 1 0 01-1-1v-2a1 1 0 00-1-1H9a1 1 0 00-1 1v2a1 1 0 01-1 1H4a1 1 0 110-2V4zm3 1h2v2H7V5zm2 4H7v2h2V9zm2-4h2v2h-2V5zm2 4h-2v2h2V9z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-3xl font-extrabold text-gray-900">식수 관리 업무 지원</h3>
+                        </div>
+                    </div>
+                    <ul class="space-y-10">
+                        <li class="flex items-start">
+                            <div class="w-12 h-12 bg-accent rounded-full flex items-center justify-center mr-8 mt-1 flex-shrink-0">
+                                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-accent mb-2">직원별 이용 안내</h4>
+                                <p class="text-lg text-gray-700">최초 이용 안내문 전송 (유료 문자: 장문 40원/1건)</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="w-12 h-12 bg-accent rounded-full flex items-center justify-center mr-8 mt-1 flex-shrink-0">
+                                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-accent mb-2">포인트 배포·전송</h4>
+                                <p class="text-lg text-gray-700">이용자별 포인트 배포·전송 (유료 지원: 29.6원/1건)</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="w-12 h-12 bg-accent rounded-full flex items-center justify-center mr-8 mt-1 flex-shrink-0">
+                                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-accent mb-2">대금 청구 대행</h4>
+                                <p class="text-lg text-gray-700">고객사별 대금 청구 대행 (유료 지원: 2,970원/1일)</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="w-12 h-12 bg-accent rounded-full flex items-center justify-center mr-8 mt-1 flex-shrink-0">
+                                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-accent mb-2">추가 지원 문의</h4>
+                                <p class="text-lg text-gray-700">필요하신 기능은 언제든지 문의해 주세요!</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>           
+        </div>
+    </section>
+
+    <!-- 비교보기 섹션 -->
+    <section id="comparison" class="py-40 px-4 bg-gray-50 animate-fade-in">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-24">
+                <div class="inline-flex items-center justify-center w-20 h-20 bg-primary rounded-full mb-12">
+                    <span class="text-white font-extrabold text-3xl">4</span>
+                </div>
+                <h3 class="text-5xl md:text-6xl font-extrabold text-gray-900 mb-12 leading-tight">
+                    <span class="text-red-500">RFID카드/바코드</span> vs. <span class="text-green-500">스마트폰 식수 관리</span>
+                </h3>
+                <p class="text-xl text-gray-600 font-semibold">(양쪽을 비교하여 사장님의 낭비 요소를 확인하세요)</p>
+            </div>
+            
+            <!-- 데스크탑 테이블 -->
+            <div class="hidden lg:block overflow-x-auto shadow-2xl rounded-3xl">
+                <table class="w-full bg-white">
+                    <thead class="bg-gradient-to-r from-red-100 to-green-100">
+                        <tr>
+                            <th class="px-10 py-8 text-left font-extrabold text-xl text-gray-900">비교 항목</th>
+                            <th class="px-10 py-8 text-left font-extrabold text-xl text-red-700">RFID카드/바코드 프로그램</th>
+                            <th class="px-10 py-8 text-left font-extrabold text-xl text-green-700">모바일 앱 식수 관리 시스템</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b border-gray-200 bg-white hover:bg-red-50 transition-colors duration-200">
+                            <td class="px-10 py-8 font-extrabold text-xl text-gray-900">초기 도입 비용</td>
+                            <td class="px-10 py-8 text-lg text-red-700 leading-relaxed bg-red-50">카드·리더기·PC 구입을 위한 초기 비용 지출</td>
+                            <td class="px-10 py-8 text-lg text-green-700 leading-relaxed bg-green-50"><strong class="text-green-600">없음</strong></td>
+                        </tr>
+                        <tr class="border-b border-gray-200 bg-gray-50 hover:bg-red-50 transition-colors duration-200">
+                            <td class="px-10 py-8 font-extrabold text-xl text-gray-900">운영 유지 비용</td>
+                            <td class="px-10 py-8 text-lg text-red-700 leading-relaxed bg-red-50">매월 프로그램 비용 납부, 카드 분실 및 고장 발생</td>
+                            <td class="px-10 py-8 text-lg text-green-700 leading-relaxed bg-green-50"><strong class="text-green-600">없음</strong></td>
+                        </tr>
+                        <tr class="border-b border-gray-200 bg-white hover:bg-red-50 transition-colors duration-200">
+                            <td class="px-10 py-8 font-extrabold text-xl text-gray-900">기록 관리 비용</td>
+                            <td class="px-10 py-8 text-lg text-red-700 leading-relaxed bg-red-50">카드와 이용자 매칭·배포·재발급 번거로움</td>
+                            <td class="px-10 py-8 text-lg text-green-700 leading-relaxed bg-green-50">회사별 문자 안내로 <strong class="text-green-600">즉시 이용</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- 모바일 카드 뷰 (Toss 스타일) -->
+            <div class="lg:hidden space-y-8">
+                <div class="bg-white p-8 rounded-3xl shadow-xl animate-slide-up">
+                    <h3 class="text-2xl font-extrabold text-gray-900 mb-6">초기 도입 비용</h3>
+                    <div class="space-y-4">
+                        <div class="bg-red-50 p-6 rounded-2xl border-l-4 border-red-500">
+                            <h4 class="text-lg font-bold text-red-800 mb-2">RFID카드/바코드 프로그램</h4>
+                            <p class="text-lg text-red-700">카드·리더기·PC 구입을 위한 초기 비용 지출</p>
+                        </div>
+                        <div class="bg-green-50 p-6 rounded-2xl border-l-4 border-green-500">
+                            <h4 class="text-lg font-bold text-green-800 mb-2">모바일 앱 식수 관리 시스템</h4>
+                            <p class="text-lg text-green-700"><strong class="text-green-600">없음</strong></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-8 rounded-3xl shadow-xl animate-slide-up">
+                    <h3 class="text-2xl font-extrabold text-gray-900 mb-6">운영 유지 비용</h3>
+                    <div class="space-y-4">
+                        <div class="bg-red-50 p-6 rounded-2xl border-l-4 border-red-500">
+                            <h4 class="text-lg font-bold text-red-800 mb-2">RFID카드/바코드 프로그램</h4>
+                            <p class="text-lg text-red-700">기기 고장 및 카드 분실 발생, 매월 프로그램 비용 납부</p>
+                        </div>
+                        <div class="bg-green-50 p-6 rounded-2xl border-l-4 border-green-500">
+                            <h4 class="text-lg font-bold text-green-800 mb-2">모바일 앱 식수 관리 시스템</h4>
+                            <p class="text-lg text-green-700"><strong class="text-green-600">없음</strong></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-8 rounded-3xl shadow-xl animate-slide-up">
+                    <h3 class="text-2xl font-extrabold text-gray-900 mb-6">기록 관리 비용</h3>
+                    <div class="space-y-4">
+                        <div class="bg-red-50 p-6 rounded-2xl border-l-4 border-red-500">
+                            <h4 class="text-lg font-bold text-red-800 mb-2">RFID카드/바코드 프로그램</h4>
+                            <p class="text-lg text-red-700">카드와 이용자 매칭·배포·재발급 번거로움</p>
+                        </div>
+                        <div class="bg-green-50 p-6 rounded-2xl border-l-4 border-green-500">
+                            <h4 class="text-lg font-bold text-green-800 mb-2">모바일 앱 식수 관리 시스템</h4>
+                            <p class="text-lg text-green-700">회사별 문자 안내로 <strong class="text-green-600">즉시 이용</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 사용 방법 섹션 -->
+    <section id="how-to" class="py-40 px-4 bg-gray-50 animate-fade-in">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-24">
+                <div class="inline-flex items-center justify-center w-20 h-20 bg-primary rounded-full mb-12">
+                    <span class="text-white font-extrabold text-3xl">5</span>
+                </div>
+                <h3 class="text-5xl md:text-6xl font-extrabold text-gray-900 mb-12 leading-tight">
+                    <span class="text-primary">2분이면 시작</span>하는 구내·함바식당 식수 관리
+                </h3>
+                <p class="text-xl text-gray-600 max-w-5xl mx-auto leading-relaxed">
+                    요약하면, 저희 시스템은 스마트폰만으로 신속하게 함바 식수 관리를 시작하실 수 있도록 설계되었어요.
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-20">
+                <div class="bg-white p-16 rounded-3xl shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 border border-gray-100 animate-slide-up">
+                    <div class="flex items-center mb-12">
+                        <div class="w-24 h-24 bg-primary rounded-3xl flex items-center justify-center mr-8">
+                            <svg class="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <h4 class="text-3xl font-extrabold text-gray-900">사장님/관리자 사용 방법</h4>
+                    </div>
+                    <ol class="space-y-10">
+                        <li class="flex items-start">
+                            <span class="bg-primary text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-extrabold mr-8 mt-1 flex-shrink-0">1</span>
+                            <div>
+                                <h5 class="text-xl font-bold text-primary mb-2">앱 다운로드 및 인증</h5>
+                                <p class="text-lg text-gray-700">스마트폰에 앱 설치 후 관리자 인증</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="bg-primary text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-extrabold mr-8 mt-1 flex-shrink-0">2</span>
+                            <div>
+                                <h5 class="text-xl font-bold text-primary mb-2">매장 생성</h5>
+                                <p class="text-lg text-gray-700">[설정]의 "사장님 페이지"로 이동하여 매장 생성</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="bg-primary text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-extrabold mr-8 mt-1 flex-shrink-0">3</span>
+                            <div>
+                                <h5 class="text-xl font-bold text-primary mb-2">사용 시작</h5>
+                                <p class="text-lg text-gray-700">포인트 배포 후, <strong class="text-gray-900">QR 리더기</strong>를 입구에 거치</p>
+                            </div>
+                        </li>
+                    </ol>
+                </div>
+                
+                <div class="bg-white p-16 rounded-3xl shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 border border-gray-100 animate-slide-up">
+                    <div class="flex items-center mb-12">
+                        <div class="w-24 h-24 bg-accent rounded-3xl flex items-center justify-center mr-8">
+                            <svg class="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <h4 class="text-3xl font-extrabold text-gray-900">식당 고객의 사용 방법</h4>
+                    </div>
+                    <ol class="space-y-10">
+                        <li class="flex items-start">
+                            <span class="bg-accent text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-extrabold mr-8 mt-1 flex-shrink-0">1</span>
+                            <div>
+                                <h5 class="text-xl font-bold text-accent mb-2">앱 다운로드 및 인증</h5>
+                                <p class="text-lg text-gray-700">스마트폰에 앱 설치 후 개인 인증</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="bg-accent text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-extrabold mr-8 mt-1 flex-shrink-0">2</span>
+                            <div>
+                                <h5 class="text-xl font-bold text-accent mb-2">QR 스캔 결제</h5>
+                                <p class="text-lg text-gray-700">입구에서 <strong class="text-gray-900">앱 QR코드</strong>를 리더기에 스캔</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="bg-accent text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-extrabold mr-8 mt-1 flex-shrink-0">3</span>
+                            <div>
+                                <h5 class="text-xl font-bold text-accent mb-2">내역 확인</h5>
+                                <p class="text-lg text-gray-700">Report에서 <strong class="text-gray-900">실시간 확인</strong></p>
+                            </div>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+            
+            <!-- 앱 QR코드 동영상 섹션 -->
+            <div class="mt-20 text-center">
+                <h3 class="text-4xl font-extrabold text-gray-900 mb-12">왜, 함바 식수 관리에 스마트폰 QR코드를 활용해야 할까요?</h3>
+                
+                <!-- 동영상 그리드 -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+                            <div class="aspect-[9/16] relative bg-black rounded-3xl overflow-hidden cursor-pointer" onclick="loadYouTubeVideo(this, '0WOdIhcEgjY')">
+                                <img src="https://i.ytimg.com/vi/0WOdIhcEgjY/hqdefault.jpg" alt="함바 식수 관리 QR코드 활용법 1" class="w-full h-full object-cover transition-transform duration-300 hover:scale-105">
+                                <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40">
+                                    <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"></path></svg>
+                                </div>
+                            </div>
+                    
+                            <div class="aspect-[9/16] relative bg-black rounded-3xl overflow-hidden cursor-pointer" onclick="loadYouTubeVideo(this, 'ZfHfSAM-FA8')">
+                                <img src="https://i.ytimg.com/vi/ZfHfSAM-FA8/hqdefault.jpg" alt="함바 식수 관리 QR코드 활용법 2" class="w-full h-full object-cover transition-transform duration-300 hover:scale-105">
+                                <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40">
+                                    <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"></path></svg>
+                                </div>
+                            </div>
+                    
+                            <div class="aspect-[9/16] relative bg-black rounded-3xl overflow-hidden cursor-pointer" onclick="loadYouTubeVideo(this, 'NvgGo9Gqop4')">
+                                <img src="https://i.ytimg.com/vi/NvgGo9Gqop4/hqdefault.jpg" alt="함바 식수 관리 QR코드 활용법 3" class="w-full h-full object-cover transition-transform duration-300 hover:scale-105">
+                                <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40">
+                                    <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"></path></svg>
+                                </div>
+                            </div>
+                </div>
+                
+                <!-- 섹션 설명 문구 -->
+                <p class="text-gray-600 text-xl font-semibold">사장님도, 식당 고객도 모바일이 정답이죠.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ 섹션 -->
+    <section id="faq" class="py-40 px-4 bg-white animate-fade-in">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-24">
+                <div class="inline-flex items-center justify-center w-20 h-20 bg-primary rounded-full mb-12">
+                    <span class="text-white font-extrabold text-3xl">6</span>
+                </div>
+                <h3 class="text-5xl md:text-6xl font-extrabold text-gray-900 mb-12 leading-tight">
+                    모바일 식권 관련하여 <span class="text-primary">자주 묻는 질문 (FAQ)</span>
+                </h3>
+            </div>
+            
+            <div class="space-y-8">
+                <!-- FAQ 1 -->
+                <div class="bg-white rounded-3xl shadow-xl border border-gray-100 animate-slide-up">
+                    <button class="faq-toggle w-full p-10 text-left hover:bg-gray-50 transition-colors duration-200" onclick="toggleFaq(1)">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-start">
+                                <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mr-8 mt-1 flex-shrink-0">
+                                    <span class="text-white font-extrabold text-2xl">Q</span>
+                                </div>
+                                <h4 class="text-2xl font-extrabold text-gray-900">모바일식권 형태의 함바 식수 관리를 활용하면 어떤 장점이 있나요?</h4>
+                            </div>
+                            <div class="faq-icon text-3xl text-gray-400 transition-transform duration-300">+</div>
+                        </div>
+                    </button>
+                    <div class="faq-content hidden px-10 pb-10">
+                        <div class="flex items-start">
+                            <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center mr-8 mt-1 flex-shrink-0">
+                                <span class="text-white font-extrabold text-2xl">A</span>
+                            </div>
+                            <p class="text-xl text-gray-700 leading-relaxed">구내식당·함바식당의 급식 결제 시스템 구현을 위한 기기 구입·설치 <strong class="text-primary">비용이 제거</strong>되고, <strong class="text-primary">카드 분실 걱정 없이</strong> 휴대전화만으로 즉시 사용하며, 비접촉식 결제로 빠르고 안전해요.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="bg-white rounded-3xl shadow-xl border border-gray-100 animate-slide-up">
+                    <button class="faq-toggle w-full p-10 text-left hover:bg-gray-50 transition-colors duration-200" onclick="toggleFaq(2)">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-start">
+                                <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mr-8 mt-1 flex-shrink-0">
+                                    <span class="text-white font-extrabold text-2xl">Q</span>
+                                </div>
+                                <h4 class="text-2xl font-extrabold text-gray-900">RFID 대체 솔루션 도입을 위해 준비할 것은 무엇인가요?</h4>
+                            </div>
+                            <div class="faq-icon text-3xl text-gray-400 transition-transform duration-300">+</div>
+                        </div>
+                    </button>
+                    <div class="faq-content hidden px-10 pb-10">
+                        <div class="flex items-start">
+                            <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center mr-8 mt-1 flex-shrink-0">
+                                <span class="text-white font-extrabold text-2xl">A</span>
+                            </div>
+                            <p class="text-xl text-gray-700 leading-relaxed"><strong class="text-primary">건설현장 식당</strong>처럼 카드결제가 없는 경우, <strong class="text-primary">QR 리더기 역할</strong>을 하는 관리자 앱과 이용자 앱으로 충분해요. 카드 결제도 필요하면 연동된 키오스크가 QR 리더기 역할을 함께해요.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="bg-white rounded-3xl shadow-xl border border-gray-100 animate-slide-up">
+                    <button class="faq-toggle w-full p-10 text-left hover:bg-gray-50 transition-colors duration-200" onclick="toggleFaq(3)">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-start">
+                                <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mr-8 mt-1 flex-shrink-0">
+                                    <span class="text-white font-extrabold text-2xl">Q</span>
+                                </div>
+                                <h4 class="text-2xl font-extrabold text-gray-900">구내식당 내 매점이나 카페 등의 부대시설 결제도 함께 처리할 수 있나요?</h4>
+                            </div>
+                            <div class="faq-icon text-3xl text-gray-400 transition-transform duration-300">+</div>
+                        </div>
+                    </button>
+                    <div class="faq-content hidden px-10 pb-10">
+                        <div class="flex items-start">
+                            <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center mr-8 mt-1 flex-shrink-0">
+                                <span class="text-white font-extrabold text-2xl">A</span>
+                            </div>
+                            <p class="text-xl text-gray-700 leading-relaxed">예, 내부 직원은 QR코드로 예산 금액내 구매할 수 있고, 외부인은 카드로 상품을 구입할 수 있어요.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 4 -->
+                <div class="bg-white rounded-3xl shadow-xl border border-gray-100 animate-slide-up">
+                    <button class="faq-toggle w-full p-10 text-left hover:bg-gray-50 transition-colors duration-200" onclick="toggleFaq(4)">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-start">
+                                <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mr-8 mt-1 flex-shrink-0">
+                                    <span class="text-white font-extrabold text-2xl">Q</span>
+                                </div>
+                                <h4 class="text-2xl font-extrabold text-gray-900">네트워크가 끊기면 결제가 안 되나요?</h4>
+                            </div>
+                            <div class="faq-icon text-3xl text-gray-400 transition-transform duration-300">+</div>
+                        </div>
+                    </button>
+                    <div class="faq-content hidden px-10 pb-10">
+                        <div class="flex items-start">
+                            <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center mr-8 mt-1 flex-shrink-0">
+                                <span class="text-white font-extrabold text-2xl">A</span>
+                            </div>
+                            <p class="text-xl text-gray-700 leading-relaxed">예, 유선 인터넷(와이파이)과 무선 인터넷(5G 또는 LTE)을 함께 활용하여 네트워크 단절에 대비할 수 있어요.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 5 -->
+                <div class="bg-white rounded-3xl shadow-xl border border-gray-100 animate-slide-up">
+                    <button class="faq-toggle w-full p-10 text-left hover:bg-gray-50 transition-colors duration-200" onclick="toggleFaq(5)">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-start">
+                                <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mr-8 mt-1 flex-shrink-0">
+                                    <span class="text-white font-extrabold text-2xl">Q</span>
+                                </div>
+                                <h4 class="text-2xl font-extrabold text-gray-900">신용카드나 체크카드 결제도 병행할 수 있나요?</h4>
+                            </div>
+                            <div class="faq-icon text-3xl text-gray-400 transition-transform duration-300">+</div>
+                        </div>
+                    </button>
+                    <div class="faq-content hidden px-10 pb-10">
+                        <div class="flex items-start">
+                            <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center mr-8 mt-1 flex-shrink-0">
+                                <span class="text-white font-extrabold text-2xl">A</span>
+                            </div>
+                            <p class="text-xl text-gray-700 leading-relaxed">예, 키오스크나 카드 단말기를 요청하시면 신용·체크카드 결제가 가능합니다. 즉, 카드결제와 QR결제를 함께 운영할 수 있어요.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 6 -->
+                <div class="bg-white rounded-3xl shadow-xl border border-gray-100 animate-slide-up">
+                    <button class="faq-toggle w-full p-10 text-left hover:bg-gray-50 transition-colors duration-200" onclick="toggleFaq(6)">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-start">
+                                <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mr-8 mt-1 flex-shrink-0">
+                                    <span class="text-white font-extrabold text-2xl">Q</span>
+                                </div>
+                                <h4 class="text-2xl font-extrabold text-gray-900">모바일 식권은 선불형과 후불형 중 어떤 방식이 더 좋아요?</h4>
+                            </div>
+                            <div class="faq-icon text-3xl text-gray-400 transition-transform duration-300">+</div>
+                        </div>
+                    </button>
+                    <div class="faq-content hidden px-10 pb-10">
+                        <div class="flex items-start">
+                            <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center mr-8 mt-1 flex-shrink-0">
+                                <span class="text-white font-extrabold text-2xl">A</span>
+                            </div>
+                            <p class="text-xl text-gray-700 leading-relaxed">선불형은 미리 결제하고 충전하여 사용하므로 사용 현황 관리만 필요하고, 후불형은 대금 청구 업무가 중요해요.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 7 -->
+                <div class="bg-white rounded-3xl shadow-xl border border-gray-100 animate-slide-up">
+                    <button class="faq-toggle w-full p-10 text-left hover:bg-gray-50 transition-colors duration-200" onclick="toggleFaq(7)">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-start">
+                                <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mr-8 mt-1 flex-shrink-0">
+                                    <span class="text-white font-extrabold text-2xl">Q</span>
+                                </div>
+                                <h4 class="text-2xl font-extrabold text-gray-900">식권 위조나 중복 사용을 막을 방법이 있나요?</h4>
+                            </div>
+                            <div class="faq-icon text-3xl text-gray-400 transition-transform duration-300">+</div>
+                        </div>
+                    </button>
+                    <div class="faq-content hidden px-10 pb-10">
+                        <div class="flex items-start">
+                            <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center mr-8 mt-1 flex-shrink-0">
+                                <span class="text-white font-extrabold text-2xl">A</span>
+                            </div>
+                            <p class="text-xl text-gray-700 leading-relaxed">휴대전화 기반으로 사용 즉시 소멸하기 때문에 복제나 중복 사용이 어려워요. 종이식권에서 발생하던 분실·위조 문제가 원천 차단돼요.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 하단 CTA 섹션 -->
+    <section id="contact" class="bg-gray-900 text-white py-40 px-4 relative overflow-hidden">
+        <!-- 배경 패턴 -->
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.03"%3E%3Ccircle cx="30" cy="30" r="1.5"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-40"></div>
+        
+        <div class="max-w-6xl mx-auto text-center relative z-10">
+            <h2 class="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-12 leading-tight">
+                <span class="text-white">구내식당·함바 식수 관리 프로그램</span>, 지금 바로 <span class="text-yellow-300">무료</span>로 시작하세요!
+            </h2>
+            
+            <div class="bg-white/5 backdrop-blur-sm text-white p-4 md:p-16 rounded-3xl shadow-2xl max-w-6xl mx-auto border border-white/10">
+                <h3 class="text-3xl md:text-4xl font-extrabold mb-6 md:mb-8">무료 식수관리 문의하기 (컨설팅 포함)</h3>
+                <p class="text-lg md:text-2xl mb-8 md:mb-12 leading-relaxed">지금 문의하시면 귀사의 <strong class="text-yellow-300">구내식당·함바식당 식수 관리</strong>에 최적화된 솔루션을 제공합니다.</p>
+                
+                <div class="w-full mx-auto">
+                    <!-- 맞춤형 구글 폼 -->
+                    <form id="customGoogleForm" class="space-y-6">
+                        <div>
+                            <input type="text" id="form-name" name="entry.1950910160" required
+                                   class="w-full p-4 bg-gray-800 text-white rounded-xl border border-gray-700 focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition-all duration-300 placeholder-gray-500 text-lg"
+                                   placeholder="회사/담당 성함을 입력해요">
+                        </div>
+                        <div>
+                            <input type="text" id="form-contact" name="entry.1181158497" required
+                                   class="w-full p-4 bg-gray-800 text-white rounded-xl border border-gray-700 focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition-all duration-300 placeholder-gray-500 text-lg"
+                                   placeholder="전화번호 또는 이메일을 입력해요">
+                        </div>
+                        <div>
+                            <textarea id="form-message" name="entry.1270692115" rows="4" required
+                                      class="w-full p-4 bg-gray-800 text-white rounded-xl border border-gray-700 focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition-all duration-300 placeholder-gray-500 text-lg"
+                                      placeholder="매장수, 식수 인원, 요구사항 등을 입력해요"></textarea>
+                        </div>
+                        <div>
+                            <button type="submit"
+                                    class="w-full bg-primary text-white font-extrabold py-4 px-6 rounded-xl text-2xl hover:bg-primary-darker focus:outline-none focus:ring-4 focus:ring-blue-300 transition-all duration-300 transform hover:scale-105">
+                                문의하기
+                            </button>
+                        </div>
+                    </form>
+                    
+                    <!-- 폼 하단 안내 텍스트 -->
+                    <div class="mt-8 text-center">
+                        <p class="text-lg text-gray-300 font-medium">
+                            📝 위 버튼을 누르시면 24시간내 연락드려요.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 성공 메시지 팝업 (숨겨져 있음) -->
+            <div id="success-popup" class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-green-500 text-white px-8 py-4 rounded-xl text-xl font-bold shadow-2xl z-50 opacity-0 transition-opacity duration-300 pointer-events-none">
+                네 바로 연락드릴게요 (^@^)
+            </div>
+
+            <div class="mt-16 mb-16">
+                <p class="text-3xl font-extrabold mb-12">아래 버튼을 누르고 문의하셔도 좋아요!</p>
+                <div class="flex flex-col sm:flex-row gap-8 justify-center">
+                    <a href="sms:010-5415-4415" class="flex items-center justify-center bg-white/10 text-white px-12 py-6 rounded-2xl font-extrabold text-2xl hover:bg-white/20 hover:scale-[1.02] transition-all duration-300 backdrop-blur-sm border border-white/20">
+                        💬여기를 누르시면 문자로,
+                    </a>
+                    <a href="mailto:hi@pos.kr" class="flex items-center justify-center bg-white/10 text-white px-12 py-6 rounded-2xl font-extrabold text-2xl hover:bg-white/20 hover:scale-[1.02] transition-all duration-300 backdrop-blur-sm border border-white/20">
+                        📧여기를 누르시면 메일로~
+                    </a>
+                </div>
+            </div>
+
+            <div class="flex flex-row gap-8 justify-center mb-20">
+                <a href="https://play.google.com/store/apps/details?id=com.Gift.GiftCoin&hl=en&gl=US" target="_blank" rel="noopener" class="inline-block">
+                    <div class="p-0">
+                        <img src="images/play_logo.webp" alt="Google Play 스토어에서 앱 다운로드" class="h-12 object-contain" loading="lazy" />
+                    </div>
+                </a>
+                <a href="https://apps.apple.com/kr/app/giftcoin-%EA%B8%B0%ED%94%84%ED%8A%B8%EC%BD%94%EC%9D%B8-%EA%B8%80%ED%94%84%ED%8A%B8%EC%B9%B4%EB%93%9C%EA%B0%80-%EC%82%B4%EC%95%84%EB%82%9C%EB%8B%A4/id1605569286" target="_blank" rel="noopener" class="inline-block">
+                    <div class="p-0">
+                        <img src="images/apple_logo.webp" alt="Apple 앱스토어에서 앱 다운로드" class="h-12 object-contain" loading="lazy" />
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 플로팅 컨설팅 버튼 -->
+    <a href="#contact" id="floatingConsultBtn" 
+       class="fixed bottom-8 left-1/2 transform -translate-x-1/2 bg-primary text-white px-16 py-6 rounded-2xl font-extrabold text-lg md:text-2xl shadow-[8px_8px_16px_rgba(0,0,0,0.3)] z-50 
+              hover:bg-primary-darker hover:scale-[1.02] transition-all duration-300 ease-in-out">
+        <span class="hidden md:inline">무료 컨설팅 문의하기</span>
+        <span class="md:hidden">무료 문의</span>
+    </a>
+    
+    <!-- 플로팅 전화 버튼 -->
+    <a href="tel:010-5415-4415" 
+       class="fixed bottom-8 right-8 bg-accent text-white p-5 rounded-full shadow-2xl z-50 
+              hover:bg-emerald-600 hover:scale-110 transition-transform duration-300 ease-in-out">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+        </svg>
+    </a>
+    
+    <script>
+        // --- START: Mobile Dropdown Menu ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuToggle = document.getElementById('menu-toggle');
+            const dropdownMenu = document.getElementById('mobile-dropdown');
+            const dropdownLinks = dropdownMenu.querySelectorAll('a');
+
+            if (menuToggle && dropdownMenu) {
+                menuToggle.addEventListener('click', () => {
+                    menuToggle.classList.toggle('is-active');
+                    dropdownMenu.classList.toggle('hidden');
+                });
+
+                dropdownLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        menuToggle.classList.remove('is-active');
+                        dropdownMenu.classList.add('hidden');
+                    });
+                });
+            }
+        });
+        // --- END: Mobile Dropdown Menu ---
+
+        // 모바일에서 테이블 스크롤 처리
+        document.addEventListener('DOMContentLoaded', function() {
+            const tables = document.querySelectorAll('table');
+            tables.forEach(table => {
+                const wrapper = document.createElement('div');
+                wrapper.className = 'overflow-x-auto';
+                table.parentNode.insertBefore(wrapper, table);
+                wrapper.appendChild(table);
+            });
+        });
+
+        // 플로팅 컨설팅 버튼 표시/숨김
+        function toggleFloatingBtn() {
+            const btn = document.getElementById('floatingConsultBtn');
+            const contactSection = document.getElementById('contact');
+            if (!btn || !contactSection) return;
+            
+            const rect = contactSection.getBoundingClientRect();
+            const isInContact = rect.top <= window.innerHeight && rect.bottom >= 0;
+            
+            if (isInContact) {
+                btn.classList.add('hidden');
+            } else {
+                btn.classList.remove('hidden');
+            }
+        }
+        
+        // 스크롤 이벤트 리스너
+        window.addEventListener('scroll', toggleFloatingBtn);
+        // 초기 로드 시 체크
+        document.addEventListener('DOMContentLoaded', toggleFloatingBtn);
+
+        // FAQ Accordion 기능
+        function toggleFaq(faqNumber) {
+            const content = document.querySelector(`button[onclick="toggleFaq(${faqNumber})"]`).nextElementSibling;
+            const icon = document.querySelector(`button[onclick="toggleFaq(${faqNumber})"] .faq-icon`);
+            
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.textContent = '−';
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                content.classList.add('hidden');
+                icon.textContent = '+';
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        // 맞춤형 구글 폼 제출 스크립트
+        const form = document.getElementById('customGoogleForm');
+        const popup = document.getElementById('success-popup');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const googleFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSd_1ofOd4BDJW6Y4HrsyQyJbVeA0b7-8jDRtdwRyN-fQqfTww/formResponse';
+            const formData = new FormData(form);
+
+            fetch(googleFormUrl, {
+                method: 'POST',
+                body: formData,
+                mode: 'no-cors'
+            })
+            .then(() => {
+                // 성공 팝업 표시
+                popup.classList.remove('opacity-0');
+                
+                // 2초 후 팝업 숨기고 폼 초기화
+                setTimeout(() => {
+                    popup.classList.add('opacity-0');
+                    form.reset();
+                }, 2000);
+            })
+            .catch(error => console.error('Error submitting to Google Form:', error));
+        });
+
+        // --- START: Scrollspy for floating navigation ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('#page-nav .nav-link');
+
+            if (navLinks.length === 0 || sections.length === 0) return;
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px 0px -50% 0px',
+                threshold: 0
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                let activeSectionId = null;
+
+                // Find the last intersecting section from the top, which is the current active one.
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        activeSectionId = entry.target.getAttribute('id');
+                    }
+                });
+
+                // If nothing is intersecting, find the closest one (for edge cases at top/bottom)
+                if (activeSectionId === null) {
+                    let minDistance = Infinity;
+                    sections.forEach(section => {
+                        const rect = section.getBoundingClientRect();
+                        // Consider sections that are above or near the middle of the viewport
+                        const distance = Math.abs(rect.top - window.innerHeight / 2);
+                        if (distance < minDistance) {
+                            minDistance = distance;
+                            activeSectionId = section.id;
+                        }
+                    });
+                }
+                
+                navLinks.forEach(link => {
+                    const dot = link.querySelector('div');
+                    const sectionId = link.dataset.section;
+
+                    if (sectionId === activeSectionId) {
+                        link.classList.add('text-primary', 'font-extrabold');
+                        link.classList.remove('text-gray-500', 'font-semibold');
+                        dot.classList.add('bg-primary', 'scale-150');
+                        dot.classList.remove('bg-gray-400');
+                    } else {
+                        link.classList.remove('text-primary', 'font-extrabold');
+                        link.classList.add('text-gray-500', 'font-semibold');
+                        dot.classList.remove('bg-primary', 'scale-150');
+                        dot.classList.add('bg-gray-400');
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                if (section.id) {
+                    observer.observe(section);
+                }
+            });
+        });
+        // --- END: Scrollspy for floating navigation ---
+
+        function loadYouTubeVideo(element, videoId) {
+            const iframe = document.createElement('iframe');
+            iframe.setAttribute('src', `https://www.youtube.com/embed/${videoId}?autoplay=1`);
+            iframe.setAttribute('title', 'YouTube video player');
+            iframe.setAttribute('frameborder', '0');
+            iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+            iframe.setAttribute('allowfullscreen', '');
+            iframe.setAttribute('class', 'absolute inset-0 w-full h-full');
+            element.innerHTML = '';
+            element.appendChild(iframe);
+        }
+    </script>
+    
+    <footer class="bg-gray-100 py-12 px-4">
+        <div class="max-w-6xl mx-auto text-center text-gray-700">
+            <p><a href="../terms.html" target="_blank">이용약관</a> | <a href="../privacy.html" target="_blank">개인정보 처리 방침</a></p>
+            <p class="mt-4">(주)글로벌시스텍</p>
+            <p class="mt-4">Address : 경기도 고양시 일산동구 일산로 38, 306호</p>
+            <p class="mt-1">Contact : <a href="mailto:hi@pos.kr" class="text-primary hover:underline">hi@pos.kr</a></p>
+            <p class="mt-4">사업자등록번호 : 330-86-03289</p>
+            <p class="mt-1">대표자 : 강홍기</p>
+        </div>
+    </footer>
+</body>
+</html>

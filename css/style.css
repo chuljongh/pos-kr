@@ -1,0 +1,494 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap');
+
+:root {
+    --primary-color-cafe: #3498db;
+    --primary-color-hamba: #2ecc71;
+    --background-color: #0c0f1a;
+    --door-bg-color: rgba(20, 25, 40, 0.85);
+    --light-leak-color-cafe: rgba(52, 152, 219, 0.8);
+    --light-leak-color-hamba: rgba(46, 204, 113, 0.8);
+    --animation-duration: 0.4s;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+body {
+    background-color: var(--background-color);
+    background-image: 
+        radial-gradient(circle at center, rgba(52, 152, 219, 0.1) 0%, transparent 40%),
+        radial-gradient(circle at center, rgba(46, 204, 113, 0.1) 0%, transparent 40%),
+        linear-gradient(45deg, rgba(255,255,255,0.02) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.02) 75%),
+        linear-gradient(45deg, rgba(255,255,255,0.02) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.02) 75%);
+    background-size: 100% 100%, 100% 100%, 8px 8px, 8px 8px;
+    background-position: 0 0, 0 0, 0 0, 4px 4px;
+    color: #fff;
+    display: flex;
+    flex-direction: column; /* Changed */
+    justify-content: flex-start; /* Changed */
+    align-items: center;
+    padding: 5rem 0 2rem; /* Adjusted top padding */
+}
+
+.site-header {
+    text-align: center;
+    padding: 0 20px;
+    margin-bottom: 2rem;
+    animation: fadeIn 1s ease-out;
+}
+
+.site-header h1 {
+    font-size: 3.5rem;
+    font-weight: 900;
+    margin-bottom: 1rem;
+    text-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+.site-header p {
+    font-size: 1.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+    opacity: 0.9;
+}
+
+.instruction-text {
+    margin-top: 2rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.7);
+    animation: fadeIn 1s 0.5s ease-out backwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.perspective-container {
+    display: flex;
+    width: 100%;
+    /* height: 100%; */ /* Removed */
+    perspective: 1500px;
+    justify-content: center;
+    align-items: center;
+    margin-top: -7rem; /* Pulls the container up further */
+}
+
+@keyframes pulseEffect {
+    /* Start Idle */
+    0%, 50%, 100% {
+        filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.4)) drop-shadow(0 0 10px rgba(255, 255, 255, 0.2)) brightness(1);
+        transform: scale(1);
+    }
+    /* Peak of pulse in the first half */
+    25% {
+        filter: 
+            drop-shadow(0 0 8px rgba(255, 255, 255, 0.6))   /* Intense inner glow */
+            drop-shadow(0 0 25px rgba(255, 255, 255, 0.4))  /* Medium glow */
+            drop-shadow(0 0 75px rgba(255, 255, 255, 0.2)) /* Soft outer glow */
+            brightness(1.35); /* Flash effect on the element itself */
+        transform: scale(1.1); /* Pop effect */
+        z-index: 2; /* Bring to front during pulse */
+    }
+}
+
+.door {
+    width: 40%;
+    height: 70vh; /* Adjusted height */
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: #fff;
+    background: var(--door-bg-color);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease, filter 0.3s ease;
+    transform-style: preserve-3d;
+    position: relative;
+    padding: 0px; /* Reduced horizontal padding */
+    cursor: pointer;
+}
+
+.door::before { /* Light leak effect */
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0;
+    width: 4px;
+    background: transparent;
+    box-shadow: 0 0 10px 2px transparent, 0 0 20px 4px transparent;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0;
+}
+
+.left-door {
+    transform-origin: left center;
+    clip-path: polygon(3% 10%, 100% 30%, 100% 70%, 3% 90%, 0 calc(90% - 3%), 0 calc(10% + 3%));
+    border-right: 1px solid rgba(255, 255, 255, 0.3);
+    z-index: 1;
+    --glow-color: var(--primary-color-cafe);
+    animation: pulseEffect 4s infinite ease-in-out;
+}
+.left-door::before {
+    right: -4px;
+}
+
+.right-door {
+    transform-origin: right center;
+    clip-path: polygon(0 30%, calc(100% - 3%) 10%, 100% calc(10% + 3%), 100% calc(90% - 3%), calc(100% - 3%) 90%, 0 70%);
+    border-left: 1px solid rgba(255, 255, 255, 0.3);
+    z-index: 0;
+    --glow-color: var(--primary-color-hamba);
+    animation: pulseEffect 4s 2s infinite ease-in-out;
+}
+.right-door::before {
+    left: -4px;
+}
+
+.door:hover {
+    z-index: 3;
+}
+
+.door.hover, .door:hover {
+    transform: scale(1.02) translateZ(30px);
+    z-index: 3;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.4)) drop-shadow(0 0 8px var(--glow-color));
+}        .left-door.hover::before, .left-door:hover::before {
+    opacity: 1;
+    background: var(--light-leak-color-cafe);
+    box-shadow: 0 0 10px 2px var(--light-leak-color-cafe), 0 0 20px 4px var(--light-leak-color-cafe);
+}
+.right-door.hover::before, .right-door:hover::before {
+    opacity: 1;
+    background: var(--light-leak-color-hamba);
+    box-shadow: 0 0 10px 2px var(--light-leak-color-hamba), 0 0 20px 4px var(--light-leak-color-hamba);
+}
+
+.door-content {
+    text-align: center;
+    transition: transform 0.5s ease;
+    transform: translateZ(20px);
+}
+
+.door h2 {
+    font-size: 3rem;
+    font-weight: 900;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+.left-door h2 {
+    color: var(--primary-color-cafe);
+}
+.right-door h2 {
+    color: var(--primary-color-hamba);
+}
+.left-door .door-content {
+    transform: perspective(500px) rotateY(15deg);
+}
+.right-door .door-content {
+    transform: perspective(500px) rotateY(-15deg);
+}
+.door-content {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    justify-content: space-between;
+    width: 100%; /* Ensure the container takes full width */
+}
+.door-icon img {
+    width: 120px;
+}
+.left-door .door-icon img {
+    transform-origin: left center;
+    transform: perspective(400px) rotateY(15deg);
+    margin-left: 40px; /* Add margin to pull the image from the edge */
+}
+.right-door .door-icon img {
+    transform-origin: right center;
+    transform: perspective(400px) rotateY(-15deg);
+    margin-right: 40px; /* Add margin to pull the image from the edge */
+}
+.door-text {
+    text-align: left;
+    flex-grow: 1; /* Allow the text area to take up available space */
+}
+.right-door .door-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.right-door .door-icon {
+    order: 1; /* Moves the icon to the right side */
+}
+
+.door p {
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: 1.6;
+    max-width: 300px;
+}
+
+.perspective-footer {
+    margin-top: 0rem; /* Adjust to bring it closer to the doors */
+    perspective: 350px; /* Creates the 3D space for the text */
+    text-align: center;
+}
+
+.perspective-footer p {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.7);
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    animation: fadeIn 1s 1s ease-out backwards;
+}
+
+.perspective-footer p span {
+    display: inline-block; /* Allows transform on each character */
+}
+
+.perspective-footer a {
+    color: #2ecc71; /* Hamba color */
+    text-decoration: none;
+    font-weight: 900;
+}
+.perspective-footer a:hover {
+    color: #3498db; /* Cafe color */
+}
+
+.light-sweep {
+    position: fixed;
+    width: 200vmax;
+    height: 200vmax;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transform-origin: center;
+    background: radial-gradient(circle, white 0%, transparent 70%);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 100;
+    /* Create a 130-degree wedge shape pointing upwards, which will be rotated by the animation */
+    mask-image: conic-gradient(from 315deg at 50% 50%, black 90deg, transparent 0);
+    -webkit-mask-image: conic-gradient(from 315deg at 50% 50%, black 90deg, transparent 0);
+}
+
+@keyframes openLeft {
+    to { transform: translateX(-100%) rotateY(90deg); opacity: 0; }
+}
+@keyframes openRight {
+    to { transform: translateX(100%) rotateY(-90deg); opacity: 0; }
+}
+
+body.opening-left .light-sweep {
+    animation: lightSweepLeft var(--animation-duration) ease-in forwards;
+}
+body.opening-right .light-sweep {
+    animation: lightSweepRight var(--animation-duration) ease-in forwards;
+}
+
+
+
+@keyframes lightSweepLeft {
+    from { opacity: 0.8; transform: translate(-50%, -50%) rotate(270deg) scale(0); }
+    to { opacity: 0; transform: translate(-50%, -50%) rotate(270deg) scale(1.5); }
+}
+@keyframes lightSweepRight {
+    from { opacity: 0.8; transform: translate(-50%, -50%) rotate(90deg) scale(0); }
+    to { opacity: 0; transform: translate(-50%, -50%) rotate(90deg) scale(1.5); }
+}
+
+/* Floating Action Buttons */
+.fab-container {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 50;
+}
+
+.fab {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--primary-color-cafe);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+.fab:hover {
+    transform: scale(1.1);
+}
+.fab.phone {
+    background: var(--primary-color-hamba);
+}
+.fab svg {
+    width: 28px;
+    height: 28px;
+}
+
+/* Floating Contact Form Styles */
+.floating-contact-form, .floating-success-message {
+    position: fixed;
+    bottom: 105px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px); /* Start slightly lower */
+    background: #fff;
+    padding: 10px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    z-index: 49;
+    opacity: 0; /* Hidden by default */
+    pointer-events: none; /* Not clickable when hidden */
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+.floating-contact-form.is-visible, .floating-success-message.is-visible {
+    opacity: 1; /* Make visible */
+    pointer-events: auto; /* Make clickable */
+    transform: translateX(-50%) translateY(0); /* Move to final position */
+}
+.floating-contact-form {
+    display: flex;
+    align-items: center;
+}
+.floating-success-message {
+    background: var(--primary-color-hamba);
+    color: white;
+    padding: 15px 25px;
+    font-weight: 700;
+}
+.phone-input-wrapper {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 0 10px;
+}
+.floating-prefix {
+    font-weight: 700;
+    color: #333;
+}
+.floating-contact-form input {
+    border: none;
+    outline: none;
+    padding: 10px 5px;
+    font-size: 1rem;
+    width: 140px; /* Fix width to prevent layout shifts */
+}
+.floating-contact-form button {
+    background: var(--primary-color-cafe);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 15px;
+    margin-left: 10px;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap; /* Prevent button text from wrapping */
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    html, body {
+        overflow: auto; /* Allow scrolling on mobile */
+    }
+    body {
+        padding: 4rem 0;
+    }
+    .site-header h1 {
+        font-size: 2.5rem;
+    }
+    .site-header p {
+        font-size: 1.2rem;
+    }
+    .perspective-container {
+        flex-direction: column;
+        perspective: none;
+        height: auto;
+        min-height: auto;
+        margin-top: 0; 
+        padding: 10px 0;
+    }
+    .door {
+        width: 90%;
+        height: auto;
+        min-height: 35vh;
+        /* transform: none !important; */ /* Removed for better mobile UX */
+        margin: 0 auto 0px auto !important; 
+    }
+    .perspective-footer p {
+        transform: none; /* Remove V-shape and tilt on mobile */
+        margin-top: 2rem; /* Add space above the text */
+    }
+    .perspective-footer p span {
+        transform: none !important; /* Override JS inline style for V-shape */
+    }
+    .door:last-child {
+        margin-bottom: 0;
+    }
+    .door h2 {
+        font-size: 2.5rem;
+    }
+    .door p {
+        font-size: 1rem;
+    }
+    .door.hover, .door:hover {
+        transform: scale(1.03);
+        filter: drop-shadow(0 8px 15px rgba(0, 0, 0, 0.3)) drop-shadow(0 0 6px var(--glow-color));
+    }
+}
+
+/* Footer Styles */
+.main-footer {
+    width: 100%;
+    padding: 0 1rem 2rem; /* Adjusted padding */
+    margin-top: 7.5rem; /* Add significant space above the footer */
+    color: rgba(255, 255, 255, 0.6);
+}
+.main-footer div {
+    max-width: 1200px;
+    margin: 0 auto; /* Center the content */
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: 2rem;
+}
+.main-footer p {
+    margin-bottom: 0.5rem;
+}
+.main-footer a {
+    color: var(--primary-color-hamba);
+    text-decoration: none;
+}
+.main-footer a:hover {
+    text-decoration: underline;
+}
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}

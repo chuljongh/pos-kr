@@ -1,0 +1,11 @@
+# www를 non-www로 리다이렉트
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^www\.giftcoin\.kr [NC]
+RewriteRule ^(.*)$ https://giftcoin.kr/$1 [L,R=301]
+
+# .html 확장자 숨기기
+RewriteCond %{THE_REQUEST} /([^.]+)\.html [NC]
+RewriteRule ^ /%1 [NC,L,R=301]
+
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^ %{REQUEST_URI}.html [NC,L]

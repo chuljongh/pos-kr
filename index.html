@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>업종별 맞춤 키오스크, 주문결제 솔루션</title>
+    <link rel="icon" href="/cafe/favicon.webp">
+    <meta name="description" content="카페·분식집부터 구내식당·함바집까지, 매출 증대와 비용 절감을 위한 최고의 키오스크 솔루션을 만나보세요.">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "왜 POS.KR을 선택해야 할까요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "POS.KR은 선결제 매출을 자동화한 유일한 키오스크를 제공하며, 카드나 리더기 없이 모바일 식수 관리를 자동화하는 유일한 파트너입니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "POS.KR은 어떤 업종에 적합한가요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "카페, 분식 등 요식업의 선결제·주문결제 자동화 솔루션부터, 구내식당 및 함바집의 모바일 식권·식수 관리 솔루션까지 업종별 맞춤 시스템을 제공합니다."
+      }
+    }
+  ]
+}
+</script>
+    <link rel="preload" href="css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/style.css"></noscript>
+</head>
+<body>
+
+    <header class="site-header">
+        <h1>장부·카드 버리고 매출2배 키오스크</h1>
+        <p>업종별 맞춤 솔루션으로, 주문결제 자동화를 지금 시작하세요.</p>
+    </header>
+
+    <div class="instruction-text">
+        <p>업종을 선택하세요</p>
+    </div>
+
+    <main class="perspective-container">
+        <a href="/cafe/" class="door left-door" data-direction="left">
+                <div class="door-content">
+                    <div class="door-icon">
+                        <img src="images/kiosk.webp" alt="카페, 분식집 키오스크">
+                    </div>
+                    <div class="door-text">
+                        <h2 id="cafe-title">카페·분식집</h2>
+                        <p>선결제 자동화로 매출 15%↑</p>
+                    </div>
+                </div>
+        </a>
+        <a href="/hamba/" class="door right-door" data-direction="right">
+                <div class="door-content">
+                    <div class="door-icon">
+                        <img src="images/scanner.webp" alt="구내식당, 함바집 QR 스캐너">
+                    </div>
+                    <div class="door-text">
+                        <h2 id="hamba-title">구내식당·함바</h2>
+                        <p>로스율 0% 모바일 식권</p>
+                    </div>
+                </div>
+        </a>
+    </main>
+
+    <div class="perspective-footer">
+        <p>매출 증대와 비용 절감, <a href="#">POS.KR</a> 은 두 마리 토끼를 잡는 유일한 통합 솔루션입니다.</p>
+    </div>
+
+    <div id="light-sweep-1" class="light-sweep"></div>
+    <div id="light-sweep-2" class="light-sweep"></div>
+    <div id="light-sweep-3" class="light-sweep"></div>
+    <div id="light-sweep-4" class="light-sweep"></div>
+    <div id="light-sweep-5" class="light-sweep"></div>
+
+    <div class="fab-container">
+        <button type="button" id="contact-fab" class="fab contact" title="문의하기">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+            </svg>
+        </button>
+        <a href="tel:010-5415-4415" class="fab phone" title="전화걸기">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+            </svg>
+        </a>
+    </div>
+
+    <!-- Floating Contact Form -->
+    <form id="quickContactFloating" class="floating-contact-form">
+        <div class="phone-input-wrapper">
+            <label for="phoneFloating" class="sr-only">연락받을 전화번호</label>
+            <span class="floating-prefix">010-</span>
+            <input type="tel" id="phoneFloating" name="entry.587577130" placeholder="번호를 입력하세요" required aria-label="연락받을 전화번호">
+        </div>
+        <button type="submit">문의하기</button>
+    </form>
+    <div id="quickSuccessMessageFloating" class="floating-success-message">네, 연락드릴게요.</div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const doors = document.querySelectorAll('.door');
+            const body = document.body;
+
+                        doors.forEach(door => {
+
+                            // --- Click Event for Animation ---
+
+                            door.addEventListener('click', function(e) {
+
+                                e.preventDefault();
+
+                                
+
+                                if (body.classList.contains('opening-left') || body.classList.contains('opening-right')) return;
+
+            
+
+                                const lightSweeps = document.querySelectorAll('.light-sweep');
+
+                                const rect = this.getBoundingClientRect();
+
+            
+
+                                // Define the 5 vertical origin points along the short edge (from 30% to 70% of height)
+
+                                const originsY = [
+
+                                    rect.top + rect.height * 0.3, // Top
+
+                                    rect.top + rect.height * 0.4,
+
+                                    rect.top + rect.height * 0.5, // Center
+
+                                    rect.top + rect.height * 0.6,
+
+                                    rect.top + rect.height * 0.7  // Bottom
+
+                                ];
+
+            
+
+                                let originX;
+
+                                let rotation;
+
+            
+
+                                if (this.classList.contains('left-door')) {
+
+                                    originX = rect.right;
+
+                                    // Center the 90-degree cone to point left (180 degrees)
+
+                                    // Start angle = 180 - (90 / 2) = 135deg
+
+                                    rotation = '135deg';
+
+                                } else { // right-door
+
+                                    originX = rect.left;
+
+                                    // Center the 90-degree cone to point right (360 degrees)
+
+                                    // Start angle = 360 - (90 / 2) = 315deg
+
+                                    rotation = '315deg';
+
+                                }
+
+            
+
+                                // Apply position and rotation to all three light sweeps
+
+                                lightSweeps.forEach((sweep, index) => {
+
+                                    sweep.style.left = `${originX}px`;
+
+                                    sweep.style.top = `${originsY[index]}px`;
+
+                                    sweep.style.setProperty('--cone-rotation', rotation);
+
+                                });
+
+            
+                                door.addEventListener('animationend', () => {
+                                    window.location.href = door.href;
+                                }, { once: true });
+
+                                                                        if (this.classList.contains('left-door')) {
+
+            
+
+                                                                            body.classList.add('opening-left');
+
+            
+
+                                                                            this.style.animation = 'openLeft var(--animation-duration) ease-in forwards';
+
+            
+
+                                                                        } else {
+
+            
+
+                                                                            body.classList.add('opening-right');
+
+            
+
+                                                                            this.style.animation = 'openRight var(--animation-duration) ease-in forwards';
+
+            
+
+                                                                        }
+
+                            });
+
+            
+
+                            // --- Touch Events for Mobile Hover Simulation ---
+                door.addEventListener('touchstart', function(e) {
+                    doors.forEach(d => d.classList.remove('hover'));
+                    this.classList.add('hover');
+                }, { passive: true });
+            });
+            
+            document.addEventListener('touchend', function(e) {
+                 doors.forEach(d => d.classList.remove('hover'));
+            });
+
+            // --- Floating Contact Form Logic ---
+            const contactFab = document.getElementById('contact-fab');
+            const quickForm = document.getElementById('quickContactFloating');
+            const successMessage = document.getElementById('quickSuccessMessageFloating');
+            const phoneInput = document.getElementById('phoneFloating');
+
+            contactFab.addEventListener('click', () => {
+                quickForm.classList.toggle('is-visible');
+            });
+
+            quickForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                const googleFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSdGJxpukW1B3Z92n2UuTMmn8fur9rvG80AVOKBdNh_6dM468w/formResponse';
+                const formData = new FormData(quickForm);
+
+                fetch(googleFormUrl, {
+                    method: 'POST',
+                    body: formData,
+                    mode: 'no-cors'
+                }).catch(error => console.error('Error submitting to Google Form:', error));
+
+                quickForm.classList.remove('is-visible');
+                successMessage.classList.add('is-visible');
+
+                setTimeout(() => {
+                    successMessage.classList.remove('is-visible');
+                    phoneInput.value = '';
+                }, 4000);
+            });
+
+            phoneInput.addEventListener('input', function(e) {
+                let value = e.target.value.replace(/-/g, ''); // Remove all hyphens to recalculate
+                let formattedValue = '';
+
+                if (value.length > 4) {
+                    formattedValue = value.substring(0, 4) + '-' + value.substring(4, 8);
+                } else {
+                    formattedValue = value;
+                }
+                
+                e.target.value = formattedValue;
+            });
+
+            // --- Mobile Title Text Change ---
+            const hambaTitle = document.getElementById('hamba-title');
+            function adjustHambaTitle() {
+                if (window.innerWidth <= 768) {
+                    hambaTitle.innerHTML = '구내·함바집';
+                } else {
+                    hambaTitle.innerHTML = '구내식당·함바';
+                }
+            }
+            // Initial check on load
+            adjustHambaTitle();
+            // Add listener for window resize
+            window.addEventListener('resize', adjustHambaTitle);
+
+            // --- CSS Pulse Animation in use ---
+        });
+    </script>
+    <footer class="main-footer">
+        <div>
+            <p><a href="terms.html" target="_blank">이용약관</a> | 
+                <a href="privacy.html" target="_blank">개인정보 처리 방침</a></p>
+            <p>(주)글로벌시스텍</p>
+            <p>Address : 경기도 고양시 일산동구 일산로 38, 306호</p>
+            <p>Contact : <a href="mailto:hi@pos.kr">hi@pos.kr</a></p>
+            <p>사업자등록번호 : 330-86-03289</p>
+            <p>대표자 : 강홍기</p>
+        </div>
+    </footer>
+</body>
+</html>

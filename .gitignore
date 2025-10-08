@@ -1,0 +1,9 @@
+# 개발 관련 파일들 (hamba 폴더 내부)
+hamba/package.json
+hamba/package-lock.json
+hamba/tailwind.config.js
+hamba/tailwindcss.exe
+hamba/input.css
+
+# 환경변수 파일
+.env
