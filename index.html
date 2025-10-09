@@ -70,14 +70,8 @@
     </main>
 
     <div class="perspective-footer">
-        <p>매출 증대와 비용 절감, <a href="#">POS.KR</a> 은 두 마리 토끼를 잡는 유일한 통합 솔루션입니다.</p>
+        <p>매출 증대와 비용 절감, <a href="#">POS.KR</a> 은 두 마리 토끼를 잡는 유일한 통합 솔UTION입니다.</p>
     </div>
-
-    <div id="light-sweep-1" class="light-sweep"></div>
-    <div id="light-sweep-2" class="light-sweep"></div>
-    <div id="light-sweep-3" class="light-sweep"></div>
-    <div id="light-sweep-4" class="light-sweep"></div>
-    <div id="light-sweep-5" class="light-sweep"></div>
 
     <div class="fab-container">
         <button type="button" id="contact-fab" class="fab contact" title="문의하기">
@@ -120,74 +114,6 @@
                                 
 
                                 if (body.classList.contains('opening-left') || body.classList.contains('opening-right')) return;
-
-            
-
-                                const lightSweeps = document.querySelectorAll('.light-sweep');
-
-                                const rect = this.getBoundingClientRect();
-
-            
-
-                                // Define the 5 vertical origin points along the short edge (from 30% to 70% of height)
-
-                                const originsY = [
-
-                                    rect.top + rect.height * 0.3, // Top
-
-                                    rect.top + rect.height * 0.4,
-
-                                    rect.top + rect.height * 0.5, // Center
-
-                                    rect.top + rect.height * 0.6,
-
-                                    rect.top + rect.height * 0.7  // Bottom
-
-                                ];
-
-            
-
-                                let originX;
-
-                                let rotation;
-
-            
-
-                                if (this.classList.contains('left-door')) {
-
-                                    originX = rect.right;
-
-                                    // Center the 90-degree cone to point left (180 degrees)
-
-                                    // Start angle = 180 - (90 / 2) = 135deg
-
-                                    rotation = '135deg';
-
-                                } else { // right-door
-
-                                    originX = rect.left;
-
-                                    // Center the 90-degree cone to point right (360 degrees)
-
-                                    // Start angle = 360 - (90 / 2) = 315deg
-
-                                    rotation = '315deg';
-
-                                }
-
-            
-
-                                // Apply position and rotation to all three light sweeps
-
-                                lightSweeps.forEach((sweep, index) => {
-
-                                    sweep.style.left = `${originX}px`;
-
-                                    sweep.style.top = `${originsY[index]}px`;
-
-                                    sweep.style.setProperty('--cone-rotation', rotation);
-
-                                });
 
             
                                 door.addEventListener('animationend', () => {

@@ -266,46 +266,11 @@ body {
     color: #3498db; /* Cafe color */
 }
 
-.light-sweep {
-    position: fixed;
-    width: 200vmax;
-    height: 200vmax;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0);
-    transform-origin: center;
-    background: radial-gradient(circle, white 0%, transparent 70%);
-    opacity: 0;
-    pointer-events: none;
-    z-index: 100;
-    /* Create a 130-degree wedge shape pointing upwards, which will be rotated by the animation */
-    mask-image: conic-gradient(from 315deg at 50% 50%, black 90deg, transparent 0);
-    -webkit-mask-image: conic-gradient(from 315deg at 50% 50%, black 90deg, transparent 0);
-}
-
 @keyframes openLeft {
     to { transform: rotateY(90deg); opacity: 0; }
 }
 @keyframes openRight {
     to { transform: rotateY(-90deg); opacity: 0; }
-}
-
-body.opening-left .light-sweep {
-    animation: lightSweepLeft var(--animation-duration) ease-in forwards;
-}
-body.opening-right .light-sweep {
-    animation: lightSweepRight var(--animation-duration) ease-in forwards;
-}
-
-
-
-@keyframes lightSweepLeft {
-    from { opacity: 0.8; transform: translate(-50%, -50%) rotate(270deg) scale(0); }
-    to { opacity: 0; transform: translate(-50%, -50%) rotate(270deg) scale(1.5); }
-}
-@keyframes lightSweepRight {
-    from { opacity: 0.8; transform: translate(-50%, -50%) rotate(90deg) scale(0); }
-    to { opacity: 0; transform: translate(-50%, -50%) rotate(90deg) scale(1.5); }
 }
 
 /* Floating Action Buttons */
