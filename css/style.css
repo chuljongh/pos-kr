@@ -284,10 +284,10 @@ body {
 }
 
 @keyframes openLeft {
-    to { transform: translateX(-100%) rotateY(90deg); opacity: 0; }
+    to { transform: rotateY(90deg); opacity: 0; }
 }
 @keyframes openRight {
-    to { transform: translateX(100%) rotateY(-90deg); opacity: 0; }
+    to { transform: rotateY(-90deg); opacity: 0; }
 }
 
 body.opening-left .light-sweep {
@@ -445,8 +445,11 @@ body.opening-right .light-sweep {
     .door:last-child {
         margin-bottom: 0;
     }
+    .light-sweep {
+        display: none;
+    }
     .door h2 {
-        font-size: 2.5rem;
+        font-size: 2.0rem;
     }
     .door p {
         font-size: 1rem;

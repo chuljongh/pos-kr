@@ -294,6 +294,15 @@
             window.addEventListener('resize', adjustHambaTitle);
 
             // --- CSS Pulse Animation in use ---
+
+            window.addEventListener('pageshow', function(event) {
+                if (event.persisted) {
+                    body.classList.remove('opening-left', 'opening-right');
+                    doors.forEach(door => {
+                        door.removeAttribute('style');
+                    });
+                }
+            });
         });
     </script>
     <footer class="main-footer">
