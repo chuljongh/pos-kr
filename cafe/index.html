@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no" />    
+    <title>카페·분식집 맞춤 선결제 키오스크 | 스타벅스처럼 선불충전 자동화</title> 
+    <meta name="description" content="스타벅스 매출의 80%는 선불충전에서 나옵니다. 고객 60%가 선호하는 키오스크로 당신의 매장도 선결제 시스템을 자동화하고 매출을 2배로 늘리세요.">
+    <meta name="keywords" content="카페 매출 증대, 키오스크 도입, 카페 키오스크, 식당 키오스크, 분식집 키오스크, 선불충전 키오스크, 선결제 키오스크, 매장 키오스크, 카페 창업 키오스크">
+    <link rel="canonical" href="https://pos.kr/cafe/">
+    <meta property="og:title" content="카페·분식집 맞춤 선결제 키오스크 | 스타벅스처럼 선불충전 자동화">
+    <meta property="og:description" content="스타벅스 매출의 80%는 선불충전에서 나옵니다. 고객 60%가 선호하는 키오스크로 당신의 매장도 선결제 시스템을 자동화하고 매출을 2배로 늘리세요."> 
+    <meta property="og:image" content="https://pos.kr/images/kiosk.webp">
+    <meta property="og:url" content="https://pos.kr/cafe/">
+    <meta property="og:type" content="website">
+    <link rel="icon" href="/cafe/favicon.webp">
+    <link rel="preload" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"></noscript>
+    <link rel="stylesheet" href="./css/style.min.css">    
+    <script type="application/ld+json">
+        {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+            "@type": "Question",
+            "name": "왜 선결제 키오스크를 도입해야 할까요?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "스타벅스 매출의 80%는 선불충전이고, 대면 주문의 3.5배 고객이 키오스크 주문을 선호해요. 합하면?"
+            }
+            },
+            {
+            "@type": "Question",
+            "name": "선불충전 키오스크는 뭐가 좋아요?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "선결제를 키오스크로 100% 시스템화하면, 비용은 줄면서 고객의 신뢰가 늘어나 선결제 매출이 증가해요."
+            }
+            }
+        ]
+        }
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+
+    <link rel="stylesheet" href="./css/inline-styles.css">
+</head>
+<body>
+
+    <nav id="page-nav">
+        <ul>
+            <li><a href="#hero-content" class="nav-link active" data-section="hero-content"><span class="text">도입</span><div class="dot"></div></a></li>
+            <li><a href="#problem" class="nav-link" data-section="problem"><span class="text">문제점</span><div class="dot"></div></a></li>
+            <li><a href="#why-adopt" class="nav-link" data-section="why-adopt"><span class="text">도입 이유</span><div class="dot"></div></a></li>
+            <li><a href="#why-now" class="nav-link" data-section="why-now"><span class="text">왜 지금?</span><div class="dot"></div></a></li>
+            <li><a href="#solution-detail" class="nav-link" data-section="solution-detail"><span class="text">해결 방법</span><div class="dot"></div></a></li>
+            <li><a href="#effect" class="nav-link" data-section="effect"><span class="text">예상 효과</span><div class="dot"></div></a></li>
+            <li><a href="#how" class="nav-link" data-section="how"><span class="text">시작 방법</span><div class="dot"></div></a></li>
+            <li><a href="#contact" class="nav-link" data-section="contact"><span class="text">무료 문의</span><div class="dot"></div></a></li>
+        </ul>
+    </nav>
+
+    <div id="wrap">
+        <div id="hero-sticky-background">
+            <div class="hero-slides">
+                <div class="slide active slide-main-kiosk" style="background-image: url('images/main/main_kiosk.webp');"></div>
+                <div class="slide slide-cafe1" style="background-image: url('images/Cafe1_Prepay_on_Kiosk.webp');"></div>
+                <div class="slide slide-cafe2" style="background-image: url('images/Cafe2_Prepay_on_Kiosk.webp');"></div>
+                <div class="slide slide-cafe3" style="background-image: url('images/Cafe3_Prepay_on_Kiosk.webp');"></div>
+                <div class="slide slide-advertise" style="background-image: url('images/Advertise_PP.webp');"></div>
+            </div>
+        </div>
+
+        <div id="scrolling-content-wrapper">
+            <section id="hero-content">
+                <div class="inner">
+                    <div class="content-box">
+                        <h1 class="visual-title">카페/분식집 <span>선불충전 키오스크</span>: <span>매출 2배 올리는 법</span></h1>
+                        <p class="visual-subtitle">수기 장부/POS 메모, 불안한 선결제 방식 때문에 고객을 놓치고 계신가요?<br><strong>스타벅스 매출 80%</strong>의 비결인 '선불충전'을 <strong>고객 60%</strong>가 선호하는 키오스크로 시작하세요.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <div id="main-content">
+                <main>
+                    <section id="problem" class="solution-section">
+                        <div class="content-wrapper">
+                            <div class="text-block">
+                                <h3>아직도 장부에 선결제 기록하시나요? <br>그건 고객을 내쫒는 일입니다.</h3>
+                                <p>모든 사장님들은 선결제를 받지만, 장부기록/번호차감/카드배포 등 불안한 관리 방식 때문에 고객들은 선결제할 수 없습니다. 언젠가는 고객과 다투고, 지금 매출을 내버리는 확실한 방법이 수기 관리입니다.</p>
+                            </div>
+                            <div class="media-block">
+                                <div style="width: 100%; aspect-ratio: 1/1; border-radius: 1.5rem; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);">
+                                    <img src="images/Cafe4_Prepay_wo_Kiosk.webp" alt="수기 장부로 선결제를 관리하는 카페의 불안한 모습" style="width: 100%; height: 100%; object-fit: cover;">
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="why-adopt" class="solution-section bg-gray-50">
+                        <div class="section-header">
+                            <h2 class="section-title">왜, 선불충전 키오스크를 도입해야 할까요?</h2>
+                            <p class="section-subtitle">시장에서 이미 증명되었습니다.</p>
+                        </div>
+                        <div class="content-wrapper">
+                            <div class="text-block">
+                                <h3>(1) 검증된 선결제 효과</h3>
+                                <p>스타벅스의<span class="highlight">선수금(고객이 충전한 금액) 비중이 매년 증가하여 2022년에는 매출의 82%에 달했습니다.</span> 이는 강력한 고객 충성도와 안정적인 현금 흐름을 의미합니다. (<a href="https://m.thebell.co.kr/m/newsview.asp?svccode=00&newskey=202305111118525120102192" target="_blank">관련기사</a>)</p>
+                            </div>
+                            <div class="media-block">
+                                <div class="chart-container">
+                                    <canvas id="starbucksChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="content-wrapper reverse">
+                            <div class="text-block">
+                                <h3>(2) 빠른 투자 회수</h3>
+                                <p>주문·결제 업무 비중에 따라, 키오스크 1대 도입 시 <span class="highlight">1.5개월에서 최대 4.4개월</span>이면 투자 비용을 모두 회수할 수 있습니다. (<a href="https://seri.skku.edu/_res/sier/etc/WP_2020_01.pdf" target="_blank">관련논문</a>)</p>
+                            </div>
+                            <div class="media-block">
+                                <div class="chart-container" style="min-height: 300px;">
+                                    <canvas id="roiChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="why-now" class="solution-section">
+                        <div class="section-header">
+                            <h2 class="section-title">선결제 키오스크없이 버틸 수 있을까요?</h2>
+                            <p class="section-subtitle">둘러보세요. 시장과 고객이 선결제 키오스크 세상입니다.</p>
+                        </div>
+                        <div class="content-wrapper">
+                            <div class="text-block">
+                                <h3>(1) 모두가 선결제하고 있어요</h3>
+                                <p>매장 212곳 조사 결과, 10곳 중 8곳이 이미 선결제를 운영하고 있었습니다. <strong>중요한 사실은 그들이 매출을 버리고 있다는 점입니다.</strong> 수기 장부(39%)나 POS 메모(25%) 방식 위주입니다.</p>
+                            </div>
+                            <div class="media-block"><div class="chart-container"><canvas id="trendChart"></canvas></div></div>
+                        </div>
+                        <div class="content-wrapper reverse">
+                            <div class="text-block">
+                                <h3>(2) 고객은 불안해 합니다</h3>
+                                <p>고객들은 수기 장부 관리에 대해 '신뢰할 수 없다'(69%), '다른 사람이 내 돈을 쓸까 봐 불안하다'(68%)고 말합니다. 이 불안감이 고객의 선결제를 방해합니다. (<a href="https://www.startupn.kr/news/articleView.html?idxno=50397" target="_blank">관련기사</a>)</p>
+                            </div>
+                            <div class="media-block"><div class="chart-container"><canvas id="anxietyChart"></canvas></div></div>
+                        </div>
+                        <div class="content-wrapper">
+                            <div class="text-block">
+                                <h3>(3) 고객은 키오스크를 3배 더 선호해요</h3>
+                                <p>배민 설문(<a href="https://ceo.baemin.com/knowhow/9232" target="_blank">출처</a>)에 따르면, <span class="highlight">고객 10명 중 6명(60%)은 키오스크 주문을 명확히 선호</span>하는 반면, 직원을 통한 주문을 선호하는 고객은 16.5%에 불과합니다. 키오스크가 없는 매장은 고객을 놓친다는 강한 신호입니다.</p>
+                            </div>
+                            <div class="media-block"><div class="chart-container"><canvas id="preferenceChart"></canvas></div></div>
+                        </div>
+                        <div style="text-align: center; padding: 2rem; margin-top: 4rem; background-color: #eff6ff; border-radius: 1rem;">
+                            <p style="font-size: 2rem; font-weight: 600; color: #1e40af;">👉 수기/POS 메모 관리가 60% 이상! 사장님들이 고객을 놓치고 있는 방식입니다. <br>저희 알뜰결제 키오스크는 이 불안한 60%를 '자동화된 충성 고객'으로 바꿔드립니다.</p>
+                        </div>
+                    </section>
+
+                    <section id="solution-detail" class="solution-section">
+                        <div class="section-header">
+                            <h2 class="section-title">선결제 매출을 어떻게 당길까요?</h2>
+                            <p class="section-subtitle">알뜰결제 키오스크 켜두시면 고객 신뢰늘고 매출이 늘어요!</p>
+                        </div>
+                        <div class="content-wrapper reverse">
+                            <div class="text-block">
+                                <h3>100% 자동 선결제를 장착한 카페·분식집 키오스크</h3>
+                                <p>이제 걱정마세요! 기존 포스기와 완벽하게 호환되는 <strong>카페 선결제 시스템 연동</strong>으로, 선불충전부터 차감 결제까지 이 키오스크가 고객을 100% 응대합니다.</p>
+                                <p style="font-weight: 600; margin-top: 1.5rem;">저희 솔루션은 단순 주문 키오스크가 아닙니다. 스타벅스식 선불 충전 시스템을 귀하의 매장에 최적화한 유일한 솔루션입니다.</p>
+                            </div>
+                            <div class="media-block">
+                                <div>
+                                    <div style="width: 100%; aspect-ratio: 1 / 1; display: flex; gap: 1rem; border-radius: 1.5rem; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);">
+                                        <img src="images/main/21inch_kiosk.webp" alt="카페에 설치된 21.5인치 선불충전 키오스크" style="width: 50%; object-fit: cover;">
+                                        <img src="images/main/Kiosk_Display.webp" alt="선불충전 기능이 포함된 키오스크 메인 화면 UI" style="width: 50%; object-fit: cover;">
+                                    </div>
+                                    <p style="text-align: center; margin-top: 1rem; font-size: 1.6rem; color: #6b7280;">선불충전 키오스크 메인 화면</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="content-wrapper" style="margin-top: 8rem;">
+                            <div class="text-block">
+                                <h3>"선결제 문의가 편해졌어요" - 실제 사장님 후기</h3>
+                                <p>이전에는 장부를 보여달라는 고객과 실랑이가 있었지만, 이제는 키오스크와 앱이 알아서 해주니 정말 편합니다. 고객들도 투명해서 좋아하고요.</p>
+                            </div>
+                            <div class="media-block">
+                                <div class="video-responsive-container short-video"> 
+                                    <iframe src="https://www.youtube.com/embed/0WOdIhcEgjY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen title="YouTube video player" loading="lazy"></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="effect" class="solution-section bg-gray-50">
+                        <div class="section-header">
+                            <h2 class="section-title">그래서, 무엇을 얻을 수 있나요?</h2>
+                            <p class="section-subtitle">비용 절감은 기본, 새로운 매출이 따라옵니다.</p>
+                        </div>
+                         <div class="content-wrapper">
+                            <div class="text-block">
+                                <h3>단골고객 확보: 분식집 재방문율 높이는 법</h3>
+                                <p>선불충전 키오스크 도입은 단순한 비용 절감을 넘어, 고객 충성도를 높여 새로운 매출을 창출합니다. 이것이 바로 <strong>분식집 재방문율 높이는 법</strong>의 핵심입니다. 실제 도입 매장들은 <span class="highlight">3개월 후 월 매출의 10~15%가 선결제에서 추가로 발생했습니다.</span> 이는 4인용 테이블 하나가 매달 가득 차는 것과 같은 효과입니다.</p>
+                            </div>
+                            <div class="media-block">
+                                <div class="chart-container"><canvas id="revenueChart"></canvas></div>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="kiosk-types" class="solution-section">
+                        <div class="section-header">
+                            <h2 class="section-title">내 매장에 맞는 키오스크를 고르세요</h2>
+                            <p class="section-subtitle" style="font-size: 2rem; color: #4b5563; margin-top: 1rem;"><strong>소규모 매장 키오스크</strong>부터 대형 스탠드까지, 3개회사 20개 모델이 준비되어 있으며, 기존 장비 재활용은 물론, 최적의 조건으로 구매·렌탈도 가능합니다.</p>
+                        </div>
+                        <ul class="kiosk-list">
+                            <li>
+                                <img src="./images/main/15inch_kiosk.webp" loading="lazy" alt="소규모 매장에 적합한 15.6인치 탁상형 키오스크">
+                                <div class="sect-text">부담없는 15.6 / 12.5인치 키오스크</div>
+                                <span class="spec-link" data-modal-target="spec-15-modal">스펙보기</span>
+                            </li>
+                            <li>
+                                <img src="./images/main/21inch_kiosk.webp" loading="lazy" alt="가장 대중적인 21.5인치 스탠드형 선결제 키오스크">
+                                <div class="sect-text">익숙하고 편안한 21.5인치 키오스크</div>
+                                <span class="spec-link" data-modal-target="spec-21-modal">스펙보기</span>
+                            </li>
+                            <li>
+                                <img src="./images/main/24stand_kiosk.webp" loading="lazy" alt="매장 동선을 자유롭게 구성하는 스탠드형 키오스크">
+                                <div class="sect-text">동선을 창조하는 스탠드형 키오스크</div>
+                                <span class="spec-link" data-modal-target="guide-modal">어떤 것을 고를지 고민된다면?</span>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section id="faq" class="solution-section">
+                        <div class="section-header">
+                            <h2 class="section-title">자주 묻는 질문</h2>
+                        </div>
+                        <div class="faq-accordion">
+                            <div class="faq-item">
+                                <button class="faq-question">
+                                    <span>초기 비용은 얼마이고, 월 관리비는 없나요?</span>
+                                    <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" /></svg>
+                                </button>
+                                <div class="faq-answer">
+                                    <p>저희 선불충전 시스템은 <strong>월 관리비 없이 무료로 제공</strong>됩니다. 많은 분들이 '<strong>무료 키오스크 도입</strong>'으로 오해하시지만, 정확히는 사장님의 기존 장비에 저희 시스템을 무료로 설치해드리는 것입니다. 기기가 없으시다면 최적의 조건으로 구매/렌탈을 도와드립니다. (단, 카드 결제 수수료는 PG사 정책에 따릅니다.)</p>
+                                </div>
+                            </div>
+                            <div class="faq-item">
+                                <button class="faq-question">
+                                    <span>설치가 복잡하지 않나요? 제가 신경 쓸 게 많을까요?</span>
+                                    <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" /></svg>
+                                </button>
+                                <div class="faq-answer">
+                                    <p>전혀요! 사장님은 연락처만 남겨주시면 됩니다. 저희 전문가가 원격으로 모든 설정을 완료해 드립니다. 사장님께서는 어떤 것도 신경 쓰실 필요 없이 바로 사용만 하시면 됩니다.</p>
+                                </div>
+                            </div>
+                            <div class="faq-item">
+                                <button class="faq-question">
+                                    <span>이미 다른 키오스크나 포스기를 쓰고 있는데, 교체해야 하나요?</span>
+                                    <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" /></svg>
+                                </button>
+                                <div class="faq-answer">
+                                    <p>아니요, 대부분의 경우 <strong>사장님의 장비를 그대로 사용</strong>하실 수 있습니다. 저희 시스템은 다양한 기기와 호환되도록 설계되었습니다. 가지고 계신 장비 모델을 알려주시면, 바로 사용 가능 여부를 확인해 드립니다.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="how" class="solution-section bg-gray-50">
+                        <div class="section-header">
+                            <h2 class="section-title">3단계로 바로 시작하세요.</h2>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                            <div class="step">
+                                <div class="step-icon-wrapper">
+                                    <img src="images/Note_Black_bold.svg" alt="문의 남기기 아이콘" width="60" height="60">
+                                </div>
+                                <h3 style="font-size: 1.8rem; font-weight: 700; margin-bottom: 0.5rem;">1. 문의 남기기 (1분)</h3>
+                            </div>
+                            <div class="step">
+                                <div class="step-icon-wrapper">
+                                    <img src="images/kiosk_Black.svg" alt="키오스크 아이콘" width="60" height="60">
+                                </div>
+                                <h3 style="font-size: 1.8rem; font-weight: 700; margin-bottom: 0.5rem;">2. 키오스크 결정/재활용 (0원~)</h3>
+                            </div>
+                            <div class="step">
+                                <div class="step-icon-wrapper">
+                                    <img src="images/operation_kiosk.svg" alt="선불충-전 시스템 작동 아이콘" width="100" height="100">
+                                </div>
+                                <h3 style="font-size: 1.8rem; font-weight: 700; margin-bottom: 0.5rem;">3. 선불충전 시스템 작동</h3>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="contact" class="bg-gray-900 text-white py-40 px-4 relative overflow-hidden">
+                        <!-- 배경 패턴 -->
+                        <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.03"%3E%3Ccircle cx="30" cy="30" r="1.5"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-40"></div>
+                        
+                        <div class="max-w-6xl mx-auto text-center relative z-10">
+                            <h2 class="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-12 leading-tight">
+                                <span class="text-white">선불충전 키오스크</span>, <span class="text-yellow-300">지금</span> 시작하세요!
+                            </h2>
+                            
+                            <div class="bg-white/5 backdrop-blur-sm text-white p-4 md:p-16 rounded-3xl shadow-2xl max-w-6xl mx-auto border border-white/10">
+                                <h3 class="text-3xl md:text-4xl font-extrabold mb-6 md:mb-8">내 매장 선불충전 시스템 무료 설계 받기</h3>
+                                <p class="text-lg md:text-xl mb-8 md:mb-12 leading-relaxed">상담 신청이 많아 연락이 지연되기도 해요. 신청하신 순서대로 연락드리고 있으니 양해 부탁드립니다.</p>
+                                
+                                <div class="w-full mx-auto">
+                                    <!-- 맞춤형 구글 폼 -->
+                                    <form id="customGoogleForm" class="space-y-6">
+                                        <div>
+                                            <input type="text" id="form-name" name="entry.1950910160" required
+                                                   class="w-full p-4 bg-gray-800 text-white rounded-xl border border-blue-800 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 placeholder-gray-500 text-lg hover:border-blue-600"
+                                                   placeholder="성함/상호를 입력해요">
+                                        </div>
+                                        <div>
+                                            <input type="text" id="form-contact" name="entry.1181158497" required
+                                                   class="w-full p-4 bg-gray-800 text-white rounded-xl border border-blue-800 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 placeholder-gray-500 text-lg hover:border-blue-600"
+                                                   placeholder="전화번호 또는 이메일을 입력해요">
+                                        </div>
+                                        <div>
+                                            <select id="form-source" name="entry.161753435" required
+                                                    class="w-full p-4 bg-gray-800 rounded-xl border border-blue-800 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 text-lg hover:border-blue-600">
+                                                <option value="" disabled selected>저희 페이지를 알게 된 경로(선택)</option>
+                                                <option value="네이버 검색">네이버 검색</option>
+                                                <option value="구글 검색">구글 검색</option>
+                                                <option value="유튜브 영상">유튜브 영상</option>
+                                                <option value="인스타그램">인스타그램</option>
+                                                <option value="카페 홍보 포스터">카페 홍보 포스터</option>
+                                                <option value="손님 혹은 지인 추천">손님 혹은 지인 추천</option>
+                                                <option value="기타">기타</option>
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <textarea id="form-message" name="entry.1270692115" rows="4" required
+                                                      class="w-full p-4 bg-gray-800 text-white rounded-xl border border-blue-800 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 placeholder-gray-500 text-lg hover:border-blue-600"
+                                                      placeholder="매장 주소, 키오스크, 요구사항 등등을 입력해요"></textarea>
+                                        </div>
+                                        <div>
+                                            <button type="submit"
+                                                    class="w-full bg-gradient-to-br from-blue-600 to-blue-700 text-white font-extrabold py-4 px-6 rounded-xl text-2xl hover:from-blue-700 hover:to-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 transition-all duration-300 transform hover:scale-105 active:scale-100">
+                                                문의하기
+                                            </button>
+                                        </div>
+                                    </form>
+                                    
+                                    <!-- 폼 하단 안내 텍스트 -->
+                                    <div class="mt-8 text-center">
+                                        <p class="text-lg text-gray-300 font-medium">
+                                            📝 부담없이 편하게 문의하세요. 위 버튼을 누르시면 24시간내 연락드려요.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 성공 메시지 팝업 (숨겨져 있음) -->
+                            <div id="success-popup" class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-blue-500 text-white px-8 py-4 rounded-xl text-xl font-bold shadow-2xl z-50 opacity-0 transition-opacity duration-300 pointer-events-none">
+                                잘 접수되었고, 곧 연락드릴게요 (^@^)
+                            </div>
+
+                            <div class="mt-16 mb-16">
+                                <p class="text-2xl font-extrabold mb-12">아래 버튼을 누르고 문의하셔도 좋아요!</p>
+                                <div class="flex flex-col sm:flex-row gap-8 justify-center">
+                                    <a href="sms:010-5415-4415" class="flex items-center justify-center bg-white/10 text-white px-12 py-6 rounded-2xl font-extrabold text-xl hover:bg-white/20 hover:scale-[1.02] transition-all duration-300 backdrop-blur-sm border border-white/20">
+                                        💬여기를 누르시면 문자로,
+                                    </a>
+                                    <a href="mailto:hi@pos.kr" class="flex items-center justify-center bg-white/10 text-white px-12 py-6 rounded-2xl font-extrabold text-xl hover:bg-white/20 hover:scale-[1.02] transition-all duration-300 backdrop-blur-sm border border-white/20">
+                                        📧여기를 누르시면 메일로~
+                                    </a>
+                                </div>
+                            </div>
+
+                            <p class="text-2xl font-extrabold mb-8">사용자 앱 살펴보기</p>
+                            <div class="flex flex-row gap-8 justify-center mb-20">
+                                <a href="https://play.google.com/store/apps/details?id=com.Gift.GiftCoin&hl=en&gl=US" target="_blank" rel="noopener" class="inline-block">
+                                    <div class="p-0">
+                                        <img src="../hamba/images/play_logo.webp" alt="구글 플레이스토어에서 알뜰결제 사용자 앱 다운로드" class="h-12 object-contain" loading="lazy" />
+                                    </div>
+                                </a>
+                                <a href="https://apps.apple.com/kr/app/giftcoin-%EA%B8%B0%ED%94%84%ED%8A%B8%EC%BD%94%EC%9D%B8-%EA%B8%80%ED%94%84%ED%8A%B8%EC%B9%B4%EB%93%9C%EA%B0%80-%EC%82%B4%EC%95%84%EB%82%9C%EB%8B%A4/id1605569286" target="_blank" rel="noopener" class="inline-block">
+                                    <div class="p-0">
+                                        <img src="../hamba/images/apple_logo.webp" alt="애플 앱스토어에서 알뜰결제 사용자 앱 다운로드" class="h-12 object-contain" loading="lazy" />
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+                </main>
+
+                <footer>
+                    <div class="inner">
+                        <p><a href="terms.html" target="_blank">이용약관</a> | <a href="privacy.html" target="_blank">개인정보 처리 방침</a></p>
+                        <p>(주)글로벌시스텍 | 대표자: 강홍기 | 사업자등록번호: 330-86-03289</p>
+                        <p>주소: 경기도 고양시 일산동구 일산로 38, 306호 | 연락처: <a href="mailto:hi@pos.kr">hi@pos.kr</a></p>
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Hero Slideshow ---
+            const slides = document.querySelectorAll('.hero-slides .slide');
+            let currentSlide = 0;
+            if (slides.length > 0) {
+                setInterval(() => {
+                    slides[currentSlide].classList.remove('active');
+                    currentSlide = (currentSlide + 1) % slides.length;
+                    slides[currentSlide].classList.add('active');
+                }, 2000);
+            }
+
+            // --- Scrollspy for GNB ---
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('#page-nav .nav-link');
+            if (navLinks.length > 0 && sections.length > 0) {
+                const observer = new IntersectionObserver((entries) => {
+                    let currentSectionId = '';
+                    entries.forEach(entry => { if (entry.isIntersecting) { currentSectionId = entry.target.getAttribute('id'); }});
+                    
+                    // Find the first visible section from the top
+                    const firstVisible = entries.find(e => e.isIntersecting);
+                    if (firstVisible) {
+                        currentSectionId = firstVisible.target.getAttribute('id');
+                    } else {
+                        // If nothing is intersecting in the configured view, find the closest one above
+                        const belowTheFold = entries.filter(e => e.boundingClientRect.top > 0);
+                        if (belowTheFold.length > 0) {
+                            const closest = belowTheFold.reduce((prev, curr) => {
+                                return (curr.boundingClientRect.top < prev.boundingClientRect.top) ? curr : prev;
+                            });
+                            const prevElement = closest.target.previousElementSibling;
+                            if(prevElement) currentSectionId = prevElement.getAttribute('id');
+                        }
+                    }
+
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.dataset.section === currentSectionId) { 
+                            link.classList.add('active'); 
+                        }
+                    });
+                }, { rootMargin: '-40% 0px -60% 0px', threshold: 0 });
+                sections.forEach(section => observer.observe(section));
+            }
+
+            // --- Quick Contact Form Submission ---
+            const form = document.getElementById('customGoogleForm');
+            const popup = document.getElementById('success-popup');
+            if(form && popup) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const googleFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSdqmH1RDQI52jLq3UM0QWJB6h0uYYyxXPVBJpCIg3OO7ERmuA/formResponse';
+                    const formData = new FormData(form);
+                    fetch(googleFormUrl, { method: 'POST', body: formData, mode: 'no-cors' })
+                    .then(() => {
+                        popup.classList.remove('opacity-0');
+                        setTimeout(() => { popup.classList.add('opacity-0'); form.reset(); }, 2500);
+                    })
+                    .catch(error => console.error('Error:', error));
+                });
+            }
+
+            // --- Chart Rendering ---
+            const centerTextPlugin = {
+                id: 'centerText',
+                afterDraw: (chart) => {
+                    if (chart.config.type !== 'doughnut' || !chart.options.plugins.centerText) return;
+                    const { ctx, chartArea: { width, height } } = chart;
+                    const { text, font, color } = chart.options.plugins.centerText;
+                    
+                    ctx.save();
+                    ctx.font = font;
+                    ctx.fillStyle = color;
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+
+                    const lines = text.split('\n');
+                    let y = height / 2 - (lines.length - 1) * 15;
+
+                    lines.forEach(line => {
+                        ctx.fillText(line, width / 2, y);
+                        y += 30; // Adjust line height
+                    });
+                    ctx.restore();
+                }
+            };
+
+            // --- Spec Modal Logic ---
+            const specLinks = document.querySelectorAll('.spec-link');
+            const modals = document.querySelectorAll('.spec-modal');
+
+            specLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const modalId = this.getAttribute('data-modal-target');
+                    document.getElementById(modalId).classList.add('active');
+                });
+            });
+
+            modals.forEach(modal => {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === this || e.target.classList.contains('close-button')) {
+                        this.classList.remove('active');
+                    }
+                });
+            });
+
+            // --- FAQ Accordion Logic ---
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    const answer = item.querySelector('.faq-answer');
+                    const isActive = item.classList.toggle('active');
+                    
+                    if (isActive) {
+                        answer.style.maxHeight = answer.scrollHeight + 'px';
+                    } else {
+                        answer.style.maxHeight = 0;
+                    }
+                });
+            });
+            
+            new Chart(document.getElementById('trendChart'), {
+                type: 'doughnut',
+                data: { 
+                    labels: ['장부 관리', 'POS 활용', '기타 자동화', '미시행'], 
+                    datasets: [{
+                        data: [38.68, 25.00, 17.45, 18.87], 
+                        backgroundColor: ['#3b82f6', '#60a5fa', '#93c5fd', '#e5e7eb'],
+                        cutout: '60%'
+                    }]
+                },
+                options: { 
+                    responsive: true, 
+                    maintainAspectRatio: false, 
+                    plugins: { 
+                        legend: { position: 'bottom' }, 
+                        title: { display: true, text: '선결제 관리 방식 현황 (212개 매장 조사)' },
+                        centerText: {
+                            text: '시행 중\n81%',
+                            font: 'bold 2rem Pretendard',
+                            color: '#1e3a8a'
+                        }
+                    }
+                },
+                plugins: [centerTextPlugin]
+            });
+
+            new Chart(document.getElementById('anxietyChart'), {
+                type: 'bar',
+                data: {
+                    labels: ['수기 불신', '타인 도용 우려', '공유/선물 기능 부재', '분실 우려', '혜택 부족'],
+                    datasets: [{ data: [69, 68, 62, 59, 55], backgroundColor: '#f97316' }]
+                },
+                options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, title: { display: true, text: '고객들이 수기 선결제를 불안해하는 이유 (%)' } }, scales: { x: { beginAtZero: true, max: 100 } } }
+            });
+
+            new Chart(document.getElementById('preferenceChart'), {
+                type: 'doughnut',
+                data: { labels: ['키오스크 선호', '직원 선호', '무관심'], datasets: [{ data: [60, 16.5, 23.5], backgroundColor: ['#10b981', '#fca5a5', '#e5e7eb'] }] },
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom' }, title: { display: true, text: '고객 주문 방식 선호도' } } }
+            });
+
+            new Chart(document.getElementById('revenueChart'), {
+                type: 'line',
+                data: {
+                    labels: ['도입 전', '1개월 후', '2개월 후', '3개월 후'],
+                    datasets: [{ label: '매출', data: [100, 105, 110, 115], borderColor: '#8b5cf6', backgroundColor: 'rgba(139, 92, 246, 0.1)', fill: true, tension: 0.1 }]
+                },
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, title: { display: true, text: '선불충전 키오스크 도입 후 매출 변화 (%)' } }, scales: { y: { beginAtZero: false, min: 95 } } }
+            });
+
+            new Chart(document.getElementById('roiChart'), {
+                type: 'bar',
+                data: {
+                    labels: ['10%', '15%', '20%', '25%', '30%'],
+                    datasets: [{
+                        label: '투자 회수기간 (개월)',
+                        data: [4.40, 2.94, 2.20, 1.76, 1.47],
+                        backgroundColor: '#2563eb',
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        title: { display: true, text: '주문·결제 자동화 비중에 따른 투자 회수 기간' }
+                    },
+                    scales: {
+                        y: { beginAtZero: true, title: { display: true, text: '회수 기간 (개월)' } },
+                        x: { title: { display: true, text: '주문·결제 노동 비중 (%)' } }
+                    }
+                }
+            });
+            
+            new Chart(document.getElementById('starbucksChart'), {
+                type: 'bar',
+                data: {
+                    labels: ['2020년', '2021년', '2022년'],
+                    datasets: [{
+                        label: '선수금 비중 (%)',
+                        data: [73, 79, 82],
+                        backgroundColor: '#00704A',
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        title: { display: true, text: '스타벅스 연도별 선수금 발생 비중 (매출 대비)' }
+                    },
+                    scales: {
+                        y: { beginAtZero: false, min: 70, title: { display: true, text: '비중 (%)' } }
+                    }
+                }
+            });
+
+            // --- Floating Contact Form Logic (Merged) ---
+            const contactFab = document.getElementById('contact-fab');
+            const fabContainer = contactFab ? contactFab.closest('.fab-container') : null;
+            const quickForm = document.getElementById('quickContactFloating');
+            const successMessage = document.getElementById('quickSuccessMessageFloating');
+            const phoneInput = document.getElementById('phoneFloating');
+
+            if (fabContainer && quickForm) {
+                let fabClicked = false;
+
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 150) {
+                        fabContainer.classList.add('is-visible');
+                        if (!fabClicked) {
+                            quickForm.classList.add('is-hidden');
+                        }
+                    } else {
+                        fabContainer.classList.remove('is-visible');
+                        quickForm.classList.remove('is-hidden');
+                        quickForm.classList.remove('is-visible');
+                        fabClicked = false;
+                    }
+                });
+
+                contactFab.addEventListener('click', () => {
+                    fabClicked = true;
+                    quickForm.classList.remove('is-hidden');
+                    quickForm.classList.add('is-visible');
+                });
+            }
+
+            if(quickForm) {
+                quickForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const googleFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSdGJxpukW1B3Z92n2UuTMmn8fur9rvG80AVOKBdNh_6dM468w/formResponse';
+                    const formData = new FormData(quickForm);
+                    fetch(googleFormUrl, {
+                        method: 'POST',
+                        body: formData,
+                        mode: 'no-cors'
+                    }).catch(error => console.error('Error submitting to Google Form:', error));
+                    quickForm.classList.remove('is-visible');
+                    quickForm.classList.add('is-hidden');
+                    successMessage.classList.add('is-visible');
+                    setTimeout(() => {
+                        successMessage.classList.remove('is-visible');
+                        if(phoneInput) phoneInput.value = '';
+                    }, 4000);
+                });
+            }
+
+            if(phoneInput) {
+                phoneInput.addEventListener('input', function(e) {
+                    let value = e.target.value.replace(/-/g, '');
+                    let formattedValue = '';
+                    if (value.length > 4) {
+                        formattedValue = value.substring(0, 4) + '-' + value.substring(4, 8);
+                    } else {
+                        formattedValue = value;
+                    }
+                    e.target.value = formattedValue;
+                });
+            }
+        });
+    </script>
+
+    <div id="spec-15-modal" class="spec-modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <img src="./images/main/spec_15kiosk.webp" alt="소규모 카페, 분식집에 적합한 15.6인치 키오스크 상세 스펙">
+        </div>
+    </div>
+
+    <div id="spec-21-modal" class="spec-modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <img src="./images/main/spec_21kiosk.webp" alt="일반 매장에서 가장 많이 사용하는 21.5인치 키오스크 상세 스펙">
+        </div>
+    </div>
+
+
+    <div id="guide-modal" class="spec-modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <div class="guide-content">
+                <h1>카페·식당 키오스크 선택 가이드: 전문가가 안내하는 4단계 체크리스트</h1>
+                <p>최근 키오스크는 식당, 카페 및 다양한 곳에서 필수적인 요소로 자리 잡았지요. 2020년 이후 비대면 서비스 수요가 급증하면서 키오스크 도입이 매년 두배 이상 증가하고 있어요. 특히 "혼밥", "혼술" 같은 개인화된 소비 트렌드는 키오스크 확산의 토양이 되고 있지요.<br> 
+                 카페나 음식점 창업시 키오스크 도입은 당연해 보이지만, 막상 선택하려면 종류도 많고 사업자도 다양하여 혼란스럽지요. 그래서 정리했어요. 여러분의 판단을 도와줄 4가지 핵심 목록을 보며 체크해보세요.</p>
+                <section>
+                    <h2>1. 설치 형태 선택하기</h2>
+                    <p>고객 동선을 상상하며 설치 형태를 결정하세요:</p>
+                    <ul>
+                        <li><strong>탁상형:</strong> 테이블이나 카운터 위에 올려두고 사용해요.</li>
+                        <li><strong>스탠드형:</strong> 키오스크를 고정하는 다리와 합체되어 높이가 170cm정도예요.</li>
+                        <li><strong>벽걸이형:</strong> 벽에 고정 장치를 설치하고 키오스크를 부착하여 공간을 절약해요.</li>
+                    </ul>
+                    <div class="tip">
+                        <strong>선택 팁:</strong> 매장의 좌석 배치, 고객 동선, 인테리어를 종합적으로 고려하세요. 예를 들어, 소규모 매장이라면 탁상형이 적합할 수 있고, 벽 공간이 많다면 벽걸이형을 선택해 공간을 효율적으로 활용할 수도 있어요.
+                    </div>
+                </section>
+                <section>
+                    <h2>2. 적정 화면 크기 결정하기</h2>
+                    <p>화면 크기는 사용자 경험에 영향을 미칩니다:</p>
+                    <ul>
+                        <li><strong>8~13인치:</strong> 태블릿이나 소형 노트북 크기로, 공간 효율성이 높아요.</li>
+                        <li><strong>14~16인치:</strong> 업무용 노트북 크기로, 설치가 쉬운 장점이 있어요.</li>
+                        <li><strong>17~22인치:</strong> 일반적인 매장에서 많이 사용하는 크기예요.</li>
+                        <li><strong>23~29인치:</strong> 화면이 넓어 시원한 느낌을 주는 대형 화면이죠.</li>
+                    </ul>
+                     <div class="tip">
+                        <strong>선택 팁:</strong> 매장의 특성과 고객군에 따라 크기를 선택하세요. 예를 들어, 매장이 미니멀리즘 스타일이라면 16인치 이하의 작은 기기가 적합하고, 익숙함 또는 중장년층 고객을 고려하면 큰 화면이 적합해요.
+                    </div>
+                </section>
+                <section>
+                    <h2>3. 필요한 주변 기기 파악하기</h2>
+                    <p>주변 기기를 추가하면 키오스크의 활용도를 높일 수 있습니다:</p>
+                    <ul>
+                        <li><strong>주방 프린터:</strong> 고객의 주문을 주방 직원이 확인하도록 종이로 인쇄해줘요.</li>
+                        <li><strong>주방 디스플레이:</strong> 주문 내용을 확인하는 모니터/태블릿을 사용할 수 있어요.</li>
+                        <li><strong>백업 단말기:</strong> 유선 전화기 크기의 카드 결제 단말기. 프린터로 사용하기도 해요.</li>
+                    </ul>
+                    <div class="tip">
+                        <strong>선택 팁:</strong> 초기에는 키오스크와 백업 단말기로 시작한 뒤, 고객 상황에 따라 추가하는 것도 좋은 방법이지요.
+                    </div>
+                </section>
+                <section>
+                    <h2>4. 부가 서비스 활용하기</h2>
+                    <p>다양한 부가 서비스를 활용할 수 있습니다:</p>
+                    <ul>
+                        <li><strong>알림톡:</strong> 카카오톡으로 주문 준비 상태, 픽업 알림 등을 보내요.</li>
+                        <li><strong>간편결제:</strong> 카카오페이나 네이버페이처럼 간편결제도 가능해요.</li>
+                        <li><strong>애플페이:</strong> 아이폰 결제 고객을 위해 추가할 수 있어요.</li>
+                    </ul>
+                     <div class="tip">
+                        <strong>선택 팁:</strong> 부가서비스로 매장을 더 돋보이게 할 수 있지요. 맛과 멋과 친절이 핵심이지만, 고객이 편안하게 느끼도록 도와줄 수 있어요.
+                    </div>
+                </section>
+                 <div class="conclusion">
+                    <p>비슷해 보이는 키오스크라도 선택에 따라 매출에 큰 영향을 미칠 수 있습니다. 여러분의 매장에 가장 적합한 키오스크를 선택하여 성공적인 운영을 시작하세요. 고민하는 사장님을 응원합니다!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- FAB & Iframe Form -->
+    <div class="fab-container">
+        <button type="button" id="contact-fab" class="fab contact" title="문의하기">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+            </svg>
+        </button>
+        <a href="tel:010-5415-4415" class="fab phone" title="전화걸기">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+            </svg>
+        </a>
+    </div>
+
+    <form id="quickContactFloating" class="floating-contact-form">
+        <div class="phone-input-wrapper">
+            <label for="phoneFloating" class="sr-only">연락받을 전화번호</label>
+            <span class="floating-prefix">010-</span>
+            <input type="tel" id="phoneFloating" name="entry.587577130" placeholder="번호를 입력하세요" required aria-label="연락받을 전화번호">
+        </div>
+        <button type="submit">무료 상담 신청</button>
+    </form>
+    <div id="quickSuccessMessageFloating" class="floating-success-message">곧 연락드릴게요.</div>
+
+
+</body>
+</html>
