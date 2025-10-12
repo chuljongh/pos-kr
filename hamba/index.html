@@ -148,16 +148,25 @@
                 <div class="overflow-x-auto shadow-2xl rounded-3xl border border-gray-200">
                     <table class="w-full min-w-[900px] bg-white">
                         <thead>
-                            <tr class="bg-gray-100">
-                                <th class="px-8 py-6 text-left text-xl font-extrabold text-gray-800 w-1/4">구분 항목 (사장님의 고민)</th>
+                            <tr class="bg-gray-100 border-b-2 border-gray-300">
+                                <th class="px-8 py-6 text-left text-xl font-extrabold text-gray-800 w-1/4">비교 항목 (사장님의 고민)</th>
+                                <th class="px-8 py-6 text-left text-xl font-extrabold text-primary bg-blue-100 border-l border-r border-blue-200 w-1/3">우리의 솔루션 (모바일 QR 식수 관리)</th>
                                 <th class="px-8 py-6 text-left text-xl font-extrabold text-gray-600 w-1/3">RFID / 바코드 시스템 (기존 방식)</th>
-                                <th class="px-8 py-6 text-left text-xl font-extrabold text-gray-800 bg-blue-50 w-1/3">우리의 솔루션 (모바일 QR 식수 관리)</th>
                             </tr>
                         </thead>
                         <tbody>
                             <!-- Row 1: 초기 도입 비용 -->
-                            <tr class="border-b border-gray-200">
+                            <tr class="border-b border-gray-300">
                                 <td class="px-8 py-6 font-bold text-lg text-gray-900 align-top"><span class="text-3xl mr-3">💰</span>초기 도입 비용</td>
+                                <td class="px-8 py-6 text-lg text-gray-700 bg-blue-100 border-l border-r border-blue-200">
+                                    <div class="flex items-start gap-3">
+                                        <svg class="w-8 h-8 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                                        <div>
+                                            <span class="font-bold text-primary">없음 (0원부터)</span><br>
+                                            <span class="text-gray-600">별도 장비 불필요</span>
+                                        </div>
+                                    </div>
+                                </td>
                                 <td class="px-8 py-6 text-lg text-gray-700">
                                     <div class="flex items-start gap-3">
                                         <svg class="w-7 h-7 text-red-500 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path></svg>
@@ -167,19 +176,19 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td class="px-8 py-6 text-lg text-gray-700 bg-blue-50">
+                            </tr>
+                            <!-- Row 2: 운영 유지 비용 -->
+                            <tr class="border-b border-gray-300">
+                                <td class="px-8 py-6 font-bold text-lg text-gray-900 align-top"><span class="text-3xl mr-3">🧾</span>운영 유지 비용</td>
+                                <td class="px-8 py-6 text-lg text-gray-700 bg-blue-100 border-l border-r border-blue-200">
                                     <div class="flex items-start gap-3">
                                         <svg class="w-8 h-8 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
                                         <div>
-                                            <span class="font-bold text-primary">없음 (0원부터)</span><br>
-                                            <span class="text-gray-600">별도 장비 불필요</span>
+                                            <span class="font-bold text-primary">없음</span><br>
+                                            <span class="text-gray-600">스마트폰 문자 알림으로 완료</span>
                                         </div>
                                     </div>
                                 </td>
-                            </tr>
-                            <!-- Row 2: 운영 유지 비용 -->
-                            <tr class="border-b border-gray-200">
-                                <td class="px-8 py-6 font-bold text-lg text-gray-900 align-top"><span class="text-3xl mr-3">🧾</span>운영 유지 비용</td>
                                 <td class="px-8 py-6 text-lg text-gray-700">
                                     <div class="flex items-start gap-3">
                                         <svg class="w-7 h-7 text-red-500 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path></svg>
@@ -189,19 +198,19 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td class="px-8 py-6 text-lg text-gray-700 bg-blue-50">
+                            </tr>
+                            <!-- Row 3: 부정 사용 방지 -->
+                            <tr class="border-b border-gray-300">
+                                <td class="px-8 py-6 font-bold text-lg text-gray-900 align-top"><span class="text-3xl mr-3">🛡️</span>부정 사용 방지</td>
+                                <td class="px-8 py-6 text-lg text-gray-700 bg-blue-100 border-l border-r border-blue-200">
                                     <div class="flex items-start gap-3">
                                         <svg class="w-8 h-8 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
                                         <div>
-                                            <span class="font-bold text-primary">없음</span><br>
-                                            <span class="text-gray-600">스마트폰 문자 알림으로 완료</span>
+                                            <span class="font-bold text-primary">매우 강력</span><br>
+                                            <span class="text-gray-600">QR코드 실시간 갱신, AI 기반 의심 행위 감지</span>
                                         </div>
                                     </div>
                                 </td>
-                            </tr>
-                            <!-- Row 3: 부정 사용 방지 -->
-                            <tr class="border-b border-gray-200">
-                                <td class="px-8 py-6 font-bold text-lg text-gray-900 align-top"><span class="text-3xl mr-3">🛡️</span>부정 사용 방지</td>
                                 <td class="px-8 py-6 text-lg text-gray-700">
                                     <div class="flex items-start gap-3">
                                         <svg class="w-7 h-7 text-red-500 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path></svg>
@@ -211,19 +220,19 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td class="px-8 py-6 text-lg text-gray-700 bg-blue-50">
+                            </tr>
+                            <!-- Row 4: 대금 청구 업무 -->
+                            <tr class="border-b border-gray-300">
+                                <td class="px-8 py-6 font-bold text-lg text-gray-900 align-top"><span class="text-3xl mr-3">📄</span>대금 청구 업무</td>
+                                <td class="px-8 py-6 text-lg text-gray-700 bg-blue-100 border-l border-r border-blue-200">
                                     <div class="flex items-start gap-3">
                                         <svg class="w-8 h-8 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
                                         <div>
-                                            <span class="font-bold text-primary">매우 강력</span><br>
-                                            <span class="text-gray-600">QR코드 실시간 갱신, AI 기반 의심 행위 감지</span>
+                                            <span class="font-bold text-primary">청구 대행 지원</span><br>
+                                            <span class="text-gray-600">(국내 유일 서비스)</span>
                                         </div>
                                     </div>
                                 </td>
-                            </tr>
-                            <!-- Row 4: 대금 청구 업무 -->
-                            <tr class="border-b border-gray-200">
-                                <td class="px-8 py-6 font-bold text-lg text-gray-900 align-top"><span class="text-3xl mr-3">📄</span>대금 청구 업무</td>
                                 <td class="px-8 py-6 text-lg text-gray-700">
                                     <div class="flex items-start gap-3">
                                         <svg class="w-7 h-7 text-red-500 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path></svg>
@@ -233,19 +242,19 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td class="px-8 py-6 text-lg text-gray-700 bg-blue-50">
+                            </tr>
+                            <!-- Row 5: 현장 적용 유연성 -->
+                            <tr class="border-b border-gray-300">
+                                <td class="px-8 py-6 font-bold text-lg text-gray-900 align-top"><span class="text-3xl mr-3">🏗️</span>현장 적용 유연성</td>
+                                <td class="px-8 py-6 text-lg text-gray-700 bg-blue-100 border-l border-r border-blue-200">
                                     <div class="flex items-start gap-3">
                                         <svg class="w-8 h-8 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
                                         <div>
-                                            <span class="font-bold text-primary">청구 대행 지원</span><br>
-                                            <span class="text-gray-600">(국내 유일 서비스)</span>
+                                            <span class="font-bold text-primary">매우 높음</span><br>
+                                            <span class="text-gray-600">모든 모바일 환경 지원, 오프라인 모드 일부 지원</span>
                                         </div>
                                     </div>
                                 </td>
-                            </tr>
-                            <!-- Row 5: 현장 적용 유연성 -->
-                            <tr class="border-b border-gray-200">
-                                <td class="px-8 py-6 font-bold text-lg text-gray-900 align-top"><span class="text-3xl mr-3">🏗️</span>현장 적용 유연성</td>
                                 <td class="px-8 py-6 text-lg text-gray-700">
                                     <div class="flex items-start gap-3">
                                         <svg class="w-7 h-7 text-red-500 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path></svg>
@@ -255,34 +264,25 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td class="px-8 py-6 text-lg text-gray-700 bg-blue-50">
-                                    <div class="flex items-start gap-3">
-                                        <svg class="w-8 h-8 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
-                                        <div>
-                                            <span class="font-bold text-primary">매우 높음</span><br>
-                                            <span class="text-gray-600">모든 모바일 환경 지원, 오프라인 모드 일부 지원</span>
-                                        </div>
-                                    </div>
-                                </td>
                             </tr>
                             <!-- Row 6: 관리 편의성 -->
                             <tr>
                                 <td class="px-8 py-6 font-bold text-lg text-gray-900 align-top"><span class="text-3xl mr-3">📊</span>관리 편의성 (관리자)</td>
+                                <td class="px-8 py-6 text-lg text-gray-700 bg-blue-100 border-l border-r border-blue-200">
+                                    <div class="flex items-start gap-3">
+                                        <svg class="w-8 h-8 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                                        <div>
+                                            <span class="font-bold text-primary">ALL-IN-ONE 대시보드</span><br>
+                                            <span class="text-gray-600">직관적인 단일 관리 시스템</span>
+                                        </div>
+                                    </div>
+                                </td>
                                 <td class="px-8 py-6 text-lg text-gray-700">
                                     <div class="flex items-start gap-3">
                                         <svg class="w-7 h-7 text-red-500 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path></svg>
                                         <div>
                                             <span class="font-bold">PC 환경 의존적</span><br>
                                             <span class="text-gray-600">실시간 모니터링 어려움</span>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="px-8 py-6 text-lg text-gray-700 bg-blue-50">
-                                    <div class="flex items-start gap-3">
-                                        <svg class="w-8 h-8 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
-                                        <div>
-                                            <span class="font-bold text-primary">ALL-IN-ONE 대시보드</span><br>
-                                            <span class="text-gray-600">직관적인 단일 관리 시스템</span>
                                         </div>
                                     </div>
                                 </td>
@@ -307,7 +307,7 @@
                     <span class="text-white font-extrabold text-3xl">2</span>
                 </div>
                 <h2 class="text-5xl md:text-6xl font-extrabold mb-12 leading-tight">
-                    어떻게? 구내식당·함바식당 <span class="text-primary">상황별 결제 구현</span>
+                    어떻게? 구내식당·함바식당 <span class="text-primary">상황별 결제 방식</span>
                 </h2>
                 <p class="text-xl text-gray-300 max-w-5xl mx-auto leading-relaxed">
                     각 현장별 결제 상황에 맞춰 전용 식당부터 외부인 카드 결제까지 완벽하게 지원됩니다.
