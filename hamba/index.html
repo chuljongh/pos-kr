@@ -16,60 +16,7 @@
     <link rel="icon" href="/cafe/favicon.webp">
     <link rel="preload" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"></noscript>
-    <link rel="stylesheet" href="./output.css">    
-    <script type="application/ld+json">
-        {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-            {
-            "@type": "Question",
-            "name": "왜 모바일 식수 관리를 도입해야 할까요?",
-            "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "불편한 카드와 리더기를 없애고 스마트폰으로 사장님과 식당 고객 모두가 편리해요."
-            }
-            },
-            {
-            "@type": "Question",
-            "name": "모바일 식권 시스템은 뭐가 좋아요?",
-            "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "100만원이 넘는 카드·리더기·PC 구입하는 낭비를 없애고, 매월 프로그램 비용도 없애요."
-            }
-            }
-        ]
-        }
-    </script>
-
-    
-    
-    <style>
-        html {
-            scroll-behavior: smooth;
-        }
-        section[id] {
-            scroll-margin-top: 4rem; /* 헤더 높이만큼 여백 확보 */
-        }
-        #menu-toggle span {
-            filter: drop-shadow(0 1px 2px rgb(0 0 0 / 0.9));
-        }
-        #menu-toggle.is-active span:nth-child(1) {
-            transform: translateY(7px) rotate(135deg);
-        }
-        #menu-toggle.is-active span:nth-child(2) {
-            opacity: 0;
-        }
-        #menu-toggle.is-active span:nth-child(3) {
-            transform: translateY(-7px) rotate(-135deg);
-        }
-        #form-source {
-            color: white;
-        }
-        #form-source:invalid {
-            color: #6B7280; /* Tailwind gray-500 for placeholder */
-        }
-    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-50">
     <!-- Mobile Hamburger Menu -->
