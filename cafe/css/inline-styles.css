@@ -320,7 +320,7 @@
         }
         .faq-question {
             width: 100%;
-            padding: 1.5rem 1rem;
+            padding: 1.5rem 2.5rem; /* Adjusted padding */
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -347,11 +347,37 @@
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s ease-out;
+            padding: 0 2.5rem; /* Adjusted padding */
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
         }
         .faq-answer p {
-            padding: 0 1rem 1.5rem;
+            padding: 0 0 1.5rem 0; /* Adjusted padding */
             font-size: 1.125rem; /* Font size updated */
             line-height: 1.7;
+        }
+
+        /* Added FAQ Q&A Styles */
+        .faq-q-icon, .faq-a-icon {
+            flex-shrink: 0;
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: white;
+        }
+        .faq-q-icon {
+            background-color: #2563eb; /* primary */
+        }
+        .faq-a-icon {
+            background-color: #10b981; /* accent */
+        }
+        .faq-question span {
+            flex-grow: 1;
         }
 
         /* --- FAB & Floating Form Styles --- */
@@ -484,5 +510,32 @@
         }
         #form-source:invalid {
             color: #6B7280; /* Tailwind gray-500 for placeholder */
+        }
+
+        /* Added FAQ Q&A Styles */
+        .faq-question, .faq-answer {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+        .faq-q-icon, .faq-a-icon {
+            flex-shrink: 0;
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: white;
+        }
+        .faq-q-icon {
+            background-color: #2563eb; /* primary */
+        }
+        .faq-a-icon {
+            background-color: #10b981; /* accent */
+        }
+        .faq-question span {
+            flex-grow: 1;
         }
     
