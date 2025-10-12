@@ -13,10 +13,24 @@
     <meta property="og:image" content="https://pos.kr/images/kiosk.webp">
     <meta property="og:url" content="https://pos.kr/cafe/">
     <meta property="og:type" content="website">
-    <link rel="icon" href="/cafe/favicon.webp">
+    <link rel="icon" href="favicon.webp">
     <link rel="preload" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"></noscript>
-    <script src="https://cdn.tailwindcss.com"></script>    
+    <link rel="icon" href="/cafe/favicon.webp">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#2563eb',
+              'primary-darker': '#1d4ed8',
+              accent: '#10b981',
+            }
+          }
+        }
+      }
+    </script>    
     <script type="application/ld+json">
         {
         "@context": "https://schema.org",
