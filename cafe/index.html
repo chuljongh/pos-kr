@@ -20,10 +20,17 @@
     <meta property="og:image" content="https://pos.kr/images/kiosk.webp">
     <meta property="og:url" content="https://pos.kr/cafe/">
     <meta property="og:type" content="website">
+    <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+    <link rel="dns-prefetch" href="//cdn.tailwindcss.com">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="//www.googletagmanager.com">
     <link rel="icon" href="favicon.webp">
     <link rel="preload" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"></noscript>
     <link rel="icon" href="/cafe/favicon.webp">
+    <link rel="preload" as="image" href="images/main/main_kiosk.webp">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -62,9 +69,23 @@
         ]
         }
     </script>
+    <style>
+        /* Ensure charts have visible dimensions and render reliably */
+        .chart-container { position: relative; width: 100%; min-height: 280px; }
+        .chart-container > canvas { position: absolute; inset: 0; width: 100% !important; height: 100% !important; }
+        /* Keep aspect ratio for doughnut charts to avoid oval distortion on mobile */
+        .chart-keep-aspect { min-height: auto; }
+        .chart-keep-aspect > canvas { position: relative; inset: auto; width: 100% !important; height: auto !important; }
+        /* Modern step icon cards */
+        .step-icon-wrapper { position: relative; width: 112px; height: 112px; margin: 0 auto 1.25rem; border-radius: 1.5rem; background: rgba(31, 41, 55, 0.92); box-shadow: 0 20px 40px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.04); display: flex; align-items: center; justify-content: center; backdrop-filter: blur(2px); }
+        .step-icon-badge { position: absolute; top: -10px; right: -10px; width: 44px; height: 44px; border-radius: 9999px; background: #f97316; color: #fff; font-weight: 800; font-size: 1.25rem; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 20px rgba(249,115,22,0.45); }
+        .step-icon { width: 60px; height: 60px; }
+        @media (min-width: 768px) { .step-icon-wrapper { width: 128px; height: 128px; } .step-icon { width: 72px; height: 72px; } }
+    </style>
     
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
-
+    <!-- Chart.js deferred: loaded on-demand in DOMContentLoaded script -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js" defer onerror="(function(){var s=document.createElement('script');s.src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js';s.defer=true;document.head.appendChild(s);}())"></script>
+ 
     <link rel="stylesheet" href="./css/inline-styles.css">
 </head>
 <body>
@@ -90,10 +111,10 @@
         <div id="hero-sticky-background">
             <div class="hero-slides">
                 <div class="slide active slide-main-kiosk" style="background-image: url('images/main/main_kiosk.webp');"></div>
-                <div class="slide slide-cafe1" style="background-image: url('images/Cafe1_Prepay_on_Kiosk.webp');"></div>
-                <div class="slide slide-cafe2" style="background-image: url('images/Cafe2_Prepay_on_Kiosk.webp');"></div>
-                <div class="slide slide-cafe3" style="background-image: url('images/Cafe3_Prepay_on_Kiosk.webp');"></div>
-                <div class="slide slide-advertise" style="background-image: url('images/Advertise_PP.webp');"></div>
+                <div class="slide slide-cafe1" data-bg="images/Cafe1_Prepay_on_Kiosk.webp"></div>
+                <div class="slide slide-cafe2" data-bg="images/Cafe2_Prepay_on_Kiosk.webp"></div>
+                <div class="slide slide-cafe3" data-bg="images/Cafe3_Prepay_on_Kiosk.webp"></div>
+                <div class="slide slide-advertise" data-bg="images/Advertise_PP.webp"></div>
             </div>
         </div>
 
@@ -117,7 +138,7 @@
                             </div>
                             <div class="media-block">
                                 <div style="width: 100%; aspect-ratio: 1/1; border-radius: 1.5rem; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);">
-                                    <img src="images/Cafe4_Prepay_wo_Kiosk.webp" alt="수기 장부로 선결제를 관리하는 카페의 불안한 모습" style="width: 100%; height: 100%; object-fit: cover;">
+                                    <img src="images/Cafe4_Prepay_wo_Kiosk.webp" alt="수기 장부로 선결제를 관리하는 카페의 불안한 모습" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" decoding="async">
                                 </div>
                             </div>
                         </div>
@@ -134,7 +155,7 @@
                                 <p>스타벅스의<span class="highlight">선수금(고객이 충전한 금액) 비중이 매년 증가하여 2022년에는 매출의 82%에 달했습니다.</span> 이는 강력한 고객 충성도와 안정적인 현금 흐름을 의미합니다. (<a href="https://m.thebell.co.kr/m/newsview.asp?svccode=00&newskey=202305111118525120102192" target="_blank">관련기사</a>)</p>
                             </div>
                             <div class="media-block">
-                                <div class="chart-container">
+                                <div class="chart-container chart-keep-aspect">
                                     <canvas id="starbucksChart"></canvas>
                                 </div>
                             </div>
@@ -162,7 +183,7 @@
                                 <h3>(1) 모두가 선결제하고 있어요</h3>
                                 <p>매장 212곳 조사 결과, 10곳 중 8곳이 이미 선결제를 운영하고 있었습니다. <strong>중요한 사실은 그들이 매출을 버리고 있다는 점입니다.</strong> 수기 장부(39%)나 POS 메모(25%) 방식 위주입니다.</p>
                             </div>
-                            <div class="media-block"><div class="chart-container"><canvas id="trendChart"></canvas></div></div>
+                            <div class="media-block"><div class="chart-container chart-keep-aspect"><canvas id="trendChart"></canvas></div></div>
                         </div>
                         <div class="content-wrapper reverse">
                             <div class="text-block">
@@ -176,7 +197,7 @@
                                 <h3>(3) 고객은 키오스크를 4배 더 선호해요</h3>
                                 <p>배민 설문(<a href="https://ceo.baemin.com/knowhow/9232" target="_blank">출처</a>)에 따르면, <span class="highlight">고객 10명 중 6명(60%)은 키오스크 주문을 명확히 선호</span>하는 반면, 직원을 통한 주문을 선호하는 고객은 16.5%에 불과합니다. 키오스크가 없는 매장은 고객을 놓친다는 강한 신호입니다.</p>
                             </div>
-                            <div class="media-block"><div class="chart-container"><canvas id="preferenceChart"></canvas></div></div>
+                            <div class="media-block"><div class="chart-container chart-keep-aspect"><canvas id="preferenceChart"></canvas></div></div>
                         </div>
                         <div style="text-align: center; padding: 2rem; margin-top: 4rem; background-color: #eff6ff; border-radius: 1rem;">
                             <p style="font-size: 2rem; font-weight: 600; color: #1e40af;">👉 수기/POS 메모 관리가 60% 이상! 사장님들이 고객을 놓치고 있는 방식입니다. <br>저희 알뜰결제 키오스크는 이 불안한 60%를 '자동화된 충성 고객'으로 바꿔드립니다.</p>
@@ -197,8 +218,8 @@
                             <div class="media-block">
                                 <div>
                                     <div style="width: 100%; aspect-ratio: 1 / 1; display: flex; gap: 1rem; border-radius: 1.5rem; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);">
-                                        <img src="images/main/21inch_kiosk.webp" alt="카페에 설치된 21.5인치 선불충전 키오스크" style="width: 50%; object-fit: cover;">
-                                        <img src="images/main/Kiosk_Display.webp" alt="선불충전 기능이 포함된 키오스크 메인 화면 UI" style="width: 50%; object-fit: cover;">
+                                        <img src="images/main/21inch_kiosk.webp" alt="카페에 설치된 21.5인치 선불충전 키오스크" style="width: 50%; object-fit: cover;" loading="lazy" decoding="async">
+                                        <img src="images/main/Kiosk_Display.webp" alt="선불충전 기능이 포함된 키오스크 메인 화면 UI" style="width: 50%; object-fit: cover;" loading="lazy" decoding="async">
                                     </div>
                                     <p style="text-align: center; margin-top: 1rem; font-size: 1.6rem; color: #6b7280;">선불충전 키오스크 메인 화면</p>
                                 </div>
@@ -211,7 +232,7 @@
                             </div>
                             <div class="media-block">
                                 <div class="video-responsive-container short-video"> 
-                                    <iframe src="https://www.youtube.com/embed/0WOdIhcEgjY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen title="YouTube video player" loading="lazy"></iframe>
+                                    <iframe src="https://www.youtube.com/embed/0WOdIhcEgjY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen title="YouTube video player" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
                                 </div>
                             </div>
                         </div>
@@ -239,17 +260,17 @@
                         </div>
                         <ul class="kiosk-list">
                             <li>
-                                <img src="./images/main/15inch_kiosk.webp" loading="lazy" alt="소규모 매장에 적합한 15.6인치 탁상형 키오스크">
+                                <img src="./images/main/15inch_kiosk.webp" loading="lazy" alt="소규모 매장에 적합한 15.6인치 탁상형 키오스크" decoding="async">
                                 <div class="sect-text">부담없는 15.6 / 12.5인치 키오스크</div>
                                 <span class="spec-link" data-modal-target="spec-15-modal">스펙보기</span>
                             </li>
                             <li>
-                                <img src="./images/main/21inch_kiosk.webp" loading="lazy" alt="가장 대중적인 21.5인치 스탠드형 선결제 키오스크">
+                                <img src="./images/main/21inch_kiosk.webp" loading="lazy" alt="가장 대중적인 21.5인치 스탠드형 선결제 키오스크" decoding="async">
                                 <div class="sect-text">익숙하고 편안한 21.5인치 키오스크</div>
                                 <span class="spec-link" data-modal-target="spec-21-modal">스펙보기</span>
                             </li>
                             <li>
-                                <img src="./images/main/24stand_kiosk.webp" loading="lazy" alt="매장 동선을 자유롭게 구성하는 스탠드형 키오스크">
+                                <img src="./images/main/24stand_kiosk.webp" loading="lazy" alt="매장 동선을 자유롭게 구성하는 스탠드형 키오스크" decoding="async">
                                 <div class="sect-text">동선을 창조하는 스탠드형 키오스크</div>
                                 <span class="spec-link" data-modal-target="guide-modal">어떤 것을 고를지 고민된다면?</span>
                             </li>
@@ -304,19 +325,53 @@
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
                             <div class="step">
                                 <div class="step-icon-wrapper">
-                                    <img src="images/Note_Black_bold.svg" alt="문의 남기기 아이콘" width="60" height="60">
+                                    <div class="step-icon-badge">1</div>
+                                    <svg class="step-icon" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                        <rect x="10" y="10" width="44" height="54" rx="8" fill="#2a2f38"/>
+                                        <rect x="18" y="18" width="28" height="6" rx="3" fill="#374151"/>
+                                        <path d="M40 14a8 8 0 0 0-16 0" fill="#374151"/>
+                                        <rect x="18" y="30" width="20" height="4" rx="2" fill="#4b5563"/>
+                                        <rect x="18" y="38" width="16" height="4" rx="2" fill="#4b5563"/>
+                                        <g fill="#f97316">
+                                            <path d="M46.5 34.5l-3.6-3.6a2 2 0 0 0-2.8 0L26 45v6h6l14.5-14.5a2 2 0 0 0 0-2.8z" opacity=".95"/>
+                                            <rect x="24" y="48" width="10" height="3" rx="1.5"/>
+                                        </g>
+                                    </svg>
                                 </div>
                                 <h3 style="font-size: 1.8rem; font-weight: 700; margin-bottom: 0.5rem;">1. 문의 남기기 (1분)</h3>
                             </div>
                             <div class="step">
                                 <div class="step-icon-wrapper">
-                                    <img src="images/kiosk_Black.svg" alt="키오스크 아이콘" width="60" height="60">
+                                    <div class="step-icon-badge">2</div>
+                                    <svg class="step-icon" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                        <rect x="16" y="8" width="32" height="38" rx="6" fill="#2a2f38"/>
+                                        <rect x="20" y="12" width="24" height="22" rx="3" fill="#111827"/>
+                                        <rect x="24" y="16" width="16" height="6" rx="2" fill="#334155"/>
+                                        <rect x="22" y="36" width="20" height="4" rx="2" fill="#374151"/>
+                                        <rect x="14" y="48" width="36" height="6" rx="3" fill="#2a2f38"/>
+                                        <rect x="22" y="54" width="20" height="4" rx="2" fill="#2a2f38"/>
+                                        <circle cx="44" cy="26" r="5" fill="#f97316"/>
+                                    </svg>
                                 </div>
                                 <h3 style="font-size: 1.8rem; font-weight: 700; margin-bottom: 0.5rem;">2. 키오스크 선정/재활용(0원~)</h3>
                             </div>
                             <div class="step">
                                 <div class="step-icon-wrapper">
-                                    <img src="images/operation_kiosk.svg" alt="선불충-전 시스템 작동 아이콘" width="100" height="100">
+                                    <div class="step-icon-badge">3</div>
+                                    <svg class="step-icon" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                        <circle cx="32" cy="32" r="14" fill="#f97316" opacity=".95"/>
+                                        <circle cx="32" cy="32" r="6" fill="#fff" opacity=".9"/>
+                                        <g fill="#f97316">
+                                            <path d="M32 10l3 5h-6l3-5z"/>
+                                            <path d="M32 54l-3-5h6l-3 5z"/>
+                                            <path d="M10 32l5-3v6l-5-3z"/>
+                                            <path d="M54 32l-5 3v-6l5 3z"/>
+                                            <path d="M16 18l5 2-4 4-1-6z"/>
+                                            <path d="M48 46l-5-2 4-4 1 6z"/>
+                                            <path d="M48 18l-1 6-4-4 5-2z"/>
+                                            <path d="M16 46l1-6 4 4-5 2z"/>
+                                        </g>
+                                    </svg>
                                 </div>
                                 <h3 style="font-size: 1.8rem; font-weight: 700; margin-bottom: 0.5rem;">3. 선불충전 시스템 작동</h3>
                             </div>
@@ -405,12 +460,12 @@
                             <div class="flex flex-row gap-8 justify-center mb-20">
                                 <a href="https://play.google.com/store/apps/details?id=com.Gift.GiftCoin&hl=en&gl=US" target="_blank" rel="noopener" class="inline-block">
                                     <div class="p-0">
-                                        <img src="../hamba/images/play_logo.webp" alt="구글 플레이스토어에서 알뜰결제 사용자 앱 다운로드" class="h-12 object-contain" loading="lazy" />
+                                        <img src="../hamba/images/play_logo.webp" alt="구글 플레이스토어에서 알뜰결제 사용자 앱 다운로드" class="h-12 object-contain" loading="lazy" decoding="async" />
                                     </div>
                                 </a>
                                 <a href="https://apps.apple.com/kr/app/giftcoin-%EA%B8%B0%ED%94%84%ED%8A%B8%EC%BD%94%EC%9D%B8-%EA%B8%80%ED%94%84%ED%8A%B8%EC%B9%B4%EB%93%9C%EA%B0%80-%EC%82%B4%EC%95%84%EB%82%9C%EB%8B%A4/id1605569286" target="_blank" rel="noopener" class="inline-block">
                                     <div class="p-0">
-                                        <img src="../hamba/images/apple_logo.webp" alt="애플 앱스토어에서 알뜰결제 사용자 앱 다운로드" class="h-12 object-contain" loading="lazy" />
+                                        <img src="../hamba/images/apple_logo.webp" alt="애플 앱스토어에서 알뜰결제 사용자 앱 다운로드" class="h-12 object-contain" loading="lazy" decoding="async" />
                                     </div>
                                 </a>
                             </div>
@@ -434,10 +489,24 @@
             // --- Hero Slideshow ---
             const slides = document.querySelectorAll('.hero-slides .slide');
             let currentSlide = 0;
+            const isMobile = window.matchMedia('(max-width: 768px)').matches;
+            function applySlideBgIfNeeded(el) {
+                const dataBg = el && el.getAttribute('data-bg');
+                if (dataBg && !el.style.backgroundImage) {
+                    el.style.backgroundImage = `url('${dataBg}')`;
+                }
+            }
+            // Ensure first two slides have background on mobile to avoid blank during quick transition
+            if (isMobile && slides.length > 1) {
+                applySlideBgIfNeeded(slides[1]);
+            }
             if (slides.length > 0) {
                 setInterval(() => {
+                    // Preload next slide bg just-in-time
+                    const nextIndex = (currentSlide + 1) % slides.length;
+                    applySlideBgIfNeeded(slides[nextIndex]);
                     slides[currentSlide].classList.remove('active');
-                    currentSlide = (currentSlide + 1) % slides.length;
+                    currentSlide = nextIndex;
                     slides[currentSlide].classList.add('active');
                 }, 2000);
             }
@@ -493,30 +562,209 @@
                 });
             }
 
-            // --- Chart Rendering ---
+            // --- Chart Rendering (deferred load) ---
+            // Chart.js is loaded via <script defer>. Initialize directly below.
+
             const centerTextPlugin = {
                 id: 'centerText',
                 afterDraw: (chart) => {
                     if (chart.config.type !== 'doughnut' || !chart.options.plugins.centerText) return;
-                    const { ctx, chartArea: { width, height } } = chart;
-                    const { text, font, color } = chart.options.plugins.centerText;
-                    
+                    const meta = chart.getDatasetMeta(0);
+                    const arc = meta && meta.data && meta.data[0];
+                    if (!arc) return;
+                    const { ctx } = chart;
+                    const { text, color } = chart.options.plugins.centerText;
+                    const centerX = arc.x;
+                    const centerY = arc.y;
+                    const innerR = arc.innerRadius || 0;
+
+                    const lines = String(text).split('\n');
+                    // Compute max font size that fits inside inner radius for the longest line
+                    const padding = Math.max(6, innerR * 0.12);
+                    const maxWidth = Math.max(0, innerR * 2 - padding * 2);
+                    let fontSize = Math.floor(innerR * 0.42);
+                    fontSize = Math.max(10, Math.min(fontSize, 28));
+
                     ctx.save();
-                    ctx.font = font;
-                    ctx.fillStyle = color;
+                    ctx.fillStyle = color || '#111827';
                     ctx.textAlign = 'center';
                     ctx.textBaseline = 'middle';
 
-                    const lines = text.split('\n');
-                    let y = height / 2 - (lines.length - 1) * 15;
+                    const fits = (size) => {
+                        ctx.font = `bold ${size}px Pretendard, system-ui, -apple-system, Segoe UI, Roboto`;
+                        return lines.every(line => ctx.measureText(line).width <= maxWidth);
+                    };
 
+                    while (fontSize > 10 && !fits(fontSize)) {
+                        fontSize -= 1;
+                    }
+                    ctx.font = `bold ${fontSize}px Pretendard, system-ui, -apple-system, Segoe UI, Roboto`;
+
+                    const lineHeight = Math.round(fontSize * 1.2);
+                    let startY = centerY - ((lines.length - 1) * lineHeight) / 2;
                     lines.forEach(line => {
-                        ctx.fillText(line, width / 2, y);
-                        y += 30; // Adjust line height
+                        ctx.fillText(line, centerX, startY);
+                        startY += lineHeight;
                     });
                     ctx.restore();
                 }
             };
+
+            const chartInitFns = {
+                trendChart: () => new Chart(document.getElementById('trendChart'), {
+                    type: 'doughnut',
+                    data: { 
+                        labels: ['장부 관리', 'POS 활용', '기타 자동화', '미시행'], 
+                        datasets: [{
+                            data: [38.68, 25.00, 17.45, 18.87], 
+                            backgroundColor: ['#3b82f6', '#60a5fa', '#93c5fd', '#e5e7eb'],
+                            cutout: '60%'
+                        }]
+                    },
+                    options: { 
+                        responsive: true, 
+                        maintainAspectRatio: true, 
+                        plugins: { 
+                            legend: { position: 'bottom' }, 
+                            title: { display: true, text: '선결제 관리 방식 현황 (212개 매장 조사)' },
+                            centerText: { text: '시행 중\n81%', color: '#1e3a8a' }
+                        }
+                    },
+                    plugins: [centerTextPlugin]
+                }),
+                anxietyChart: () => new Chart(document.getElementById('anxietyChart'), {
+                    type: 'bar',
+                    data: { labels: ['수기 불신', '타인 도용 우려', '공유/선물 기능 부재', '분실 우려', '혜택 부족'], datasets: [{ data: [69, 68, 62, 59, 55], backgroundColor: '#f97316' }] },
+                    options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, title: { display: true, text: '고객들이 수기 선결제를 불안해하는 이유 (%)' } }, scales: { x: { beginAtZero: true, max: 100 } } }
+                }),
+                preferenceChart: () => new Chart(document.getElementById('preferenceChart'), {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['키오스크 선호', '직원 선호', '무관심'],
+                        datasets: [{
+                            data: [60, 16.5, 23.5],
+                            backgroundColor: ['#16a34a', '#ef4444', '#cbd5e1'],
+                            hoverBackgroundColor: ['#15803d', '#dc2626', '#94a3b8'],
+                            borderWidth: 0
+                        }]
+                    },
+                    options: { responsive: true, maintainAspectRatio: true, plugins: { legend: { position: 'bottom' }, title: { display: true, text: '고객 주문 방식 선호도' } } }
+                }),
+                revenueChart: () => new Chart(document.getElementById('revenueChart'), {
+                    type: 'line',
+                    data: { labels: ['도입 전', '1개월 후', '2개월 후', '3개월 후'], datasets: [{ label: '매출', data: [100, 105, 110, 115], borderColor: '#8b5cf6', backgroundColor: 'rgba(139, 92, 246, 0.1)', fill: true, tension: 0.1 }] },
+                    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, title: { display: true, text: '선불충전 키오스크 도입 후 매출 변화 (%)' } }, scales: { y: { beginAtZero: false, min: 95 } } }
+                }),
+                roiChart: () => new Chart(document.getElementById('roiChart'), {
+                    type: 'bar',
+                    data: {
+                        labels: ['10%', '15%', '20%', '25%', '30%'],
+                        datasets: [{ label: '투자 회수기간 (개월)', data: [4.4, 2.94, 2.2, 1.76, 1.47], backgroundColor: '#2563eb' }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: { legend: { display: false }, title: { display: true, text: '주문·결제 자동화 비중에 따른 투자 회수 기간' } },
+                        scales: { y: { beginAtZero: true }, x: { } }
+                    }
+                }),
+                starbucksChart: () => new Chart(document.getElementById('starbucksChart'), {
+                    type: 'bar',
+                    data: { labels: ['2020년', '2021년', '2022년'], datasets: [{ label: '선수금 비중 (%)', data: [73, 79, 82], backgroundColor: '#00704A' }] },
+                    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, title: { display: true, text: '스타벅스 연도별 선수금 발생 비중 (매출 대비)' } }, scales: { y: { beginAtZero: false, min: 70, title: { display: true, text: '비중 (%)' } } } }
+                })
+            };
+
+            const chartCanvases = ['trendChart','anxietyChart','preferenceChart','revenueChart','roiChart','starbucksChart']
+                .map(id => document.getElementById(id))
+                .filter(Boolean);
+
+            if (chartCanvases.length > 0) {
+                const initOne = (canvas) => {
+                    const id = canvas.id;
+                    if (chartInitFns[id]) chartInitFns[id]();
+                };
+
+                const setupLazyInit = () => {
+                    const obs = new IntersectionObserver((entries, observer) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                initOne(entry.target);
+                                observer.unobserve(entry.target);
+                            }
+                        });
+                    }, { rootMargin: '0px 0px -20% 0px', threshold: 0 });
+                    chartCanvases.forEach(c => obs.observe(c));
+                };
+
+                if (window.Chart) {
+                    setupLazyInit();
+                } else {
+                    let attempts = 0;
+                    const iv = setInterval(() => {
+                        attempts++;
+                        if (window.Chart) { clearInterval(iv); setupLazyInit(); }
+                        if (attempts > 40) { clearInterval(iv); renderFallbackCharts(); }
+                    }, 100);
+                }
+            }
+
+            function renderFallbackCharts() {
+                const renderBar = (canvas, values, labels, color) => {
+                    const width = canvas.clientWidth || 320;
+                    const height = canvas.clientHeight || 220;
+                    const max = Math.max(...values) || 1;
+                    const barH = Math.max(14, Math.floor((height - 40) / values.length) - 6);
+                    const gap = 8;
+                    let y = 30;
+                    const svgBars = values.map((v, i) => {
+                        const w = Math.max(1, Math.floor((width - 120) * (v / max)));
+                        const ly = y + barH - 2;
+                        const label = labels[i] || '';
+                        const rect = `<rect x="100" y="${y}" width="${w}" height="${barH}" fill="${color}" rx="3" />`;
+                        const text = `<text x="96" y="${ly}" font-size="12" text-anchor="end" fill="#374151">${label}</text>`;
+                        y += barH + gap;
+                        return text + rect;
+                    }).join('');
+                    const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}"><text x="16" y="20" font-size="14" font-weight="700" fill="#111827">데이터 요약</text>${svgBars}</svg>`;
+                    canvas.replaceWith(htmlToElement(svg));
+                };
+                const renderDonut = (canvas, values, colors, title) => {
+                    const size = Math.min(canvas.clientWidth || 260, canvas.clientHeight || 220);
+                    const cx = Math.floor(size / 2);
+                    const cy = Math.floor(size / 2) + 8;
+                    const r = Math.floor(size * 0.32);
+                    const total = values.reduce((a,b)=>a+b,0) || 1;
+                    let angle = -Math.PI / 2;
+                    const arcs = values.map((v, i) => {
+                        const a2 = angle + (v/total) * Math.PI * 2;
+                        const x1 = cx + r * Math.cos(angle);
+                        const y1 = cy + r * Math.sin(angle);
+                        const x2 = cx + r * Math.cos(a2);
+                        const y2 = cy + r * Math.sin(a2);
+                        const large = (a2 - angle) > Math.PI ? 1 : 0;
+                        const d = `M ${cx} ${cy} L ${x1} ${y1} A ${r} ${r} 0 ${large} 1 ${x2} ${y2} Z`;
+                        angle = a2;
+                        return `<path d="${d}" fill="${colors[i % colors.length]}"/>`;
+                    }).join('');
+                    const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}"><g>${arcs}</g><text x="${cx}" y="${cy}" text-anchor="middle" font-size="12" fill="#1e3a8a">${title||''}</text></svg>`;
+                    canvas.replaceWith(htmlToElement(svg));
+                };
+                const htmlToElement = (html) => { const t = document.createElement('template'); t.innerHTML = html.trim(); return t.content.firstChild; };
+
+                const t = document.getElementById('trendChart');
+                if (t) renderDonut(t, [38.68,25.00,17.45,18.87], ['#3b82f6','#60a5fa','#93c5fd','#e5e7eb'], '요약');
+                const a = document.getElementById('anxietyChart');
+                if (a) renderBar(a, [69,68,62,59,55], ['수기 불신','타인 도용','공유/선물','분실','혜택'], '#f97316');
+                const p = document.getElementById('preferenceChart');
+                if (p) renderDonut(p, [60,16.5,23.5], ['#10b981','#fca5a5','#e5e7eb'], '선호도');
+                const r = document.getElementById('revenueChart');
+                if (r) renderBar(r, [100,105,110,115], ['도입 전','1개월','2개월','3개월'], '#8b5cf6');
+                const roi = document.getElementById('roiChart');
+                if (roi) renderBar(roi, [4.40,2.94,2.20,1.76,1.47], ['10%','15%','20%','25%','30%'], '#2563eb');
+                const s = document.getElementById('starbucksChart');
+                if (s) renderBar(s, [73,79,82], ['2020','2021','2022'], '#00704A');
+            }
 
             // --- Spec Modal Logic ---
             const specLinks = document.querySelectorAll('.spec-link');
@@ -554,103 +802,6 @@
                 });
             });
             
-            new Chart(document.getElementById('trendChart'), {
-                type: 'doughnut',
-                data: { 
-                    labels: ['장부 관리', 'POS 활용', '기타 자동화', '미시행'], 
-                    datasets: [{
-                        data: [38.68, 25.00, 17.45, 18.87], 
-                        backgroundColor: ['#3b82f6', '#60a5fa', '#93c5fd', '#e5e7eb'],
-                        cutout: '60%'
-                    }]
-                },
-                options: { 
-                    responsive: true, 
-                    maintainAspectRatio: false, 
-                    plugins: { 
-                        legend: { position: 'bottom' }, 
-                        title: { display: true, text: '선결제 관리 방식 현황 (212개 매장 조사)' },
-                        centerText: {
-                            text: '시행 중\n81%',
-                            font: 'bold 2rem Pretendard',
-                            color: '#1e3a8a'
-                        }
-                    }
-                },
-                plugins: [centerTextPlugin]
-            });
-
-            new Chart(document.getElementById('anxietyChart'), {
-                type: 'bar',
-                data: {
-                    labels: ['수기 불신', '타인 도용 우려', '공유/선물 기능 부재', '분실 우려', '혜택 부족'],
-                    datasets: [{ data: [69, 68, 62, 59, 55], backgroundColor: '#f97316' }]
-                },
-                options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, title: { display: true, text: '고객들이 수기 선결제를 불안해하는 이유 (%)' } }, scales: { x: { beginAtZero: true, max: 100 } } }
-            });
-
-            new Chart(document.getElementById('preferenceChart'), {
-                type: 'doughnut',
-                data: { labels: ['키오스크 선호', '직원 선호', '무관심'], datasets: [{ data: [60, 16.5, 23.5], backgroundColor: ['#10b981', '#fca5a5', '#e5e7eb'] }] },
-                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom' }, title: { display: true, text: '고객 주문 방식 선호도' } } }
-            });
-
-            new Chart(document.getElementById('revenueChart'), {
-                type: 'line',
-                data: {
-                    labels: ['도입 전', '1개월 후', '2개월 후', '3개월 후'],
-                    datasets: [{ label: '매출', data: [100, 105, 110, 115], borderColor: '#8b5cf6', backgroundColor: 'rgba(139, 92, 246, 0.1)', fill: true, tension: 0.1 }]
-                },
-                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, title: { display: true, text: '선불충전 키오스크 도입 후 매출 변화 (%)' } }, scales: { y: { beginAtZero: false, min: 95 } } }
-            });
-
-            new Chart(document.getElementById('roiChart'), {
-                type: 'bar',
-                data: {
-                    labels: ['10%', '15%', '20%', '25%', '30%'],
-                    datasets: [{
-                        label: '투자 회수기간 (개월)',
-                        data: [4.40, 2.94, 2.20, 1.76, 1.47],
-                        backgroundColor: '#2563eb',
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: { display: false },
-                        title: { display: true, text: '주문·결제 자동화 비중에 따른 투자 회수 기간' }
-                    },
-                    scales: {
-                        y: { beginAtZero: true, title: { display: true, text: '회수 기간 (개월)' } },
-                        x: { title: { display: true, text: '주문·결제 노동 비중 (%)' } }
-                    }
-                }
-            });
-            
-            new Chart(document.getElementById('starbucksChart'), {
-                type: 'bar',
-                data: {
-                    labels: ['2020년', '2021년', '2022년'],
-                    datasets: [{
-                        label: '선수금 비중 (%)',
-                        data: [73, 79, 82],
-                        backgroundColor: '#00704A',
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: { display: false },
-                        title: { display: true, text: '스타벅스 연도별 선수금 발생 비중 (매출 대비)' }
-                    },
-                    scales: {
-                        y: { beginAtZero: false, min: 70, title: { display: true, text: '비중 (%)' } }
-                    }
-                }
-            });
-
             // --- Floating Contact Form Logic (Merged) ---
             const contactFab = document.getElementById('contact-fab');
             const fabContainer = contactFab ? contactFab.closest('.fab-container') : null;
@@ -720,14 +871,14 @@
     <div id="spec-15-modal" class="spec-modal">
         <div class="modal-content">
             <span class="close-button">&times;</span>
-            <img src="./images/main/spec_15kiosk.webp" alt="소규모 카페, 분식집에 적합한 15.6인치 키오스크 상세 스펙">
+            <img src="./images/main/spec_15kiosk.webp" alt="소규모 카페, 분식집에 적합한 15.6인치 키오스크 상세 스펙" loading="lazy" decoding="async">
         </div>
     </div>
 
     <div id="spec-21-modal" class="spec-modal">
         <div class="modal-content">
             <span class="close-button">&times;</span>
-            <img src="./images/main/spec_21kiosk.webp" alt="일반 매장에서 가장 많이 사용하는 21.5인치 키오스크 상세 스펙">
+            <img src="./images/main/spec_21kiosk.webp" alt="일반 매장에서 가장 많이 사용하는 21.5인치 키오스크 상세 스펙" loading="lazy" decoding="async">
         </div>
     </div>
 
