@@ -1,0 +1,17 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.pos.kr"
+        }
+      ],
+      "destination": "https://pos.kr/:path*",
+      "permanent": true
+    }
+  ]
+}
