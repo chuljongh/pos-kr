@@ -13,5 +13,15 @@
       "destination": "https://pos.kr/:path*",
       "permanent": true
     }
+  ],
+  "rewrites": [
+    {
+      "source": "/cafe",
+      "destination": "/cafe/index.html"
+    },
+    {
+      "source": "/hamba",
+      "destination": "/hamba/index.html"
+    }
   ]
 }
