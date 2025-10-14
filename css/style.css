@@ -208,6 +208,7 @@ body {
 }
 .door-icon img {
     width: 120px;
+    height: auto; /* Maintain aspect ratio */
 }
 .left-door .door-icon img {
     transform-origin: left center;
@@ -422,6 +423,15 @@ body {
     .door.hover, .door:hover {
         transform: scale(1.03);
         filter: drop-shadow(0 8px 15px rgba(0, 0, 0, 0.3)) drop-shadow(0 0 6px var(--glow-color));
+    }
+
+    /* Fix for mobile distortion - v3 */
+    .left-door .door-content, .right-door .door-content,
+    .left-door .door-icon img, .right-door .door-icon img {
+        transform: none; /* Remove all 3D rotation/perspective */
+    }
+    .door-icon img {
+        height: auto; /* Maintain aspect ratio to prevent stretching */
     }
 }
 
