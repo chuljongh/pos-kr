@@ -30,7 +30,7 @@
     <link rel="preload" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"></noscript>
     <link rel="icon" href="/cafe/favicon.webp">
-    <link rel="preload" as="image" href="images/main/main_kiosk.webp">
+    <link rel="preload" as="image" href="/cafe/images/main/main_kiosk.webp">
     
     <script type="application/ld+json">
         {
@@ -58,23 +58,11 @@
     </script>
     <style>
         /* Ensure charts have visible dimensions and render reliably */
-        .chart-container { position: relative; width: 100%; min-height: 280px; }
-        .chart-container > canvas { position: absolute; inset: 0; width: 100% !important; height: 100% !important; }
-        /* Keep aspect ratio for doughnut charts to avoid oval distortion on mobile */
-        .chart-keep-aspect { min-height: auto; }
-        .chart-keep-aspect > canvas { position: relative; inset: auto; width: 100% !important; height: auto !important; }
-        /* Modern step icon cards */
-        .step-icon-wrapper { position: relative; width: 112px; height: 112px; margin: 0 auto 1.25rem; border-radius: 1.5rem; background: rgba(31, 41, 55, 0.92); box-shadow: 0 20px 40px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.04); display: flex; align-items: center; justify-content: center; backdrop-filter: blur(2px); }
-        .step-icon-badge { position: absolute; top: -10px; right: -10px; width: 44px; height: 44px; border-radius: 9999px; background: #f97316; color: #fff; font-weight: 800; font-size: 1.25rem; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 20px rgba(249,115,22,0.45); }
-        .step-icon { width: 60px; height: 60px; }
-        @media (min-width: 768px) { .step-icon-wrapper { width: 128px; height: 128px; } .step-icon { width: 72px; height: 72px; } }
-    </style>
-    
-    <!-- Chart.js deferred: loaded on-demand in DOMContentLoaded script -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js" defer onerror="(function(){var s=document.createElement('script');s.src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js';s.defer=true;document.head.appendChild(s);}())"></script>
  
-        <link rel="stylesheet" href="/cafe/css/style.min.css">
-    <link rel="stylesheet" href="/cafe/css/inline-styles.css">
+        <link rel="preload" href="/cafe/css/style.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/cafe/css/style.min.css"></noscript>
+        <link rel="preload" href="/cafe/css/inline-styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/cafe/css/inline-styles.css"></noscript>
 </head>
 <body>
     <!-- Google Tag Manager (noscript) -->
@@ -126,7 +114,7 @@
                             </div>
                             <div class="media-block">
                                 <div style="width: 100%; aspect-ratio: 1/1; border-radius: 1.5rem; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);">
-                                    <img src="/cafe/images/Cafe4_Prepay_wo_Kiosk.webp" alt="수기 장부로 선결제를 관리하는 카페의 불안한 모습" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" decoding="async">
+                                    <img src="/cafe/images/Cafe4_Prepay_wo_Kiosk.webp" alt="수기 장부로 선결제를 관리하는 카페의 불안한 모습" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" decoding="async" width="1200" height="728">
                                 </div>
                             </div>
                         </div>
@@ -206,8 +194,8 @@
                             <div class="media-block">
                                 <div>
                                     <div style="width: 100%; aspect-ratio: 1 / 1; display: flex; gap: 1rem; border-radius: 1.5rem; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);">
-                                        <img src="/cafe/images/main/21inch_kiosk.webp" alt="카페에 설치된 21.5인치 선불충전 키오스크" style="width: 50%; object-fit: cover;" loading="lazy" decoding="async">
-                                        <img src="/cafe/images/main/Kiosk_Display.webp" alt="선불충전 기능이 포함된 키오스크 메인 화면 UI" style="width: 50%; object-fit: cover;" loading="lazy" decoding="async">
+                                        <img src="/cafe/images/main/21inch_kiosk.webp" alt="카페에 설치된 21.5인치 선불충전 키오스크" style="width: 50%; object-fit: cover;" loading="lazy" decoding="async" width="600" height="600">
+                                        <img src="/cafe/images/main/Kiosk_Display.webp" alt="선불충전 기능이 포함된 키오스크 메인 화면 UI" style="width: 50%; object-fit: cover;" loading="lazy" decoding="async" width="570" height="1000">
                                     </div>
                                     <p style="text-align: center; margin-top: 1rem; font-size: 1.6rem; color: #6b7280;">선불충전 키오스크 메인 화면</p>
                                 </div>
@@ -248,17 +236,17 @@
                         </div>
                         <ul class="kiosk-list">
                             <li>
-                                <img src="/cafe/images/main/15inch_kiosk.webp" loading="lazy" alt="소규모 매장에 적합한 15.6인치 탁상형 키오스크" decoding="async">
+                                <img src="/cafe/images/main/15inch_kiosk.webp" loading="lazy" alt="소규모 매장에 적합한 15.6인치 탁상형 키오스크" decoding="async" width="600" height="600">
                                 <div class="sect-text">부담없는 15.6 / 12.5인치 키오스크</div>
                                 <span class="spec-link" data-modal-target="spec-15-modal">스펙보기</span>
                             </li>
                             <li>
-                                <img src="/cafe/images/main/21inch_kiosk.webp" loading="lazy" alt="가장 대중적인 21.5인치 스탠드형 선결제 키오스크" decoding="async">
+                                <img src="/cafe/images/main/21inch_kiosk.webp" loading="lazy" alt="가장 대중적인 21.5인치 스탠드형 선결제 키오스크" decoding="async" width="600" height="600">
                                 <div class="sect-text">익숙하고 편안한 21.5인치 키오스크</div>
                                 <span class="spec-link" data-modal-target="spec-21-modal">스펙보기</span>
                             </li>
                             <li>
-                                <img src="/cafe/images/main/24stand_kiosk.webp" loading="lazy" alt="매장 동선을 자유롭게 구성하는 스탠드형 키오스크" decoding="async">
+                                <img src="/cafe/images/main/24stand_kiosk.webp" loading="lazy" alt="매장 동선을 자유롭게 구성하는 스탠드형 키오스크" decoding="async" width="600" height="600">
                                 <div class="sect-text">동선을 창조하는 스탠드형 키오스크</div>
                                 <span class="spec-link" data-modal-target="guide-modal">어떤 것을 고를지 고민된다면?</span>
                             </li>
@@ -448,12 +436,12 @@
                             <div class="flex flex-row gap-8 justify-center mb-20">
                                 <a href="https://play.google.com/store/apps/details?id=com.Gift.GiftCoin&hl=en&gl=US" target="_blank" rel="noopener" class="inline-block">
                                     <div class="p-0">
-                                        <img src="/hamba/images/play_logo.webp" alt="구글 플레이스토어에서 알뜰결제 사용자 앱 다운로드" class="h-12 object-contain" loading="lazy" decoding="async" />
+                                        <img src="/hamba/images/play_logo.webp" alt="구글 플레이스토어에서 알뜰결제 사용자 앱 다운로드" class="h-12 object-contain" loading="lazy" decoding="async" width="300" height="89" />
                                     </div>
                                 </a>
                                 <a href="https://apps.apple.com/kr/app/giftcoin-%EA%B8%B0%ED%94%84%ED%8A%B8%EC%BD%94%EC%9D%B8-%EA%B8%80%ED%94%84%ED%8A%B8%EC%B9%B4%EB%93%9C%EA%B0%80-%EC%82%B4%EC%95%84%EB%82%9C%EB%8B%A4/id1605569286" target="_blank" rel="noopener" class="inline-block">
                                     <div class="p-0">
-                                        <img src="/hamba/images/apple_logo.webp" alt="애플 앱스토어에서 알뜰결제 사용자 앱 다운로드" class="h-12 object-contain" loading="lazy" decoding="async" />
+                                        <img src="/hamba/images/apple_logo.webp" alt="애플 앱스토어에서 알뜰결제 사용자 앱 다운로드" class="h-12 object-contain" loading="lazy" decoding="async" width="300" height="89" />
                                     </div>
                                 </a>
                             </div>
@@ -477,14 +465,14 @@
     <div id="spec-15-modal" class="spec-modal">
         <div class="modal-content">
             <span class="close-button">&times;</span>
-            <img src="/cafe/images/main/spec_15kiosk.webp" alt="소규모 카페, 분식집에 적합한 15.6인치 키오스크 상세 스펙" loading="lazy" decoding="async">
+            <img src="/cafe/images/main/spec_15kiosk.webp" alt="소규모 카페, 분식집에 적합한 15.6인치 키오스크 상세 스펙" loading="lazy" decoding="async" width="1200" height="2373">
         </div>
     </div>
 
     <div id="spec-21-modal" class="spec-modal">
         <div class="modal-content">
             <span class="close-button">&times;</span>
-            <img src="/cafe/images/main/spec_21kiosk.webp" alt="일반 매장에서 가장 많이 사용하는 21.5인치 키오스크 상세 스펙" loading="lazy" decoding="async">
+            <img src="/cafe/images/main/spec_21kiosk.webp" alt="일반 매장에서 가장 많이 사용하는 21.5인치 키오스크 상세 스펙" loading="lazy" decoding="async" width="1200" height="1653">
         </div>
     </div>
 

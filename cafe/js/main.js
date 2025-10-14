@@ -1,4 +1,4 @@
-        document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
             // --- Hero Slideshow ---
             const slides = document.querySelectorAll('.hero-slides .slide');
             let currentSlide = 0;
@@ -58,7 +58,7 @@
                         link.classList.remove('active');
                         if (link.dataset.section === currentSectionId) { 
                             link.classList.add('active'); 
-                        }
+                        } 
                     });
                 }, { rootMargin: '-40% 0px -60% 0px', threshold: 0 });
                 sections.forEach(section => observer.observe(section));
@@ -71,8 +71,7 @@
                 form.addEventListener('submit', function(e) {
                     e.preventDefault();
                     const googleFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSdqmH1RDQI52jLq3UM0QWJB6h0uYYyxXPVBJpCIg3OO7ERmuA/formResponse';
-                    const formData = new FormData(form);
-                    fetch(googleFormUrl, { method: 'POST', body: formData, mode: 'no-cors' })
+                    fetch(googleFormUrl, { method: 'POST', body: new FormData(form), mode: 'no-cors' })
                     .then(() => {
                         popup.classList.remove('opacity-0');
                         setTimeout(() => { popup.classList.add('opacity-0'); form.reset(); }, 2500);
@@ -356,10 +355,9 @@
                 quickForm.addEventListener('submit', (e) => {
                     e.preventDefault();
                     const googleFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSdGJxpukW1B3Z92n2UuTMmn8fur9rvG80AVOKBdNh_6dM468w/formResponse';
-                    const formData = new FormData(quickForm);
                     fetch(googleFormUrl, {
                         method: 'POST',
-                        body: formData,
+                        body: new FormData(quickForm),
                         mode: 'no-cors'
                     }).catch(error => console.error('Error submitting to Google Form:', error));
                     quickForm.classList.remove('is-visible');
