@@ -274,7 +274,7 @@
             overflow-y: auto;
             padding: 1rem 2rem;
         }
-        .guide-content .guide-title {
+        .guide-content h1 {
             font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 1.5rem;

@@ -3,21 +3,27 @@
             const slides = document.querySelectorAll('.hero-slides .slide');
             let currentSlide = 0;
             const isMobile = window.matchMedia('(max-width: 768px)').matches;
+
             function applySlideBgIfNeeded(el) {
                 const dataBg = el && el.getAttribute('data-bg');
                 if (dataBg && !el.style.backgroundImage) {
                     el.style.backgroundImage = `url('${dataBg}')`;
                 }
             }
-            // Ensure first two slides have background on mobile to avoid blank during quick transition
-            if (isMobile && slides.length > 1) {
-                applySlideBgIfNeeded(slides[1]);
-            }
-            if (slides.length > 0) {
+
+            // On mobile, do nothing. Only the first static slide will be shown.
+            // On desktop, run the slideshow.
+            if (!isMobile && slides.length > 0) {
+                // Preload the second slide image immediately for a smoother first transition
+                if (slides.length > 1) {
+                    applySlideBgIfNeeded(slides[1]);
+                }
+
                 setInterval(() => {
                     // Preload next slide bg just-in-time
                     const nextIndex = (currentSlide + 1) % slides.length;
                     applySlideBgIfNeeded(slides[nextIndex]);
+
                     slides[currentSlide].classList.remove('active');
                     currentSlide = nextIndex;
                     slides[currentSlide].classList.add('active');
