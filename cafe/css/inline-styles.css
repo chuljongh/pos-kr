@@ -3,7 +3,6 @@
             --primary-color-cafe: #2563eb; /* A consistent, modern blue */
             --primary-color-hamba: #2ecc71; /* Green for 'call' action only */
         }
-        section h1 { font-size: inherit; }
         /* --- Base & Font Settings --- */
         html { 
             scroll-behavior: smooth; 
