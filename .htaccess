@@ -3,9 +3,12 @@ RewriteEngine On
 RewriteCond %{HTTP_HOST} ^www\.giftcoin\.kr [NC]
 RewriteRule ^(.*)$ https://giftcoin.kr/$1 [L,R=301]
 
-# .html 확장자 숨기기
-RewriteCond %{THE_REQUEST} /([^.]+)\.html [NC]
-RewriteRule ^ /%1 [NC,L,R=301]
+# .html 확장자를 URL에서 제거 (301 리디렉션)
+RewriteCond %{THE_REQUEST} \s/+(.+?)\.html[\s?] [NC]
+RewriteRule ^ /%1 [R=301,L]
 
+# .html 확장자 없이도 파일에 접근할 수 있도록 내부적으로 재작성
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME}.html -f
-RewriteRule ^ %{REQUEST_URI}.html [NC,L]
+RewriteRule ^(.+)$ /$1.html [L]
