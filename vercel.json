@@ -23,16 +23,5 @@
       "source": "/hamba",
       "destination": "/hamba/index.html"
     }
-  ],
-  "headers": [
-    {
-      "source": "/(.*)\.(ico|svg|jpg|jpeg|png|gif|webp|js|css|woff|woff2|eot|ttf|otf)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=2592000, must-revalidate"
-        }
-      ]
-    }
   ]
 }
