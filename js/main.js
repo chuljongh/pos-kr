@@ -7,44 +7,22 @@
                             // --- Click Event for Animation ---
 
                             door.addEventListener('click', function(e) {
-
                                 e.preventDefault();
-
-                                
+                                const destination = this.href;
 
                                 if (body.classList.contains('opening-left') || body.classList.contains('opening-right')) return;
 
-            
-                                door.addEventListener('animationend', () => {
-                                    window.location.href = door.href;
-                                }, { once: true });
+                                if (this.classList.contains('left-door')) {
+                                    body.classList.add('opening-left');
+                                    this.style.animation = 'openLeft var(--animation-duration) ease-in forwards';
+                                } else {
+                                    body.classList.add('opening-right');
+                                    this.style.animation = 'openRight var(--animation-duration) ease-in forwards';
+                                }
 
-                                                                        if (this.classList.contains('left-door')) {
-
-            
-
-                                                                            body.classList.add('opening-left');
-
-            
-
-                                                                            this.style.animation = 'openLeft var(--animation-duration) ease-in forwards';
-
-            
-
-                                                                        } else {
-
-            
-
-                                                                            body.classList.add('opening-right');
-
-            
-
-                                                                            this.style.animation = 'openRight var(--animation-duration) ease-in forwards';
-
-            
-
-                                                                        }
-
+                                setTimeout(() => {
+                                    window.location.href = destination + 'index.html';
+                                }, 400); // Match --animation-duration
                             });
 
             
