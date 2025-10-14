@@ -48,7 +48,8 @@
         ]
         }
     </script>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="preload" href="css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/style.css"></noscript>
 </head>
 <body>
     <!-- Google Tag Manager (noscript) -->
@@ -68,9 +69,9 @@
     <main class="perspective-container">
         <a href="cafe/" class="door left-door" data-direction="left">
                 <div class="door-content">
-                                    <div class="door-icon">
-                                        <img src="images/kiosk.webp" alt="카페, 분식집 키오스크" loading="lazy" decoding="async">
-                                    </div>                    <div class="door-text">
+                                                                    <div class="door-icon">
+                                                                        <img src="images/kiosk.webp" alt="카페, 분식집 키오스크" loading="lazy" decoding="async" width="480" height="1000">
+                                                                    </div>                    <div class="door-text">
                         <h2 id="cafe-title">카페·분식집</h2>
                         <p>선결제 자동화로 매출 15%↑</p>
                     </div>
@@ -78,9 +79,9 @@
         </a>
         <a href="hamba/" class="door right-door" data-direction="right">
                 <div class="door-content">
-                                    <div class="door-icon">
-                                        <img src="images/scanner.webp" alt="구내식당, 함바집 QR 스캐너" loading="lazy" decoding="async">
-                                    </div>                    <div class="door-text">
+                                                                    <div class="door-icon">
+                                                                        <img src="images/scanner.webp" alt="구내식당, 함바집 QR 스캐너" loading="lazy" decoding="async" width="480" height="1000">
+                                                                    </div>                    <div class="door-text">
                         <h2 id="hamba-title">구내식당·함바</h2>
                         <p>로스율 0% 모바일 식권</p>
                     </div>
