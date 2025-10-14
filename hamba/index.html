@@ -24,20 +24,7 @@
     <link rel="preload" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"></noscript>
 
-        <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              primary: '#2563eb',
-              'primary-darker': '#1d4ed8',
-              accent: '#10b981',
-            }
-          }
-        }
-      }
-    </script>
+    <link rel="stylesheet" href="output.css">
 </head>
 <body class="bg-gray-50">
     <!-- Google Tag Manager (noscript) -->
@@ -46,7 +33,7 @@
     <!-- End Google Tag Manager (noscript) -->
     <!-- Mobile Hamburger Menu -->
     <div class="lg:hidden fixed top-6 right-6 z-50">
-        <button id="menu-toggle" class="relative w-5 h-4">
+        <button id="menu-toggle" class="relative w-5 h-4" aria-label="메뉴 열기">
             <span class="block absolute w-full h-0.5 bg-white rounded-full transition-all duration-300 ease-in-out top-0"></span>
             <span class="block absolute w-full h-0.5 bg-white rounded-full transition-all duration-300 ease-in-out top-1/2 -translate-y-1/2"></span>
             <span class="block absolute w-full h-0.5 bg-white rounded-full transition-all duration-300 ease-in-out bottom-0"></span>
@@ -824,6 +811,7 @@
                                    placeholder="전화번호 또는 이메일을 입력해요">
                         </div>
                         <div>
+                            <label for="form-source" class="sr-only">알게 된 경로</label>
                             <select id="form-source" name="entry.1481663789" required
                                     class="w-full p-4 bg-gray-800 rounded-xl border border-gray-700 focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition-all duration-300 text-lg">
                                 <option value="" disabled selected>저희 페이지를 알게 된 경로(선택)</option>
@@ -900,7 +888,7 @@
     </a>
     
     <!-- 플로팅 전화 버튼 -->
-    <a href="tel:010-5415-4415" 
+    <a href="tel:010-5415-4415" aria-label="전화 걸기" 
        class="fixed bottom-8 right-8 bg-accent text-white p-5 rounded-full shadow-2xl z-50 
               hover:bg-emerald-600 hover:scale-110 transition-transform duration-300 ease-in-out">
         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
