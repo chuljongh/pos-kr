@@ -209,6 +209,7 @@ body {
 .door-icon img {
     width: 120px;
     height: auto; /* Maintain aspect ratio */
+    aspect-ratio: 480 / 1000;
 }
 .left-door .door-icon img {
     transform-origin: left center;
