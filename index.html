@@ -692,6 +692,7 @@ body {
                         
                         const googleFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSdGJxpukW1B3Z92n2UuTMmn8fur9rvG80AVOKBdNh_6dM468w/formResponse';
                         const formData = new FormData(quickForm);
+                        formData.set(phoneInput.name, '010-' + phoneInput.value);
         
                         fetch(googleFormUrl, {
                             method: 'POST',
