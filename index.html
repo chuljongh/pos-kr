@@ -691,12 +691,13 @@ body {
                         e.preventDefault();
                         
                         const googleFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSdGJxpukW1B3Z92n2UuTMmn8fur9rvG80AVOKBdNh_6dM468w/formResponse';
-                        const formData = new FormData(quickForm);
-                        formData.set(phoneInput.name, '010-' + phoneInput.value);
-        
+                        
+                        const params = new URLSearchParams();
+                        params.append(phoneInput.name, '010-' + phoneInput.value);
+
                         fetch(googleFormUrl, {
                             method: 'POST',
-                            body: formData,
+                            body: params,
                             mode: 'no-cors'
                         }).catch(error => console.error('Error submitting to Google Form:', error));
         
