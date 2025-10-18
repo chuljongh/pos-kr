@@ -70,9 +70,25 @@
             if(form && popup) {
                 form.addEventListener('submit', function(e) {
                     e.preventDefault();
+                    
                     const googleFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSdqmH1RDQI52jLq3UM0QWJB6h0uYYyxXPVBJpCIg3OO7ERmuA/formResponse';
-                    const formData = new FormData(form);
-                    fetch(googleFormUrl, { method: 'POST', body: formData, mode: 'no-cors' })
+                    
+                    // Manually construct the data string
+                    const formData = new URLSearchParams();
+                    for (const element of form.elements) {
+                        if (element.name) {
+                            formData.append(element.name, element.value);
+                        }
+                    }
+
+                    fetch(googleFormUrl, {
+                        method: 'POST',
+                        body: formData,
+                        mode: 'no-cors',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        }
+                    })
                     .then(() => {
                         popup.classList.remove('opacity-0');
                         setTimeout(() => { popup.classList.add('opacity-0'); form.reset(); }, 2500);
