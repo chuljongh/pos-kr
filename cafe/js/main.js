@@ -356,12 +356,18 @@
                 quickForm.addEventListener('submit', (e) => {
                     e.preventDefault();
                     const googleFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSdGJxpukW1B3Z92n2UuTMmn8fur9rvG80AVOKBdNh_6dM468w/formResponse';
-                    const formData = new FormData(quickForm);
+                    
+                    const formData = new URLSearchParams();
+                    const phoneValue = phoneInput ? '010-' + phoneInput.value : '';
+                    const phoneEntry = phoneInput ? phoneInput.name : 'entry.587577130';
+                    formData.append(phoneEntry, phoneValue);
+
                     fetch(googleFormUrl, {
                         method: 'POST',
                         body: formData,
                         mode: 'no-cors'
                     }).catch(error => console.error('Error submitting to Google Form:', error));
+                    
                     quickForm.classList.remove('is-visible');
                     quickForm.classList.add('is-hidden');
                     successMessage.classList.add('is-visible');
