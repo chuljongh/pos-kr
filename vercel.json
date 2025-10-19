@@ -3,6 +3,16 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/cafe/kiosk-solution.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/cafe/kiosk-solution",
+      "destination": "/",
+      "permanent": true
+    },
+    {
       "source": "/:path*",
       "has": [
         {
