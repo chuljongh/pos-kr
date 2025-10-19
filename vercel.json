@@ -3,8 +3,8 @@
   "trailingSlash": false,
   "redirects": [
     {
-      "source": "/cafe/kiosk-solution.html", // 👈 새로 없어진 페이지 주소
-      "destination": "/", // 👈 메인 페이지 (pos.kr/)로 영구히 안내
+      "source": "/cafe/kiosk-solution.html",
+      "destination": "/",
       "permanent": true
     },
     {
