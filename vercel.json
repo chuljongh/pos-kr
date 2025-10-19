@@ -8,6 +8,11 @@
       "permanent": true
     },
     {
+      "source": "/cafe/kiosk-solution",
+      "destination": "/",
+      "permanent": true
+    },
+    {
       "source": "/:path*",
       "has": [
         {
