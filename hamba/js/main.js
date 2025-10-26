@@ -1,15 +1,24 @@
         function toggleFloatingBtn() {
-            const btn = document.getElementById('floatingConsultBtn');
-            const contactSection = document.getElementById('contact');
-            if (!btn || !contactSection) return;
-            
-            const rect = contactSection.getBoundingClientRect();
-            const isInContact = rect.top <= window.innerHeight && rect.bottom >= 0;
-            
-            if (isInContact) {
-                btn.classList.add('hidden');
+            const consultBtn = document.getElementById('floatingConsultBtn');
+            if (!consultBtn) return;
+
+            // 1. 숨기고 싶은 섹션 ID들을 목록으로 관리합니다.
+            const sectionsToHideIn = ['features', 'use-cases', 'contact'];
+
+            // 2. 목록의 섹션 중 하나라도 화면에 보이는지 확인합니다.
+            const shouldHide = sectionsToHideIn.some(id => {
+                const section = document.getElementById(id);
+                if (!section) return false;
+                const rect = section.getBoundingClientRect();
+                // 화면에 보이는지 확인하는 조건
+                return rect.top < window.innerHeight && rect.bottom >= 0;
+            });
+
+            // 3. 결과에 따라 버튼을 숨기거나 표시합니다.
+            if (shouldHide) {
+                consultBtn.classList.add('hidden');
             } else {
-                btn.classList.remove('hidden');
+                consultBtn.classList.remove('hidden');
             }
         }
 
