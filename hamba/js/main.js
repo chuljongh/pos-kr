@@ -1,12 +1,12 @@
         function toggleFloatingBtn() {
             const btn = document.getElementById('floatingConsultBtn');
-            const contactSection = document.getElementById('contact');
-            if (!btn || !contactSection) return;
+            const featuresSection = document.getElementById('features');
+            if (!btn || !featuresSection) return;
             
-            const rect = contactSection.getBoundingClientRect();
-            const isInContact = rect.top <= window.innerHeight && rect.bottom >= 0;
+            const rect = featuresSection.getBoundingClientRect();
+            const isInFeatures = rect.top <= window.innerHeight && rect.bottom >= 0;
             
-            if (isInContact) {
+            if (isInFeatures) {
                 btn.classList.add('hidden');
             } else {
                 btn.classList.remove('hidden');
