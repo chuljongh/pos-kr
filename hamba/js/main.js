@@ -2,15 +2,18 @@
             const btn = document.getElementById('floatingConsultBtn');
             const featuresSection = document.getElementById('features');
             const useCasesSection = document.getElementById('use-cases');
-            if (!btn || !featuresSection || !useCasesSection) return;
+            const contactSection = document.getElementById('contact');
+            if (!btn || !featuresSection || !useCasesSection || !contactSection) return;
             
             const featuresRect = featuresSection.getBoundingClientRect();
             const useCasesRect = useCasesSection.getBoundingClientRect();
+            const contactRect = contactSection.getBoundingClientRect();
 
             const isInFeatures = featuresRect.top <= window.innerHeight && featuresRect.bottom >= 0;
             const isInUseCases = useCasesRect.top <= window.innerHeight && useCasesRect.bottom >= 0;
+            const isInContact = contactRect.top <= window.innerHeight && contactRect.bottom >= 0;
             
-            if (isInFeatures || isInUseCases) {
+            if (isInFeatures || isInUseCases || isInContact) {
                 btn.classList.add('hidden');
             } else {
                 btn.classList.remove('hidden');
