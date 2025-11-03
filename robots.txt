@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /hamba/
+Disallow: /cafe/
 
 Sitemap: https://pos.kr/sitemap.xml
