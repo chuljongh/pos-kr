@@ -3,6 +3,33 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/hamba/:path*",
+      "destination": "/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/cafe/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "pos.kr"
+        }
+      ],
+      "destination": "https://cafe.pos.kr/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/cafe",
+      "has": [
+        {
+          "type": "host",
+          "value": "pos.kr"
+        }
+      ],
+      "destination": "https://cafe.pos.kr",
+      "permanent": true
+    },
+    {
       "source": "/cafe/kiosk-solution.html",
       "destination": "/",
       "permanent": true
@@ -26,12 +53,18 @@
   ],
   "rewrites": [
     {
-      "source": "/cafe",
-      "destination": "/cafe/index.html"
+      "source": "/",
+      "destination": "/hamba/index.html"
     },
     {
-      "source": "/hamba",
-      "destination": "/hamba/index.html"
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "cafe.pos.kr"
+        }
+      ],
+      "destination": "/cafe/:path*"
     }
   ]
 }
