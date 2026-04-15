@@ -8,6 +8,11 @@
       "permanent": true
     },
     {
+      "source": "/hamba",
+      "destination": "/",
+      "permanent": true
+    },
+    {
       "source": "/cafe/:path*",
       "has": [
         {
@@ -71,16 +76,6 @@
         }
       ],
       "destination": "/cafe/:path+"
-    },
-    {
-      "source": "/",
-      "has": [
-        {
-          "type": "host",
-          "value": "pos.kr"
-        }
-      ],
-      "destination": "/hamba/index.html"
     }
   ]
 }
