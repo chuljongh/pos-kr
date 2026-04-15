@@ -54,17 +54,33 @@
   "rewrites": [
     {
       "source": "/",
-      "destination": "/hamba/index.html"
-    },
-    {
-      "source": "/:path*",
       "has": [
         {
           "type": "host",
           "value": "cafe.pos.kr"
         }
       ],
-      "destination": "/cafe/:path*"
+      "destination": "/cafe/index.html"
+    },
+    {
+      "source": "/:path+",
+      "has": [
+        {
+          "type": "host",
+          "value": "cafe.pos.kr"
+        }
+      ],
+      "destination": "/cafe/:path+"
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "pos.kr"
+        }
+      ],
+      "destination": "/hamba/index.html"
     }
   ]
 }
