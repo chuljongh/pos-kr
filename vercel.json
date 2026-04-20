@@ -8,18 +8,8 @@
       "permanent": true
     },
     {
-      "source": "/cafe/kiosk-solution.html",
-      "destination": "https://cafe.pos.kr",
-      "permanent": true
-    },
-    {
-      "source": "/cafe/kiosk-solution",
-      "destination": "https://cafe.pos.kr",
-      "permanent": true
-    },
-    {
       "source": "/cafe/:path*",
-      "destination": "https://cafe.pos.kr/:path*",
+      "destination": "https://cafe.pos.kr",
       "permanent": true
     },
     {
