@@ -1,0 +1,38 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git add:*)",
+      "Bash(git commit -m ':*)",
+      "Bash(git push:*)",
+      "Bash(git config:*)",
+      "WebFetch(domain:pos.kr)",
+      "Bash(curl -sI https://pos.kr/privacy)",
+      "Bash(curl -sI https://pos.kr/privacy.html)",
+      "Bash(curl -sI https://pos.kr/terms.html)",
+      "Bash(curl -sI https://pos.kr/)",
+      "Bash(curl -sI https://cafe.pos.kr/)",
+      "Bash(curl -sI https://pos.kr/cafe/)",
+      "Bash(curl -sI https://www.pos.kr/)",
+      "Bash(curl -sI https://pos.kr/hamba)",
+      "Bash(curl -sIL https://pos.kr/cafe/)",
+      "Bash(curl -sIL https://pos.kr/cafe/kiosk-solution)",
+      "Bash(curl -sIL https://pos.kr/cafe/kiosk-solution.html)",
+      "Bash(curl -sIL https://pos.kr/hamba/)",
+      "Bash(curl -sIL https://pos.kr/hamba)",
+      "Bash(curl -sIL https://pos.kr/terms)",
+      "Bash(curl -sIL https://pos.kr/privacy)",
+      "Bash(curl -sIL https://cafe.pos.kr/terms)",
+      "Bash(curl -sIL https://cafe.pos.kr/privacy)",
+      "Bash(curl -sIL \"https://pos.kr/terms.html\")",
+      "Bash(curl -sIL \"https://pos.kr/privacy.html\")",
+      "Bash(curl -sI https://pos.kr/hamba/output.css)",
+      "Bash(curl -sIL https://pos.kr/hamba/index.html)",
+      "Bash(curl -sIL https://pos.kr/hamba/index)",
+      "Bash(curl -sIL https://cafe.pos.kr/kiosk-solution)",
+      "Bash(curl -sIL https://pos.kr/cafe/service.html)",
+      "Bash(git commit -m ' *)",
+      "Bash(curl -sIL https://pos.kr/terms.html)",
+      "Bash(curl -s https://pos.kr/privacy)"
+    ]
+  }
+}
