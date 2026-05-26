@@ -36,7 +36,7 @@
             href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
     </noscript>
 
-    <link rel="stylesheet" href="/hamba/output.css">
+    <link rel="stylesheet" href="css/index_B.css">
 </head>
 
 <body class="bg-gray-50">
@@ -85,45 +85,9 @@
         </div>
     </div>
 
-    <!-- 우측 플로팅 네비게이션 (데스크탑) -->
-    <nav id="page-nav" class="fixed top-1/2 right-8 transform -translate-y-1/2 z-40 hidden lg:block">
-        <ul class="space-y-2">
-            <li><a href="#features"
-                    class="nav-link text-gray-500 hover:text-primary font-semibold transition-colors duration-300 flex items-center justify-end gap-3"
-                    data-section="features"><span>도입 이유</span>
-                    <div class="w-2 h-2 rounded-full bg-gray-400 transition-all duration-300"></div>
-                </a></li>
-            <li><a href="#use-cases"
-                    class="nav-link text-gray-500 hover:text-primary font-semibold transition-colors duration-300 flex items-center justify-end gap-3"
-                    data-section="use-cases"><span>구현 사례</span>
-                    <div class="w-2 h-2 rounded-full bg-gray-400 transition-all duration-300"></div>
-                </a></li>
-            <li><a href="#support"
-                    class="nav-link text-gray-500 hover:text-primary font-semibold transition-colors duration-300 flex items-center justify-end gap-3"
-                    data-section="support"><span>역할과 지원</span>
-                    <div class="w-2 h-2 rounded-full bg-gray-400 transition-all duration-300"></div>
-                </a></li>
-            <li><a href="#how-to"
-                    class="nav-link text-gray-500 hover:text-primary font-semibold transition-colors duration-300 flex items-center justify-end gap-3"
-                    data-section="how-to"><span>사용 방법</span>
-                    <div class="w-2 h-2 rounded-full bg-gray-400 transition-all duration-300"></div>
-                </a></li>
-            <li><a href="#faq"
-                    class="nav-link text-gray-500 hover:text-primary font-semibold transition-colors duration-300 flex items-center justify-end gap-3"
-                    data-section="faq"><span>FAQ</span>
-                    <div class="w-2 h-2 rounded-full bg-gray-400 transition-all duration-300"></div>
-                </a></li>
-            <li><a href="#contact"
-                    class="nav-link text-gray-500 hover:text-primary font-semibold transition-colors duration-300 flex items-center justify-end gap-3"
-                    data-section="contact"><span>무료 문의</span>
-                    <div class="w-2 h-2 rounded-full bg-gray-400 transition-all duration-300"></div>
-                </a></li>
-        </ul>
-    </nav>
-
     <!-- 히어로 섹션 -->
     <section
-        class="bg-gray-900 py-40 px-4 relative overflow-hidden bg-[url('images/main.webp')] bg-no-repeat bg-cover bg-left md:bg-center bg-fixed">
+        class="bg-gray-900 py-40 px-4 relative overflow-hidden bg-[url('../hamba/images/main.webp')] bg-no-repeat bg-cover bg-left md:bg-center bg-fixed">
         <!-- 배경 패턴 -->
         <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=" 60" height="60" viewBox="0 0 60"
             xmlns="http://www.w3.org/2000/svg" %3E%3Cg fill="none" fill-rule="evenodd" %3E%3Cg fill="%23ffffff"
@@ -132,15 +96,22 @@
 
         <div class="max-w-6xl mx-auto text-center relative z-10">
             <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white mb-12 leading-tight">
-                모바일 <span class="text-blue-400">식수관리시스템</span>, <br class="hidden sm:block"> <strong>카드·리더기·PC
+                모바일 <span class="text-primary">식수관리시스템</span>, <br class="hidden sm:block"> <strong>카드·리더기·PC
                     0원</strong>에
                 즉시 시작!
             </h1>
             <p class="text-xl md:text-2xl text-gray-300 mb-20 max-w-6xl mx-auto leading-relaxed font-medium">
                 <strong>구내식당·함바집 식수관리</strong>시스템 구축은<br><strong>플라스틱(RFID)카드, 리더기 및 PC 구입</strong>없이 바로 시작하세요.
             </p>
-            <!-- 레이아웃 높이 유지를 위한 공간 -->
-            <div class="h-24"></div>
+            <!-- CTA (PAYCO 차용: 레드 주 버튼 + 블루 아웃라인 보조 버튼) -->
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#contact"
+                    class="inline-flex items-center justify-center px-10 py-5 rounded-btn bg-primary hover:bg-primary-darker text-white font-extrabold text-lg tracking-basek shadow-card transition-colors">
+                    무료 도입 상담</a>
+                <a href="#features"
+                    class="inline-flex items-center justify-center px-8 py-5 rounded-btn font-bold text-lg text-white border border-white/40 hover:bg-white/10 transition-colors">
+                    기능 살펴보기</a>
+            </div>
         </div>
     </section>
 
@@ -148,7 +119,7 @@
     <section class="bg-gray-800 py-20 px-4 relative z-20">
         <div class="max-w-7xl mx-auto text-center">
             <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-12 leading-tight animate-fade-in">
-                혹시, <span class="text-yellow-300">이런 문제</span>로 골치 아프신가요?
+                혹시, <span class="text-primary">이런 문제</span>로 골치 아프신가요?
             </h2>
             <div class="grid md:grid-cols-3 gap-8">
                 <div class="bg-gray-700 p-8 rounded-2xl border border-gray-600 shadow-lg animate-slide-up">
@@ -175,21 +146,21 @@
             <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-16 leading-tight animate-fade-in">
                 사장님의 <span class="text-primary">모든 고민</span>, 저희가 해결해 드립니다!
             </h2>
-            <div class="grid md:grid-cols-3 gap-8 text-center">
-                <div class="animate-slide-up">
-                    <h3 class="text-5xl md:text-6xl font-extrabold text-primary mb-4">0<span
+            <div class="grid md:grid-cols-3 gap-6 text-center">
+                <div class="bg-primary rounded-card shadow-card px-8 py-10 animate-slide-up">
+                    <h3 class="text-5xl md:text-6xl font-extrabold text-white tracking-tightk leading-none mb-3">0<span
                             class="text-4xl md:text-5xl font-semibold">원</span></h3>
-                    <p class="text-xl text-gray-300 font-bold">플라스틱카드/리더기/PC 구입비</p>
+                    <p class="text-lg text-white font-bold opacity-90">플라스틱카드/리더기/PC 구입비</p>
                 </div>
-                <div class="animate-slide-up" style="animation-delay: 0.2s;">
-                    <h3 class="text-5xl md:text-6xl font-extrabold text-primary mb-4">0<span
+                <div class="bg-primary rounded-card shadow-card px-8 py-10 animate-slide-up" style="animation-delay: 0.2s;">
+                    <h3 class="text-5xl md:text-6xl font-extrabold text-white tracking-tightk leading-none mb-3">0<span
                             class="text-4xl md:text-5xl font-semibold">%</span></h3>
-                    <p class="text-xl text-gray-300 font-bold">양방향 모바일로 부정식수 원천차단</p>
+                    <p class="text-lg text-white font-bold opacity-90">양방향 모바일로 부정식수 원천차단</p>
                 </div>
-                <div class="animate-slide-up" style="animation-delay: 0.4s;">
-                    <h3 class="text-5xl md:text-6xl font-extrabold text-primary mb-4">1<span
+                <div class="bg-primary rounded-card shadow-card px-8 py-10 animate-slide-up" style="animation-delay: 0.4s;">
+                    <h3 class="text-5xl md:text-6xl font-extrabold text-white tracking-tightk leading-none mb-3">1<span
                             class="text-4xl md:text-5xl font-semibold">분</span></h3>
-                    <p class="text-xl text-gray-300 font-bold">월말 대금 청구 시간 단축</p>
+                    <p class="text-lg text-white font-bold opacity-90">월말 대금 청구 시간 단축</p>
                 </div>
             </div>
         </div>
@@ -211,7 +182,7 @@
                     전환하세요.
                 </p>
             </div>
-            <div class="max-w-4xl mx-auto mb-16 space-y-8 text-center">
+            <div class="max-w-7xl mx-auto mb-16 space-y-8 text-center">
                 <h3 class="text-3xl font-extrabold text-gray-900 border-b-4 border-primary pb-2 inline-block px-6">
                     ① 2~4백만원 짜리 <strong>아날로그 식권 시스템</strong>을 만드는 낭비를 없애줘요. (경제성)
                 </h3>
@@ -232,7 +203,7 @@
                                 <th class="px-8 py-6 text-left text-xl font-extrabold text-gray-800 w-1/4">비교 항목 (사장님의
                                     고민)</th>
                                 <th
-                                    class="px-8 py-6 text-left text-xl font-extrabold text-primary bg-blue-100 border-l border-r border-blue-200 w-1/3">
+                                    class="px-8 py-6 text-left text-xl font-extrabold text-primary bg-primary-light border-l border-r border-primary/20 w-1/3">
                                     국내 유일 모바일 QR 식수관리 솔루션</th>
                                 <th class="px-8 py-6 text-left text-xl font-extrabold text-gray-600 w-1/3">RFID/바코드
                                     시스템 (기존 방식)</th>
@@ -244,7 +215,7 @@
                                 <td class="px-8 py-6 font-bold text-lg text-gray-900 align-top"><span
                                         class="text-3xl mr-3">💰</span>초기 도입 비용</td>
                                 <td
-                                    class="px-8 py-6 text-lg text-gray-700 bg-blue-100 border-l border-r border-blue-200">
+                                    class="px-8 py-6 text-lg text-gray-700 bg-primary-light border-l border-r border-primary/20">
                                     <div class="flex items-start gap-3">
                                         <svg class="w-8 h-8 text-primary flex-shrink-0" fill="none"
                                             stroke="currentColor" viewBox="0 0 24 24">
@@ -277,7 +248,7 @@
                                 <td class="px-8 py-6 font-bold text-lg text-gray-900 align-top"><span
                                         class="text-3xl mr-3">🧾</span>배포·분실 등 운영</td>
                                 <td
-                                    class="px-8 py-6 text-lg text-gray-700 bg-blue-100 border-l border-r border-blue-200">
+                                    class="px-8 py-6 text-lg text-gray-700 bg-primary-light border-l border-r border-primary/20">
                                     <div class="flex items-start gap-3">
                                         <svg class="w-8 h-8 text-primary flex-shrink-0" fill="none"
                                             stroke="currentColor" viewBox="0 0 24 24">
@@ -309,7 +280,7 @@
                                 <td class="px-8 py-6 font-bold text-lg text-gray-900 align-top"><span
                                         class="text-3xl mr-3">🛡️</span>청구 누수 방지</td>
                                 <td
-                                    class="px-8 py-6 text-lg text-gray-700 bg-blue-100 border-l border-r border-blue-200">
+                                    class="px-8 py-6 text-lg text-gray-700 bg-primary-light border-l border-r border-primary/20">
                                     <div class="flex items-start gap-3">
                                         <svg class="w-8 h-8 text-primary flex-shrink-0" fill="none"
                                             stroke="currentColor" viewBox="0 0 24 24">
@@ -341,7 +312,7 @@
                                 <td class="px-8 py-6 font-bold text-lg text-gray-900 align-top"><span
                                         class="text-3xl mr-3">📄</span>현장 직원 요구 수용</td>
                                 <td
-                                    class="px-8 py-6 text-lg text-gray-700 bg-blue-100 border-l border-r border-blue-200">
+                                    class="px-8 py-6 text-lg text-gray-700 bg-primary-light border-l border-r border-primary/20">
                                     <div class="flex items-start gap-3">
                                         <svg class="w-8 h-8 text-primary flex-shrink-0" fill="none"
                                             stroke="currentColor" viewBox="0 0 24 24">
@@ -373,7 +344,7 @@
                                 <td class="px-8 py-6 font-bold text-lg text-gray-900 align-top"><span
                                         class="text-3xl mr-3">🏗️</span>팀 도시락 / 회식 등 기록</td>
                                 <td
-                                    class="px-8 py-6 text-lg text-gray-700 bg-blue-100 border-l border-r border-blue-200">
+                                    class="px-8 py-6 text-lg text-gray-700 bg-primary-light border-l border-r border-primary/20">
                                     <div class="flex items-start gap-3">
                                         <svg class="w-8 h-8 text-primary flex-shrink-0" fill="none"
                                             stroke="currentColor" viewBox="0 0 24 24">
@@ -405,7 +376,7 @@
                                 <td class="px-8 py-6 font-bold text-lg text-gray-900 align-top"><span
                                         class="text-3xl mr-3">📊</span>관리 편의성 (감시 직원)</td>
                                 <td
-                                    class="px-8 py-6 text-lg text-gray-700 bg-blue-100 border-l border-r border-blue-200">
+                                    class="px-8 py-6 text-lg text-gray-700 bg-primary-light border-l border-r border-primary/20">
                                     <div class="flex items-start gap-3">
                                         <svg class="w-8 h-8 text-primary flex-shrink-0" fill="none"
                                             stroke="currentColor" viewBox="0 0 24 24">
@@ -444,15 +415,15 @@
                         <h4 class="text-2xl md:text-3xl font-extrabold text-gray-800 mb-8">사장님께 가장 절실한 해결책을 선택하세요!</h4>
                         <div class="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-6">
                             <a href="#contact" data-ga-event="cta_click_cost_free"
-                                class="flex-1 bg-primary border-2 border-black text-white font-extrabold py-5 px-8 rounded-2xl text-lg hover:bg-primary-darker hover:text-white focus:outline-none focus:ring-4 focus:ring-blue-300 transition-all duration-300 transform hover:-translate-y-1 shadow-2xl">
+                                class="flex-1 bg-primary border-2 border-black text-white font-extrabold py-5 px-8 rounded-2xl text-lg hover:bg-primary-darker hover:text-white focus:outline-none focus:ring-4 focus:ring-primary/40 transition-all duration-300 transform hover:-translate-y-1 shadow-2xl">
                                 400만원(카드, 리더기 3, PC 비용) 절감!<br> 400만원 비용 절감 확인 데모 신청
                             </a>
                             <a href="#contact" data-ga-event="cta_click_auto_free"
-                                class="flex-1 bg-primary border-2 border-black text-white font-extrabold py-5 px-8 rounded-2xl text-lg hover:bg-primary-darker hover:text-white focus:outline-none focus:ring-4 focus:ring-blue-300 transition-all duration-300 transform hover:-translate-y-1 shadow-2xl">
+                                class="flex-1 bg-primary border-2 border-black text-white font-extrabold py-5 px-8 rounded-2xl text-lg hover:bg-primary-darker hover:text-white focus:outline-none focus:ring-4 focus:ring-primary/40 transition-all duration-300 transform hover:-translate-y-1 shadow-2xl">
                                 월말 정산 시간 99% 단축!<br>자동화 무료 데모 요청
                             </a>
                             <a href="#contact" data-ga-event="cta_click_loss_zero"
-                                class="flex-1 bg-primary border-2 border-black text-white font-extrabold py-5 px-8 rounded-2xl text-lg hover:bg-primary-darker hover:text-white focus:outline-none focus:ring-4 focus:ring-blue-300 transition-all duration-300 transform hover:-translate-y-1 shadow-2xl">
+                                class="flex-1 bg-primary border-2 border-black text-white font-extrabold py-5 px-8 rounded-2xl text-lg hover:bg-primary-darker hover:text-white focus:outline-none focus:ring-4 focus:ring-primary/40 transition-all duration-300 transform hover:-translate-y-1 shadow-2xl">
                                 부정 사용 제로!<br>로스율 원천 차단 데모 신청
                             </a>
                         </div>
@@ -489,7 +460,7 @@
                     <div class="sticky top-0 z-10">
                         <div class="-mx-[calc(50vw-50%)]">
                             <div class="w-[100vw] aspect-[2/1] relative">
-                                <img src="/hamba/images/qr_payment.webp" alt="함바식당 모바일 식권 QR코드 전용 결제 화면"
+                                <img src="hamba/images/qr_payment.webp" alt="함바식당 모바일 식권 QR코드 전용 결제 화면"
                                     class="absolute inset-0 w-full h-full object-cover" loading="lazy" />
                             </div>
                         </div>
@@ -525,7 +496,7 @@
                     <div class="sticky top-0 z-30">
                         <div class="-mx-[calc(50vw-50%)]">
                             <div class="w-[100vw] aspect-[2/1] relative">
-                                <img src="/hamba/images/Kiosk_payment.webp" alt="중형 식당의 키오스크에서 카드 및 스마트폰 QR코드로 결제하는 방식"
+                                <img src="hamba/images/Kiosk_payment.webp" alt="중형 식당의 키오스크에서 카드 및 스마트폰 QR코드로 결제하는 방식"
                                     class="absolute inset-0 w-full h-full object-cover" loading="lazy" />
                             </div>
                         </div>
@@ -562,7 +533,7 @@
                     <div class="sticky top-0 z-30">
                         <div class="-mx-[calc(50vw-50%)]">
                             <div class="w-[100vw] aspect-[2/1] relative">
-                                <img src="/hamba/images/kiosk_qr.webp"
+                                <img src="hamba/images/kiosk_qr.webp"
                                     alt="대형 구내식당·함바식당은 키오스크와 스마트폰 QR코드 스캐너를 여러대 설치하여 결제 편의 제공"
                                     class="absolute inset-0 w-full h-full object-cover" loading="lazy" />
                             </div>
@@ -1289,7 +1260,7 @@
 
                     <div class="max-w-6xl mx-auto text-center relative z-10">
                         <h2 class="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-12 leading-tight">
-                            <span class="text-white">RFID카드/리더기 비용 0원! </span><span class="text-yellow-300">맞춤 정산 자동화
+                            <span class="text-white">RFID카드/리더기 비용 0원! </span><span class="text-primary">맞춤 정산 자동화
                                 데모</span>를 지금 요청하세요!
                         </h2>
 
@@ -1305,18 +1276,18 @@
                                 <form id="customGoogleForm" class="space-y-6">
                                     <div>
                                         <input type="text" id="form-name" name="entry.1950910160" required
-                                            class="w-full p-4 bg-gray-800 text-white rounded-xl border border-gray-700 focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition-all duration-300 placeholder-gray-400 text-lg"
+                                            class="w-full p-4 bg-gray-800 text-white rounded-xl border border-gray-700 focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all duration-300 placeholder-gray-400 text-lg"
                                             placeholder="구내식당/함바집 상호명과 담당 성함을 입력해요">
                                     </div>
                                     <div>
                                         <input type="text" id="form-contact" name="entry.1181158497" required
-                                            class="w-full p-4 bg-gray-800 text-white rounded-xl border border-gray-700 focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition-all duration-300 placeholder-gray-400 text-lg"
+                                            class="w-full p-4 bg-gray-800 text-white rounded-xl border border-gray-700 focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all duration-300 placeholder-gray-400 text-lg"
                                             placeholder="전화번호 또는 이메일을 입력해요">
                                     </div>
                                     <div>
                                         <label for="form-source" class="sr-only">알게 된 경로</label>
                                         <select id="form-source" name="entry.1429359743" required
-                                            class="w-full p-4 bg-gray-800 rounded-xl border border-gray-700 focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition-all duration-300 text-lg">
+                                            class="w-full p-4 bg-gray-800 rounded-xl border border-gray-700 focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all duration-300 text-lg">
                                             <option value="" disabled selected>저희 페이지를 알게 된 경로(선택)</option>
                                             <option value="네이버 검색">네이버 검색</option>
                                             <option value="구글 검색">구글 검색</option>
@@ -1329,12 +1300,12 @@
                                     </div>
                                     <div>
                                         <textarea id="form-message" name="entry.1270692115" rows="4" required
-                                            class="w-full p-4 bg-gray-800 text-white rounded-xl border border-gray-700 focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition-all duration-300 placeholder-gray-400 text-lg"
+                                            class="w-full p-4 bg-gray-800 text-white rounded-xl border border-gray-700 focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all duration-300 placeholder-gray-400 text-lg"
                                             placeholder="희망일시/필요사항을 남기셔도 좋아요 (선택)"></textarea>
                                     </div>
                                     <div>
                                         <button type="submit"
-                                            class="w-full bg-primary-darker text-white font-extrabold py-4 px-6 rounded-xl text-2xl hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 transition-all duration-300 transform hover:scale-105 border-2 border-white">
+                                            class="w-full bg-primary-darker text-white font-extrabold py-4 px-6 rounded-xl text-2xl hover:bg-primary-darker focus:outline-none focus:ring-4 focus:ring-primary/40 transition-all duration-300 transform hover:scale-105 border-2 border-white">
                                             맞춤 데모 & 20만원 상당 보너스 신청
                                         </button>
                                     </div>
@@ -1374,14 +1345,14 @@
                             <a href="https://play.google.com/store/apps/details?id=com.Gift.GiftCoin&hl=en&gl=US"
                                 target="_blank" rel="noopener" class="inline-block">
                                 <div class="p-0">
-                                    <img src="/hamba/images/play_logo.webp" alt="Google Play 스토어에서 앱 다운로드"
+                                    <img src="hamba/images/play_logo.webp" alt="Google Play 스토어에서 앱 다운로드"
                                         class="h-12 object-contain" loading="lazy" />
                                 </div>
                             </a>
                             <a href="https://apps.apple.com/kr/app/giftcoin-%EA%B8%B0%ED%94%84%ED%8A%B8%EC%BD%94%EC%9D%B8-%EA%B8%80%ED%94%84%ED%8A%B8%EC%B9%B4%EB%93%9C%EA%B0%80-%EC%82%B4%EC%95%84%EB%82%9C%EB%8B%A4/id1605569286"
                                 target="_blank" rel="noopener" class="inline-block">
                                 <div class="p-0">
-                                    <img src="/hamba/images/apple_logo.webp" alt="Apple 앱스토어에서 앱 다운로드"
+                                    <img src="hamba/images/apple_logo.webp" alt="Apple 앱스토어에서 앱 다운로드"
                                         class="h-12 object-contain" loading="lazy" />
                                 </div>
                             </a>

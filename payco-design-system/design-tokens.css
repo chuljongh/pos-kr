@@ -1,0 +1,189 @@
+/* ============================================================================
+   PAYCO 기업복지 (bizplus.payco.com) — Design Tokens
+   ----------------------------------------------------------------------------
+   출처: bizplus.payco.com 라이브 CSS(payco_point.css 외) 정밀 추출 + PDF 소개서.
+   값 신뢰도 표기:
+     [extracted] = 실제 서빙 CSS에서 그대로 추출 (빈도 표기)
+     [normalized] = 추출값을 일관된 스케일로 정리
+     [inferred]  = 시각 분석/PDF로 보강한 추정값
+   ============================================================================ */
+
+:root {
+  /* ---- Brand --------------------------------------------------------------
+     웹 원본 브랜드 레드는 #FF2233 (CSS 55회). PDF 클로징 페이지는 렌더링/압축
+     결과 #F92828로 보였으나 정본 토큰은 #FF2233. */
+  --payco-red:            #FF2233;  /* [extracted x55] primary brand / CTA / 강조 수치 */
+  --payco-red-strong:     #E51E2E;  /* [inferred] hover/pressed (약 -8% 명도) */
+
+  /* ---- Accent (secondary / 링크·정보) ------------------------------------ */
+  --accent-blue:          #00AAFF;  /* [extracted x8] 인라인 링크(.txt_point2) */
+  --accent-blue-btn:      #328CFF;  /* [extracted] 아웃라인 버튼 보더/텍스트 */
+  --accent-blue-point:    #4A88FF;  /* [extracted] 포인트 텍스트 */
+  --accent-blue-hover:    #3D89E2;  /* [extracted] 링크 hover */
+
+  /* ---- Text --------------------------------------------------------------- */
+  --text-primary:         #111111;  /* [extracted, 최다] 제목·강조 본문 */
+  --text-body:            #4C4C4C;  /* [extracted x29] 일반 본문 */
+  --text-secondary:       #666666;  /* [extracted] 보조 텍스트 (#666463 포함 정리) */
+  --text-muted:           #999999;  /* [extracted] 비활성/플레이스홀더 (#9D9D9D 정리) */
+  --text-on-brand:        #FFFFFF;  /* [extracted] 레드/딥 배경 위 텍스트 */
+
+  /* ---- Surface / Background ----------------------------------------------- */
+  --surface-page:         #FFFFFF;  /* [extracted] 페이지 기본 배경 */
+  --surface-subtle:       #FAFAFA;  /* [extracted x21] 카드/섹션 옅은 배경 */
+  --surface-muted:        #F2F2F2;  /* [extracted] 구분 배경 (PDF 표지와 동일) */
+  --surface-soft:         #F0F0F0;  /* [extracted x29] 입력/비활성 면 */
+  --surface-dark:         #262626;  /* [extracted x11] 다크 섹션/footer */
+
+  /* ---- Border / Divider --------------------------------------------------- */
+  --border-default:       #DADADA;  /* [extracted x15] 기본 보더 */
+  --border-strong:        #CCCCCC;  /* [extracted] 강조 보더 */
+  --border-light:         #EEEEEE;  /* [extracted] 옅은 구분선 */
+
+  /* ---- Overlay / State (불투명도 합성) ------------------------------------ */
+  --overlay-dim:          rgba(17, 17, 17, 0.60); /* [extracted] 모달 딤드 */
+  --overlay-hover:        rgba(17, 17, 17, 0.04); /* [extracted] hover 면 */
+  --overlay-line:         rgba(17, 17, 17, 0.12); /* [extracted] 옅은 라인 */
+
+  /* ---- Typography: family ------------------------------------------------- */
+  /* 현행: Noto Sans KR(noto/notoB/notoM) 기반 레거시 스택. */
+  --font-sans: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+               "Noto Sans KR", "noto", dotum, sans-serif;          /* [extracted] */
+  /* 신규 섹션에서 도입 중. 향후 표준 권장. */
+  --font-sans-modern: "Pretendard", "Noto Sans KR", "noto", sans-serif; /* [extracted] */
+
+  /* ---- Typography: weight ------------------------------------------------- */
+  --fw-light:    300;  /* [extracted] */
+  --fw-regular:  400;  /* [extracted] */
+  --fw-medium:   500;  /* [extracted] (notoM) */
+  --fw-bold:     700;  /* [extracted] (notoB / bold) */
+
+  /* ---- Typography: size scale (px) ---------------------------------------
+     [extracted] 실측 사용 빈도 기반. base = 14px(데스크톱 본문),
+     모바일/캡션 12px가 가장 많음. */
+  --fs-display:  60px;  /* 히어로/대형 타이틀 */
+  --fs-h1:       30px;
+  --fs-h2:       24px;
+  --fs-h3:       20px;
+  --fs-lg:       18px;
+  --fs-md:       16px;
+  --fs-base:     14px;  /* 본문 기준 */
+  --fs-sm:       13px;
+  --fs-xs:       12px;  /* [extracted, 최다] 캡션/모바일 본문 */
+  --fs-2xs:      11px;
+
+  /* ---- Typography: line-height -------------------------------------------- */
+  --lh-tight:    1.2;   /* 제목 */
+  --lh-base:     1.5;   /* 본문 (14px→20px, 16px→24px 패턴) [extracted] */
+  --lh-relaxed:  1.7;
+
+  /* ---- Typography: letter-spacing ----------------------------------------
+     한국어 웹 특유의 음수 자간. [extracted] -0.04em ~ -1px 범위. */
+  --ls-tight:   -0.04em;  /* 제목 */
+  --ls-base:    -0.025em; /* 본문 (~ -0.5px @14) */
+
+  /* ---- Radius ------------------------------------------------------------- */
+  --radius-xs:    2px;   /* [extracted] */
+  --radius-sm:    4px;   /* [extracted x9] 버튼/인풋 */
+  --radius-md:    8px;   /* [extracted x9] 카드 */
+  --radius-lg:    12px;  /* [extracted x7] 큰 카드/모달 */
+  --radius-pill:  40px;  /* [extracted] 알약형 버튼/뱃지 */
+  --radius-full:  50%;   /* [extracted] 원형 */
+
+  /* ---- Spacing scale (4px grid) ------------------------------------------
+     [normalized] 원본은 10px 중심(10/20/30/40)이 많음. 일관성을 위해 4px 그리드로
+     정리하되 원본 주요 값(10/30)을 포함. */
+  --space-1:   4px;
+  --space-2:   8px;
+  --space-3:   10px;  /* [extracted] 원본 최빈 간격 */
+  --space-4:   16px;
+  --space-5:   20px;  /* [extracted] */
+  --space-6:   24px;
+  --space-7:   30px;  /* [extracted] 섹션 내 gap */
+  --space-8:   40px;  /* [extracted] 카드 패딩/섹션 */
+  --space-10:  60px;
+
+  /* ---- Shadow ------------------------------------------------------------- */
+  --shadow-sm:   0 1px 1px 0 rgba(0, 0, 0, 0.05);            /* [extracted] */
+  --shadow-card: 0 16px 12px 0 rgba(0, 0, 0, 0.08);          /* [extracted] 기본 카드 */
+  --shadow-lg:   0 30px 20px 0 rgba(0, 0, 0, 0.08);          /* [extracted] 부유 카드 */
+}
+
+/* ============================================================================
+   Component recipes (위 토큰으로 구성한 핵심 컴포넌트)
+   ============================================================================ */
+
+/* Primary CTA — 레드 채움. [inferred] 사이트의 주요 CTA 패턴 기준. */
+.payco-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--space-6);
+  height: 48px;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: var(--payco-red);
+  color: var(--text-on-brand);
+  font-family: var(--font-sans);
+  font-size: var(--fs-md);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--ls-base);
+  cursor: pointer;
+}
+.payco-btn-primary:hover { background: var(--payco-red-strong); }
+
+/* Secondary button — 블루 아웃라인. [extracted] .btn_blue 규칙 그대로. */
+.payco-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--space-5);
+  height: 44px;
+  border: 1px solid var(--accent-blue-btn);
+  border-radius: var(--radius-sm);
+  background: rgba(50, 140, 255, 0.08);
+  color: var(--accent-blue-btn);
+  font-weight: var(--fw-bold);
+  cursor: pointer;
+}
+
+/* Card — 기본 카드면. [extracted/normalized] */
+.payco-card {
+  background: var(--surface-page);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  padding: var(--space-8);
+}
+.payco-card--subtle {            /* 보더형 옅은 카드 */
+  background: var(--surface-subtle);
+  border: 1px solid var(--border-default);
+  box-shadow: none;
+}
+
+/* Stat block — 시그니처 패턴: 레드 카드 위 흰 대형 수치 (PDF 도입부 동일) */
+.payco-stat {
+  background: var(--payco-red);
+  border-radius: var(--radius-lg);
+  padding: var(--space-7) var(--space-8);
+  color: var(--text-on-brand);
+  text-align: center;
+}
+.payco-stat__value {
+  font-size: var(--fs-h1);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--ls-tight);
+  line-height: var(--lh-tight);
+}
+.payco-stat__label { font-size: var(--fs-sm); opacity: 0.9; }
+
+/* Inline link point — 블루 밑줄 강조. [extracted] .txt_point2 */
+.payco-link-point {
+  border-bottom: 1px solid var(--accent-blue);
+  color: var(--accent-blue);
+  font-weight: var(--fw-bold);
+  text-decoration: none;
+}
+.payco-link-point:hover {
+  border-bottom-color: var(--accent-blue-hover);
+  color: var(--accent-blue-hover);
+}

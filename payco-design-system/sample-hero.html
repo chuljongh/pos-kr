@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>pos.kr — PAYCO 레드 적용 Before/After 데모</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // payco-design-system/tailwind.theme.cjs 와 동일한 토큰 (데모용 인라인)
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: { DEFAULT: '#FF2233', darker: '#E01E2C', light: '#FFF0F1' },
+            accent:  { DEFAULT: '#00AAFF', btn: '#328CFF' },
+            ink:     { DEFAULT: '#111111', body: '#4C4C4C', soft: '#666666', muted: '#999999' },
+            surface: { DEFAULT: '#FFFFFF', subtle: '#FAFAFA', muted: '#F2F2F2', dark: '#262626' },
+            line:    { DEFAULT: '#DADADA', light: '#EEEEEE' },
+          },
+          fontFamily: { sans: ['Pretendard', '"Noto Sans KR"', 'system-ui', 'sans-serif'] },
+          letterSpacing: { tightk: '-0.04em', basek: '-0.025em' },
+          borderRadius: { card: '12px', btn: '4px' },
+          boxShadow: { card: '0 16px 12px 0 rgba(0,0,0,0.08)', 'card-lg': '0 30px 20px 0 rgba(0,0,0,0.08)' },
+        }
+      }
+    }
+  </script>
+  <style> body { font-family: 'Pretendard', sans-serif; } </style>
+</head>
+<body class="bg-surface-muted">
+
+  <!-- 라벨 -->
+  <div class="max-w-6xl mx-auto px-4 pt-10 pb-4">
+    <h1 class="text-2xl font-extrabold text-ink tracking-tightk">pos.kr 히어로 + 핵심 수치 섹션 — Before / After</h1>
+    <p class="text-ink-soft mt-1">동일 콘텐츠를 현재 디자인(블루/다크)과 PAYCO 레드 차용판으로 비교</p>
+  </div>
+
+  <!-- ============================== BEFORE ============================== -->
+  <div class="max-w-6xl mx-auto px-4">
+    <span class="inline-block mt-6 mb-2 px-3 py-1 rounded-full bg-ink text-white text-xs font-bold">BEFORE — 현재 (blue #2563EB / 다크 배경)</span>
+  </div>
+  <section class="bg-gray-900 py-24 px-4">
+    <div class="max-w-6xl mx-auto text-center">
+      <h2 class="text-4xl md:text-6xl font-extrabold text-white mb-8 leading-tight">
+        모바일 <span class="text-blue-400">식수관리시스템</span>,<br>
+        <strong>카드·리더기·PC 0원</strong>에 즉시 시작!
+      </h2>
+      <p class="text-lg md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed font-medium">
+        구내식당·함바집 식수관리 구축은<br>플라스틱(RFID)카드·리더기·PC 구입 없이 바로 시작하세요.
+      </p>
+    </div>
+  </section>
+  <section class="bg-gray-800 py-16 px-4">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-8 text-center">
+      <div><h3 class="text-5xl md:text-6xl font-extrabold text-blue-500 mb-3">0<span class="text-3xl">원</span></h3><p class="text-lg text-gray-300 font-bold">카드/리더기/PC 구입비</p></div>
+      <div><h3 class="text-5xl md:text-6xl font-extrabold text-blue-500 mb-3">0<span class="text-3xl">%</span></h3><p class="text-lg text-gray-300 font-bold">부정식수 원천차단</p></div>
+      <div><h3 class="text-5xl md:text-6xl font-extrabold text-blue-500 mb-3">1<span class="text-3xl">분</span></h3><p class="text-lg text-gray-300 font-bold">월말 대금청구 단축</p></div>
+    </div>
+  </section>
+
+  <!-- ============================== AFTER =============================== -->
+  <div class="max-w-6xl mx-auto px-4">
+    <span class="inline-block mt-14 mb-2 px-3 py-1 rounded-full bg-primary text-white text-xs font-bold">AFTER — PAYCO 레드 차용 (#FF2233 / 화이트 캔버스 + 1포인트 레드)</span>
+  </div>
+  <!-- 히어로: 화이트 캔버스 + 레드 1포인트 + 레드 CTA -->
+  <section class="bg-surface py-24 px-4 border-b border-line">
+    <div class="max-w-6xl mx-auto text-center">
+      <span class="inline-block mb-6 px-3 py-1 rounded-full bg-primary-light text-primary text-sm font-bold tracking-basek">도입 비용 0원</span>
+      <h2 class="text-4xl md:text-6xl font-extrabold text-ink mb-8 leading-tight tracking-tightk">
+        모바일 <span class="text-primary">식수관리시스템</span>,<br>
+        카드·리더기·PC <span class="text-primary">0원</span>에 즉시 시작!
+      </h2>
+      <p class="text-lg md:text-2xl text-ink-body max-w-3xl mx-auto leading-relaxed font-medium tracking-basek">
+        구내식당·함바집 식수관리 구축은<br>플라스틱(RFID)카드·리더기·PC 구입 없이 바로 시작하세요.
+      </p>
+      <div class="mt-10 flex flex-col sm:flex-row gap-3 justify-center">
+        <a class="inline-flex items-center justify-center px-8 py-4 rounded-btn bg-primary hover:bg-primary-darker text-white font-bold tracking-basek transition-colors">무료 상담 신청</a>
+        <a class="inline-flex items-center justify-center px-6 py-4 rounded-btn font-bold border border-accent-btn text-accent-btn" style="background:rgba(50,140,255,0.08)">소개서 보기</a>
+      </div>
+    </div>
+  </section>
+  <!-- 핵심 수치: 레드 stat 카드 (PAYCO 시그니처) on 화이트 -->
+  <section class="bg-surface-subtle py-16 px-4">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-6 text-center">
+      <div class="bg-primary rounded-card shadow-card px-8 py-9 text-white">
+        <div class="text-5xl md:text-6xl font-extrabold tracking-tightk leading-none">0<span class="text-3xl">원</span></div>
+        <p class="mt-3 text-base font-bold opacity-90">카드/리더기/PC 구입비</p>
+      </div>
+      <div class="bg-primary rounded-card shadow-card px-8 py-9 text-white">
+        <div class="text-5xl md:text-6xl font-extrabold tracking-tightk leading-none">0<span class="text-3xl">%</span></div>
+        <p class="mt-3 text-base font-bold opacity-90">부정식수 원천차단</p>
+      </div>
+      <div class="bg-primary rounded-card shadow-card px-8 py-9 text-white">
+        <div class="text-5xl md:text-6xl font-extrabold tracking-tightk leading-none">1<span class="text-3xl">분</span></div>
+        <p class="mt-3 text-base font-bold opacity-90">월말 대금청구 단축</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="max-w-6xl mx-auto px-4 py-10 text-ink-soft text-sm">
+    토큰 출처: bizplus.payco.com 라이브 CSS 추출. 적용 가이드: <code>pos-kr-DESIGN.md</code> · 드롭인 테마: <code>tailwind.theme.cjs</code>
+  </div>
+
+</body>
+</html>
