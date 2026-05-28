@@ -164,6 +164,22 @@
             color: var(--red);
         }
 
+        .sec-head .ans {
+            margin-left: auto;
+            flex: 0 0 auto;
+            white-space: nowrap;
+            font-size: 12.5px;
+            font-weight: 700;
+            color: var(--red-darker);
+            letter-spacing: var(--ls-tight);
+        }
+
+        .sec-head .ans::before {
+            content: "\2192\00a0";
+            color: var(--red);
+            font-weight: 800;
+        }
+
         /* ===== 페이지 1: 히어로 배너 (현장 사진) ===== */
         .hero-banner {
             margin: -14mm -15mm 7mm;
@@ -662,13 +678,14 @@
         <div class="sec-head">
             <span class="num">1</span>
             <h2>왜, <em>모바일 식수관리시스템</em>을 써야 할까요?</h2>
+            <span class="ans">싸고, 편하고, 믿을수 있죠!</span>
         </div>
         <div class="reasons">
             <div class="reason">
                 <div class="ic">💰</div>
                 <div class="k">① 경제성</div>
                 <div class="t">구축비 수백만원이 0원</div>
-                <div class="d">2~4백만원짜리 카드·리더기·PC 없이, 안 쓰는 스마트폰으로 시작합니다.</div>
+                <div class="d">3~4백만원짜리 카드·리더기·PC 없이, 안 쓰는 스마트폰으로 시작합니다.</div>
             </div>
             <div class="reason">
                 <div class="ic">⏱️</div>
@@ -687,6 +704,7 @@
         <div class="sec-head">
             <span class="num">2</span>
             <h2>아직도 <em>플라스틱(RFID)·바코드</em>를 이용하세요?</h2>
+            <span class="ans">한눈에 비교해 보세요.</span>
         </div>
         <table class="cmp">
             <thead>
@@ -736,6 +754,7 @@
         <div class="sec-head">
             <span class="num">3</span>
             <h2>어떻게 우리 식당에 <em>도입하죠</em>?</h2>
+            <span class="ans">모든 규모에 맞춰 준비되어 있어요!</span>
         </div>
         <div class="flow">
             <div class="card">
@@ -767,6 +786,7 @@
         <div class="sec-head">
             <span class="num">4</span>
             <h2>어떻게, 다양한 결제 상황을 <em>지원하나요</em>?</h2>
+            <span class="ans">선·후불을 통합하고 업무를 대신해요.</span>
         </div>
         <div class="two-col">
             <div class="panel">
@@ -790,6 +810,7 @@
         <div class="sec-head">
             <span class="num">5</span>
             <h2>그래서, <em>어떻게 시작</em>하나요?</h2>
+            <span class="ans">앱을 받으세요.</span>
         </div>
         <div class="steps">
             <div>
