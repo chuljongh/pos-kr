@@ -1,0 +1,1796 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>모바일 QR 식수관리시스템 제안서 | pos.kr · Blue Chips</title>
+    <link rel="preload"
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet"
+            href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+    </noscript>
+
+    <style>
+        /* ===== PAYCO 디자인 토큰 (브로셔 공유) ===== */
+        :root {
+            --red: #FF2233;
+            --red-darker: #E01E2C;
+            --red-light: #FFF0F1;
+            --accent: #00AAFF;
+            --ink: #111111;
+            --ink-body: #4C4C4C;
+            --ink-soft: #666666;
+            --ink-muted: #999999;
+            --surface: #FFFFFF;
+            --surface-subtle: #FAFAFA;
+            --surface-muted: #F2F2F2;
+            --surface-dark: #262626;
+            --line: #DADADA;
+            --line-light: #EEEEEE;
+            --ls-tight: -0.04em;
+            --ls-base: -0.025em;
+            --radius-card: 14px;
+            --radius-btn: 4px;
+            --shadow-card: 0 16px 28px 0 rgba(0, 0, 0, 0.10);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-family: "Pretendard", "Noto Sans KR", system-ui, sans-serif;
+            color: var(--ink-body);
+            letter-spacing: var(--ls-base);
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        body {
+            background: #E5E7EB;
+            padding: 28px 0;
+        }
+
+        /* 16:10 PPT 슬라이드 = 1280 x 800 */
+        .slide {
+            width: 1280px;
+            height: 800px;
+            background: var(--surface);
+            margin: 0 auto 28px;
+            box-shadow: 0 6px 30px rgba(0, 0, 0, 0.18);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pad {
+            padding: 56px 64px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        @page {
+            size: 1280px 800px;
+            margin: 0;
+        }
+
+        @media print {
+            body {
+                background: #fff;
+                padding: 0;
+            }
+
+            .slide {
+                margin: 0;
+                box-shadow: none;
+                page-break-after: always;
+            }
+
+            .slide:last-child {
+                page-break-after: auto;
+            }
+        }
+
+        strong {
+            color: var(--ink);
+            font-weight: 700;
+        }
+
+        .red {
+            color: var(--red);
+        }
+
+        /* ===== 공통: 상단 브랜드바 ===== */
+        .brandbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--red);
+            margin-bottom: 30px;
+        }
+
+        .brandbar .logo {
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: var(--ls-tight);
+            color: var(--ink);
+        }
+
+        .brandbar .logo b {
+            color: var(--red);
+        }
+
+        .brandbar .tag {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--ink-soft);
+        }
+
+        /* ===== 공통: 섹션 헤더 (챕터 번호 뱃지) ===== */
+        .sec-head {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 8px;
+        }
+
+        .sec-head .num {
+            width: 40px;
+            height: 40px;
+            flex: 0 0 40px;
+            border-radius: 50%;
+            background: var(--red);
+            color: #fff;
+            font-size: 17px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .sec-head h2 {
+            font-size: 34px;
+            font-weight: 800;
+            letter-spacing: var(--ls-tight);
+            color: var(--ink);
+            line-height: 1.2;
+        }
+
+        .sec-head h2 em {
+            font-style: normal;
+            color: var(--red);
+        }
+
+        .sub-lead {
+            font-size: 18px;
+            color: var(--ink-soft);
+            margin: 0 0 30px 54px;
+            line-height: 1.5;
+        }
+
+        /* 슬라이드 번호 */
+        .pageno {
+            position: absolute;
+            right: 40px;
+            bottom: 26px;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--ink-muted);
+            letter-spacing: var(--ls-base);
+        }
+
+        .pageno b {
+            color: var(--red);
+        }
+
+        /* =========================================================
+           S1. 표지
+        ========================================================= */
+        .cover {
+            background:
+                linear-gradient(105deg, rgba(0, 0, 0, 0.86) 0%, rgba(0, 0, 0, 0.62) 42%, rgba(0, 0, 0, 0.20) 74%, rgba(0, 0, 0, 0.05) 100%),
+                url('mainImg.jpg');
+            background-size: cover;
+            background-position: center 45%;
+            color: #fff;
+            justify-content: space-between;
+            padding: 56px 64px;
+        }
+
+        .cover-top {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+        }
+
+        .cover-brand {
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: var(--ls-tight);
+            text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
+        }
+
+        .cover-brand b {
+            color: var(--red);
+        }
+
+        .recipient {
+            border: 1.5px solid rgba(255, 255, 255, 0.55);
+            border-radius: 40px;
+            padding: 9px 22px;
+            font-size: 16px;
+            font-weight: 700;
+            backdrop-filter: blur(2px);
+        }
+
+        .cover-mid .eyebrow {
+            display: inline-block;
+            background: var(--red);
+            color: #fff;
+            font-size: 16px;
+            font-weight: 800;
+            letter-spacing: var(--ls-base);
+            padding: 7px 16px;
+            border-radius: var(--radius-btn);
+            margin-bottom: 22px;
+        }
+
+        .cover-mid h1 {
+            font-size: 62px;
+            font-weight: 800;
+            line-height: 1.18;
+            letter-spacing: var(--ls-tight);
+            text-shadow: 0 2px 14px rgba(0, 0, 0, 0.55);
+            margin-bottom: 22px;
+        }
+
+        .cover-mid h1 .red {
+            color: var(--red);
+        }
+
+        .cover-mid p {
+            font-size: 21px;
+            line-height: 1.55;
+            color: rgba(255, 255, 255, 0.93);
+            max-width: 760px;
+            text-shadow: 0 1px 8px rgba(0, 0, 0, 0.7);
+        }
+
+        .cover-mid p strong {
+            color: #fff;
+        }
+
+        .cover-foot {
+            font-size: 15px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.82);
+            letter-spacing: var(--ls-base);
+            text-shadow: 0 1px 6px rgba(0, 0, 0, 0.7);
+        }
+
+        /* =========================================================
+           S2. 목차
+        ========================================================= */
+        .toc-wrap {
+            flex: 1;
+            display: flex;
+            gap: 56px;
+            align-items: center;
+        }
+
+        .toc-left {
+            flex: 0 0 320px;
+        }
+
+        .toc-left .ko {
+            font-size: 56px;
+            font-weight: 800;
+            color: var(--ink);
+            letter-spacing: var(--ls-tight);
+            line-height: 1.1;
+        }
+
+        .toc-left .en {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--red);
+            letter-spacing: 0.22em;
+            margin-bottom: 18px;
+        }
+
+        .toc-left .bar {
+            width: 64px;
+            height: 5px;
+            background: var(--red);
+            border-radius: 4px;
+            margin-top: 22px;
+        }
+
+        .toc-list {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px 40px;
+        }
+
+        .toc-item {
+            display: flex;
+            align-items: baseline;
+            gap: 16px;
+            padding: 16px 4px;
+            border-bottom: 1px solid var(--line-light);
+        }
+
+        .toc-item .n {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--red);
+            flex: 0 0 38px;
+        }
+
+        .toc-item .t {
+            font-size: 21px;
+            font-weight: 700;
+            color: var(--ink);
+            letter-spacing: var(--ls-base);
+        }
+
+        .toc-item .t span {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--ink-soft);
+            margin-top: 3px;
+        }
+
+        /* =========================================================
+           공통 카드 그리드
+        ========================================================= */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+            flex: 1;
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 22px;
+            flex: 1;
+        }
+
+        .icard {
+            background: var(--surface-subtle);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-card);
+            padding: 30px 28px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .icard .ic {
+            font-size: 40px;
+            line-height: 1;
+            margin-bottom: 16px;
+        }
+
+        .icard .k {
+            font-size: 15px;
+            font-weight: 800;
+            color: var(--red);
+            margin-bottom: 8px;
+        }
+
+        .icard .t {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--ink);
+            line-height: 1.3;
+            margin-bottom: 12px;
+            letter-spacing: var(--ls-base);
+        }
+
+        .icard .d {
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--ink-body);
+        }
+
+        /* =========================================================
+           S3 현황 — 잠식 배너
+        ========================================================= */
+        .loss-note {
+            margin-top: 22px;
+            background: var(--ink);
+            color: #fff;
+            border-radius: var(--radius-card);
+            padding: 20px 28px;
+            font-size: 17px;
+            font-weight: 600;
+            line-height: 1.5;
+            letter-spacing: var(--ls-base);
+        }
+
+        .loss-note b {
+            color: #fff;
+        }
+
+        .loss-note .red {
+            color: #ff5a68;
+            font-weight: 800;
+        }
+
+        /* =========================================================
+           S4 해법 — 좌 텍스트 / 우 이미지
+        ========================================================= */
+        .split {
+            flex: 1;
+            display: flex;
+            gap: 48px;
+            align-items: center;
+        }
+
+        .split-l {
+            flex: 1;
+        }
+
+        .split-r {
+            flex: 0 0 440px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 18px;
+        }
+
+        .keybox {
+            border: 1px solid var(--line);
+            border-left: 5px solid var(--red);
+            border-radius: var(--radius-card);
+            padding: 22px 26px;
+            margin-bottom: 18px;
+            background: var(--surface);
+        }
+
+        .keybox .h {
+            font-size: 23px;
+            font-weight: 800;
+            color: var(--ink);
+            letter-spacing: var(--ls-base);
+            margin-bottom: 7px;
+        }
+
+        .keybox .h .red {
+            color: var(--red);
+        }
+
+        .keybox p {
+            font-size: 16.5px;
+            line-height: 1.55;
+            color: var(--ink-body);
+        }
+
+        .phone-img {
+            width: 280px;
+            filter: drop-shadow(0 18px 26px rgba(0, 0, 0, 0.22));
+        }
+
+        .scan-img {
+            width: 168px;
+            border-radius: 18px;
+            box-shadow: var(--shadow-card);
+        }
+
+        .familiar {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--red-light);
+            color: var(--red-darker);
+            font-size: 16px;
+            font-weight: 800;
+            padding: 10px 18px;
+            border-radius: 40px;
+            margin-bottom: 26px;
+        }
+
+        /* ===== S4b 해법 ② — 키오스크 동시 수용 ===== */
+        .kiosk-stage {
+            position: relative;
+            flex: 0 0 420px;
+            align-self: stretch;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .kiosk-full {
+            height: 540px;
+            filter: drop-shadow(0 16px 24px rgba(0, 0, 0, 0.20));
+        }
+
+        .callout {
+            position: absolute;
+            background: var(--ink);
+            color: #fff;
+            border-radius: 12px;
+            padding: 11px 15px;
+            font-size: 13.5px;
+            font-weight: 700;
+            line-height: 1.3;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.22);
+            white-space: nowrap;
+        }
+
+        .callout b {
+            display: block;
+            color: #ff5a68;
+            font-size: 15px;
+            margin-top: 2px;
+        }
+
+        .callout::after {
+            content: "";
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: var(--ink);
+            transform: rotate(45deg);
+            top: 50%;
+            margin-top: -6px;
+        }
+
+        .callout.co-qr {
+            left: -8px;
+            top: 78%;
+            transform: translateY(-60%);
+        }
+
+        .callout.co-qr::after {
+            right: -5px;
+        }
+
+        .callout.co-card {
+            right: -8px;
+            top: 78%;
+            text-align: right;
+            transform: translateY(-60%);
+        }
+
+        .callout.co-card::after {
+            left: -5px;
+        }
+
+        .case-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin-top: 4px;
+        }
+
+        .case {
+            background: var(--surface-subtle);
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            padding: 13px 16px;
+        }
+
+        .case .h {
+            font-size: 15.5px;
+            font-weight: 800;
+            color: var(--ink);
+            margin-bottom: 6px;
+        }
+
+        .case .h em {
+            font-style: normal;
+            color: var(--red);
+        }
+
+        .case p {
+            font-size: 13.5px;
+            line-height: 1.5;
+            color: var(--ink-body);
+        }
+
+        .note-line {
+            margin-top: 14px;
+            font-size: 14px;
+            color: var(--ink-soft);
+            padding-left: 18px;
+            position: relative;
+            line-height: 1.5;
+        }
+
+        .note-line::before {
+            content: "※";
+            position: absolute;
+            left: 0;
+            color: var(--red);
+        }
+
+        /* =========================================================
+           S5 도입효과 — 레드 stat 카드
+        ========================================================= */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-bottom: 28px;
+        }
+
+        .stat {
+            background: var(--red);
+            border-radius: var(--radius-card);
+            padding: 40px 20px;
+            color: #fff;
+            text-align: center;
+            box-shadow: var(--shadow-card);
+        }
+
+        .stat .v {
+            font-size: 88px;
+            font-weight: 800;
+            line-height: 1;
+            letter-spacing: var(--ls-tight);
+        }
+
+        .stat .v span {
+            font-size: 36px;
+            font-weight: 700;
+        }
+
+        .stat .l {
+            margin-top: 16px;
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 1.4;
+            color: rgba(255, 255, 255, 0.96);
+        }
+
+        .reasons-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .reason-mini {
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+        }
+
+        .reason-mini .num {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--red);
+        }
+
+        .reason-mini .tx b {
+            font-size: 17px;
+            font-weight: 800;
+            color: var(--ink);
+        }
+
+        .reason-mini .tx p {
+            font-size: 14.5px;
+            color: var(--ink-soft);
+            line-height: 1.5;
+            margin-top: 2px;
+        }
+
+        /* =========================================================
+           S6 비교표
+        ========================================================= */
+        .cmp {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid var(--line);
+            border-radius: var(--radius-card);
+            overflow: hidden;
+            font-size: 17px;
+        }
+
+        .cmp th,
+        .cmp td {
+            padding: 17px 22px;
+            text-align: left;
+            vertical-align: top;
+            border-bottom: 1px solid var(--line-light);
+        }
+
+        .cmp thead th {
+            font-size: 18px;
+            font-weight: 800;
+            background: var(--surface-muted);
+            color: var(--ink);
+        }
+
+        .cmp thead th.ours {
+            background: var(--red-light);
+            color: var(--red);
+        }
+
+        .cmp .col-label {
+            width: 26%;
+            font-weight: 700;
+            color: var(--ink);
+        }
+
+        .cmp td.ours {
+            background: var(--red-light);
+        }
+
+        .cmp tbody tr:last-child th,
+        .cmp tbody tr:last-child td {
+            border-bottom: 0;
+        }
+
+        .cmp .yes {
+            font-weight: 800;
+            color: var(--red-darker);
+        }
+
+        .cmp .no {
+            font-weight: 700;
+            color: var(--ink-soft);
+        }
+
+        .cmp .yes::before {
+            content: "✓ ";
+            color: var(--red);
+            font-weight: 800;
+        }
+
+        .cmp .no::before {
+            content: "✗ ";
+            color: var(--ink-muted);
+            font-weight: 800;
+        }
+
+        .cmp .strike {
+            text-decoration: line-through;
+            text-decoration-color: var(--ink-muted);
+        }
+
+        .cmp .badge {
+            display: inline-block;
+            margin-left: 8px;
+            padding: 2px 11px;
+            border-radius: 40px;
+            background: var(--red);
+            color: #fff;
+            font-size: 13px;
+            font-weight: 800;
+            vertical-align: middle;
+        }
+
+        .cmp .sub {
+            display: block;
+            font-size: 14px;
+            font-weight: 400;
+            color: var(--ink-soft);
+            margin-top: 4px;
+        }
+
+        /* =========================================================
+           S7 8단계 자동화 타임라인
+        ========================================================= */
+        .timeline {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 36px;
+        }
+
+        .tl-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            position: relative;
+        }
+
+        .tl-step {
+            text-align: center;
+        }
+
+        .tl-step .circle {
+            width: 58px;
+            height: 58px;
+            margin: 0 auto 14px;
+            border-radius: 50%;
+            background: var(--red);
+            color: #fff;
+            font-size: 26px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 14px rgba(255, 34, 51, 0.30);
+        }
+
+        .tl-step .t {
+            font-size: 19px;
+            font-weight: 800;
+            color: var(--ink);
+            margin-bottom: 5px;
+            letter-spacing: var(--ls-base);
+        }
+
+        .tl-step .d {
+            font-size: 14.5px;
+            color: var(--ink-soft);
+            line-height: 1.45;
+        }
+
+        /* =========================================================
+           S8 4중 통제
+        ========================================================= */
+        .ctrl-card {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-top: 4px solid var(--red);
+            border-radius: var(--radius-card);
+            padding: 26px 28px;
+        }
+
+        .ctrl-card .top {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .ctrl-card .badge-n {
+            width: 34px;
+            height: 34px;
+            flex: 0 0 34px;
+            border-radius: 50%;
+            background: var(--red-light);
+            color: var(--red);
+            font-size: 16px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .ctrl-card .h {
+            font-size: 21px;
+            font-weight: 800;
+            color: var(--ink);
+            letter-spacing: var(--ls-base);
+        }
+
+        .ctrl-card .h em {
+            font-style: normal;
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--red);
+            margin-left: 4px;
+        }
+
+        .ctrl-card p {
+            font-size: 16px;
+            line-height: 1.55;
+            color: var(--ink-body);
+        }
+
+        .zero-note {
+            margin-top: 22px;
+            background: var(--red);
+            color: #fff;
+            border-radius: var(--radius-card);
+            padding: 18px 28px;
+            font-size: 18px;
+            font-weight: 800;
+            text-align: center;
+            letter-spacing: var(--ls-base);
+        }
+
+        /* =========================================================
+           S9 부가서비스
+        ========================================================= */
+        .addon-card {
+            border: 1px solid var(--line);
+            border-radius: var(--radius-card);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .addon-card .hd {
+            background: var(--ink);
+            color: #fff;
+            font-size: 19px;
+            font-weight: 800;
+            padding: 16px 24px;
+            letter-spacing: var(--ls-base);
+        }
+
+        .addon-card .hd b {
+            color: #ff5a68;
+        }
+
+        .addon-card .bd {
+            padding: 22px 24px;
+            flex: 1;
+        }
+
+        .addon-card .bd p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--ink-body);
+        }
+
+        .addon-card .addon-img {
+            width: 100%;
+            height: 188px;
+            border-bottom: 1px solid var(--line-light);
+        }
+
+        .kiosk-gallery {
+            height: 188px;
+            display: flex;
+            gap: 8px;
+            padding: 10px 12px;
+            background: var(--surface-subtle);
+            border-bottom: 1px solid var(--line-light);
+        }
+
+        .kiosk-gallery .tile {
+            background: #fff;
+            border: 1px solid var(--line-light);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            padding: 6px;
+        }
+
+        .kiosk-gallery .tile img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .sgm {
+            margin-top: 22px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .sgm .item {
+            background: var(--surface-subtle);
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            padding: 16px 20px;
+        }
+
+        .sgm .item b {
+            display: block;
+            font-size: 16px;
+            color: var(--red);
+            font-weight: 800;
+            margin-bottom: 5px;
+        }
+
+        .sgm .item span {
+            font-size: 14px;
+            color: var(--ink-body);
+            line-height: 1.45;
+        }
+
+        /* =========================================================
+           S10 신뢰성
+        ========================================================= */
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 26px;
+            flex: 1;
+            align-content: center;
+        }
+
+        .trust-card {
+            text-align: center;
+            padding: 20px 24px;
+        }
+
+        .trust-card .ic {
+            font-size: 52px;
+            margin-bottom: 18px;
+        }
+
+        .trust-card .en {
+            font-size: 21px;
+            font-weight: 800;
+            color: var(--ink);
+            letter-spacing: var(--ls-tight);
+            margin-bottom: 12px;
+        }
+
+        .trust-card .en .red {
+            color: var(--red);
+        }
+
+        .trust-card p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--ink-body);
+        }
+
+        .partners {
+            margin-top: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 18px;
+            padding-top: 26px;
+            border-top: 1px solid var(--line-light);
+        }
+
+        .partners .lbl {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--ink-soft);
+        }
+
+        .partners .logo {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--ink);
+            letter-spacing: var(--ls-tight);
+            opacity: 0.85;
+        }
+
+        .partners .dot {
+            color: var(--line);
+            font-size: 18px;
+        }
+
+        /* =========================================================
+           S11 도입절차 + CTA
+        ========================================================= */
+        .steps {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+            margin-bottom: 28px;
+        }
+
+        .steps .who {
+            font-size: 19px;
+            font-weight: 800;
+            color: var(--ink);
+            margin-bottom: 16px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--red);
+        }
+
+        .steps ol {
+            list-style: none;
+            counter-reset: s;
+        }
+
+        .steps li {
+            counter-increment: s;
+            position: relative;
+            padding-left: 40px;
+            font-size: 17px;
+            line-height: 1.5;
+            margin-bottom: 14px;
+            color: var(--ink-body);
+        }
+
+        .steps li::before {
+            content: counter(s);
+            position: absolute;
+            left: 0;
+            top: -1px;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--red);
+            color: #fff;
+            font-size: 15px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .steps li b {
+            color: var(--ink);
+        }
+
+        .cta-center {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .cta {
+            background: var(--red);
+            border-radius: var(--radius-card);
+            padding: 30px 40px;
+            color: #fff;
+            text-align: center;
+            box-shadow: var(--shadow-card);
+        }
+
+        .cta h3 {
+            font-size: 28px;
+            font-weight: 800;
+            line-height: 1.35;
+            letter-spacing: var(--ls-tight);
+            margin-bottom: 18px;
+        }
+
+        .cta .contacts {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            font-size: 20px;
+            font-weight: 800;
+        }
+
+        .cta .contacts span {
+            color: #fff;
+        }
+
+        .foot {
+            margin-top: 16px;
+            text-align: center;
+            font-size: 13px;
+            line-height: 1.6;
+            color: var(--ink-muted);
+        }
+
+        .foot b {
+            color: var(--ink-soft);
+            font-weight: 700;
+        }
+
+        /* =========================================================
+           S1b. 제안 요약 (Executive Summary — 한 장 요약)
+        ========================================================= */
+        .es-stage {
+            position: relative;
+            flex: 1;
+            min-height: 0;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+            background: #3A3A3A;
+        }
+
+        .es-hero {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        .es-flows {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 18px;
+            flex: 0 0 auto;
+        }
+
+        .es-flow {
+            border: 1px solid var(--line);
+            border-top: 4px solid var(--red);
+            border-radius: 12px;
+            padding: 14px 18px;
+            background: var(--surface-subtle);
+        }
+
+        .es-flow .hd {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            margin-bottom: 7px;
+        }
+
+        .es-flow .hd .ic {
+            font-size: 21px;
+        }
+
+        .es-flow .hd b {
+            font-size: 16px;
+            font-weight: 800;
+            color: var(--ink);
+            letter-spacing: var(--ls-base);
+        }
+
+        .es-flow .hd b em {
+            font-style: normal;
+            color: var(--red);
+            font-size: 13px;
+            margin-left: 2px;
+        }
+
+        .es-flow p {
+            font-size: 13.5px;
+            line-height: 1.5;
+            color: var(--ink-body);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ============ S1. 표지 ============ -->
+    <section class="slide cover">
+        <div class="cover-top">
+            <div class="cover-brand"><b>pos.kr</b> · Blue Chips</div>
+            <div class="recipient">o o o 귀중</div>
+        </div>
+        <div class="cover-mid">
+            <span class="eyebrow">구내식당 식수관리 도입 제안</span>
+            <h1>모바일 <span class="red">QR 식수관리</span>시스템<br>제안서</h1>
+            <p>장부 관리와 플라스틱(RFID)·바코드 카드의 시대는 끝.<br>
+                배포부터 정산까지 <strong>100% 모바일로 완벽하게 자동화</strong>합니다.</p>
+        </div>
+        <div class="cover-foot">국내 유일 모바일 100% QR 식수관리시스템 · Giftcoin&nbsp;&nbsp;|&nbsp;&nbsp;2026</div>
+    </section>
+
+    <!-- ============ S1b. 제안 요약 (Executive Summary) ============ -->
+    <section class="slide">
+        <div class="pad">
+            <div class="brandbar">
+                <div class="logo"><b>pos.kr</b> 모바일 QR 식수관리시스템</div>
+                <div class="tag">EXECUTIVE SUMMARY · 제안 요약</div>
+            </div>
+            <div class="sec-head">
+                <span class="num">✦</span>
+                <h2>한 장으로 보는 <em>구내식당 식수관리</em> 솔루션</h2>
+            </div>
+            <p class="sub-lead">내부 직원은 <strong>스마트폰 (및 태블릿) QR 스캐너</strong>로, 내·외부 고객은 <strong>키오스크</strong>로 — 한 곳에서 모두 수용합니다</p>
+            <div class="es-stage">
+                <img class="es-hero" src="assets/구내식당_예시_crop.png"
+                    alt="구내식당 식수관리 — 좌측 직원전용 QR 스캐너, 우측 키오스크 메뉴(정식·부추전·음료수) 주문·결제">
+            </div>
+            <div class="es-flows">
+                <div class="es-flow">
+                    <div class="hd"><span class="ic">📱</span><b>① 내부 직원</b></div>
+                    <p>스마트폰(태블릿) QR스캐너에 <strong>개인 QR을 스캔</strong>해 1초 만에 입장·결제합니다.</p>
+                </div>
+                <div class="es-flow">
+                    <div class="hd"><span class="ic">🖥️</span><b>② 외부 방문객 <em>(내부 직원 포함)</em></b></div>
+                    <p>키오스크에서 <strong>정식·부추전·음료수</strong>를 주문하고 <strong>신용카드 또는 직원 QR</strong>로 결제합니다.</p>
+                </div>
+            </div>
+        </div>
+        <div class="pageno">pos.kr · Blue Chips&nbsp;&nbsp;<b>02</b></div>
+    </section>
+
+    <!-- ============ S2. 목차 ============ -->
+    <section class="slide">
+        <div class="pad">
+            <div class="toc-wrap">
+                <div class="toc-left">
+                    <div class="en">CONTENTS</div>
+                    <div class="ko">제안<br>목차</div>
+                    <div class="bar"></div>
+                </div>
+                <div class="toc-list">
+                    <div class="toc-item">
+                        <span class="n">01</span>
+                        <span class="t">현황과 문제<span>보이지 않는 식대 누수</span></span>
+                    </div>
+                    <div class="toc-item">
+                        <span class="n">02</span>
+                        <span class="t">해법 ①②<span>직원 QR + 키오스크 수용</span></span>
+                    </div>
+                    <div class="toc-item">
+                        <span class="n">03</span>
+                        <span class="t">도입 효과<span>0원 · 0% · 1분</span></span>
+                    </div>
+                    <div class="toc-item">
+                        <span class="n">04</span>
+                        <span class="t">기존 방식과 비교<span>RFID·바코드 vs QR</span></span>
+                    </div>
+                    <div class="toc-item">
+                        <span class="n">05</span>
+                        <span class="t">작동 방식<span>8단계 완전 자동화</span></span>
+                    </div>
+                    <div class="toc-item">
+                        <span class="n">06</span>
+                        <span class="t">정교한 4중 통제<span>예산 · 인원 · 행위</span></span>
+                    </div>
+                    <div class="toc-item">
+                        <span class="n">07</span>
+                        <span class="t">부가 서비스<span>CCTV 연동 · 키오스크</span></span>
+                    </div>
+                    <div class="toc-item">
+                        <span class="n">08</span>
+                        <span class="t">신뢰성<span>20년 IT·결제 전문</span></span>
+                    </div>
+                    <div class="toc-item" style="grid-column:1 / -1;">
+                        <span class="n">09</span>
+                        <span class="t">도입 절차 및 문의<span>무료 데모 신청</span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pageno">pos.kr · Blue Chips&nbsp;&nbsp;<b>03</b></div>
+    </section>
+
+    <!-- ============ S3. 현황 — 식대 누수 ============ -->
+    <section class="slide">
+        <div class="pad">
+            <div class="brandbar">
+                <div class="logo"><b>pos.kr</b> 모바일 QR 식수관리시스템</div>
+                <div class="tag">01 현황과 문제</div>
+            </div>
+            <div class="sec-head">
+                <span class="num">01</span>
+                <h2>보이지 않는 <em>식대 누수</em>가 회사 비용을 잠식합니다</h2>
+            </div>
+            <p class="sub-lead">플라스틱·바코드 카드와 수기 장부 운영에서 반복되는 세 가지 손실 지점</p>
+            <div class="grid-3">
+                <div class="icard">
+                    <div class="ic">🙅</div>
+                    <div class="k">손실 ①</div>
+                    <div class="t">외부인·부적격자<br>부정 사용</div>
+                    <div class="d">분실되거나 타인에게 도용되는 카드, 미승인된 식권으로 인해 식대가 새어 나갑니다.</div>
+                </div>
+                <div class="icard">
+                    <div class="ic">💳</div>
+                    <div class="k">손실 ②</div>
+                    <div class="t">불편한 배포와<br>휴대·회수</div>
+                    <div class="d">플라스틱(RFID)·바코드 카드의 직원별 배포와 회수, 재발급 등 관리 부담이 끊이지 않습니다.</div>
+                </div>
+                <div class="icard">
+                    <div class="ic">🕳️</div>
+                    <div class="k">손실 ③</div>
+                    <div class="t">기록 부정확 <br>→ 정산·관리 불가능</div>
+                    <div class="d">기록 누락 또는 부정확한 기록으로 인해 정산 불가능한 상황이 발생하여, 통제할 수 없는 손실이 계속 발생합니다.</div>
+                </div>
+            </div>
+            <div class="loss-note">대부분의 손실은 <b>한 건씩 작아서 눈에 띄지 않지만</b>, 인원수 × 매일 × 1년으로 누적되면
+                <span class="red">식대의 상당 부분</span>이 통제 범위 밖으로 빠져나갑니다.
+            </div>
+        </div>
+        <div class="pageno">pos.kr · Blue Chips&nbsp;&nbsp;<b>04</b></div>
+    </section>
+
+    <!-- ============ S4. 해법 ============ -->
+    <section class="slide">
+        <div class="pad">
+            <div class="brandbar">
+                <div class="logo"><b>pos.kr</b> 모바일 QR 식수관리시스템</div>
+                <div class="tag">02 해법 ① · 직원 결제</div>
+            </div>
+            <div class="sec-head">
+                <span class="num">02</span>
+                <h2>해법 ① — 스마트폰 (또는 태블릿)을 <em>QR 스캐너로 활용</em></h2>
+            </div>
+            <p class="sub-lead">새 기기도, 설치 교육도 필요 없습니다 — 코로나19 출입인증으로 누구나 익숙한 방식</p>
+            <div class="split">
+                <div class="split-l">
+                    <span class="familiar">📱 내부 직원은 MMS(그림 문자)로 받은 QR을 보여주기만 하면 됩니다</span>
+                    <div class="keybox">
+                        <div class="h"><span class="red">즉시</span> 준비</div>
+                        <p>기존 스마트폰(또는 태블릿)을 QR 스캐너로 사용 — <strong>플라스틱카드·리더기·PC 구매 불필요.</strong>
+                            <br>(회사 관리자의 정책 설정 및 식당 관리자의 수용으로 준비 완료)
+                        </p>
+                    </div>
+                    <div class="keybox">
+                        <div class="h"><span class="red">1분</span> 도착</div>
+                        <p>전 직원에게 <strong>개인별 QR을 MMS(그림 문자)</strong>로 전송 → 회사 정책 자동 적용.
+                            <br>(이용자 앱을 받으면 <strong>내역 확인과 부가 기능</strong>도 활용할 수 있습니다)
+                        </p>
+                    </div>
+                    <div class="keybox">
+                        <div class="h"><span class="red">1초</span> 결제</div>
+                        <p>전송받은 QR코드를 화면에 띄우고 스캔하면 1초내 결제 완료 — <strong>부여받은 한도내 사용</strong>.
+                            <br>(관리자 확인 후 신규 직원도 즉시 이용)
+                        </p>
+                    </div>
+                </div>
+                <div class="split-r">
+                    <img class="phone-img" src="assets/손스마트폰_QR합성.png" alt="개인 QR 코드 화면">
+                    <img class="scan-img" src="assets/두리미가_스캐너내부.jpg" alt="QR 스캔 결제 화면">
+                </div>
+            </div>
+        </div>
+        <div class="pageno">pos.kr · Blue Chips&nbsp;&nbsp;<b>05</b></div>
+    </section>
+
+    <!-- ============ S4b. 해법 ② — 키오스크 ============ -->
+    <section class="slide">
+        <div class="pad">
+            <div class="brandbar">
+                <div class="logo"><b>pos.kr</b> 모바일 QR 식수관리시스템</div>
+                <div class="tag">02 해법 ② · 내·외부 동시 수용</div>
+            </div>
+            <div class="sec-head">
+                <span class="num">02</span>
+                <h2>해법 ② — <em>키오스크 한 대</em>로 내·외부 결제를 동시에</h2>
+            </div>
+            <p class="sub-lead">방문 고객의 카드 결제와 직원의 QR 결제를 한 기기에서 함께 받습니다</p>
+            <div class="split">
+                <div class="kiosk-stage">
+                    <img class="kiosk-full" src="assets/키오스크_합성_crop.png" alt="QR 스캐너·카드 단말 일체형 키오스크">
+                    <span class="callout co-qr">📷 QR 스캐너<b>직원 QR 결제</b></span>
+                    <span class="callout co-card">💳 카드 단말<b>방문객 카드 결제</b></span>
+                </div>
+                <div class="split-l">
+                    <div class="keybox">
+                        <div class="h">💳 방문 고객 — <span class="red">신용·체크카드</span></div>
+                        <p>처음 온 외부 고객은 키오스크에 신용·체크카드로 즉시 결제.
+                            <br>카드 단말기를 따로 둘 필요가 없습니다.
+                        </p>
+                    </div>
+                    <div class="keybox">
+                        <div class="h">📷 내부 직원 — <span class="red">앱 QR 스캔</span></div>
+                        <p>직원은 같은 키오스크의 QR 스캐너에 앱 QR을 스캔.
+                            <br>카드 결제와 QR 결제가 한 기기에서 연동되어 동시에 운영됩니다.
+                        </p>
+                    </div>
+                    <div class="case-row">
+                        <div class="case">
+                            <div class="h"><em>겸용</em> 식당</div>
+                            <p>고정 직원 + 방문 고객. 키오스크 1대로 QR·카드를 함께 받습니다.</p>
+                        </div>
+                        <div class="case">
+                            <div class="h"><em>대형</em> 식당</div>
+                            <p>식수 인원이 많은 현장. 키오스크 + QR리더를 함께 세워 편한 쪽에서 결제합니다.</p>
+                        </div>
+                    </div>
+                    <p class="note-line">pos.kr 키오스크 이용 매장 사례 — 카드 결제와 QR 결제를 연동해 별도 카드 단말 준비 없이 운영합니다.</p>
+                </div>
+            </div>
+        </div>
+        <div class="pageno">pos.kr · Blue Chips&nbsp;&nbsp;<b>06</b></div>
+    </section>
+
+    <!-- ============ S5. 도입 효과 ============ -->
+    <section class="slide">
+        <div class="pad">
+            <div class="brandbar">
+                <div class="logo"><b>pos.kr</b> 모바일 QR 식수관리시스템</div>
+                <div class="tag">03 도입 효과</div>
+            </div>
+            <div class="sec-head">
+                <span class="num">03</span>
+                <h2>도입 효과 — <em>0원 · 0% · 1분</em></h2>
+            </div>
+            <p class="sub-lead">싸고, 믿을 수 있고, 편합니다</p>
+            <div class="stats">
+                <div class="stat">
+                    <div class="v">0<span>원</span></div>
+                    <div class="l">카드·리더기·PC 구입비</div>
+                </div>
+                <div class="stat">
+                    <div class="v">0<span>%</span></div>
+                    <div class="l">부정·대리식수 원천차단</div>
+                </div>
+                <div class="stat">
+                    <div class="v">1<span>분</span></div>
+                    <div class="l">월말 대금 정산</div>
+                </div>
+            </div>
+            <div class="reasons-row">
+                <div class="reason-mini">
+                    <span class="num">①</span>
+                    <div class="tx"><b>경제성</b>
+                        <p>3~4백만원짜리 카드·리더기·PC 구축비가 0원. 안 쓰는 스마트폰으로 시작합니다.</p>
+                    </div>
+                </div>
+                <div class="reason-mini">
+                    <span class="num">②</span>
+                    <div class="tx"><b>신뢰성</b>
+                        <p>개인별 QR과 AI 의심행위 감지로 분실·대리사용을 원천 차단합니다.</p>
+                    </div>
+                </div>
+                <div class="reason-mini">
+                    <span class="num">③</span>
+                    <div class="tx"><b>편의성</b>
+                        <p>배포·집계·정산까지 전부 자동. 월말 정산은 클릭 한 번, 1분이면 끝납니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pageno">pos.kr · Blue Chips&nbsp;&nbsp;<b>07</b></div>
+    </section>
+
+    <!-- ============ S6. 비교표 ============ -->
+    <section class="slide">
+        <div class="pad">
+            <div class="brandbar">
+                <div class="logo"><b>pos.kr</b> 모바일 QR 식수관리시스템</div>
+                <div class="tag">04 기존 방식과 비교</div>
+            </div>
+            <div class="sec-head">
+                <span class="num">04</span>
+                <h2>아직도 <em>플라스틱(RFID)·바코드</em>를 쓰시나요?</h2>
+            </div>
+            <p class="sub-lead">한눈에 비교해 보세요</p>
+            <table class="cmp">
+                <thead>
+                    <tr>
+                        <th class="col-label">비교 항목</th>
+                        <th class="ours">모바일 QR 식수관리시스템</th>
+                        <th>플라스틱(RFID)·바코드 방식</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="col-label">💰 초기 도입 비용</td>
+                        <td class="ours"><span class="strike">250만원</span> <span class="yes">35~90만원</span><span class="badge">할인</span>
+                            <span class="sub">MMS 220원/건, 안 쓰는 스마트폰 활용</span>
+                        </td>
+                        <td><span class="no">370~420만원</span>
+                            <span class="sub">RFID카드 90만 + 리더기 3대 180만 + PC 100만</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-label">🧾 배포·분실 등 운영비</td>
+                        <td class="ours"><span class="yes">저렴</span><span class="sub">문자 알림으로 즉시 재발급</span></td>
+                        <td><span class="no">높음</span><span class="sub">카드 재교부·분실 관리 부담</span></td>
+                    </tr>
+                    <tr>
+                        <td class="col-label">🛡️ 식대 손실(누수율) 방지</td>
+                        <td class="ours"><span class="yes">매우 강력</span><span class="sub">개인별 양방향 QR + AI 의심행위 감지</span>
+                        </td>
+                        <td><span class="no">매우 취약</span><span class="sub">기록·취합 오류, 카드 분실·대리사용</span></td>
+                    </tr>
+                    <tr>
+                        <td class="col-label">🧩 식당 선결제 지원 여부</td>
+                        <td class="ours"><span class="yes">100% 자동화 내재</span><span class="sub">선불·후불 자동화로 식당 매출 증대
+                                지원</span>
+                        </td>
+                        <td><span class="no">불가능</span><span class="sub">별도 쿠폰·장부 추가 준비 불가피</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="pageno">pos.kr · Blue Chips&nbsp;&nbsp;<b>08</b></div>
+    </section>
+
+    <!-- ============ S7. 8단계 자동화 ============ -->
+    <section class="slide">
+        <div class="pad">
+            <div class="brandbar">
+                <div class="logo"><b>pos.kr</b> 모바일 QR 식수관리시스템</div>
+                <div class="tag">05 작동 방식</div>
+            </div>
+            <div class="sec-head">
+                <span class="num">05</span>
+                <h2>Giftcoin은 전 과정을 <em>8단계로 완전 자동화</em>합니다</h2>
+            </div>
+            <p class="sub-lead">회사관리자 · 매장관리자 · 이용자가 각자의 앱에서 실시간으로 확인합니다</p>
+            <div class="timeline">
+                <div class="tl-row">
+                    <div class="tl-step">
+                        <div class="circle">1</div>
+                        <div class="t">일괄 발급</div>
+                        <div class="d">직원 명단 CSV 1회 전송</div>
+                    </div>
+                    <div class="tl-step">
+                        <div class="circle">2</div>
+                        <div class="t">개인 QR</div>
+                        <div class="d">직원별 QR을 MMS로 발송</div>
+                    </div>
+                    <div class="tl-step">
+                        <div class="circle">3</div>
+                        <div class="t">즉시 정책 적용</div>
+                        <div class="d">회사 정책을 일괄 배포</div>
+                    </div>
+                    <div class="tl-step">
+                        <div class="circle">4</div>
+                        <div class="t">QR 결제</div>
+                        <div class="d">이용자별 기록·특이사항 메모</div>
+                    </div>
+                </div>
+                <div class="tl-row">
+                    <div class="tl-step">
+                        <div class="circle">5</div>
+                        <div class="t">상세 기능은 앱으로</div>
+                        <div class="d">각 관리자·이용자별 앱 활용</div>
+                    </div>
+                    <div class="tl-step">
+                        <div class="circle">6</div>
+                        <div class="t">조회 / 재발송</div>
+                        <div class="d">폰에서 실시간 조회, 클릭 1회로 QR 재전송</div>
+                    </div>
+                    <div class="tl-step">
+                        <div class="circle">7</div>
+                        <div class="t">다국어 지원</div>
+                        <div class="d">22개 언어 자동 분기</div>
+                    </div>
+                    <div class="tl-step">
+                        <div class="circle">8</div>
+                        <div class="t">월 정산 자료</div>
+                        <div class="d">월간 정산 자료 상시 다운로드 (PDF/XLS)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pageno">pos.kr · Blue Chips&nbsp;&nbsp;<b>09</b></div>
+    </section>
+
+    <!-- ============ S8. 4중 통제 ============ -->
+    <section class="slide">
+        <div class="pad">
+            <div class="brandbar">
+                <div class="logo"><b>pos.kr</b> 모바일 QR 식수관리시스템</div>
+                <div class="tag">06 정교한 통제</div>
+            </div>
+            <div class="sec-head">
+                <span class="num">06</span>
+                <h2>회사 정책에 따른 <em>정교한 4중 통제</em></h2>
+            </div>
+            <p class="sub-lead">예산과 인원, 행위를 완벽하게 통제합니다</p>
+            <div class="grid-4">
+                <div class="ctrl-card">
+                    <div class="top">
+                        <span class="badge-n">1</span>
+                        <div class="h">정기 배분 <em>사용량</em></div>
+                    </div>
+                    <p>일·주·월 단위로 횟수·포인트를 자동 충전. 미사용 잔여분은 소멸합니다.</p>
+                </div>
+                <div class="ctrl-card">
+                    <div class="top">
+                        <span class="badge-n">2</span>
+                        <div class="h">즉각 추가 <em>예외 대응</em></div>
+                    </div>
+                    <p>회식·근무 외 식사 등 1회성 정책을 즉시 부여. 부서별 또는 회사 비용으로 정확히 귀속됩니다.</p>
+                </div>
+                <div class="ctrl-card">
+                    <div class="top">
+                        <span class="badge-n">3</span>
+                        <div class="h">신규자 등록 허용 <em>유연성</em></div>
+                    </div>
+                    <p>식당의 신규자 등록을 ON/OFF로 전환. 100% 본사 등록과 현장 등록 허용 사이를 자유롭게 선택합니다.</p>
+                </div>
+                <div class="ctrl-card">
+                    <div class="top">
+                        <span class="badge-n">4</span>
+                        <div class="h">재결제 사유 <em>부정 방지</em></div>
+                    </div>
+                    <p>2시간내 재사용 시 사유 입력을 팝업. 비정상 결제를 사전에 차단하고 기록으로 남깁니다.</p>
+                </div>
+            </div>
+            <div class="zero-note">정책 저장 즉시 다음 주기에 자동 반영 — 별도의 재정산 작업은 Zero</div>
+        </div>
+        <div class="pageno">pos.kr · Blue Chips&nbsp;&nbsp;<b>10</b></div>
+    </section>
+
+    <!-- ============ S9. 부가 서비스 ============ -->
+    <section class="slide">
+        <div class="pad">
+            <div class="brandbar">
+                <div class="logo"><b>pos.kr</b> 모바일 QR 식수관리시스템</div>
+                <div class="tag">07 부가 서비스</div>
+            </div>
+            <div class="sec-head">
+                <span class="num">07</span>
+                <h2>부가 서비스: <em>CCTV</em> · 키오스크 10종 지원</h2>
+            </div>
+            <p class="sub-lead">CCTV로 검증하고, 키오스크로 내·외부 고객까지 수용합니다</p>
+            <div class="grid-4" style="flex:0 0 auto;">
+                <div class="addon-card">
+                    <img class="addon-img" src="assets/두리미가_스캐너내부.jpg" alt="초 단위 결제 기록 화면" style="object-fit:cover;">
+                    <div class="hd">🛡️ CCTV 정확 매칭 — 분쟁 해결의 <b>객관적 근거</b></div>
+                    <div class="bd">
+                        <p>초 단위 DB 기록으로 CCTV 영상과 결제를 정확히 매칭합니다.
+                            부정·대리 결제 분쟁이 발생해도 완벽한 객관적 근거를 제공합니다.</p>
+                    </div>
+                </div>
+                <div class="addon-card">
+                    <div class="kiosk-gallery">
+                        <div class="tile" style="flex:1;"><img src="assets/KIOSK_A.png" alt="카운터형 키오스크"></div>
+                        <div class="tile" style="flex:1.55;"><img src="assets/IMU2.jpg" alt="데스크탑형·스탠드형 키오스크"></div>
+                        <div class="tile" style="flex:0.85;"><img src="assets/stand.png" alt="세로형 스탠드 키오스크"></div>
+                    </div>
+                    <div class="hd" style="background:var(--red);">🖥️ 키오스크 10종 연동 — <b style="color:#fff;">확장·매출</b>
+                    </div>
+                    <div class="bd">
+                        <p>일반 매장도 키오스크를 통해 내·외부 고객을 동시에 수용하고,
+                            함께 운영하는 카페까지 하나의 결제 생태계로 접목합니다.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="sgm">
+                <div class="item"><b>3초 결제 갭</b><span>중복 결제의 오류를 예방하도록 재결제는 3초후 진행됩니다.</span></div>
+                <div class="item"><b>이상 감지 처리</b><span>연속·중복 결제 등 의심 거래 패턴을 자동으로 감지·표시합니다.</span></div>
+                <div class="item"><b>데이터 객관성</b><span>결제 영상과 실시간 레코드를 함께 남겨 분쟁을 종결합니다.</span></div>
+            </div>
+        </div>
+        <div class="pageno">pos.kr · Blue Chips&nbsp;&nbsp;<b>11</b></div>
+    </section>
+
+    <!-- ============ S10. 신뢰성 ============ -->
+    <section class="slide">
+        <div class="pad">
+            <div class="brandbar">
+                <div class="logo"><b>pos.kr</b> 모바일 QR 식수관리시스템</div>
+                <div class="tag">08 신뢰성</div>
+            </div>
+            <div class="sec-head">
+                <span class="num">08</span>
+                <h2>돈과 관련된 시스템의 핵심은 <em>안정성</em>입니다</h2>
+            </div>
+            <p class="sub-lead">20년 경력의 IT·결제 전문가가 만듭니다</p>
+            <div class="trust-grid">
+                <div class="trust-card">
+                    <div class="ic">🧠</div>
+                    <div class="en">Technical <span class="red">Leadership</span></div>
+                    <p>20년 이상의 IT 시스템 개발 경험을 보유한 전문가들이 직접 설계·운영합니다.</p>
+                </div>
+                <div class="trust-card">
+                    <div class="ic">📈</div>
+                    <div class="en">Proven <span class="red">Record</span></div>
+                    <p>수많은 카페·매장에서 검증된 결제/정산 엔진을 기업 식수 관리에 그대로 적용합니다.</p>
+                </div>
+                <div class="trust-card">
+                    <div class="ic">🤝</div>
+                    <div class="en">Strategic <span class="red">Partnerships</span></div>
+                    <p>국내 유수의 키오스크 기업과 대형 프랜차이즈가 인정한 기술력입니다.</p>
+                </div>
+            </div>
+            <div class="partners">
+                <span class="lbl">연동 키오스크</span>
+                <span class="logo">imu</span>
+                <span class="dot">·</span>
+                <span class="logo">AirPos</span>
+                <span class="dot">·</span>
+                <span class="logo">Q PASS</span>
+            </div>
+        </div>
+        <div class="pageno">pos.kr · Blue Chips&nbsp;&nbsp;<b>12</b></div>
+    </section>
+
+    <!-- ============ S11. 도입 절차 & CTA ============ -->
+    <section class="slide">
+        <div class="pad">
+            <div class="brandbar">
+                <div class="logo"><b>pos.kr</b> 모바일 QR 식수관리시스템</div>
+                <div class="tag">09 도입 절차 및 문의</div>
+            </div>
+            <div class="sec-head">
+                <span class="num">09</span>
+                <h2>그래서, <em>어떻게 시작</em>하나요?</h2>
+            </div>
+            <div class="cta-center">
+                <div class="cta">
+                    <h3>새는 식대 막고, 정산은 1분 안에 — 지금 무료 데모를 신청하세요</h3>
+                    <div class="contacts">
+                        <span>☎ 010-5415-4415</span>
+                        <span>✉ hi@pos.kr</span>
+                        <span>🌐 pos.kr</span>
+                    </div>
+                </div>
+            </div>
+            <div class="foot">
+                <b>블루칩스</b> | 대표자 이미경 | 사업자등록번호 558-51-00535<br>
+                경기도 고양시 일산동구 일산로 142, 818-1호 | hi@pos.kr
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>
