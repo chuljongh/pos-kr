@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Giftcoin 요금제</title>
+<style>
+    :root {
+        --bg: #ffffff;
+        --text: #1c1c1e;
+        --meta: #6e6e73;          /* 메타 정보 전용 (본문 사용 금지) */
+        --line: #d9d9de;
+        --head-bg: #f5f5f7;
+        --accent: #E06A2B;
+        --accent-text: #ffffff;
+        --highlight-bg: #fdf3ec;
+        --badge-bg: #e7f1ff;
+        --badge-text: #1976D2;
+    }
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg: #1c1c1e;
+            --text: #f2f2f5;
+            --meta: #9a9aa1;
+            --line: #44444a;
+            --head-bg: #2a2a2e;
+            --accent: #E06A2B;
+            --accent-text: #ffffff;
+            --highlight-bg: #2e241d;
+            --badge-bg: #1e3250;
+            --badge-text: #8ec0f5;
+        }
+    }
+    * { box-sizing: border-box; }
+    body {
+        margin: 0;
+        padding: 32px 16px 48px;
+        background: var(--bg);
+        color: var(--text);
+        font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
+        line-height: 1.5;
+    }
+    .wrap { max-width: 1080px; margin: 0 auto; }
+    h1 { font-size: 26px; margin: 0 0 6px; }
+    .subtitle { font-size: 15px; margin: 0 0 24px; }
+
+    .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        min-width: 860px;          /* 모바일은 가로 스크롤 */
+        font-size: 14px;
+    }
+    th, td {
+        border: 1px solid var(--line);
+        padding: 12px 14px;        /* 전 셀 동일 padding — 열 정렬 보장 */
+        text-align: center;
+        vertical-align: middle;
+    }
+    thead th {
+        background: var(--head-bg);
+        font-size: 15px;
+    }
+    tbody th {
+        background: var(--head-bg);
+        text-align: left;
+        font-weight: 600;
+        white-space: nowrap;
+    }
+    .price { font-size: 18px; font-weight: 700; }
+    .price small { display: block; font-size: 12px; font-weight: 400; }
+    .plan-plus { background: var(--highlight-bg); }
+    thead th.plan-plus { border-top: 3px solid var(--accent); }
+
+    .badge {
+        display: inline-block;
+        padding: 3px 10px;          /* 작은 UI는 고정 px */
+        border-radius: 12px;
+        font-size: 11px;
+        font-weight: 700;
+        background: var(--accent);
+        color: var(--accent-text);
+        vertical-align: middle;
+        margin-left: 6px;
+    }
+    .tag {
+        display: inline-block;
+        padding: 2px 8px;
+        border-radius: 10px;
+        font-size: 11px;
+        font-weight: 700;
+        background: var(--badge-bg);
+        color: var(--badge-text);
+    }
+    .na { opacity: 0.45; }          /* 비활성: 회색 채움 대신 투명도 */
+
+    .notes { margin-top: 20px; font-size: 13px; }
+    .notes p { margin: 4px 0; }
+    .notes .num { font-weight: 700; }
+    .examples { margin-top: 28px; }
+    .examples h2 { font-size: 17px; margin: 0 0 10px; }
+    .examples ul { margin: 0; padding-left: 20px; font-size: 14px; }
+    .examples li { margin: 4px 0; }
+    .updated { margin-top: 24px; font-size: 12px; color: var(--meta); }  /* 메타 정보만 회색 */
+
+    /* 상단 우측 인쇄 방향 선택 버튼 (인쇄물에는 숨김) */
+    .print-bar { text-align: right; margin-bottom: 10px; }
+    .print-bar button {
+        font-size: 13px; font-weight: 700; cursor: pointer;
+        padding: 7px 14px; margin-left: 8px; border-radius: 8px;
+        border: 1.5px solid var(--accent); background: transparent; color: var(--accent);
+    }
+    .print-bar button:hover { background: var(--accent); color: var(--accent-text); }
+
+    /* A4 인쇄: 표(min 860px)가 세로 폭을 넘어 잘리거나 축소되며 10pt 미달 → 여백·행높이 압축으로 1페이지 수용(폰트는 모두 10pt 이상 유지). 방향(@page)은 버튼이 #print-orient로 동적 지정 */
+    @media print {
+        .print-bar { display: none; }
+        body { padding: 0; }
+        .table-scroll { overflow: visible; }   /* 종이에서 우측 열 잘림 방지 */
+        table { min-width: 0; width: 100%; }
+        th, td { padding: 3px 12px; }          /* 행 높이 압축 → 표 전체 1페이지 수용 */
+        h1 { font-size: 22px; margin-bottom: 2px; }
+        .subtitle { margin-bottom: 8px; }
+        .notes { margin-top: 6px; font-size: 13.4px; line-height: 1.4; }  /* 13.4px = 10.05pt */
+        .notes p { margin: 2px 0; }
+        .updated { margin-top: 4px; font-size: 13.4px; }
+    }
+</style>
+<style id="print-orient">@page { size: A4 portrait; margin: 10mm; }</style>
+</head>
+<body>
+<div class="wrap">
+    <div class="print-bar">
+        <button type="button" onclick="printAs('landscape')">가로 모드 인쇄</button>
+        <button type="button" onclick="printAs('portrait')">세로 모드 인쇄</button>
+    </div>
+    <h1>Giftcoin 요금제</h1>
+    <p class="subtitle">기본 기능은 무료로 시작하고, 매장 운영 규모에 맞춰 플랜을 선택하세요. 코인 전송·공유·내역 확인 등 이용자 기본 기능은 모든 플랜에서 무료입니다.</p>
+
+    <div class="table-scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>구분</th>
+                    <th>Free</th>
+                    <th>Super</th>
+                    <th>Pro</th>
+                    <th class="plan-plus">Plus<span class="badge">추천</span></th>
+                    <th>Max</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>초기 가입비</th>
+                    <td>없음</td>
+                    <td>없음</td>
+                    <td>28만원</td>
+                    <td class="plan-plus">55만원</td>
+                    <td>90만원</td>
+                </tr>
+                <tr>
+                    <th>월 구독료</th>
+                    <td class="price">무료</td>
+                    <td class="price">2.9만원</td>
+                    <td class="price">6.9만원</td>
+                    <td class="price plan-plus">15만원</td>
+                    <td class="price">29만원</td>
+                </tr>
+                <tr>
+                    <th>이용자 기능</th>
+                    <td colspan="5">매장 코인의 전송·공유·에어드랍·내역 확인 등 이용자 기본 기능은 전 플랜 무료</td>
+                </tr>
+                <tr>
+                    <th>동시 접속</th>
+                    <td>1대</td>
+                    <td>2대</td>
+                    <td>5대</td>
+                    <td class="plan-plus">15대</td>
+                    <td>30대</td>
+                </tr>
+                <tr>
+                    <th>키오스크 연동</th>
+                    <td><span class="na">—</span></td>
+                    <td>○</td>
+                    <td>○</td>
+                    <td class="plan-plus">○</td>
+                    <td>○</td>
+                </tr>
+                <tr>
+                    <th>선불 카드 발행</th>
+                    <td><span class="na">—</span></td>
+                    <td>○</td>
+                    <td>○</td>
+                    <td class="plan-plus">○</td>
+                    <td>○</td>
+                </tr>
+                <tr>
+                    <th>문자 QR 카드<sup>1</sup></th>
+                    <td><span class="na">—</span></td>
+                    <td><span class="na">—</span></td>
+                    <td>○</td>
+                    <td class="plan-plus">○</td>
+                    <td>○</td>
+                </tr>
+                <tr>
+                    <th>그림 문자 비용<sup>2</sup></th>
+                    <td><span class="na">—</span></td>
+                    <td>포함</td>
+                    <td>별도</td>
+                    <td class="plan-plus">포함</td>
+                    <td>포함</td>
+                </tr>
+                <tr>
+                    <th>후불 정산 기능<sup>3</sup></th>
+                    <td><span class="na">—</span></td>
+                    <td><span class="na">—</span></td>
+                    <td>○</td>
+                    <td class="plan-plus">○</td>
+                    <td>○</td>
+                </tr>
+                <tr>
+                    <th>수락 회사 수</th>
+                    <td><span class="na">—</span></td>
+                    <td><span class="na">—</span></td>
+                    <td>2개사<sup>4</sup></td>
+                    <td class="plan-plus">3개사·50명 이상 규모에 권장</td>
+                    <td>무관</td>
+                </tr>
+                <tr>
+                    <th>플랜별 특징</th>
+                    <td>포인트 활용</td>
+                    <td>선불카드</td>
+                    <td>회사와 장부 거래</td>
+                    <td class="plan-plus">가격 및 정책 세분화<sup>5</sup></td>
+                    <td>식수 신청 관리<sup>6</sup></td>
+                </tr>
+                <tr>
+                    <th>적합한 사용 모습</th>
+                    <td>선결제 증표로 코인을 주는 동네 카페·식당</td>
+                    <td>키오스크로 QR 결제를 받는 매장·구내식당</td>
+                    <td>회사 또는 부서 단위로 식대·복지를 제공하는 매장</td>
+                    <td class="plan-plus">여러 회사를 동시에 받는 거점 매장</td>
+                    <td>기숙사 운영·기관 급식에 최적</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="notes">
+        <p><span class="num">1.</span> <b>문자 QR 카드</b> — 회사·단체 소속원 전원에게 그림문자(MMS)로 개인별 QR 카드를 발송하는 서비스입니다.</p>
+        <p><span class="num">2.</span> <b>그림 문자 비용</b> — 선불카드나 개인별 문자 QR을 그림문자(MMS)로 발송할 때 발생하는 MMS 비용입니다. 플랜에 따라 구독료에 포함(포함)되거나 건별로 별도 청구(별도)됩니다.</p>
+        <p><span class="num">3.</span> <b>후불 정산 기능</b> — 실제 사용분을 정산 리포트로 집계해 회사에 사후 청구·정산하는 방식입니다. 임직원 식대·복지를 운영하는 요식업 매장의 핵심입니다.</p>
+        <p><span class="num">4.</span> Pro는 회사 <b>2개사</b>까지 수락하며 <b>이용 인원은 무제한</b>입니다. 회사를 1개사 추가 수락할 때마다 <b>월 2.9만원</b>이 가산됩니다.</p>
+        <p><span class="num">5.</span> <b>가격 세분</b> — 매장이 끼니·메뉴·구역별로 판매 가격을 직접 나눌 수 있습니다 (예: 1층 7,000원 / 2층 9,000원, 또는 한식 10,000원 / 양식 9,500원). <b>정책 세분</b> — 회사가 복지 지원 금액을 끼니별로 세분해 설정할 수 있습니다 (예: 조식 8,500원 / 중식 12,000원 / 석식 13,000원).</p>
+        <p><span class="num">6.</span> <b>식수 신청 관리</b> — 구성원이 앱에서 직접 끼니별 식수를 신청하면 결과가 실시간으로 취합되어, 식당이 정확한 식수에 맞춰 식사를 준비할 수 있습니다.</p>
+    </div>
+
+    <p class="updated">2026-06-17 기준</p>
+</div>
+<script>
+function printAs(orient) { // 선택한 방향으로 @page 갱신 후 인쇄
+    document.getElementById('print-orient').textContent =
+        '@page { size: A4 ' + orient + '; margin: 10mm; }';
+    window.print();
+}
+</script>
+</body>
+</html>
