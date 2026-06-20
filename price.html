@@ -49,8 +49,11 @@
         border-collapse: collapse;
         width: 100%;
         min-width: 860px;          /* 모바일은 가로 스크롤 */
+        table-layout: fixed;       /* colgroup 폭 고정 — 플랜 5열 균등 */
         font-size: 14px;
     }
+    col.col-label { width: 16%; }   /* '구분' 열 — 라벨 nowrap 수용 */
+    col.col-plan { width: 16.8%; }  /* Free/Super/Pro/Plus/Max 균등 */
     th, td {
         border: 1px solid var(--line);
         padding: 12px 14px;        /* 전 셀 동일 padding — 열 정렬 보장 */
@@ -140,6 +143,14 @@
 
     <div class="table-scroll">
         <table>
+            <colgroup>
+                <col class="col-label">
+                <col class="col-plan">
+                <col class="col-plan">
+                <col class="col-plan">
+                <col class="col-plan">
+                <col class="col-plan">
+            </colgroup>
             <thead>
                 <tr>
                     <th>구분</th>
@@ -223,7 +234,7 @@
                     <th>플랜별 특징</th>
                     <td>코인(포인트) 활용</td>
                     <td>선불카드<br>(20명 이하 무료)</td>
-                    <td>회사와 장부 거래<br>20명 이하 무료</td>
+                    <td>회사와 장부 거래<br>(20명 이하 무료)</td>
                     <td class="plan-plus">좌동. 가격 세분화 및 회사의 다양한 정책 지원<sup>4</sup></td>
                     <td>식수 신청·관리 시스템<sup>5</sup></td>
                 </tr>
