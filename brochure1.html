@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>모바일 QR 식수관리시스템 브로셔 | pos.kr</title>
+    <meta name="description" content="구내식당·함바 모바일 QR 식수관리시스템 소개 브로셔. 카드·리더기·PC 0원, 부정식수 0%, 월말 정산 1분.">
+    <link rel="preload"
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet"
+            href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+    </noscript>
+
+    <style>
+        /* ===== 디자인 토큰 ===== */
+        :root {
+            --red: #FF2233;
+            --red-darker: #E01E2C;
+            --red-light: #FFF0F1;
+            --orange: #F37021;
+            --accent: #00AAFF;
+            --ink: #111111;
+            --ink-body: #4C4C4C;
+            --ink-soft: #666666;
+            --ink-muted: #999999;
+            --surface: #FFFFFF;
+            --surface-subtle: #FAFAFA;
+            --surface-muted: #F2F2F2;
+            --line: #DADADA;
+            --line-light: #EEEEEE;
+            --ls-tight: -0.04em;
+            --ls-base: -0.025em;
+            --radius-card: 12px;
+            --radius-btn: 4px;
+            --shadow-card: 0 16px 12px 0 rgba(0, 0, 0, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-family: "Pretendard", "Noto Sans KR", system-ui, sans-serif;
+            color: var(--ink-body);
+            letter-spacing: var(--ls-base);
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        /* 화면 미리보기: 회색 배경 위 종이 */
+        body {
+            background: #E5E7EB;
+            padding: 24px 0;
+        }
+
+        .page {
+            width: 210mm;
+            height: 297mm;
+            background: var(--surface);
+            margin: 0 auto 24px;
+            padding: 14mm 15mm;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.18);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+        }
+
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        @media print {
+            body {
+                background: #fff;
+                padding: 0;
+            }
+
+            .page {
+                margin: 0;
+                box-shadow: none;
+                page-break-after: always;
+            }
+
+            .page:last-child {
+                page-break-after: auto;
+            }
+        }
+
+        /* ===== 공통 요소 ===== */
+        strong {
+            color: var(--ink);
+            font-weight: 700;
+        }
+
+        .red {
+            color: var(--red);
+        }
+
+        /* 페이지 머리띠 */
+        .brandbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: 7px;
+            border-bottom: 2px solid var(--red);
+            margin-bottom: 14px;
+        }
+
+        .brandbar .logo {
+            font-size: 19px;
+            font-weight: 800;
+            letter-spacing: var(--ls-tight);
+            color: var(--ink);
+        }
+
+        .brandbar .logo b {
+            color: var(--red);
+        }
+
+        .brandbar .tag {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--ink-soft);
+        }
+
+        /* 섹션 제목 (레드 번호 뱃지) */
+        .sec-head {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            margin: auto 0 11px;
+            /* 상단 auto: 페이지 여유 공간을 섹션 사이로 균등 분배 */
+        }
+
+        .sec-head .num {
+            width: 23px;
+            height: 23px;
+            flex: 0 0 23px;
+            border-radius: 50%;
+            background: var(--red);
+            color: #fff;
+            font-size: 12px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .sec-head h2 {
+            font-size: 17px;
+            font-weight: 800;
+            letter-spacing: var(--ls-tight);
+            color: var(--ink);
+        }
+
+        .sec-head h2 em {
+            font-style: normal;
+            color: var(--red);
+        }
+
+        .sec-head .ans {
+            flex: 0 0 auto;
+            white-space: nowrap;
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--red-darker);
+            letter-spacing: var(--ls-tight);
+        }
+
+        .sec-head .ans::before {
+            content: "\2192\00a0";
+            color: var(--red);
+            font-weight: 800;
+        }
+
+        /* ===== 페이지 1: 히어로 배너 (현장 사진) ===== */
+        .hero-banner {
+            margin: -14mm -15mm 7mm;
+            /* 상·좌·우 풀블리드 */
+            height: 102mm;
+            background:
+                linear-gradient(180deg, rgba(0, 0, 0, 0.82) 0%, rgba(0, 0, 0, 0.55) 40%, rgba(0, 0, 0, 0.15) 68%, rgba(0, 0, 0, 0) 100%),
+                url('mainImg.jpg');
+            background-size: cover;
+            background-position: center 50%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .hero-inner {
+            padding: 11mm 15mm 0;
+        }
+
+        .hero-brand {
+            font-size: 12px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 9px;
+            letter-spacing: var(--ls-base);
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+        }
+
+        .hero-banner h1 {
+            font-size: 50px;
+            font-weight: 800;
+            line-height: 1.22;
+            letter-spacing: var(--ls-tight);
+            color: #fff;
+            margin-top: 8mm;
+            margin-bottom: 8px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.55);
+        }
+
+        .hero-banner h1 .red {
+            color: var(--red);
+        }
+
+        .hero-banner .hero-sub {
+            font-size: 22px;
+            font-weight: 700;
+            line-height: 1.3;
+            color: #fff;
+            margin-top: auto;
+            max-width: none;
+            padding: 14px 15mm;
+            background: rgba(0, 0, 0, 0.55);
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+        }
+
+        .hero-banner p {
+            font-size: 12.5px;
+            line-height: 1.5;
+            color: rgba(255, 255, 255, 0.92);
+            max-width: 150mm;
+            text-shadow: 0 1px 6px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero-banner strong {
+            color: #fff;
+        }
+
+        /* 사진 위에선 흰 강조 (검정 사라짐 방지) */
+
+        /* 레드 stat 카드 */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 18px;
+        }
+
+        .stat {
+            background: var(--red);
+            border-radius: var(--radius-card);
+            padding: 16px 10px;
+            color: #fff;
+            text-align: center;
+        }
+
+        .stat .v {
+            font-size: 40px;
+            font-weight: 800;
+            line-height: 1;
+            letter-spacing: var(--ls-tight);
+        }
+
+        .stat .v span {
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .stat .l {
+            margin-top: 7px;
+            font-size: 11.5px;
+            font-weight: 700;
+            line-height: 1.35;
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        /* 3대 이유 카드 */
+        .reasons {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 18px;
+        }
+
+        .reason {
+            background: var(--surface-subtle);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-card);
+            padding: 13px 13px 14px;
+        }
+
+        .reason .ic {
+            font-size: 22px;
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+
+        .reason .k {
+            font-size: 12px;
+            font-weight: 800;
+            color: var(--red);
+            margin-bottom: 5px;
+        }
+
+        .reason .t {
+            font-size: 12.5px;
+            font-weight: 700;
+            color: var(--ink);
+            line-height: 1.4;
+            margin-bottom: 4px;
+        }
+
+        .reason .d {
+            font-size: 11.5px;
+            line-height: 1.5;
+            color: var(--ink-body);
+        }
+
+        /* 비교 테이블 */
+        .cmp {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid var(--line);
+            border-radius: var(--radius-card);
+            overflow: hidden;
+            font-size: 12px;
+        }
+
+        .cmp th,
+        .cmp td {
+            padding: 9px 11px;
+            text-align: left;
+            vertical-align: top;
+            border-bottom: 1px solid var(--line-light);
+        }
+
+        .cmp thead th {
+            font-size: 12px;
+            font-weight: 800;
+            background: var(--surface-muted);
+            color: var(--ink);
+        }
+
+        .cmp thead th.ours {
+            background: var(--red-light);
+            color: var(--red);
+        }
+
+        .cmp .col-label {
+            width: 28%;
+            font-weight: 700;
+            color: var(--ink);
+        }
+
+        .cmp td.ours {
+            background: var(--red-light);
+        }
+
+        .cmp tbody tr:last-child th,
+        .cmp tbody tr:last-child td {
+            border-bottom: 0;
+        }
+
+        .cmp .yes {
+            font-weight: 800;
+            color: var(--red-darker);
+        }
+
+        .cmp .no {
+            font-weight: 700;
+            color: var(--ink-soft);
+        }
+
+        .cmp .yes::before {
+            content: "✓ ";
+            color: var(--red);
+            font-weight: 800;
+        }
+
+        .cmp .no::before {
+            content: "✗ ";
+            color: var(--ink-muted);
+            font-weight: 800;
+        }
+
+        .cmp .strike {
+            text-decoration: line-through;
+            text-decoration-color: var(--ink-muted);
+        }
+
+        .cmp .badge {
+            display: inline-block;
+            margin-left: 5px;
+            padding: 1px 7px;
+            border-radius: 40px;
+            background: var(--red);
+            color: #fff;
+            font-size: 10px;
+            font-weight: 800;
+            vertical-align: middle;
+        }
+
+        .cmp .sub {
+            display: block;
+            font-size: 11px;
+            font-weight: 400;
+            color: var(--ink-soft);
+            margin-top: 2px;
+        }
+
+        /* ===== 페이지 2 ===== */
+        .flow {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 18px;
+        }
+
+        .flow .card {
+            border: 1px solid var(--line);
+            border-radius: var(--radius-card);
+            overflow: hidden;
+        }
+
+        .flow .card .hd {
+            background: var(--ink);
+            color: #fff;
+            font-size: 12.5px;
+            font-weight: 800;
+            padding: 8px 11px;
+            letter-spacing: var(--ls-base);
+        }
+
+        .flow .card .bd {
+            padding: 11px;
+        }
+
+        .flow .card .bd p {
+            font-size: 11.5px;
+            line-height: 1.5;
+            margin-bottom: 4px;
+            color: var(--ink-body);
+        }
+
+        .flow .card .bd p:last-child {
+            margin-bottom: 0;
+        }
+
+        .flow .card .bd b {
+            color: var(--red);
+        }
+
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 18px;
+        }
+
+        .panel {
+            border: 1px solid var(--line);
+            border-top: 3px solid var(--red);
+            border-radius: var(--radius-card);
+            padding: 14px;
+        }
+
+        .panel h3 {
+            font-size: 13.5px;
+            font-weight: 800;
+            color: var(--red);
+            margin-bottom: 10px;
+            letter-spacing: var(--ls-base);
+        }
+
+        .panel ul {
+            list-style: none;
+        }
+
+        .panel li {
+            position: relative;
+            padding-left: 19px;
+            font-size: 12px;
+            line-height: 1.5;
+            margin-bottom: 8px;
+            color: var(--ink-body);
+        }
+
+        .panel li:last-child {
+            margin-bottom: 0;
+        }
+
+        .panel li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--red);
+            font-weight: 800;
+        }
+
+        .panel li b {
+            color: var(--ink);
+            font-weight: 700;
+        }
+
+        /* 3단계 사용법 */
+        .steps {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 18px;
+        }
+
+        .steps .who {
+            font-size: 12.5px;
+            font-weight: 800;
+            color: var(--ink);
+            margin-bottom: 9px;
+        }
+
+        .steps ol {
+            list-style: none;
+            counter-reset: s;
+        }
+
+        .steps li {
+            counter-increment: s;
+            position: relative;
+            padding-left: 26px;
+            font-size: 12px;
+            line-height: 1.45;
+            margin-bottom: 8px;
+            color: var(--ink-body);
+        }
+
+        .steps li::before {
+            content: counter(s);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--red);
+            color: #fff;
+            font-size: 11px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .steps li b {
+            color: var(--ink);
+        }
+
+        /* FAQ */
+        .faq {
+            margin-top: auto;
+            margin-bottom: 16px;
+        }
+
+        .faq .q {
+            font-size: 12.5px;
+            font-weight: 800;
+            color: var(--ink);
+            margin-bottom: 3px;
+        }
+
+        .faq .q::before {
+            content: "Q. ";
+            color: var(--red);
+        }
+
+        .faq .a {
+            font-size: 12px;
+            line-height: 1.5;
+            color: var(--ink-body);
+            margin-bottom: 11px;
+            padding-left: 16px;
+        }
+
+        .faq .a:last-child {
+            margin-bottom: 0;
+        }
+
+        /* CTA 박스 */
+        .free-callout {
+            margin-top: auto;
+            margin-bottom: 12px;
+            background: var(--orange);
+            border-radius: var(--radius-card);
+            padding: 20px 22px;
+            text-align: center;
+        }
+
+        .free-callout .big {
+            font-size: 27px;
+            font-weight: 800;
+            letter-spacing: var(--ls-tight);
+            line-height: 1.3;
+            color: #fff;
+        }
+
+        .free-callout .big em {
+            font-style: normal;
+            color: #fff;
+        }
+
+        .free-callout small {
+            display: block;
+            margin-top: 8px;
+            font-size: 11.5px;
+            line-height: 1.5;
+            color: rgba(255, 255, 255, 0.92);
+        }
+
+        .cta {
+            background: var(--red-light);
+            border: 1px solid var(--red);
+            border-radius: var(--radius-card);
+            padding: 14px 20px;
+            text-align: center;
+        }
+
+        .cta h3 {
+            font-size: 16px;
+            font-weight: 800;
+            line-height: 1.35;
+            letter-spacing: var(--ls-tight);
+            color: var(--red);
+            margin-bottom: 5px;
+        }
+
+        .cta .bonus {
+            font-size: 11.5px;
+            font-weight: 700;
+            color: var(--ink-soft);
+        }
+
+        /* 푸터 — 연락처 */
+        .foot {
+            margin-top: 10px;
+            text-align: center;
+            font-size: 11px;
+            font-weight: 700;
+            line-height: 1.6;
+            color: var(--ink-muted);
+        }
+
+        .foot span {
+            white-space: nowrap;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ============ PAGE 1 ============ -->
+    <section class="page">
+        <div class="hero-banner">
+            <div class="hero-inner">
+                <div class="hero-brand"><b>pos.kr</b> · 국내 유일(!)한 100% 모바일 식수관리시스템</div>
+                <h1>회사와 <span class="red">계약</span>할<br>준비는 됐나요?</h1>
+            </div>
+            <p class="hero-sub">카드·리더기·PC <span class="red">0원</span>으로 식수관리를 즉시 시작하세요</p>
+        </div>
+
+        <div class="stats">
+            <div class="stat">
+                <div class="v">0<span>원</span></div>
+                <div class="l">카드·리더기·PC 구입비</div>
+            </div>
+            <div class="stat">
+                <div class="v">100<span>%</span></div>
+                <div class="l">축소·누락·실수 기록 등<br>부정 식수 원천 차단</div>
+            </div>
+            <div class="stat">
+                <div class="v">1<span>분</span></div>
+                <div class="l">월말 대금 정산</div>
+            </div>
+        </div>
+
+        <div class="sec-head">
+            <span class="num">1</span>
+            <h2>왜, <em>모바일 식수관리시스템</em>을 써야 할까요?</h2>
+            <span class="ans">싸고, 편하고, 믿을수 있죠!</span>
+        </div>
+        <div class="reasons">
+            <div class="reason">
+                <div class="ic">💰</div>
+                <div class="k">① 경제성</div>
+                <div class="t">구축비 수백만원이 0원</div>
+                <div class="d">3~4백만원짜리 카드·리더기·PC 없이, 안 쓰는 스마트폰으로 시작합니다.</div>
+            </div>
+            <div class="reason">
+                <div class="ic">⏱️</div>
+                <div class="k">② 편의성</div>
+                <div class="t">수기 장부·정산은 이제 끝</div>
+                <div class="d">카드 배포·예산 배정·이용 집계까지 전부 자동, 월말 정산은 1분.</div>
+            </div>
+            <div class="reason">
+                <div class="ic">🛡️</div>
+                <div class="k">③ 신뢰성</div>
+                <div class="t">식대 누수율을 0%로</div>
+                <div class="d">모든 거래를 3 방향으로 검증 — 외부인 부정 사용은 물론 축소·누락 등 악의적 장부 기록 조작까지 차단.</div>
+            </div>
+        </div>
+
+        <div class="sec-head">
+            <span class="num">2</span>
+            <h2>아직도 <em>플라스틱(RFID)·바코드</em>를 이용하세요?</h2>
+            <span class="ans">한눈에 비교해 보세요.</span>
+        </div>
+        <table class="cmp">
+            <thead>
+                <tr>
+                    <th class="col-label">비교 항목</th>
+                    <th class="ours">모바일 QR 식수관리시스템</th>
+                    <th>플라스틱(RFID)·바코드 방식</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="col-label">💰 초기 도입 비용</td>
+                    <td class="ours"><span class="strike">250만원</span> <span class="yes">15~150만원</span><span
+                            class="badge">할인</span><span class="sub">MMS 270원/건, 안 쓰는 스마트폰 활용</span>
+                    </td>
+                    <td><span class="no">370~420만원</span><span class="sub">RFID카드 90만 + 리더기
+                            3대 180만 + PC 100만</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-label">🧾 배포·분실 등 운영비</td>
+                    <td class="ours"><span class="yes">저렴</span><span class="sub">문자 알림으로 즉시 재발급</span></td>
+                    <td><span class="no">높음</span><span class="sub">카드 재교부·분실 관리 부담</span></td>
+                </tr>
+                <tr>
+                    <td class="col-label">🛡️ 식대 손실 (누수율) 방지</td>
+                    <td class="ours"><span class="yes">매우 강력</span><span class="sub">3 방향 검증 — 축소·누락 0%</span></td>
+                    <td><span class="no">매우 취약</span><span class="sub">기록·취합 오류, 카드 분실·대리사용</span></td>
+                </tr>
+                <tr>
+                    <td class="col-label">🧩 식당 선결제 지원 여부</td>
+                    <td class="ours"><span class="yes">100% 자동화 내재</span><span class="sub">선불·후불 자동화로 식당 매출 증대 지원</span>
+                    </td>
+                    <td><span class="no">불가능</span><span class="sub">별도 쿠폰·장부 추가 준비 불가피</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- ============ PAGE 2 ============ -->
+    <section class="page">
+        <div class="brandbar">
+            <div class="logo"><b>pos.kr</b> 모바일 QR 식수관리시스템</div>
+            <div class="tag">도입 절차 · 활용 방법 · 문의</div>
+        </div>
+
+        <div class="sec-head">
+            <span class="num">3</span>
+            <h2>어떻게 우리 식당에 <em>도입하죠</em>?</h2>
+            <span class="ans">모든 규모에 맞춰 준비되어 있어요!</span>
+        </div>
+        <div class="flow">
+            <div class="card">
+                <div class="hd">① 회사 전속 식당</div>
+                <div class="bd">
+                    <p>지정 인원만 식사하는 전용식당</p>
+                    <p><b>사장님</b> 공기계를 QR리더로 거치</p>
+                    <p><b>고객</b> 앱 QR코드 찍고 입장</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="hd">② 겸용 식당</div>
+                <div class="bd">
+                    <p>고정고객 + 방문고객</p>
+                    <p><b>고객</b> 키오스크에 앱 QR 스캔</p>
+                    <p><b>방문객</b> 키오스크에 신용카드</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="hd">③ 대형 식당</div>
+                <div class="bd">
+                    <p>식수 인원이 많은 현장</p>
+                    <p>키오스크 + QR리더 여러 대</p>
+                    <p>편한 쪽에서 QR·카드 결제</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="sec-head">
+            <span class="num">4</span>
+            <h2>어떻게, 다양한 결제 상황을 <em>지원하나요</em>?</h2>
+            <span class="ans">선·후불을 통합하고 업무를 대신해요.</span>
+        </div>
+        <div class="two-col">
+            <div class="panel">
+                <h3>선불·후불, 한 대로 통합 운영</h3>
+                <ul>
+                    <li><b>후불 정산</b> — 실사용분만 집계해 회사에 사후 청구 (요식업 핵심)</li>
+                    <li><b>가격 세분</b> — 끼니·구역별 판매가 분리 (1층 7,000 / 2층 9,000)</li>
+                    <li><b>정책 세분</b> — 회사 복지 한도를 차등 (조 8,500 / 중 12,000)</li>
+                </ul>
+            </div>
+            <div class="panel">
+                <h3>식수·운영까지 알아서 척척</h3>
+                <ul>
+                    <li><b>식수 신청 관리</b> — 앱으로 식수 신청 → 취합 → 정확한 준비</li>
+                    <li><b>키오스크 10종 연동</b> — 내·외부 고객을 한 대에서 동시 수용</li>
+                    <li><b>개인 QR·다국어</b> — 직원별 그림문자 발송, 22개 언어 자동</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="sec-head">
+            <span class="num">5</span>
+            <h2>그래서, <em>어떻게 시작</em>하나요?</h2>
+            <span class="ans">앱을 받으세요.</span>
+        </div>
+        <div class="steps">
+            <div>
+                <div class="who">사장님 / 관리자</div>
+                <ol>
+                    <li>앱 설치 후 <b>관리자 인증</b></li>
+                    <li>설정에서 <b>매장 생성</b></li>
+                    <li>포인트 배포 후 <b>QR리더 거치</b></li>
+                </ol>
+            </div>
+            <div>
+                <div class="who">식당 고객</div>
+                <ol>
+                    <li>앱 설치 <b>(또는 인쇄 QR 수령)</b></li>
+                    <li>입구에서 <b>앱 QR 스캔 결제</b></li>
+                    <li>Report에서 <b>실시간 내역 확인</b></li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="faq">
+            <div class="sec-head">
+                <span class="num">6</span>
+                <h2>아직 <em>궁금한 점</em>이 있으신가요?</h2>
+            </div>
+            <div class="q">시중의 식권*장 등과 무엇이 다른가요?</div>
+            <div class="a">식권*장 등은 식당을 가맹점으로 두고 직원 식대를 취합·정산해 주는 <strong>회사 총무팀용 서비스</strong>입니다. Giftcoin은 반대로 <strong>식당이 주인공</strong>입니다. 식당이 쓰던 <strong>식권은 모바일 식권으로, 외상 장부는 디지털 장부로, 선불카드는 QR 선불충전으로</strong> — 식당 자체의 운영 수단을 그대로 디지털로 옮겨 관리하고, <strong>RFID 카드·리더기 비용이 들지 않습니다</strong>.
+            </div>
+            <div class="q">식당과 함께 운영중인 카페의 결제도 병행할 수 있나요?</div>
+            <div class="a">네, 됩니다. 동일한 QR 스캐너로 <strong>다양한 가격의 결제를 함께</strong> 운영할 수 있어 함께 운영중인 카페 이용도 한번에 해결됩니다.</div>
+            <div class="q">그 밖에 어떤 기능이 더 있나요?</div>
+            <div class="a">외국인 직원을 위한 <strong>22개 다국어 자동 분기</strong>, 분쟁 대비 <strong>CCTV 정확 매칭</strong>, <strong>키오스크 10종 연동</strong>까지 지원합니다.</div>
+        </div>
+
+        <div class="free-callout">
+            <div class="big">회사와 계약해도, 50명 이하라면 <em>무료</em></div>
+            <small>매장 전체 총 사용자 수 50명 이하 무료 · 계약 회사별 사용자 수 50명 이하 무료</small>
+        </div>
+
+        <div class="cta">
+            <h3>새는 식대 막고, 정산은 1분안에 — 지금 무료 데모를 신청하세요</h3>
+            <div class="bonus">⭐ 선착순 20곳 마감 임박 — 데모 신청 시 Giftcoin 20만원 상당 보너스</div>
+        </div>
+
+        <div class="foot">
+            <span>☎ 010-5415-4415</span> · <span>✉ hi@pos.kr</span> · <span>🌐 pos.kr</span>
+        </div>
+    </section>
+
+</body>
+
+</html>
