@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>함바포스 프로그램 | 매장 PC·스캐너 없이 스마트폰 QR 식수관리</title>
+    <meta name="description"
+        content="함바포스 프로그램을 찾으신다면. 매장에 Windows PC도 QR 스캐너도 두지 않고, 스마트폰 한 대로 함바식당 식수 집계와 월말 정산을 끝냅니다. 협력업체별 분리 정산, 팀 단위 식수 확인 지원.">
+    <meta name="keywords"
+        content="함바포스, 함바포스 프로그램, 함바식당 포스, 건설현장 밥장부, 함바 식수관리, 모바일 함바 식수 프로그램, 함바식당 정산, 함바집 식수관리">
+    <link rel="canonical" href="https://pos.kr/hamba-pos">
+    <meta property="og:title" content="함바포스 프로그램 | 매장 PC·스캐너 없이 스마트폰 QR">
+    <meta property="og:description"
+        content="매장에 PC도 스캐너도 두지 않는 함바식당 식수관리. 스마트폰 한 대로 집계부터 월말 정산까지.">
+    <meta property="og:image" content="https://pos.kr/images/og-proposal.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:url" content="https://pos.kr/hamba-pos">
+    <meta property="og:type" content="website">
+    <link rel="icon" href="/cafe/favicon.webp">
+    <link rel="preload"
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet"
+            href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+    </noscript>
+    <style>
+        :root {
+            --bg: #ffffff;
+            --surface: #f7f7f8;
+            --text: #16161a;
+            --meta: #6e6e73;
+            --line: #e2e2e7;
+            --red: #FF2233;
+            --red-soft: #fff0f1;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #161618;
+                --surface: #202024;
+                --text: #f2f2f5;
+                --meta: #a0a0a8;
+                --line: #34343a;
+                --red: #FF4451;
+                --red-soft: #2c1a1c;
+            }
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: Pretendard, -apple-system, "Malgun Gothic", sans-serif;
+            line-height: 1.65;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        .wrap { max-width: 860px; margin: 0 auto; padding: 0 20px; }
+
+        header.hero {
+            background: var(--red);
+            color: #fff;
+            padding: 72px 0 64px;
+        }
+
+        header.hero .eyebrow {
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            opacity: 0.9;
+            margin-bottom: 14px;
+        }
+
+        header.hero h1 {
+            font-size: 36px;
+            font-weight: 800;
+            line-height: 1.3;
+            letter-spacing: -1px;
+            margin-bottom: 20px;
+        }
+
+        header.hero p {
+            font-size: 18px;
+            opacity: 0.95;
+            margin-bottom: 32px;
+        }
+
+        .cta {
+            display: inline-block;
+            background: #fff;
+            color: #C4141F;
+            font-weight: 800;
+            font-size: 17px;
+            padding: 15px 32px;
+            border-radius: 10px;
+            text-decoration: none;
+        }
+
+        section { padding: 56px 0; border-bottom: 1px solid var(--line); }
+
+        h2 {
+            font-size: 27px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 12px;
+        }
+
+        .lede { color: var(--meta); font-size: 17px; margin-bottom: 28px; }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            padding: 22px 24px;
+            margin-bottom: 14px;
+        }
+
+        .card h3 { font-size: 19px; font-weight: 700; margin-bottom: 8px; }
+
+        .card p { font-size: 16px; }
+
+        .table-scroll { overflow-x: auto; }
+
+        table {
+            width: 100%;
+            min-width: 560px;
+            border-collapse: collapse;
+            font-size: 16px;
+        }
+
+        th, td {
+            border: 1px solid var(--line);
+            padding: 13px 16px;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        th { background: var(--surface); font-weight: 700; }
+
+        td.ours { background: var(--red-soft); font-weight: 700; }
+
+        details {
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            padding: 16px 20px;
+            margin-bottom: 10px;
+        }
+
+        summary { font-size: 17px; font-weight: 700; cursor: pointer; }
+
+        details p { margin-top: 10px; font-size: 16px; }
+
+        footer {
+            padding: 40px 0 56px;
+            font-size: 15px;
+            color: var(--meta);
+        }
+
+        footer a { color: var(--meta); }
+
+        .links { margin-bottom: 16px; font-size: 16px; }
+
+        .links a { color: var(--red); font-weight: 700; text-decoration: none; margin-right: 18px; }
+
+        @media (max-width: 640px) {
+            header.hero h1 { font-size: 28px; }
+            h2 { font-size: 23px; }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="hero">
+        <div class="wrap">
+            <div class="eyebrow">함바포스 프로그램</div>
+            <h1>함바식당 식수관리,<br>매장에 PC를 두지 않습니다</h1>
+            <p>스마트폰 한 대면 집계부터 월말 정산까지 끝납니다.<br>QR 스캐너도, 관리용 PC도 사지 않습니다.</p>
+            <a class="cta" href="/#contact">데모 신청하기 →</a>
+        </div>
+    </header>
+
+    <main>
+        <section>
+            <div class="wrap">
+                <h2>기존 함바포스는 왜 무거운가</h2>
+                <p class="lede">지금 쓰이는 함바포스 프로그램 대부분은 매장에 장비를 깔아야 돌아갑니다.</p>
+
+                <div class="card">
+                    <h3>매장에 Windows PC가 필요합니다</h3>
+                    <p>프로그램이 PC에서 도는 구조라, 현장 사무실이나 식당 카운터에 컴퓨터를 두고 관리해야 합니다. 현장이 끝나면 그 PC를 다시 옮겨야 합니다.</p>
+                </div>
+                <div class="card">
+                    <h3>QR 스캐너·리더기를 따로 삽니다</h3>
+                    <p>배식구에 스캐너나 카드 리더기를 설치합니다. 장비값에 설치비가 붙고, 고장 나면 현장이 멈춥니다.</p>
+                </div>
+                <div class="card">
+                    <h3>카드는 잃어버리고, 빌려줍니다</h3>
+                    <p>RF 카드를 나눠주면 분실 재발급이 계속 생기고, 대리 식수를 막기 어렵습니다. 현장 인원이 자주 바뀌는 함바에서는 더 심합니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="wrap">
+                <h2>pos.kr은 무엇이 다른가</h2>
+                <p class="lede">근로자는 자기 스마트폰의 QR을 보여주고, 식당은 스마트폰으로 찍습니다. 그게 전부입니다.</p>
+
+                <div class="table-scroll">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>구분</th>
+                                <th>기존 함바포스</th>
+                                <th>pos.kr</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>매장 PC</td>
+                                <td>Windows PC 필요</td>
+                                <td class="ours">불필요</td>
+                            </tr>
+                            <tr>
+                                <td>스캐너·리더기</td>
+                                <td>구매·설치</td>
+                                <td class="ours">스마트폰이 대신</td>
+                            </tr>
+                            <tr>
+                                <td>근로자 인식 수단</td>
+                                <td>RF 카드 발급·재발급</td>
+                                <td class="ours">본인 스마트폰 QR</td>
+                            </tr>
+                            <tr>
+                                <td>현장 이동</td>
+                                <td>장비 철거·재설치</td>
+                                <td class="ours">관리자가 번호만 등록</td>
+                            </tr>
+                            <tr>
+                                <td>월말 정산</td>
+                                <td>엑셀 수기 대조</td>
+                                <td class="ours">관리자 화면에서 바로 확인</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="wrap">
+                <h2>함바 현장에 맞춘 부분</h2>
+                <div class="card">
+                    <h3>소속별로 나눠서 귀속</h3>
+                    <p>한 현장에 여러 업체가 섞여 있어도 소속별로 식수를 나눠 집계합니다. 회식이나 근무 외 식사 같은 1회성 정책도 즉시 부여해 부서·회사 비용으로 정확히 귀속시킬 수 있습니다.</p>
+                </div>
+                <div class="card">
+                    <h3>인원 교체가 잦아도, 현장을 옮겨도</h3>
+                    <p>새로 들어온 인원은 관리자가 번호를 등록하면 바로 식사할 수 있고, 빠진 인원은 관리자 화면에서 정지시킵니다. 카드를 회수하거나 재발급할 일이 없습니다. 현장을 옮길 때도 철거할 장비가 없으니 번호 등록만 다시 하면 됩니다.</p>
+                </div>
+                <div class="card">
+                    <h3>선불·후불 모두</h3>
+                    <p>현장 정책에 맞춰 선결제·후결제, 횟수제·포인트제 중에 골라 운영할 수 있습니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="wrap">
+                <h2>자주 묻는 질문</h2>
+
+                <details>
+                    <summary>정말 매장에 PC가 없어도 되나요?</summary>
+                    <p>예. 식당에서는 스마트폰 앱이 QR 리더기 역할을 합니다. 집계 내역은 웹 관리자 화면에서 보기 때문에 별도 관리용 PC를 두지 않아도 됩니다. 필요하면 가지고 계신 노트북이나 휴대폰으로 접속해서 보시면 됩니다.</p>
+                </details>
+                <details>
+                    <summary>근로자가 스마트폰이 없거나 앱 설치를 꺼리면요?</summary>
+                    <p>앱을 깔지 않아도 됩니다. 소속원에게 그림문자(MMS)로 개인별 QR 카드를 발송해 드리는 서비스가 있습니다. 받은 QR을 그대로 보여주시면 됩니다. 플랜에 따라 제공 조건이 다르니 <a href="/price">요금제</a>를 참고하세요.</p>
+                </details>
+                <details>
+                    <summary>신용카드 결제도 받아야 하는데요?</summary>
+                    <p>카드 결제가 필요하면 연동 키오스크나 카드 단말기를 함께 두고 운영할 수 있습니다. 이 경우 키오스크가 QR 리더기 역할도 같이 합니다.</p>
+                </details>
+                <details>
+                    <summary>비용이 얼마인가요?</summary>
+                    <p>무료 플랜부터 시작할 수 있고, 규모에 따라 유료 플랜을 고르시면 됩니다. 자세한 금액은 <a href="/price">요금제 안내</a>에서 확인하실 수 있습니다.</p>
+                </details>
+            </div>
+        </section>
+
+        <section>
+            <div class="wrap">
+                <h2>먼저 보고 결정하세요</h2>
+                <p class="lede">현장 상황을 알려주시면 그에 맞춰 시연해 드립니다.</p>
+                <a class="cta" style="background:var(--red);color:#fff;" href="/#contact">데모 신청하기 →</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="wrap">
+            <div class="links">
+                <a href="/">식수관리시스템 소개</a>
+                <a href="/price">요금제</a>
+                <a href="/proposal">도입 제안서</a>
+            </div>
+            <p>블루칩스 | 대표자: 이미경 | 사업자등록번호: 558-51-00535</p>
+            <p>주소: 경기도 고양시 일산동구 일산로 142, 818-1호 | 연락처: <a href="mailto:hi@pos.kr">hi@pos.kr</a> | 010-5415-4415</p>
+        </div>
+    </footer>
+</body>
+
+</html>
