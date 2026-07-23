@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>함바포스 프로그램 | 매장 PC·스캐너 없이 스마트폰 QR 식수관리</title>
     <meta name="description"
-        content="함바포스 프로그램을 찾으신다면. 매장에 Windows PC도 QR 스캐너도 두지 않고, 스마트폰 한 대로 함바식당 식수 집계와 월말 정산을 끝냅니다. 협력업체별 분리 정산, 팀 단위 식수 확인 지원.">
+        content="함바포스 프로그램을 찾으신다면. 매장에 Windows PC도 QR 스캐너도 두지 않고, 스마트폰 한 대로 함바식당 식수 집계와 월말 정산을 끝냅니다. 소속별 분리 귀속, 인원 교체·현장 이동 대응.">
     <meta name="keywords"
         content="함바포스, 함바포스 프로그램, 함바식당 포스, 건설현장 밥장부, 함바 식수관리, 모바일 함바 식수 프로그램, 함바식당 정산, 함바집 식수관리">
     <link rel="canonical" href="https://pos.kr/hamba-pos">
@@ -27,148 +27,223 @@
             href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
     </noscript>
     <style>
+        /* ===== PAYCO 디자인 토큰 (pos-kr-DESIGN.md §3) ===== */
         :root {
-            --bg: #ffffff;
-            --surface: #f7f7f8;
-            --text: #16161a;
-            --meta: #6e6e73;
-            --line: #e2e2e7;
-            --red: #FF2233;
-            --red-soft: #fff0f1;
+            --primary: #FF2233;
+            --primary-darker: #E01E2C;
+            --primary-light: #FFF0F1;
+            --accent: #00AAFF;
+
+            --ink: #111111;
+            --ink-body: #4C4C4C;
+            --ink-soft: #666666;
+
+            --surface: #FFFFFF;
+            --surface-subtle: #FAFAFA;
+            --surface-muted: #F2F2F2;
+            --line: #DADADA;
+
+            --shadow-card: 0 8px 30px rgba(0, 0, 0, 0.06);
         }
 
         @media (prefers-color-scheme: dark) {
             :root {
-                --bg: #161618;
-                --surface: #202024;
-                --text: #f2f2f5;
-                --meta: #a0a0a8;
-                --line: #34343a;
-                --red: #FF4451;
-                --red-soft: #2c1a1c;
+                --primary: #FF4451;
+                --primary-darker: #FF2233;
+                --primary-light: #2E1A1C;
+                --accent: #4CC2FF;
+
+                --ink: #F5F5F7;
+                --ink-body: #C9C9CF;
+                --ink-soft: #A0A0A8;
+
+                --surface: #161618;
+                --surface-subtle: #1E1E21;
+                --surface-muted: #26262A;
+                --line: #3A3A41;
+
+                --shadow-card: 0 8px 30px rgba(0, 0, 0, 0.4);
             }
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
-            background: var(--bg);
-            color: var(--text);
-            font-family: Pretendard, -apple-system, "Malgun Gothic", sans-serif;
-            line-height: 1.65;
+            background: var(--surface);
+            color: var(--ink-body);
+            font-family: Pretendard, -apple-system, "Noto Sans KR", "Malgun Gothic", sans-serif;
+            font-size: 17px;
+            line-height: 1.8;
+            letter-spacing: -0.025em;
             -webkit-text-size-adjust: 100%;
         }
 
-        .wrap { max-width: 860px; margin: 0 auto; padding: 0 20px; }
+        /* 읽기 폭: 한 줄 40자 내외 (§2.2 가독성 우선) */
+        .wrap { max-width: 700px; margin: 0 auto; padding: 0 22px; }
+        .wrap-wide { max-width: 860px; margin: 0 auto; padding: 0 22px; }
 
-        header.hero {
-            background: var(--red);
-            color: #fff;
-            padding: 72px 0 64px;
-        }
+        h1, h2, h3 { color: var(--ink); letter-spacing: -0.04em; line-height: 1.32; }
 
-        header.hero .eyebrow {
-            font-size: 15px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            opacity: 0.9;
-            margin-bottom: 14px;
-        }
+        /* ===== 히어로: 화이트 캔버스 + 레드 1포인트 (§2.1) ===== */
+        header.hero { padding: 80px 0 56px; }
 
-        header.hero h1 {
-            font-size: 36px;
-            font-weight: 800;
-            line-height: 1.3;
-            letter-spacing: -1px;
-            margin-bottom: 20px;
-        }
-
-        header.hero p {
-            font-size: 18px;
-            opacity: 0.95;
-            margin-bottom: 32px;
-        }
-
-        .cta {
+        .eyebrow {
             display: inline-block;
-            background: #fff;
-            color: #C4141F;
+            background: var(--primary-light);
+            color: var(--primary);
+            font-size: 14px;
+            font-weight: 800;
+            letter-spacing: 0;
+            padding: 7px 15px;
+            border-radius: 100px;
+            margin-bottom: 22px;
+        }
+
+        header.hero h1 { font-size: 42px; font-weight: 800; margin-bottom: 22px; }
+
+        header.hero h1 em { font-style: normal; color: var(--primary); }
+
+        header.hero .sub { font-size: 19px; margin-bottom: 36px; }
+
+        /* ===== 시그니처: 레드 stat 카드 (§5.4) ===== */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 38px;
+        }
+
+        .stat {
+            background: var(--primary);
+            border-radius: 16px;
+            padding: 26px 12px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .stat .num {
+            font-size: 42px;
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            line-height: 1;
+        }
+
+        .stat .num span { font-size: 22px; }
+
+        .stat p {
+            margin-top: 9px;
+            font-size: 14px;
+            line-height: 1.45;
+            opacity: 0.95;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: #fff;
             font-weight: 800;
             font-size: 17px;
-            padding: 15px 32px;
-            border-radius: 10px;
+            letter-spacing: -0.025em;
+            padding: 16px 34px;
+            border-radius: 12px;
             text-decoration: none;
+            transition: background-color .15s;
         }
 
-        section { padding: 56px 0; border-bottom: 1px solid var(--line); }
+        .btn:hover { background: var(--primary-darker); }
 
-        h2 {
-            font-size: 27px;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-            margin-bottom: 12px;
-        }
+        /* ===== 섹션 ===== */
+        section { padding: 60px 0; }
 
-        .lede { color: var(--meta); font-size: 17px; margin-bottom: 28px; }
+        section.alt { background: var(--surface-subtle); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+
+        h2 { font-size: 30px; font-weight: 800; margin-bottom: 10px; }
+
+        .lede { font-size: 17px; color: var(--ink-soft); margin-bottom: 30px; }
 
         .card {
             background: var(--surface);
             border: 1px solid var(--line);
-            border-radius: 14px;
-            padding: 22px 24px;
+            border-radius: 16px;
+            box-shadow: var(--shadow-card);
+            padding: 26px 28px;
             margin-bottom: 14px;
         }
 
-        .card h3 { font-size: 19px; font-weight: 700; margin-bottom: 8px; }
+        section.alt .card { box-shadow: none; }
 
-        .card p { font-size: 16px; }
+        .card h3 { font-size: 20px; font-weight: 700; margin-bottom: 7px; }
 
-        .table-scroll { overflow-x: auto; }
+        .card p { font-size: 16.5px; line-height: 1.75; }
+
+        /* ===== 비교표 ===== */
+        .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
 
         table {
             width: 100%;
-            min-width: 560px;
+            min-width: 580px;
             border-collapse: collapse;
             font-size: 16px;
         }
 
-        th, td {
-            border: 1px solid var(--line);
-            padding: 13px 16px;
-            text-align: left;
-            vertical-align: top;
-        }
+        th, td { border: 1px solid var(--line); padding: 14px 16px; text-align: left; }
 
-        th { background: var(--surface); font-weight: 700; }
+        thead th { background: var(--surface-muted); color: var(--ink); font-weight: 700; }
 
-        td.ours { background: var(--red-soft); font-weight: 700; }
+        thead th:last-child { background: var(--primary); color: #fff; }
 
+        tbody th { background: var(--surface-muted); color: var(--ink); font-weight: 700; width: 27%; }
+
+        td.ours { background: var(--primary-light); color: var(--ink); font-weight: 700; }
+
+        /* ===== FAQ ===== */
         details {
-            border: 1px solid var(--line);
-            border-radius: 12px;
-            padding: 16px 20px;
-            margin-bottom: 10px;
+            border-bottom: 1px solid var(--line);
+            padding: 20px 2px;
         }
 
-        summary { font-size: 17px; font-weight: 700; cursor: pointer; }
-
-        details p { margin-top: 10px; font-size: 16px; }
-
-        footer {
-            padding: 40px 0 56px;
-            font-size: 15px;
-            color: var(--meta);
+        details summary {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--ink);
+            cursor: pointer;
+            letter-spacing: -0.03em;
         }
 
-        footer a { color: var(--meta); }
+        details p { margin-top: 12px; font-size: 16.5px; }
 
-        .links { margin-bottom: 16px; font-size: 16px; }
+        details a, .card a { color: var(--accent); font-weight: 700; }
 
-        .links a { color: var(--red); font-weight: 700; text-decoration: none; margin-right: 18px; }
+        /* ===== 마감 CTA (레드 면적은 여기 한 곳) ===== */
+        .closer { background: var(--primary); color: #fff; padding: 66px 0; text-align: center; }
+
+        .closer h2 { color: #fff; font-size: 30px; margin-bottom: 12px; }
+
+        .closer p { font-size: 17px; opacity: 0.95; margin-bottom: 30px; }
+
+        .closer .btn { background: #fff; color: var(--primary-darker); }
+
+        .closer .btn:hover { background: var(--primary-light); }
+
+        /* ===== 푸터 ===== */
+        footer { padding: 42px 0 60px; font-size: 15px; color: var(--ink-soft); line-height: 1.7; }
+
+        footer a { color: var(--ink-soft); }
+
+        .links { margin-bottom: 18px; }
+
+        .links a { color: var(--primary); font-weight: 700; text-decoration: none; margin-right: 20px; }
 
         @media (max-width: 640px) {
-            header.hero h1 { font-size: 28px; }
-            h2 { font-size: 23px; }
+            body { font-size: 16.5px; }
+            header.hero { padding: 56px 0 44px; }
+            header.hero h1 { font-size: 31px; }
+            header.hero .sub { font-size: 17px; }
+            h2 { font-size: 25px; }
+            .stats { grid-template-columns: 1fr; gap: 10px; }
+            .stat { display: flex; align-items: baseline; justify-content: center; gap: 12px; padding: 18px 14px; }
+            .stat .num { font-size: 34px; }
+            .stat p { margin-top: 0; font-size: 15px; }
         }
     </style>
 </head>
@@ -177,14 +252,30 @@
     <header class="hero">
         <div class="wrap">
             <div class="eyebrow">함바포스 프로그램</div>
-            <h1>함바식당 식수관리,<br>매장에 PC를 두지 않습니다</h1>
-            <p>스마트폰 한 대면 집계부터 월말 정산까지 끝납니다.<br>QR 스캐너도, 관리용 PC도 사지 않습니다.</p>
-            <a class="cta" href="/#contact">데모 신청하기 →</a>
+            <h1>함바식당 식수관리,<br>매장에 <em>PC를 두지 않습니다</em></h1>
+            <p class="sub">근로자는 자기 스마트폰의 QR을 보여주고,<br>식당은 스마트폰으로 찍습니다. 그게 전부입니다.</p>
+
+            <div class="stats">
+                <div class="stat">
+                    <div class="num">0<span>대</span></div>
+                    <p>매장 PC</p>
+                </div>
+                <div class="stat">
+                    <div class="num">0<span>대</span></div>
+                    <p>QR 스캐너</p>
+                </div>
+                <div class="stat">
+                    <div class="num">0<span>장</span></div>
+                    <p>RF 카드</p>
+                </div>
+            </div>
+
+            <a class="btn" href="/#contact">데모 신청하기 →</a>
         </div>
     </header>
 
     <main>
-        <section>
+        <section class="alt">
             <div class="wrap">
                 <h2>기존 함바포스는 왜 무거운가</h2>
                 <p class="lede">지금 쓰이는 함바포스 프로그램 대부분은 매장에 장비를 깔아야 돌아갑니다.</p>
@@ -205,9 +296,9 @@
         </section>
 
         <section>
-            <div class="wrap">
-                <h2>pos.kr은 무엇이 다른가</h2>
-                <p class="lede">근로자는 자기 스마트폰의 QR을 보여주고, 식당은 스마트폰으로 찍습니다. 그게 전부입니다.</p>
+            <div class="wrap-wide">
+                <h2>무엇이 다른가</h2>
+                <p class="lede">장비가 하는 일을 스마트폰이 대신합니다.</p>
 
                 <div class="table-scroll">
                     <table>
@@ -220,27 +311,27 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>매장 PC</td>
+                                <th>매장 PC</th>
                                 <td>Windows PC 필요</td>
                                 <td class="ours">불필요</td>
                             </tr>
                             <tr>
-                                <td>스캐너·리더기</td>
+                                <th>스캐너·리더기</th>
                                 <td>구매·설치</td>
                                 <td class="ours">스마트폰이 대신</td>
                             </tr>
                             <tr>
-                                <td>근로자 인식 수단</td>
+                                <th>근로자 인식 수단</th>
                                 <td>RF 카드 발급·재발급</td>
                                 <td class="ours">본인 스마트폰 QR</td>
                             </tr>
                             <tr>
-                                <td>현장 이동</td>
+                                <th>현장 이동</th>
                                 <td>장비 철거·재설치</td>
                                 <td class="ours">관리자가 번호만 등록</td>
                             </tr>
                             <tr>
-                                <td>월말 정산</td>
+                                <th>월말 정산</th>
                                 <td>엑셀 수기 대조</td>
                                 <td class="ours">관리자 화면에서 바로 확인</td>
                             </tr>
@@ -250,9 +341,10 @@
             </div>
         </section>
 
-        <section>
+        <section class="alt">
             <div class="wrap">
                 <h2>함바 현장에 맞춘 부분</h2>
+
                 <div class="card">
                     <h3>소속별로 나눠서 귀속</h3>
                     <p>한 현장에 여러 업체가 섞여 있어도 소속별로 식수를 나눠 집계합니다. 회식이나 근무 외 식사 같은 1회성 정책도 즉시 부여해 부서·회사 비용으로 정확히 귀속시킬 수 있습니다.</p>
@@ -271,6 +363,7 @@
         <section>
             <div class="wrap">
                 <h2>자주 묻는 질문</h2>
+                <p class="lede">현장에서 가장 많이 받는 질문입니다.</p>
 
                 <details>
                     <summary>정말 매장에 PC가 없어도 되나요?</summary>
@@ -290,15 +383,15 @@
                 </details>
             </div>
         </section>
-
-        <section>
-            <div class="wrap">
-                <h2>먼저 보고 결정하세요</h2>
-                <p class="lede">현장 상황을 알려주시면 그에 맞춰 시연해 드립니다.</p>
-                <a class="cta" style="background:var(--red);color:#fff;" href="/#contact">데모 신청하기 →</a>
-            </div>
-        </section>
     </main>
+
+    <section class="closer">
+        <div class="wrap">
+            <h2>먼저 보고 결정하세요</h2>
+            <p>현장 상황을 알려주시면 그에 맞춰 시연해 드립니다.</p>
+            <a class="btn" href="/#contact">데모 신청하기 →</a>
+        </div>
+    </section>
 
     <footer>
         <div class="wrap">
