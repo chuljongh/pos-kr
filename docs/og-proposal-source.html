@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>OG proposal</title>
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            width: 1200px;
+            height: 630px;
+            overflow: hidden;
+            font-family: Pretendard, "Malgun Gothic", sans-serif;
+            background: #111111;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 80px;
+            position: relative;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 14px;
+            height: 100%;
+            background: #FF2233;
+        }
+
+        .eyebrow {
+            font-size: 26px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            color: #FF5A66;
+            margin-bottom: 24px;
+        }
+
+        h1 {
+            font-size: 78px;
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -2px;
+            margin-bottom: 44px;
+        }
+
+        h1 .accent { color: #FF2233; }
+
+        .points {
+            display: flex;
+            gap: 14px;
+            margin-bottom: 48px;
+        }
+
+        .point {
+            border: 2px solid #3a3a3a;
+            border-radius: 14px;
+            padding: 16px 24px;
+            font-size: 27px;
+            font-weight: 700;
+        }
+
+        .point strong {
+            color: #FF5A66;
+            font-weight: 800;
+        }
+
+        .foot {
+            display: flex;
+            align-items: baseline;
+            gap: 20px;
+            font-size: 30px;
+            font-weight: 700;
+        }
+
+        .foot .domain {
+            font-size: 38px;
+            font-weight: 800;
+        }
+
+        .foot .sep { color: #666666; }
+    </style>
+</head>
+
+<body>
+    <div class="eyebrow">도입 제안서</div>
+    <h1>모바일 QR<br><span class="accent">식수관리시스템</span></h1>
+    <div class="points">
+        <div class="point">카드·리더기·PC <strong>0원</strong></div>
+        <div class="point">부정식수 <strong>차단</strong></div>
+        <div class="point">월말 정산 <strong>자동화</strong></div>
+    </div>
+    <div class="foot">
+        <span class="domain">pos.kr</span>
+        <span class="sep">|</span>
+        <span>구내식당 · 함바식당</span>
+    </div>
+</body>
+
+</html>

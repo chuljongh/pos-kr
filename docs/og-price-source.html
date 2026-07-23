@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>OG price</title>
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            width: 1200px;
+            height: 630px;
+            overflow: hidden;
+            font-family: Pretendard, "Malgun Gothic", sans-serif;
+            background: linear-gradient(135deg, #FF2233 0%, #C4141F 100%);
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 80px;
+        }
+
+        .eyebrow {
+            font-size: 26px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            opacity: 0.85;
+            margin-bottom: 24px;
+        }
+
+        h1 {
+            font-size: 76px;
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -2px;
+            margin-bottom: 36px;
+        }
+
+        .plans {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+
+        .plan {
+            border: 2px solid rgba(255, 255, 255, 0.55);
+            border-radius: 14px;
+            padding: 14px 26px;
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        .plan.free {
+            background: #ffffff;
+            color: #C4141F;
+            border-color: #ffffff;
+        }
+
+        .price {
+            font-size: 40px;
+            font-weight: 800;
+            margin-bottom: 44px;
+        }
+
+        .price small {
+            font-size: 28px;
+            font-weight: 600;
+            opacity: 0.9;
+        }
+
+        .foot {
+            display: flex;
+            align-items: baseline;
+            gap: 20px;
+            font-size: 30px;
+            font-weight: 700;
+        }
+
+        .foot .domain {
+            font-size: 38px;
+            font-weight: 800;
+        }
+
+        .foot .sep { opacity: 0.6; }
+    </style>
+</head>
+
+<body>
+    <div class="eyebrow">GIFTCOIN 요금제</div>
+    <h1>구내식당·함바<br>식수관리시스템 요금제</h1>
+    <div class="plans">
+        <div class="plan free">Free</div>
+        <div class="plan">Super</div>
+        <div class="plan">Pro</div>
+        <div class="plan">Plus</div>
+        <div class="plan">Max</div>
+    </div>
+    <div class="price">무료 플랜부터 시작 · 유료 <small>월</small> 2.9만원~</div>
+    <div class="foot">
+        <span class="domain">pos.kr</span>
+        <span class="sep">|</span>
+        <span>RFID 카드·리더기 비용 0원</span>
+    </div>
+</body>
+
+</html>
