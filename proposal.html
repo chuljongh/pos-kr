@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>모바일 QR 식수관리시스템 제안서 | pos.kr · Blue Chips</title>
+    <title>모바일 QR 식수관리시스템 제안서 | pos.kr</title>
     <meta name="description"
         content="구내식당·함바식당 식수관리시스템 도입 제안서. RFID 카드·리더기·PC 구입비 0원, 스마트폰 QR로 부정식수 차단과 월말 정산 자동화. 선결제·후결제, 횟수·포인트 등 회사 정책에 맞춘 운영 방식을 안내합니다.">
     <link rel="canonical" href="https://pos.kr/proposal">
@@ -1245,6 +1245,46 @@
             color: var(--ink-body);
         }
     </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://pos.kr/#organization",
+          "name": "블루칩스",
+          "alternateName": "Blue Chips",
+          "url": "https://pos.kr/"
+        },
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://pos.kr/#giftcoin",
+          "name": "Giftcoin 식수관리시스템",
+          "applicationCategory": "BusinessApplication",
+          "url": "https://pos.kr/",
+          "provider": { "@id": "https://pos.kr/#organization" },
+          "offers": {
+            "@type": "AggregateOffer",
+            "priceCurrency": "KRW",
+            "lowPrice": "0",
+            "highPrice": "590000",
+            "offerCount": "5",
+            "url": "https://pos.kr/price"
+          }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://pos.kr/proposal",
+          "url": "https://pos.kr/proposal",
+          "name": "모바일 QR 식수관리시스템 제안서",
+          "description": "구내식당·함바식당 식수관리시스템 도입 제안서. RFID 카드·리더기·PC 구입비 0원, 스마트폰 QR로 부정식수 차단과 월말 정산 자동화. 선결제·후결제, 횟수·포인트 등 회사 정책에 맞춘 운영 방식을 안내합니다.",
+          "inLanguage": "ko-KR",
+          "about": { "@id": "https://pos.kr/#giftcoin" },
+          "publisher": { "@id": "https://pos.kr/#organization" }
+        }
+      ]
+    }
+    </script>
 </head>
 
 <body>

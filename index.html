@@ -15,13 +15,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="format-detection" content="telephone=no" />
-    <title>구내식당·함바 식수관리시스템 | 매장 장비 0원, 스마트폰 QR 식권</title>
+    <title>구내식당·함바 식수관리시스템 | 매장 장비 0원, 스마트폰 QR 식권 · pos.kr</title>
     <meta name="description"
         content="구내식당 식수관리시스템 도입 비용 0원! 바코드/RFID/리더기 없이 모바일 QR코드 식권, 키오스크 가격 무료. 함바집 식수관리시스템 솔루션까지 자동화하세요.">
     <meta name="keywords"
         content="함바식당, 식수관리, 구내식당 식권, 구내식당 선결제, QR코드식권, 선결제 키오스크, 건설현장 식당, 함바집, RFID카드 무료, 바코드·리더기 무료, 함바 포스, 함바 결제기, 식수관리시스템, 구내식당 키오스크 가격, 함바집 결제 솔루션, 모바일 식수관리, 식권 앱">
     <link rel="canonical" href="https://pos.kr/">
-    <meta property="og:title" content="국내 유일한 모바일 QR 구내식당·함바 식수관리시스템">
+    <meta property="og:title" content="매장에 카드·리더기·PC를 두지 않는 구내식당·함바 식수관리시스템">
     <meta property="og:description"
         content="구내식당 모바일 식수관리시스템 카드 비용 0원! 바코드/RFID/리더기 없이 모바일 QR코드 식권 무료. 함바집 식수관리를 자동화하세요.">
     <meta property="og:image" content="https://pos.kr/images/scanner.webp">
@@ -31,47 +31,138 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
+      "@graph": [
         {
-          "@type": "Question",
-          "name": "모바일식권 형태의 함바 식수 관리를 활용하면 어떤 장점이 있나요?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "구내식당·함바식당의 급식 결제 시스템 구현을 위한 기기 구입·설치 비용이 제거되고, 카드 분실 걱정 없이 휴대전화만으로 즉시 사용하며, 비접촉식 결제로 빠르고 안전해요."
-          }
+          "@type": "Organization",
+          "@id": "https://pos.kr/#organization",
+          "name": "블루칩스",
+          "alternateName": "Blue Chips",
+          "url": "https://pos.kr/",
+          "email": "hi@pos.kr",
+          "telephone": "+82-10-5415-4415",
+          "taxID": "558-51-00535",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "일산로 142, 818-1호",
+            "addressLocality": "고양시 일산동구",
+            "addressRegion": "경기도",
+            "addressCountry": "KR"
+          },
+          "brand": { "@id": "https://pos.kr/#giftcoin" }
         },
         {
-          "@type": "Question",
-          "name": "기존 RFID 리더기를 대체하는 모바일 식수 관리 솔루션 도입 절차는 어떻게 되나요?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "건설현장 식당처럼 카드결제가 없는 경우, QR 리더기 역할을 하는 관리자 앱과 이용자 앱으로 충분해요. 카드 결제도 필요하면 연동된 키오스크가 QR 리더기 역할을 함께해요."
-          }
+          "@type": "WebSite",
+          "@id": "https://pos.kr/#website",
+          "url": "https://pos.kr/",
+          "name": "pos.kr",
+          "description": "구내식당·함바식당을 위한 모바일 QR 식수관리시스템 안내 사이트",
+          "inLanguage": "ko-KR",
+          "publisher": { "@id": "https://pos.kr/#organization" }
         },
         {
-          "@type": "Question",
-          "name": "구내식당 내 매점이나 카페 등의 부대시설 결제도 함께 처리할 수 있나요?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "예, 내부 직원은 QR코드로 예산 금액내 구매할 수 있고, 외부인은 카드로 상품을 구입할 수 있어요."
-          }
+          "@type": "SoftwareApplication",
+          "@id": "https://pos.kr/#giftcoin",
+          "name": "Giftcoin 식수관리시스템",
+          "alternateName": ["기프트코인", "pos.kr 식수관리시스템"],
+          "applicationCategory": "BusinessApplication",
+          "applicationSubCategory": "구내식당·함바식당 식수관리 / 모바일 QR 식권",
+          "operatingSystem": "Android, iOS, Web",
+          "url": "https://pos.kr/",
+          "description": "구내식당·함바식당이 RFID 카드·리더기·PC를 구입하지 않고, 근로자의 스마트폰 QR코드만으로 식수를 집계하고 월말 정산까지 처리하는 식수관리시스템입니다. 선불·후불·횟수제를 한 시스템에서 운영하며, 카드 결제가 필요하면 키오스크를 연동합니다.",
+          "author": { "@id": "https://pos.kr/#organization" },
+          "provider": { "@id": "https://pos.kr/#organization" },
+          "featureList": [
+            "스마트폰 앱이 QR 리더기 역할 — 전용 스캐너·매장 PC 불필요",
+            "개인별 QR 발급으로 카드 분실·대리 식수 차단",
+            "소속·부서별 식수 분리 집계 및 월말 정산 자동화",
+            "선불(선결제)·후불(장부)·횟수제 동시 운영",
+            "끼니·메뉴·구역별 가격 세분화",
+            "앱 미설치자에게 그림문자(MMS)로 개인별 QR 카드 발송",
+            "키오스크 연동 시 신용·체크카드 결제 병행"
+          ],
+          "offers": {
+            "@type": "AggregateOffer",
+            "priceCurrency": "KRW",
+            "lowPrice": "0",
+            "highPrice": "590000",
+            "offerCount": "5",
+            "url": "https://pos.kr/price"
+          },
+          "downloadUrl": [
+            "https://play.google.com/store/apps/details?id=com.Gift.GiftCoin",
+            "https://apps.apple.com/kr/app/id1605569286"
+          ]
         },
         {
-          "@type": "Question",
-          "name": "시중의 식권*장 등과 무엇이 다른가요?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "식권*장 등은 식당을 가맹점으로 두고 직원 식대를 취합·정산해 주는 회사 총무팀용 서비스예요. Giftcoin은 반대로 식당이 주인공이에요. 식당이 쓰던 식권은 모바일 식권으로, 외상 장부는 디지털 장부로, 선불카드는 QR 선불충전으로 — 식당 자체의 운영 수단을 그대로 디지털로 옮겨 관리하고, RFID 카드·리더기 비용 0원으로 운영해요."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "신용카드나 체크카드 결제도 병행할 수 있나요?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "예, 키오스크나 카드 단말기를 준비하여 신용·체크카드 결제가 가능하고, 카드결제와 QR결제를 연동하여 운영할 수 있어요."
-          }
+          "@type": "FAQPage",
+          "@id": "https://pos.kr/#faq",
+          "isPartOf": { "@id": "https://pos.kr/#website" },
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "구내식당·함바식당 식수 집계, 카드나 리더기 없이 할 수 있나요?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "예. 식당에서는 스마트폰 앱이 QR 리더기 역할을 하므로 RFID 카드·전용 스캐너·매장 PC를 사지 않아도 됩니다. 근로자는 본인 스마트폰의 QR을 보여주고 식당은 스마트폰으로 찍으면 그 자리에서 집계됩니다. 기기 구입·설치 비용이 사라지고, 카드 분실 걱정 없이 비접촉으로 처리됩니다."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "구내식당 식수관리시스템 도입 비용은 얼마인가요?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "소속인원 50명 이하 매장은 Super·Pro 플랜을 가입비도 월 구독료도 없이 쓰실 수 있습니다. 50명을 넘으면 유료 플랜은 월 2.9만원(Super) · 5.9만원(Pro) · 7.9만원(Plus) · 59만원(Max)이고, 초기 가입비는 Super 15만원, Pro 29만원, Plus 38만원, Max 150만원입니다. Pro·Plus·Max의 가입비에는 QR 리더로 쓸 스마트폰 또는 태블릿 1대가 포함되어 있어 받는 즉시 시작할 수 있고, 쓰지 않는 스마트폰을 직접 준비하시면 10만원이 빠집니다. Super는 별도 QR 리더 기기가 필요 없는 플랜이라 기기를 준비하실 필요가 없습니다. RFID 카드·리더기·PC 구입비는 어느 경우에도 들지 않습니다. 플랜별 상세 비교는 요금제 안내에서 확인하세요."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "식수관리시스템 도입 절차는 어떻게 되나요?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "건설현장 식당처럼 카드결제가 없는 경우, QR 리더기 역할을 하는 관리자 앱과 이용자 앱만 설치하면 바로 시작할 수 있습니다. 관리자가 소속원의 전화번호를 등록하면 개인별 QR이 발급됩니다. 카드 결제도 필요하면 연동된 키오스크가 QR 리더기 역할을 함께합니다."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "RFID 식권 카드를 분실하거나 남에게 빌려주면 어떻게 하나요?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "QR은 개인별로 발급되어 본인 스마트폰에 있으므로 분실 재발급 업무가 없습니다. 인원이 빠지면 관리자 화면에서 즉시 정지시키고, 새로 들어온 인원은 번호만 등록하면 됩니다. 대리 식수로 의심되는 사용 패턴은 시스템이 감지해 알립니다."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "근로자가 스마트폰이 없거나 앱 설치를 꺼리면 어떻게 하나요?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "앱을 설치하지 않아도 됩니다. 소속원에게 그림문자(MMS)로 개인별 QR 카드를 발송해 드리며, 받은 QR을 그대로 보여주면 식사할 수 있습니다. 발송 비용은 건당 270원이며 플랜에 따라 구독료에 포함되기도 합니다."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "구내식당 안의 매점이나 카페 등 부대시설 결제도 함께 처리할 수 있나요?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "예. 내부 직원은 QR코드로 배정된 예산 금액 안에서 구매할 수 있고, 외부인은 카드로 상품을 구입할 수 있습니다."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "식권대장·식신e식권·비플식권 같은 모바일 식권 서비스와 무엇이 다른가요?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "식권대장·식신e식권·비플식권은 회사 주변 외부 식당을 가맹점으로 두고 임직원 식대를 취합·정산해 주는 회사 총무팀용 복지 서비스입니다. 즉 고객이 '회사'이고, 식당은 가맹점 쪽에 섭니다. pos.kr은 반대로 식당이 주인공입니다. 식당이 쓰던 종이 식권은 모바일 QR로, 외상 장부는 디지털 장부로, 선불카드는 QR 선불충전으로 옮겨 식당 자체의 운영 수단을 디지털화하고, RFID 카드·리더기 비용 없이 운영합니다. 회사 구내식당이나 건설현장 함바식당처럼 식당을 직접 운영하며 식수를 집계·정산해야 한다면 pos.kr이 맞고, 외부 식당에서 쓸 임직원 식대 복지를 찾으신다면 위 서비스들이 맞습니다."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "신용카드나 체크카드 결제도 병행할 수 있나요?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "예. 키오스크나 카드 단말기를 준비하면 신용·체크카드 결제가 가능하고, 카드결제와 QR결제를 연동해 함께 운영할 수 있습니다."
+              }
+            }
+          ]
         }
       ]
     }
@@ -123,6 +214,9 @@
                 <li><a href="#how-to"
                         class="px-4 py-2 text-white font-bold text-xs whitespace-nowrap [text-shadow:0_2px_4px_rgb(0_0_0_/_0.9)]">사용
                         방법</a></li>
+                <li><a href="/price"
+                        class="px-4 py-2 text-white font-bold text-xs whitespace-nowrap [text-shadow:0_2px_4px_rgb(0_0_0_/_0.9)]">요금제</a>
+                </li>
                 <li><a href="#faq"
                         class="px-4 py-2 text-white font-bold text-xs whitespace-nowrap [text-shadow:0_2px_4px_rgb(0_0_0_/_0.9)]">FAQ</a>
                 </li>
@@ -253,7 +347,7 @@
                                     고민)</th>
                                 <th
                                     class="px-8 py-6 text-left text-xl font-extrabold text-primary bg-primary-light border-l border-r border-primary/20 w-1/3">
-                                    국내 유일 모바일 QR 식수관리 솔루션</th>
+                                    모바일 QR 식수관리 (pos.kr)</th>
                                 <th class="px-8 py-6 text-left text-xl font-extrabold text-gray-600 w-1/3">RFID/바코드
                                     시스템 (기존 방식)</th>
                             </tr>
@@ -272,8 +366,9 @@
                                                 d="M5 13l4 4L19 7"></path>
                                         </svg>
                                         <div>
-                                            <span class="font-bold text-primary">15~150만원</span><br>
-                                            <span class="text-gray-600">MMS 270원/1건 (개인별 QR 전송), 안쓰는 스마트폰</span>
+                                            <span class="font-bold text-primary">50명 이하 0원</span><br>
+                                            <span class="text-gray-600">50명 초과 시 15~150만원 (QR 리더용 스마트폰 1대 포함, 직접 준비 시
+                                                10만원 차감), MMS 270원/1건</span>
                                         </div>
                                     </div>
                                 </td>
@@ -369,8 +464,8 @@
                                                 d="M5 13l4 4L19 7"></path>
                                         </svg>
                                         <div>
-                                            <span class="font-bold text-primary">직원 요구 100% 자동화 지원</span><br>
-                                            <span class="text-gray-600">국내 유일 제공 (선·후불 시스템 역할)</span>
+                                            <span class="font-bold text-primary">한 시스템에서 자동 처리</span><br>
+                                            <span class="text-gray-600">선불·후불·횟수제를 하나의 시스템에서 함께 운영</span>
                                         </div>
                                     </div>
                                 </td>
@@ -401,8 +496,8 @@
                                                 d="M5 13l4 4L19 7"></path>
                                         </svg>
                                         <div>
-                                            <span class="font-bold text-primary">완벽</span><br>
-                                            <span class="text-gray-600">횟수 방식, 복수 가격, 신용카드까지 100% 지원</span>
+                                            <span class="font-bold text-primary">기록 가능</span><br>
+                                            <span class="text-gray-600">횟수 방식, 복수 가격, 신용카드까지 지원</span>
                                         </div>
                                     </div>
                                 </td>
@@ -457,8 +552,8 @@
                 </div>
                 <div class="mt-12 text-center">
                     <h3 class="text-2xl md:text-3xl font-extrabold text-gray-800">
-                        결론: 국내 유일(!), <span class="text-primary">카드·리더기 0원</span> 및 <span class="text-primary">선불·후불 통합
-                            관리</span>를<br class="hidden sm:block"> 제공하는 솔루션은 저희 모바일 QR 식수관리시스템뿐입니다.
+                        결론: <span class="text-primary">매장에 카드·리더기·PC를 두지 않으면서</span> <span class="text-primary">선불·후불을
+                            한 시스템에서 관리</span>하는<br class="hidden sm:block"> 방식이 저희 모바일 QR 식수관리시스템입니다.
                     </h3>
                     <div class="mt-16">
                         <h4 class="text-2xl md:text-3xl font-extrabold text-gray-800 mb-8">사장님께 가장 절실한 해결책을 선택하세요!</h4>
@@ -482,6 +577,89 @@
         </div>
     </section>
 
+    <!-- 식수관리 방식별 비교 섹션 -->
+    <section id="compare" class="py-20 px-4 bg-white animate-fade-in relative z-20">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-8 leading-tight">
+                    구내식당·함바식당 <span class="text-primary">식수관리 방식 5가지 비교</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+                    식수관리 프로그램을 고르기 전에, 현재 쓰이는 방식들이 각각 어디서 비용과 시간을 쓰는지 정리했습니다.
+                </p>
+            </div>
+
+            <div class="overflow-x-auto shadow-xl rounded-2xl border border-gray-200">
+                <table class="w-full min-w-[900px] bg-white text-left">
+                    <caption class="sr-only">종이 식권·장부, RFID 카드, 바코드 카드, 지문·생체 인식, 모바일 QR 방식의 초기 비용·분실 대응·정산 공수 비교</caption>
+                    <thead>
+                        <tr class="bg-gray-100 border-b-2 border-gray-300">
+                            <th scope="col" class="px-6 py-5 text-lg font-extrabold text-gray-800">방식</th>
+                            <th scope="col" class="px-6 py-5 text-lg font-extrabold text-gray-800">초기 도입 비용</th>
+                            <th scope="col" class="px-6 py-5 text-lg font-extrabold text-gray-800">매장에 두는 장비</th>
+                            <th scope="col" class="px-6 py-5 text-lg font-extrabold text-gray-800">분실·대리 식수</th>
+                            <th scope="col" class="px-6 py-5 text-lg font-extrabold text-gray-800">월말 정산 공수</th>
+                            <th scope="col" class="px-6 py-5 text-lg font-extrabold text-gray-800">주로 쓰이는 곳</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-lg text-gray-700">
+                        <tr class="border-b border-gray-200">
+                            <th scope="row" class="px-6 py-5 font-bold text-gray-900">종이 식권 · 수기 장부</th>
+                            <td class="px-6 py-5">사실상 0원 (식권 인쇄비)</td>
+                            <td class="px-6 py-5">없음</td>
+                            <td class="px-6 py-5">통제 불가 — 식권 양도·중복 사용이 그대로 통과</td>
+                            <td class="px-6 py-5">가장 큼 — 장부를 엑셀로 옮겨 대조</td>
+                            <td class="px-6 py-5">소규모 함바식당, 임시 현장</td>
+                        </tr>
+                        <tr class="border-b border-gray-200">
+                            <th scope="row" class="px-6 py-5 font-bold text-gray-900">RFID · RF 카드</th>
+                            <td class="px-6 py-5">약 370~420만원<br><span class="text-gray-500 text-xs">카드 500장 90만원 + 리더기 3대
+                                    180만원 + PC 100만원</span></td>
+                            <td class="px-6 py-5">리더기 · Windows PC</td>
+                            <td class="px-6 py-5">분실 재발급이 반복되고, 카드를 빌려주면 구분 불가</td>
+                            <td class="px-6 py-5">중간 — 기기 기록을 받아 대조</td>
+                            <td class="px-6 py-5">사내 구내식당, 산업체 급식</td>
+                        </tr>
+                        <tr class="border-b border-gray-200">
+                            <th scope="row" class="px-6 py-5 font-bold text-gray-900">바코드 카드 · 스캐너</th>
+                            <td class="px-6 py-5">RFID보다 낮으나 스캐너·PC 구입 필요</td>
+                            <td class="px-6 py-5">바코드 스캐너 · PC</td>
+                            <td class="px-6 py-5">복사·촬영으로 재사용되기 쉬움</td>
+                            <td class="px-6 py-5">중간</td>
+                            <td class="px-6 py-5">중소 규모 구내식당</td>
+                        </tr>
+                        <tr class="border-b border-gray-200">
+                            <th scope="row" class="px-6 py-5 font-bold text-gray-900">지문 · 생체 인식</th>
+                            <td class="px-6 py-5">가장 높음 — 인식기 단가가 리더기보다 비쌈</td>
+                            <td class="px-6 py-5">생체 인식기 · PC</td>
+                            <td class="px-6 py-5">대리 식수는 막히지만, 생체정보 수집 동의가 필요</td>
+                            <td class="px-6 py-5">중간</td>
+                            <td class="px-6 py-5">대기업 사업장, 보안 요구가 높은 기관</td>
+                        </tr>
+                        <tr class="bg-primary-light">
+                            <th scope="row" class="px-6 py-5 font-extrabold text-primary">모바일 QR (pos.kr)</th>
+                            <td class="px-6 py-5 font-bold">50명 이하 0원<br><span class="text-gray-600 text-xs">소속인원 50명
+                                    이하면 가입비·구독료 무료. 초과 시 월 2.9만원~ · <a href="/price" class="text-primary font-bold"
+                                        style="text-decoration:underline"
+                                        data-ga-event="compare_link_to_price">요금제</a></span></td>
+                            <td class="px-6 py-5 font-bold">없음 — 스마트폰 1대<br><span class="text-gray-600 text-xs">안 쓰는 폰이
+                                    없으면 기기 포함 가입으로 즉시 시작</span></td>
+                            <td class="px-6 py-5">개인별 QR이 본인 폰에 있어 재발급이 없고, 의심 패턴은 시스템이 감지</td>
+                            <td class="px-6 py-5 font-bold">가장 적음 — 관리자 화면에서 바로 확인</td>
+                            <td class="px-6 py-5">함바식당, 구내식당, 기숙사·기관 급식</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p class="mt-8 text-lg text-gray-600 text-center max-w-4xl mx-auto leading-relaxed">
+                정리하면, <strong class="text-gray-900">초기 비용은 종이 장부가 가장 싸지만 정산 공수와 누수가 가장 크고</strong>,
+                <strong class="text-gray-900">RFID·바코드·생체 인식은 통제력을 얻는 대신 장비값과 매장 PC를 떠안습니다.</strong>
+                모바일 QR은 근로자가 이미 가진 스마트폰을 인식 수단으로 써서 <strong class="text-gray-900">장비값과 정산 공수를 동시에 줄이는</strong> 방식입니다.
+            </p>
+        </div>
+    </section>
+
     <!-- 활용 환경 섹션 -->
     <section id="use-cases" class="py-40 px-4 bg-gray-800 text-white animate-fade-in">
         <div class="max-w-7xl mx-auto">
@@ -493,7 +671,7 @@
                     어떻게? 구내식당·함바식당 <span class="text-primary">상황별 결제 방식</span>
                 </h2>
                 <p class="text-xl text-gray-300 max-w-5xl mx-auto leading-relaxed">
-                    각 현장별 결제 상황에 맞춰 전용 식당부터 외부인 카드 결제까지 완벽하게 지원됩니다.
+                    각 현장별 결제 상황에 맞춰 전용 식당부터 외부인 카드 결제까지 지원됩니다.
                 </p>
             </div>
 
@@ -875,10 +1053,10 @@
                     <span class="text-white font-extrabold text-3xl">5</span>
                 </div>
                 <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-8 leading-tight animate-fade-in">
-                    <span class="text-primary">국내 유일한 구내식당 모바일 QR 식수관리시스템</span>
+                    <span class="text-primary">구내식당 모바일 QR 식수관리시스템이 필요한 경우</span>
                 </h2>
                 <p class="text-xl text-gray-600 max-w-3xl mx-auto font-bold animate-fade-in">
-                    ※ 아래에서 하나라도 해당한다면, 저희가 유일한 대안입니다.
+                    ※ 아래에서 하나라도 해당한다면, 저희 방식이 잘 맞습니다.
                 </p>
             </div>
 
@@ -962,7 +1140,7 @@
                     <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mr-8 flex-shrink-0">
                         <span class="text-white font-extrabold text-2xl">✓</span>
                     </div>
-                    <p class="text-2xl font-extrabold text-gray-900 leading-tight">식수 누수 100% 차단 & 정산 불만을 원천 차단하고 싶다.</p>
+                    <p class="text-2xl font-extrabold text-gray-900 leading-tight">식수 누수를 막고 정산 불만을 없애고 싶다.</p>
                 </div>
             </div>
         </div>
@@ -1137,9 +1315,9 @@
                 <div class="inline-flex items-center justify-center w-20 h-20 bg-primary rounded-full mb-12">
                     <span class="text-white font-extrabold text-3xl">5</span>
                 </div>
-                <h3 class="text-5xl md:text-6xl font-extrabold text-gray-900 mb-12 leading-tight">
-                    모바일 식권 관련하여 <span class="text-primary">자주 묻는 질문 (FAQ)</span>
-                </h3>
+                <h2 class="text-5xl md:text-6xl font-extrabold text-gray-900 mb-12 leading-tight">
+                    구내식당·함바 식수관리시스템 <span class="text-primary">자주 묻는 질문 (FAQ)</span>
+                </h2>
             </div>
 
             <div class="space-y-8">
@@ -1153,7 +1331,7 @@
                                     class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mr-8 mt-1 flex-shrink-0">
                                     <span class="text-white font-extrabold text-2xl">Q</span>
                                 </div>
-                                <h4 class="text-2xl font-extrabold text-gray-900">모바일식권 형태의 함바 식수 관리를 활용하면 어떤 장점이 있나요?
+                                <h4 class="text-2xl font-extrabold text-gray-900">구내식당·함바식당 식수 집계, 카드나 리더기 없이 할 수 있나요?
                                 </h4>
                             </div>
                             <div class="faq-icon text-3xl text-gray-400 transition-transform duration-300">+</div>
@@ -1165,9 +1343,11 @@
                                 class="w-16 h-16 bg-accent rounded-full flex items-center justify-center mr-8 mt-1 flex-shrink-0">
                                 <span class="text-white font-extrabold text-2xl">A</span>
                             </div>
-                            <p class="text-xl text-gray-700 leading-relaxed">구내식당·함바식당의 급식 결제 시스템 구현을 위한 기기 구입·설치
-                                <strong class="text-primary">비용이 제거</strong>되고, <strong class="text-primary">카드 분실 걱정
-                                    없이</strong> 휴대전화만으로 즉시 사용하며, 비접촉식 결제로 빠르고 안전해요.
+                            <p class="text-xl text-gray-700 leading-relaxed">예. 식당에서는 <strong
+                                    class="text-primary">스마트폰 앱이 QR 리더기 역할</strong>을 하므로 RFID 카드·전용 스캐너·매장 PC를 사지 않아도 됩니다.
+                                근로자는 본인 스마트폰의 QR을 보여주고 식당은 스마트폰으로 찍으면 그 자리에서 집계됩니다. 기기 구입·설치 <strong
+                                    class="text-primary">비용이 사라지고</strong>, <strong class="text-primary">카드 분실 걱정
+                                    없이</strong> 비접촉으로 처리됩니다.
                             </p>
                         </div>
                     </div>
@@ -1183,8 +1363,7 @@
                                     class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mr-8 mt-1 flex-shrink-0">
                                     <span class="text-white font-extrabold text-2xl">Q</span>
                                 </div>
-                                <h4 class="text-2xl font-extrabold text-gray-900">기존 RFID 리더기를 대체하는 모바일 식수 관리 솔루션 도입 절차는
-                                    어떻게 되나요?</h4>
+                                <h4 class="text-2xl font-extrabold text-gray-900">구내식당 식수관리시스템 도입 비용은 얼마인가요?</h4>
                             </div>
                             <div class="faq-icon text-3xl text-gray-400 transition-transform duration-300">+</div>
                         </div>
@@ -1195,9 +1374,18 @@
                                 class="w-16 h-16 bg-accent rounded-full flex items-center justify-center mr-8 mt-1 flex-shrink-0">
                                 <span class="text-white font-extrabold text-2xl">A</span>
                             </div>
-                            <p class="text-xl text-gray-700 leading-relaxed"><strong class="text-primary">건설현장
-                                    식당</strong>처럼 카드결제가 없는 경우, <strong class="text-primary">QR 리더기 역할</strong>을 하는 관리자
-                                앱과 이용자 앱으로 충분해요. 카드 결제도 필요하면 연동된 키오스크가 QR 리더기 역할을 함께해요.</p>
+                            <p class="text-xl text-gray-700 leading-relaxed"><strong class="text-primary">소속인원 50명 이하
+                                    매장은 Super·Pro 플랜을 가입비도 월 구독료도 없이</strong> 쓰실 수 있습니다. 50명을 넘으면 유료 플랜은 월
+                                2.9만원(Super) · 5.9만원(Pro) · 7.9만원(Plus) · 59만원(Max)이고, 초기 가입비는 Super 15만원, Pro 29만원,
+                                Plus 38만원, Max 150만원입니다.<br><br>
+                                Pro·Plus·Max의 가입비에는 <strong class="text-primary">QR 리더로 쓸 스마트폰 또는 태블릿 1대가
+                                    포함</strong>되어 있어 받는 즉시 시작할 수 있고, 쓰지 않는 스마트폰을 직접 준비하시면 10만원이 빠집니다. <strong
+                                    class="text-primary">Super는 별도 QR 리더 기기가 필요 없는 플랜</strong>이라 기기를 준비하실 필요가 없습니다.
+                                <strong class="text-primary">RFID 카드·리더기·PC 구입비는 어느 경우에도 들지 않습니다</strong>. 플랜별 상세
+                                비교는 <a href="/price"
+                                    class="text-primary font-bold" style="text-decoration:underline"
+                                    data-ga-event="faq_link_to_price">요금제 안내</a>에서 확인하세요.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -1212,8 +1400,7 @@
                                     class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mr-8 mt-1 flex-shrink-0">
                                     <span class="text-white font-extrabold text-2xl">Q</span>
                                 </div>
-                                <h4 class="text-2xl font-extrabold text-gray-900">구내식당 내 매점이나 카페 등의 부대시설 결제도 함께 처리할 수
-                                    있나요?</h4>
+                                <h4 class="text-2xl font-extrabold text-gray-900">식수관리시스템 도입 절차는 어떻게 되나요?</h4>
                             </div>
                             <div class="faq-icon text-3xl text-gray-400 transition-transform duration-300">+</div>
                         </div>
@@ -1224,8 +1411,10 @@
                                 class="w-16 h-16 bg-accent rounded-full flex items-center justify-center mr-8 mt-1 flex-shrink-0">
                                 <span class="text-white font-extrabold text-2xl">A</span>
                             </div>
-                            <p class="text-xl text-gray-700 leading-relaxed">예, 내부 직원은 QR코드로 예산 금액내 구매할 수 있고, 외부인은 카드로
-                                상품을 구입할 수 있어요.</p>
+                            <p class="text-xl text-gray-700 leading-relaxed"><strong class="text-primary">건설현장
+                                    식당</strong>처럼 카드결제가 없는 경우, <strong class="text-primary">QR 리더기 역할</strong>을 하는 관리자
+                                앱과 이용자 앱만 설치하면 바로 시작할 수 있습니다. 관리자가 소속원의 전화번호를 등록하면 개인별 QR이 발급됩니다. 카드 결제도 필요하면 연동된
+                                키오스크가 QR 리더기 역할을 함께합니다.</p>
                         </div>
                     </div>
                 </div>
@@ -1240,7 +1429,8 @@
                                     class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mr-8 mt-1 flex-shrink-0">
                                     <span class="text-white font-extrabold text-2xl">Q</span>
                                 </div>
-                                <h4 class="text-2xl font-extrabold text-gray-900">시중의 식권*장 등과 무엇이 다른가요?</h4>
+                                <h4 class="text-2xl font-extrabold text-gray-900">RFID 식권 카드를 분실하거나 남에게 빌려주면 어떻게 하나요?
+                                </h4>
                             </div>
                             <div class="faq-icon text-3xl text-gray-400 transition-transform duration-300">+</div>
                         </div>
@@ -1251,10 +1441,9 @@
                                 class="w-16 h-16 bg-accent rounded-full flex items-center justify-center mr-8 mt-1 flex-shrink-0">
                                 <span class="text-white font-extrabold text-2xl">A</span>
                             </div>
-                            <p class="text-xl text-gray-700 leading-relaxed">식권*장 등은 식당을 가맹점으로 두고 직원 식대를 취합·정산해 주는
-                                <strong class="text-primary">회사 총무팀용 서비스</strong>예요. Giftcoin은 반대로 <strong class="text-primary">식당이 주인공</strong>이에요.
-                                식당이 쓰던 <strong class="text-primary">식권은 모바일 식권으로, 외상 장부는 디지털 장부로, 선불카드는 QR 선불충전으로</strong> —
-                                식당 자체의 운영 수단을 그대로 디지털로 옮겨 관리하고, <strong class="text-primary">RFID 카드·리더기 비용 0원</strong>으로 운영해요.</p>
+                            <p class="text-xl text-gray-700 leading-relaxed">QR은 개인별로 발급되어 본인 스마트폰에 있으므로 <strong
+                                    class="text-primary">분실 재발급 업무가 없습니다</strong>. 인원이 빠지면 관리자 화면에서 즉시 정지시키고, 새로 들어온 인원은
+                                번호만 등록하면 됩니다. <strong class="text-primary">대리 식수</strong>로 의심되는 사용 패턴은 시스템이 감지해 알립니다.</p>
                         </div>
                     </div>
                 </div>
@@ -1263,6 +1452,99 @@
                 <div class="bg-white rounded-3xl shadow-xl border border-gray-100 animate-slide-up">
                     <button class="faq-toggle w-full p-10 text-left hover:bg-gray-50 transition-colors duration-200"
                         onclick="toggleFaq(5)">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-start">
+                                <div
+                                    class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mr-8 mt-1 flex-shrink-0">
+                                    <span class="text-white font-extrabold text-2xl">Q</span>
+                                </div>
+                                <h4 class="text-2xl font-extrabold text-gray-900">근로자가 스마트폰이 없거나 앱 설치를 꺼리면 어떻게 하나요?</h4>
+                            </div>
+                            <div class="faq-icon text-3xl text-gray-400 transition-transform duration-300">+</div>
+                        </div>
+                    </button>
+                    <div class="faq-content hidden px-10 pb-10">
+                        <div class="flex items-start">
+                            <div
+                                class="w-16 h-16 bg-accent rounded-full flex items-center justify-center mr-8 mt-1 flex-shrink-0">
+                                <span class="text-white font-extrabold text-2xl">A</span>
+                            </div>
+                            <p class="text-xl text-gray-700 leading-relaxed"><strong class="text-primary">앱을 설치하지 않아도
+                                    됩니다.</strong> 소속원에게 그림문자(MMS)로 개인별 QR 카드를 발송해 드리며, 받은 QR을 그대로 보여주면 식사할 수 있습니다. 발송
+                                비용은 건당 270원이며 플랜에 따라 구독료에 포함되기도 합니다.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 6 -->
+                <div class="bg-white rounded-3xl shadow-xl border border-gray-100 animate-slide-up">
+                    <button class="faq-toggle w-full p-10 text-left hover:bg-gray-50 transition-colors duration-200"
+                        onclick="toggleFaq(6)">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-start">
+                                <div
+                                    class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mr-8 mt-1 flex-shrink-0">
+                                    <span class="text-white font-extrabold text-2xl">Q</span>
+                                </div>
+                                <h4 class="text-2xl font-extrabold text-gray-900">구내식당 안의 매점이나 카페 등 부대시설 결제도 함께 처리할 수
+                                    있나요?</h4>
+                            </div>
+                            <div class="faq-icon text-3xl text-gray-400 transition-transform duration-300">+</div>
+                        </div>
+                    </button>
+                    <div class="faq-content hidden px-10 pb-10">
+                        <div class="flex items-start">
+                            <div
+                                class="w-16 h-16 bg-accent rounded-full flex items-center justify-center mr-8 mt-1 flex-shrink-0">
+                                <span class="text-white font-extrabold text-2xl">A</span>
+                            </div>
+                            <p class="text-xl text-gray-700 leading-relaxed">예. 내부 직원은 QR코드로 배정된 예산 금액 안에서 구매할 수 있고,
+                                외부인은 카드로 상품을 구입할 수 있습니다.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 7 -->
+                <div class="bg-white rounded-3xl shadow-xl border border-gray-100 animate-slide-up">
+                    <button class="faq-toggle w-full p-10 text-left hover:bg-gray-50 transition-colors duration-200"
+                        onclick="toggleFaq(7)">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-start">
+                                <div
+                                    class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mr-8 mt-1 flex-shrink-0">
+                                    <span class="text-white font-extrabold text-2xl">Q</span>
+                                </div>
+                                <h4 class="text-2xl font-extrabold text-gray-900">식권대장·식신e식권·비플식권 같은 모바일 식권 서비스와 무엇이
+                                    다른가요?</h4>
+                            </div>
+                            <div class="faq-icon text-3xl text-gray-400 transition-transform duration-300">+</div>
+                        </div>
+                    </button>
+                    <div class="faq-content hidden px-10 pb-10">
+                        <div class="flex items-start">
+                            <div
+                                class="w-16 h-16 bg-accent rounded-full flex items-center justify-center mr-8 mt-1 flex-shrink-0">
+                                <span class="text-white font-extrabold text-2xl">A</span>
+                            </div>
+                            <p class="text-xl text-gray-700 leading-relaxed"><strong
+                                    class="text-primary">식권대장·식신e식권·비플식권</strong>은 회사 주변 <strong
+                                    class="text-primary">외부 식당을 가맹점으로 두고</strong> 임직원 식대를 취합·정산해 주는 <strong
+                                    class="text-primary">회사 총무팀용 복지 서비스</strong>입니다. 즉 고객이 '회사'이고, 식당은 가맹점 쪽에 섭니다.
+                                pos.kr은 반대로 <strong class="text-primary">식당이 주인공</strong>입니다. 식당이 쓰던 <strong
+                                    class="text-primary">종이 식권은 모바일 QR로, 외상 장부는 디지털 장부로, 선불카드는 QR 선불충전으로</strong> 옮겨 식당
+                                자체의 운영 수단을 디지털화하고, RFID 카드·리더기 비용 없이 운영합니다.<br><br>
+                                <strong class="text-primary">회사 구내식당이나 건설현장 함바식당처럼 식당을 직접 운영하며 식수를 집계·정산</strong>해야
+                                한다면 pos.kr이 맞고, <strong class="text-primary">외부 식당에서 쓸 임직원 식대 복지</strong>를 찾으신다면 위
+                                서비스들이 맞습니다.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 8 -->
+                <div class="bg-white rounded-3xl shadow-xl border border-gray-100 animate-slide-up">
+                    <button class="faq-toggle w-full p-10 text-left hover:bg-gray-50 transition-colors duration-200"
+                        onclick="toggleFaq(8)">
                         <div class="flex items-center justify-between">
                             <div class="flex items-start">
                                 <div
@@ -1280,14 +1562,14 @@
                                 class="w-16 h-16 bg-accent rounded-full flex items-center justify-center mr-8 mt-1 flex-shrink-0">
                                 <span class="text-white font-extrabold text-2xl">A</span>
                             </div>
-                            <p class="text-xl text-gray-700 leading-relaxed">예, 키오스크나 카드 단말기를 준비하여 신용·체크카드 결제가 가능하고,
-                                카드결제와 QR결제를 연동하여 운영할 수 있어요.</p>
+                            <p class="text-xl text-gray-700 leading-relaxed">예. 키오스크나 카드 단말기를 준비하면 신용·체크카드 결제가 가능하고,
+                                카드결제와 QR결제를 연동해 함께 운영할 수 있습니다.</p>
                         </div>
                     </div>
                 </div>
 
 
-                <!-- 하단 CTA 섹션 -->
+<!-- 하단 CTA 섹션 -->
                 <section id="contact" class="bg-gray-900 text-white py-40 px-4 relative overflow-hidden">
                     <!-- 배경 패턴 -->
                     <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=" 60" height="60"
@@ -1444,10 +1726,13 @@
 
                 <footer class="bg-gray-100 py-12 px-4">
                     <div class="max-w-6xl mx-auto text-center text-gray-700">
+                        <p class="mb-4 font-bold"><a href="/price" data-ga-event="footer_link_to_price">요금제</a> | <a
+                                href="/proposal" data-ga-event="footer_link_to_proposal">도입 제안서</a> | <a
+                                href="/hamba-pos" data-ga-event="footer_link_to_hambapos">함바포스 프로그램</a></p>
                         <p><a href="/terms" target="_blank">이용약관</a> | <a href="/privacy" target="_blank">개인정보
                                 처리 방침</a> | <a href="https://giftcoin.kr" target="_blank" rel="noopener"
                                 data-ga-event="cross_link_footer_to_giftcoin">기프트코인 서비스</a></p>
-                        <p>블루칩스 | 대표자: 이미경 | 사업자등록번호: 558-51-00535</p>
+                        <p>블루칩스가 운영하는 구내식당·함바 식수관리시스템 pos.kr (서비스명 Giftcoin) | 대표자: 이미경 | 사업자등록번호: 558-51-00535</p>
                         <p>주소: 경기도 고양시 일산동구 일산로 142, 818-1호 | 연락처: <a href="mailto:hi@pos.kr">hi@pos.kr</a></p>
                     </div>
                 </footer>
