@@ -1244,57 +1244,6 @@
             line-height: 1.5;
             color: var(--ink-body);
         }
-
-        /* 확대 인셋 — 전경 사진 속 두 장치는 각각 82x132 / 167x340 px 밖에 안 돼
-           A4 인쇄에서 화면 글자가 읽히지 않는다. 사진은 '한 곳에서 둘 다'라는 맥락만
-           담당하게 두고, 실제 화면은 원본 해상도 인셋으로 따로 보여준다. */
-        .es-flow .bd {
-            display: flex;
-            gap: 12px;
-            align-items: flex-start;
-        }
-
-        /* 스캐너: 두리미가_스캐너내부.jpg(1440x2867) 원본에서 금액 패널만 크롭 */
-        .es-shot {
-            flex: 0 0 116px;
-            width: 116px;
-            border-radius: 6px;
-            display: block;
-        }
-
-        /* 키오스크 메뉴: 이미지가 아니라 텍스트라 인쇄에서 벡터처럼 선명하다 */
-        .es-menu {
-            flex: 0 0 116px;
-            border-radius: 6px;
-            background: #1F1F1F;
-            padding: 8px 9px;
-        }
-
-        .es-menu .mi {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            padding: 3px 0;
-            font-size: 10.5px;
-            color: #fff;
-            letter-spacing: -0.02em;
-        }
-
-        .es-menu .mi b {
-            margin-left: auto;
-            font-weight: 800;
-        }
-
-        .es-menu .d {
-            flex: 0 0 11px;
-            width: 11px;
-            height: 11px;
-            border-radius: 50%;
-        }
-
-        .es-menu .d1 { background: #F0A868; }
-        .es-menu .d2 { background: transparent; border: 3px solid #35C759; }
-        .es-menu .d3 { background: #2C6FD1; border-radius: 2px; }
     </style>
     <script type="application/ld+json">
     {
@@ -1374,22 +1323,11 @@
             <div class="es-flows">
                 <div class="es-flow">
                     <div class="hd"><span class="ic">📱</span><b>① 내부 직원</b></div>
-                    <div class="bd">
-                        <img class="es-shot" src="assets/스캐너화면_금액패널.jpg"
-                            alt="스캐너 화면 — QR을 보여주시면 지정 금액을 지불해요, 10,000원, 두리미가솥밥">
-                        <p>스마트폰(태블릿) QR스캐너에 <strong>개인 QR을 스캔</strong>해 1초 만에 입장·결제합니다.</p>
-                    </div>
+                    <p>스마트폰(태블릿) QR스캐너에 <strong>개인 QR을 스캔</strong>해 1초 만에 입장·결제합니다.</p>
                 </div>
                 <div class="es-flow">
                     <div class="hd"><span class="ic">🖥️</span><b>② 외부 방문객 <em>(내부 직원 포함)</em></b></div>
-                    <div class="bd">
-                        <div class="es-menu">
-                            <div class="mi"><i class="d d1"></i>정식<b>10,000원</b></div>
-                            <div class="mi"><i class="d d2"></i>부추전<b>5,000원</b></div>
-                            <div class="mi"><i class="d d3"></i>음료수<b>3,000원</b></div>
-                        </div>
-                        <p>키오스크에서 <strong>정식·부추전·음료수</strong>를 주문하고 <strong>신용카드 또는 직원 QR</strong>로 결제합니다.</p>
-                    </div>
+                    <p>키오스크에서 <strong>정식·부추전·음료수</strong>를 주문하고 <strong>신용카드 또는 직원 QR</strong>로 결제합니다.</p>
                 </div>
             </div>
         </div>
