@@ -56,16 +56,31 @@
             const dropdownLinks = dropdownMenu.querySelectorAll('a');
 
             if (menuToggle && dropdownMenu) {
+                // hidden(display:none)은 트랜지션이 안 걸린다.
+                // is-open 으로 바꿔 opacity/transform 으로 흘러내리게 한다.
+                const setMenu = (open) => {
+                    menuToggle.classList.toggle('is-active', open);
+                    dropdownMenu.classList.toggle('is-open', open);
+                    menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+                    menuToggle.setAttribute('aria-label', open ? '메뉴 닫기' : '메뉴 열기');
+                };
+
                 menuToggle.addEventListener('click', () => {
-                    menuToggle.classList.toggle('is-active');
-                    dropdownMenu.classList.toggle('hidden');
+                    setMenu(!dropdownMenu.classList.contains('is-open'));
                 });
 
                 dropdownLinks.forEach(link => {
-                    link.addEventListener('click', () => {
-                        menuToggle.classList.remove('is-active');
-                        dropdownMenu.classList.add('hidden');
-                    });
+                    link.addEventListener('click', () => setMenu(false));
+                });
+
+                // 바깥 클릭·ESC 로 닫기 (PC 에서 상시 노출되므로 필요)
+                document.addEventListener('click', (e) => {
+                    if (!menuToggle.contains(e.target) && !dropdownMenu.contains(e.target)) {
+                        setMenu(false);
+                    }
+                });
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape') setMenu(false);
                 });
             }
 

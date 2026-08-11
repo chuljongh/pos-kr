@@ -72,3 +72,96 @@
         mask-image: linear-gradient(to bottom, transparent 0, #000 8%, #000 92%, transparent 100%);
     }
 }
+
+/* ── 햄버거 메뉴 ─────────────────────────────────────────────────────────────
+   PC 에서도 노출한다(기존엔 lg:hidden 으로 모바일 전용). 다만 흰 3선은 밝은 섹션
+   (bg-gray-100 #f3f4f6) 위에서 대비 1.1:1 로 사실상 사라진다 — fixed 라 스크롤하면
+   반드시 밝은 구간을 지난다. 어두운 배지를 깔아 4.24:1 로 올리고, 동시에 44×44
+   터치 타깃을 확보한다(버튼 자체는 20×16 으로 권장 최소치 미달이었다). */
+#menu-toggle::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 44px;
+    height: 44px;
+    transform: translate(-50%, -50%);
+    border-radius: 9999px;
+    background: rgba(17, 24, 39, .55);
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    z-index: -1;
+    transition: background .2s ease;
+}
+
+#menu-toggle:hover::before {
+    background: rgba(17, 24, 39, .75);
+}
+
+/* 3선 → X. 버튼 20×16, 바는 top 0 / 중앙 7 / bottom 14 이므로 7px 씩 모아 회전 */
+#menu-toggle span {
+    transform-origin: center;
+}
+
+#menu-toggle.is-active span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+#menu-toggle.is-active span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+#menu-toggle.is-active span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* 패널: display:none 은 애니메이션이 안 되므로 visibility+opacity 로 접는다.
+   visibility 는 닫힐 때만 지연시켜 페이드아웃이 끝난 뒤 포커스에서 빠지게 한다. */
+#mobile-dropdown {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    padding: 6px 4px;
+    border-radius: 14px;
+    background: rgba(17, 24, 39, .72);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    transition: opacity .22s ease, visibility 0s linear .22s;
+}
+
+#mobile-dropdown.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition: opacity .22s ease, visibility 0s;
+}
+
+/* 항목이 위에서 차례로 흘러내린다 */
+#mobile-dropdown li {
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity .25s ease, transform .32s cubic-bezier(.2, .8, .2, 1);
+}
+
+#mobile-dropdown.is-open li {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#mobile-dropdown.is-open li:nth-child(1) { transition-delay: .04s; }
+#mobile-dropdown.is-open li:nth-child(2) { transition-delay: .08s; }
+#mobile-dropdown.is-open li:nth-child(3) { transition-delay: .12s; }
+#mobile-dropdown.is-open li:nth-child(4) { transition-delay: .16s; }
+#mobile-dropdown.is-open li:nth-child(5) { transition-delay: .20s; }
+#mobile-dropdown.is-open li:nth-child(6) { transition-delay: .24s; }
+#mobile-dropdown.is-open li:nth-child(7) { transition-delay: .28s; }
+
+@media (prefers-reduced-motion: reduce) {
+    #menu-toggle span,
+    #mobile-dropdown,
+    #mobile-dropdown li {
+        transition-duration: .01ms;
+        transition-delay: 0s;
+    }
+}

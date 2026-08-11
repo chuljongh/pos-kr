@@ -190,9 +190,10 @@
         ☕ 카페·음식점 사장님이세요? <span style="text-decoration:underline;">카페 전용 선결제 키오스크 보러가기 →</span>
     </a>
 
-    <!-- Mobile Hamburger Menu -->
-    <div class="lg:hidden fixed top-6 right-6 z-50">
-        <button id="menu-toggle" class="relative w-5 h-4" aria-label="메뉴 열기">
+    <!-- 햄버거 메뉴 (PC 포함 전 화면 노출) -->
+    <div class="fixed top-6 right-6 z-50">
+        <button id="menu-toggle" class="relative w-5 h-4" aria-label="메뉴 열기" aria-expanded="false"
+            aria-controls="mobile-dropdown">
             <span
                 class="block absolute w-full h-0.5 bg-white rounded-full transition-all duration-300 ease-in-out top-0"></span>
             <span
@@ -200,7 +201,7 @@
             <span
                 class="block absolute w-full h-0.5 bg-white rounded-full transition-all duration-300 ease-in-out bottom-0"></span>
         </button>
-        <div id="mobile-dropdown" class="hidden absolute top-10 right-0">
+        <div id="mobile-dropdown" class="absolute top-10 right-0">
             <ul class="py-2 text-right space-y-2">
                 <li><a href="#features"
                         class="px-4 py-2 text-white font-bold text-xs whitespace-nowrap [text-shadow:0_2px_4px_rgb(0_0_0_/_0.9)]">도입
