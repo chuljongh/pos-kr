@@ -60,10 +60,15 @@
         margin-bottom: 2rem;
     }
 
-    /* 부모의 px-4(1rem)를 상쇄해 풀블리드. 100vw 대신 calc 로 스크롤바 오차를 피한다 */
+    /* 타이틀 바로 아래 풀블리드 배치. 부모 px-4(1rem)를 상쇄한다
+       (100vw 는 스크롤바 폭만큼 어긋나므로 calc 사용).
+       위아래 가장자리를 배경으로 페이드시켜 '사각형 블록이 얹힌' 느낌을 없앤다.
+       사진 속 폰이 세로를 거의 꽉 채우므로 페이드는 8%(약 16px)로 얕게. */
     #hero-img {
         width: calc(100% + 2rem);
         max-width: none;
-        margin: 2.5rem -1rem 0;
+        margin: 0 -1rem 2rem;
+        -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 8%, #000 92%, transparent 100%);
+        mask-image: linear-gradient(to bottom, transparent 0, #000 8%, #000 92%, transparent 100%);
     }
 }
