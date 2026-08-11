@@ -164,9 +164,59 @@
             margin: 0 0 6px;
         }
 
-        .subtitle {
+        /* 가격을 먼저, 조건은 그 아래 — 표에 닿기 전 읽을 글자를 최소화한다 */
+        /* .lead 는 "왜 공짜인가"에 먼저 답하는 자리. 본문이므로 --meta(회색) 금지 */
+        .lead {
             font-size: 15px;
-            margin: 0 0 24px;
+            font-weight: 600;
+            margin: 14px 0 2px;
+            max-width: 720px;
+        }
+
+        .headline {
+            font-size: 30px;
+            font-weight: 700;
+            line-height: 1.35;
+            margin: 14px 0 10px;
+        }
+
+        .headline b {
+            color: var(--accent);
+        }
+
+        .headline-sub {
+            font-size: 14px;
+            margin: 0 0 26px;
+            max-width: 720px;
+        }
+
+        /* 각주·가이드 접기 — 내용은 그대로 두고 첫 화면에서만 걷어낸다 */
+        details.fold {
+            border-top: 1px solid var(--line);
+            margin-top: 26px;
+            padding-top: 14px;
+        }
+
+        details.fold>summary {
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text);
+            list-style-position: outside;
+        }
+
+        details.fold>summary:hover {
+            color: var(--accent);
+        }
+
+        details.fold>summary .cnt {
+            font-weight: 400;
+            opacity: .65;
+            margin-left: 4px;
+        }
+
+        details.fold[open]>summary {
+            margin-bottom: 6px;
         }
 
         .table-scroll {
@@ -349,12 +399,6 @@
             margin: 34px 0 10px;
         }
 
-        .intro {
-            font-size: 15px;
-            margin: 0 0 22px;
-            max-width: 780px;
-        }
-
         .sitefoot {
             margin-top: 44px;
             padding-top: 20px;
@@ -398,8 +442,15 @@
             .print-bar,
             .sitenav,
             .sitefoot,
-            .intro {
+            details.fold>summary {
                 display: none;
+            }
+
+            /* 접힌 각주도 인쇄물에는 전문이 나와야 한다 (계약 참고자료) */
+            details.fold {
+                border-top: 0;
+                margin-top: 10px;
+                padding-top: 0;
             }
 
             body {
@@ -427,7 +478,23 @@
                 margin-bottom: 2px;
             }
 
-            .subtitle {
+            .lead {
+                font-size: 13.4px;
+                margin: 2px 0;
+            }
+
+            .headline {
+                font-size: 18px;
+                margin: 4px 0 2px;
+            }
+
+            /* 인쇄본은 18px bold라 WCAG '큰 글자' 미달 — accent(3.36:1) 대신 본문색 */
+            .headline b {
+                color: var(--text);
+            }
+
+            .headline-sub {
+                font-size: 13.4px;
                 margin-bottom: 8px;
             }
 
@@ -468,16 +535,11 @@
         </nav>
 
         <h1>구내식당·함바 식수관리시스템 요금제</h1>
-        <p class="subtitle">무료로 시작하고, 매장 운영 규모에 맞춰 플랜을 선택하세요. 코인 전송·공유·내역 확인 등 이용자 기본 기능은 모든 플랜에서 무료입니다.</p>
 
-        <p class="intro">구내식당·함바식당의 식수관리시스템 도입 비용을 플랜별로 정리했습니다. <b>RFID 카드·리더기·매장 PC 구입비는 들지 않습니다.</b> 기존 방식은 카드
-            500장 90만원, 리더기 3대 180만원, PC 100만원으로 초기에만 370~420만원이 들지만, 여기서는 무료 플랜으로 시작해 필요한 기능이 생길 때 유료 플랜으로 올리면 됩니다.
-            키오스크가 필요한 경우 별도 구매 없이 Super 플랜부터 연동해 쓸 수 있어, 흔히 말하는 구내식당 키오스크 가격 부담이 사라집니다. 다만 <b>연동되는 키오스크는 IMU,
-                QpassKorea, Airpos 3종</b>이며, 그 외 기종은 연동되지 않습니다.</p>
-
-        <p class="intro"><b>소속인원 50명 이하 매장은 Super·Pro 플랜을 가입비도 월 구독료도 없이 쓰실 수 있습니다.</b> 선결제·선불카드부터 회사와의 장부(후불) 거래까지
-            그대로 쓰면서 비용이 0원입니다. 50명을 넘는 매장이라면, <b>Pro·Plus·Max 가입비에 QR 리더로 쓸 스마트폰 또는 태블릿 1대가 포함</b>되어 있어 받는 즉시 시작할 수
-            있고, 쓰지 않는 스마트폰을 직접 준비하시면 기기값 10만원이 빠집니다. <b>Super는 별도 QR 리더 기기 없이 쓰는 플랜</b>이라 기기를 준비하실 필요가 없습니다.</p>
+        <p class="lead">일단 고객을 확보하고 매출부터 만드세요.</p>
+        <p class="headline"><b>50명까지는 유료 플랜도 무료.</b><br>그 이후 <b>월 2.9만원</b>부터.</p>
+        <p class="headline-sub">소속인원 50명까지는 Super·Pro 플랜을 가입비도 월 구독료도 없이 그대로 쓰십니다. 기능을 깎지 않습니다. RFID 카드·리더기·매장 PC
+            구입비도 들지 않습니다.</p>
 
         <h2>플랜별 요금 비교</h2>
 
@@ -550,7 +612,7 @@
                         <td>30대</td>
                     </tr>
                     <tr>
-                        <th>키오스크 연동</th>
+                        <th>키오스크 연동<sup>4</sup></th>
                         <td><span class="na">—</span></td>
                         <td>○</td>
                         <td>○</td>
@@ -566,7 +628,7 @@
                         <td>○</td>
                     </tr>
                     <tr>
-                        <th>그림문자 QR 카드<sup>4</sup></th>
+                        <th>그림문자 QR 카드<sup>5</sup></th>
                         <td><span class="na">—</span></td>
                         <td><span class="na">—</span></td>
                         <td>○</td>
@@ -574,7 +636,7 @@
                         <td>○</td>
                     </tr>
                     <tr>
-                        <th>그림 문자 비용<sup>5</sup></th>
+                        <th>그림 문자 비용<sup>6</sup></th>
                         <td><span class="na">—</span></td>
                         <td><span class="na">—</span></td>
                         <td>별도</td>
@@ -582,7 +644,7 @@
                         <td>포함</td>
                     </tr>
                     <tr>
-                        <th>후불 정산 기능<sup>6</sup></th>
+                        <th>후불 정산 기능<sup>7</sup></th>
                         <td><span class="na">—</span></td>
                         <td><span class="na">—</span></td>
                         <td>○</td>
@@ -592,10 +654,10 @@
                     <tr>
                         <th>플랜별 특징</th>
                         <td>코인(포인트) 활용</td>
-                        <td>선결제·선불(기프트)카드<br>(50명 이하 무료)</td>
-                        <td>회사와 장부(후불) 거래<br>(50명 이하 무료)</td>
-                        <td class="plan-plus">좌동. 가격 세분화 및 회사의 다양한 정책 지원<sup>7</sup></td>
-                        <td>식수 신청·취합 시스템<sup>8</sup></td>
+                        <td>선결제·선불(기프트)카드</td>
+                        <td>회사와 장부(후불) 거래</td>
+                        <td class="plan-plus">좌동. 가격 세분화 및 회사의 다양한 정책 지원<sup>8</sup></td>
+                        <td>식수 신청·취합 시스템<sup>9</sup></td>
                     </tr>
                     <tr>
                         <th>적합한 사용 모습</th>
@@ -609,9 +671,9 @@
             </table>
         </div>
 
-        <h2>용어 안내</h2>
-
-        <div class="notes">
+        <details class="fold">
+            <summary>용어·조건 자세히 보기 <span class="cnt">9개 항목</span></summary>
+            <div class="notes">
             <p><span class="num">1.</span> <b>50명 이하 무료</b> — 등록 소속인원이 50명 이하인 매장은 Super·Pro 플랜의 <b>초기 가입비와 월 구독료를
                     모두 받지 않습니다.</b> Pro는 이 경우 QR 리더로 쓸 스마트폰을 매장에서 준비해 주셔야 하고(각주 2의 기기 제공은 적용되지 않습니다), Super는 원래
                 별도 기기가 필요 없습니다. 인원이 50명을 초과하면 해당 플랜의 정상 요금으로 전환됩니다.</p>
@@ -620,25 +682,30 @@
                 <b>Super는 별도 QR 리더 기기가 필요하지 않은 플랜</b>이라 이 옵션이 없고, 가입비는 15만원 하나입니다.</p>
             <p><span class="num">3.</span> <b>이용자 기능</b> — 매장 코인의 전송·공유·에어드랍·내역 확인 등 <b>이용자가 쓰는 기본 기능은 Free를 포함한 전
                     플랜에서 무료</b>로 제공됩니다. 플랜에 따라 달라지는 것은 매장·관리자 쪽 기능입니다.</p>
-            <p><span class="num">4.</span> <b>그림문자 QR 카드</b> — 회사·단체 소속원에게 그림문자(MMS)로 개인별 QR 카드를 발송하는 서비스입니다.</p>
-            <p><span class="num">5.</span> <b>그림 문자 비용</b> — 선불카드나 개인별 문자 QR을 그림문자(MMS)로 발송할 때 발생하는 MMS 비용입니다. 플랜에 따라
+            <p><span class="num">4.</span> <b>키오스크 연동</b> — 별도 구매 없이 Super 플랜부터 키오스크를 연동해 쓸 수 있습니다. 다만 <b>연동되는
+                    키오스크는 IMU, QpassKorea, Airpos 3종</b>이며, 그 외 기종은 연동되지 않습니다.</p>
+            <p><span class="num">5.</span> <b>그림문자 QR 카드</b> — 회사·단체 소속원에게 그림문자(MMS)로 개인별 QR 카드를 발송하는 서비스입니다.</p>
+            <p><span class="num">6.</span> <b>그림 문자 비용</b> — 선불카드나 개인별 문자 QR을 그림문자(MMS)로 발송할 때 발생하는 MMS 비용입니다. 플랜에 따라
                 구독료에 포함(포함)되거나 건별로 별도 청구(별도)됩니다.</p>
-            <p><span class="num">6.</span> <b>후불 정산 기능</b> — 실제 사용분을 정산 리포트로 집계해 회사에 사후 청구·정산하는 방식입니다. 임직원 식대·복지를 운영하는
+            <p><span class="num">7.</span> <b>후불 정산 기능</b> — 실제 사용분을 정산 리포트로 집계해 회사에 사후 청구·정산하는 방식입니다. 임직원 식대·복지를 운영하는
                 요식업 매장의 핵심입니다.</p>
-            <p><span class="num">7.</span> <b>가격 세분</b> — 매장이 끼니·메뉴·구역별로 판매 가격을 직접 나눌 수 있습니다 (예: 1층 7,000원 / 2층 9,000원,
+            <p><span class="num">8.</span> <b>가격 세분</b> — 매장이 끼니·메뉴·구역별로 판매 가격을 직접 나눌 수 있습니다 (예: 1층 7,000원 / 2층 9,000원,
                 또는 한식 10,000원 / 양식 9,500원). <b>정책 세분</b> — 회사가 복지 지원 금액을 끼니별로 세분해 설정할 수 있습니다 (예: 조식 8,500원 / 중식 12,000원
                 / 석식 13,000원).</p>
-            <p><span class="num">8.</span> <b>식수 신청 관리</b> — 구성원이 앱에서 직접 끼니별 식사를 신청하면 결과가 실시간으로 취합되어, 식당이 정확한 식수에 맞춰 식사를
-                준비할 수 있습니다.</p>
-        </div>
+            <p><span class="num">9.</span> <b>식수 신청 관리</b> — 구성원이 앱에서 직접 끼니별 식사를 신청하면 결과가 실시간으로 취합되어, 식당이 정확한 식수에 맞춰 식사를
+                    준비할 수 있습니다.</p>
+            </div>
+        </details>
 
-        <h2>어떤 플랜을 고르면 되나요</h2>
-        <div class="notes">
+        <details class="fold">
+            <summary>어떤 플랜을 고르면 되나요</summary>
+            <div class="notes">
             <p>· <b>함바식당·건설현장</b> — 카드 결제 없이 식수만 집계한다면 Free 또는 Super로 충분합니다. 소속 업체와 월말 정산이 필요하면 Pro 이상을 권합니다.</p>
             <p>· <b>구내식당(회사 계약)</b> — 회사와 식대·복지를 계약하고 후불 정산하려면 Pro, 끼니·구역별 가격이나 회사 정책을 세분해야 하면 Plus입니다.</p>
             <p>· <b>기숙사·기관 급식</b> — 구성원이 앱에서 끼니를 미리 신청하고 그 결과로 식수를 준비하려면 Max입니다.</p>
-            <p>· 어느 플랜이 맞을지 애매하면 <a href="/#contact">무료 도입 상담</a>에서 현장 상황을 알려주시면 맞춰 안내해 드립니다.</p>
-        </div>
+                <p>· 어느 플랜이 맞을지 애매하면 <a href="/#contact">무료 도입 상담</a>에서 현장 상황을 알려주시면 맞춰 안내해 드립니다.</p>
+            </div>
+        </details>
 
         <p class="updated">2026-06-17 기준</p>
 
@@ -650,10 +717,30 @@
         </footer>
     </div>
     <script>
+        // <details>는 CSS만으로 펼 수 없다 — 인쇄 직전 open을 부여하고 끝나면 되돌린다
+        var _foldReopen = [];
+
+        function expandFolds() {
+            _foldReopen = [];
+            document.querySelectorAll('details.fold').forEach(function (d) {
+                if (!d.open) { _foldReopen.push(d); d.open = true; }
+            });
+        }
+
+        function restoreFolds() {
+            _foldReopen.forEach(function (d) { d.open = false; });
+            _foldReopen = [];
+        }
+
+        window.addEventListener('beforeprint', expandFolds); // Ctrl+P 대비
+        window.addEventListener('afterprint', restoreFolds);
+
         function printAs(orient) { // 선택한 방향으로 @page 갱신 후 인쇄
             document.getElementById('print-orient').textContent =
                 '@page { size: A4 ' + orient + '; margin: 10mm; }';
+            expandFolds();
             window.print();
+            restoreFolds();
         }
     </script>
 </body>
