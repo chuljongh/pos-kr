@@ -377,23 +377,6 @@
             color: var(--meta);
         }
 
-        /* 사이트 내 이동 링크 — 요금 페이지가 막다른 길이 되지 않도록 */
-        .sitenav {
-            font-size: 14px;
-            margin-bottom: 18px;
-        }
-
-        .sitenav a {
-            color: var(--accent);
-            font-weight: 700;
-            text-decoration: none;
-            margin-right: 14px;
-        }
-
-        .sitenav a:hover {
-            text-decoration: underline;
-        }
-
         h2 {
             font-size: 19px;
             margin: 34px 0 10px;
@@ -551,6 +534,8 @@
         #mobile-dropdown.is-open li:nth-child(5) { transition-delay: .20s; }
         #mobile-dropdown.is-open li:nth-child(6) { transition-delay: .24s; }
         #mobile-dropdown.is-open li:nth-child(7) { transition-delay: .28s; }
+        #mobile-dropdown.is-open li:nth-child(8) { transition-delay: .32s; }
+        #mobile-dropdown.is-open li:nth-child(9) { transition-delay: .36s; }
 
         @media (prefers-reduced-motion: reduce) {
 
@@ -594,7 +579,6 @@
         @media print {
 
             .print-bar,
-            .sitenav,
             .sitefoot,
             .menu-fixed,
             details.fold>summary {
@@ -691,6 +675,8 @@
                 <li><a href="/#use-cases">구현 사례</a></li>
                 <li><a href="/#support">역할과 지원</a></li>
                 <li><a href="/#how-to">사용 방법</a></li>
+                <li><a href="/hamba-pos">함바포스 프로그램</a></li>
+                <li><a href="/proposal">도입 제안서</a></li>
                 <li><a href="/price" aria-current="page">요금제</a></li>
                 <li><a href="/#faq">FAQ</a></li>
                 <li><a href="/#contact">무료 문의</a></li>
@@ -703,11 +689,6 @@
             <button type="button" onclick="printAs('landscape')">가로 모드 인쇄</button>
             <button type="button" onclick="printAs('portrait')">세로 모드 인쇄</button>
         </div>
-        <nav class="sitenav" aria-label="사이트 내 이동">
-            <a href="/">식수관리시스템 소개</a><a href="/hamba-pos">함바포스 프로그램</a><a href="/proposal">도입 제안서</a><a
-                href="/#contact">무료 도입 상담</a>
-        </nav>
-
         <h1>구내식당·함바 식수관리시스템 요금제</h1>
 
         <p class="lead">일단 고객을 확보하고 매출부터 만드세요.</p>
