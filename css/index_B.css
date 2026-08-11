@@ -6,3 +6,56 @@
 .animate-fade-in{animation:fade-in .6s ease-out backwards}
 .animate-slide-up{animation:slide-up .6s ease-out backwards}
 @media (prefers-reduced-motion:reduce){.animate-fade-in,.animate-slide-up{animation:none}}
+
+/* ── 히어로 배경 보정 ────────────────────────────────────────────────────────
+   #hero 는 id 라 .bg-fixed/.bg-center/.py-40 등 Tailwind 단일 클래스보다 우선한다. */
+
+/* ① 오버레이 55% → 42%.
+   평면 55%는 폰 화면의 선물상자 QR까지 눌러버렸다. 42%에서도 이미지의 가장 밝은
+   지점(흰 폰 화면 255 → 148)에 흰 대형 텍스트 대비 3.04:1 로 WCAG AA(큰 글자 3:1) 유지.
+   부제는 이 때문에 text-gray-300 → text-white, text-xl → text-2xl(24px=18pt, 큰 글자 판정)로 올렸다. */
+#hero {
+    background-image:
+        linear-gradient(rgba(0, 0, 0, .42), rgba(0, 0, 0, .42)),
+        url(../mainImg.jpg);
+    background-attachment: scroll;
+}
+
+/* 사진 위 텍스트는 오버레이만으로 국소 대비가 흔들려 그림자로 보강 */
+#hero h1,
+#hero>div>p {
+    text-shadow: 0 2px 10px rgba(0, 0, 0, .85);
+}
+
+/* ② background-attachment:fixed 는 iOS Safari 에서 무시되거나 스크롤이 끊긴다.
+   패럴랙스는 데스크탑에서만 건다. */
+@media (min-width: 768px) {
+    #hero {
+        background-attachment: fixed;
+    }
+}
+
+/* ③ 모바일 크롭.
+   mainImg.jpg 는 1600×800(2:1)인데 히어로가 세로로 길어 cover 시 가로가 잘린다.
+   ②에서 bg-fixed 를 걷어낸 것만으로 배경 기준이 뷰포트→요소로 바뀌어 확대가 크게 줄었다
+   (fixed 는 뷰포트 기준 cover 라 390px 화면에서 이미지가 1800px 로 렌더링됐다).
+   실측(iframe 으로 진짜 390px 뷰포트 구성, Chrome 헤드리스): 히어로 702px, 가로 노출 27.8%.
+   두 폰(이미지 가로 39.4%~79.6%, 폭 40.2%)을 다 담으려면 히어로가 485px 이하여야 하는데
+   그러면 헤드라인이 눌린다. 모바일은 손+폰 한 대를 제대로 보여주는 쪽으로 정리하고,
+   우측 스캐너가 걸쳐 보이는 어색한 조각은 초점을 47%로 옮겨 배제한다
+   (창 33.1%~60.9% → 좌측 폰 전체, 좌우 여유 6.3/2.7%p, 우측 폰 3.6%p 밖). */
+@media (max-width: 767px) {
+    #hero {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+        background-position: 47% center;
+    }
+
+    #hero h1 {
+        margin-bottom: 1.5rem;
+    }
+
+    #hero>div>p {
+        margin-bottom: 2rem;
+    }
+}
