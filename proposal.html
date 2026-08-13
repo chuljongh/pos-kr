@@ -1183,18 +1183,134 @@
             position: relative;
             flex: 1;
             min-height: 0;
+            display: flex;
+            justify-content: center;
             border-radius: 16px;
             overflow: hidden;
             box-shadow: var(--shadow-card);
             background: #3A3A3A;
         }
 
-        .es-hero {
-            position: absolute;
-            inset: 0;
-            width: 100%;
+        /* 콜아웃을 % 좌표로 장치에 정확히 맞추려면 '사진이 실제로 그려진 사각형'이 기준이어야 한다.
+           object-fit:contain 의 레터박스는 CSS 로 알 수 없으므로, 이미지가 높이에 맞춰 스스로
+           폭을 정하게(height:100%; width:auto) 하고 래퍼가 그 폭을 shrink-wrap 하도록 했다.
+           aspect-ratio + height:100% 는 stage(flex:1)와 순환 의존이 생겨 쓸 수 없다. */
+        .es-fit {
+            position: relative;
             height: 100%;
-            object-fit: contain;
+        }
+
+        .es-hero {
+            display: block;
+            height: 100%;
+            width: auto;
+            max-width: 100%;
+        }
+
+        /* ── 확대 콜아웃 ───────────────────────────────────────────────── */
+        .es-call {
+            position: absolute;
+            top: 6%;
+            width: 23%;
+            background: rgba(255, 255, 255, 0.96);
+            border-radius: 10px;
+            padding: 7px 7px 5px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.28);
+        }
+
+        .es-call img,
+        .es-call .k-menu {
+            display: block;
+            width: 100%;
+            border-radius: 5px;
+        }
+
+        .es-call figcaption {
+            margin-top: 5px;
+            font-size: 10px;
+            font-weight: 800;
+            color: var(--ink);
+            letter-spacing: var(--ls-base);
+            text-align: center;
+        }
+
+        /* 말풍선 꼬리 — 어느 장치를 확대한 것인지 지시 */
+        .es-call::after {
+            content: "";
+            position: absolute;
+            top: 34px;
+            border: 9px solid transparent;
+        }
+
+        .es-call--scan {
+            left: 18%;
+        }
+
+        .es-call--scan::after {
+            right: 100%;
+            border-right-color: rgba(255, 255, 255, 0.96);
+        }
+
+        .es-call--kiosk {
+            right: 19%;
+        }
+
+        .es-call--kiosk::after {
+            left: 100%;
+            border-left-color: rgba(255, 255, 255, 0.96);
+        }
+
+        /* 사진 속 해당 장치를 테두리로 표시해 지시 관계를 못박는다 */
+        .es-mark {
+            position: absolute;
+            border: 2px solid var(--red);
+            border-radius: 6px;
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, .5);
+        }
+
+        .es-mark--scan {
+            left: 0.6%;
+            top: 15.9%;
+            width: 12.9%;
+            height: 47.6%;
+        }
+
+        .es-mark--kiosk {
+            left: 76.1%;
+            top: 1.5%;
+            width: 23%;
+            height: 92%;
+        }
+
+        /* 키오스크 메뉴는 텍스트라 어떤 배율에서도 선명하다 */
+        .k-menu {
+            background: #fff;
+            border: 1px solid #111;
+            padding: 6px 7px;
+        }
+
+        .k-row {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 2.5px 0;
+            font-size: 9.5px;
+            font-weight: 700;
+            color: #111;
+            letter-spacing: -0.03em;
+        }
+
+        .k-row b {
+            margin-left: auto;
+            font-weight: 800;
+        }
+
+        /* 10px 남짓에서도 형태가 읽히도록 단순 실루엣으로 그린 벡터 아이콘.
+           밥그릇 / 부추전 / 음료컵 — 기존의 주황 덩어리·초록 링·파란 원기둥을 대체한다. */
+        .k-ic {
+            flex: 0 0 12px;
+            width: 12px;
+            height: 12px;
             display: block;
         }
 
@@ -1317,8 +1433,45 @@
             </div>
             <p class="sub-lead">내부 직원은 <strong>스마트폰 (및 태블릿) QR 스캐너</strong>로, 내·외부 고객은 <strong>키오스크</strong>로 — 한 곳에서 모두 수용합니다</p>
             <div class="es-stage">
-                <img class="es-hero" src="assets/구내식당_예시_crop.png"
-                    alt="구내식당 식수관리 — 좌측 직원전용 QR 스캐너, 우측 키오스크 메뉴(정식·부추전·음료수) 주문·결제">
+                <div class="es-fit">
+                    <img class="es-hero" src="assets/구내식당_예시_crop.png"
+                        alt="구내식당 식수관리 — 좌측 직원전용 QR 스캐너, 우측 키오스크 메뉴(정식·부추전·음료수) 주문·결제">
+                    <!-- 확대 콜아웃: 사진 속 장치가 스캐너 82x132 / 키오스크 167x340 px 라
+                         화면 글자가 읽히지 않는다. 사진은 그대로 두고 화면만 원본 해상도로 덧댄다. -->
+                    <span class="es-mark es-mark--scan" aria-hidden="true"></span>
+                    <span class="es-mark es-mark--kiosk" aria-hidden="true"></span>
+                    <figure class="es-call es-call--scan">
+                        <img src="assets/스캐너화면_금액패널.jpg"
+                            alt="직원 QR 스캐너 화면 — QR을 보여주시면 지정 금액을 지불해요, 10,000원, 두리미가솥밥">
+                        <figcaption>① 직원 QR 스캐너</figcaption>
+                    </figure>
+                    <figure class="es-call es-call--kiosk">
+                        <div class="k-menu">
+                            <div class="k-row">
+                                <svg class="k-ic" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M3 11h18c0 5-4 8.5-9 8.5S3 16 3 11z" fill="#E8913C" />
+                                    <path d="M7 7.5c1.6-2 3.2-2 4.8 0s3.2 2 4.8 0" stroke="#E8913C" stroke-width="1.8"
+                                        fill="none" stroke-linecap="round" />
+                                </svg>정식<b>10,000원</b>
+                            </div>
+                            <div class="k-row">
+                                <svg class="k-ic" viewBox="0 0 24 24" aria-hidden="true">
+                                    <circle cx="12" cy="12" r="9" fill="#3FBF63" />
+                                    <path d="M8 9l3 6M13 8l2 8M16.5 11l-1.2 5" stroke="#1B6E33" stroke-width="1.7"
+                                        stroke-linecap="round" />
+                                </svg>부추전<b>5,000원</b>
+                            </div>
+                            <div class="k-row">
+                                <svg class="k-ic" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M6 8h12l-1.6 12H7.6z" fill="#2C6FD1" />
+                                    <path d="M14.5 3.5L12.6 8" stroke="#2C6FD1" stroke-width="2"
+                                        stroke-linecap="round" />
+                                </svg>음료수<b>3,000원</b>
+                            </div>
+                        </div>
+                        <figcaption>② 키오스크 주문·결제</figcaption>
+                    </figure>
+                </div>
             </div>
             <div class="es-flows">
                 <div class="es-flow">
