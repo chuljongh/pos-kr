@@ -1183,8 +1183,6 @@
             position: relative;
             flex: 1;
             min-height: 0;
-            display: flex;
-            justify-content: center;
             border-radius: 16px;
             overflow: hidden;
             box-shadow: var(--shadow-card);
@@ -1196,15 +1194,18 @@
            폭을 정하게(height:100%; width:auto) 하고 래퍼가 그 폭을 shrink-wrap 하도록 했다.
            aspect-ratio + height:100% 는 stage(flex:1)와 순환 의존이 생겨 쓸 수 없다. */
         .es-fit {
-            position: relative;
-            height: 100%;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            aspect-ratio: 1550 / 756;
         }
 
         .es-hero {
             display: block;
+            width: 100%;
             height: 100%;
-            width: auto;
-            max-width: 100%;
         }
 
         /* ── 확대 콜아웃 ───────────────────────────────────────────────── */
@@ -1434,7 +1435,7 @@
             <p class="sub-lead">내부 직원은 <strong>스마트폰 (및 태블릿) QR 스캐너</strong>로, 내·외부 고객은 <strong>키오스크</strong>로 — 한 곳에서 모두 수용합니다</p>
             <div class="es-stage">
                 <div class="es-fit">
-                    <img class="es-hero" src="assets/구내식당_예시_crop.png"
+                    <img class="es-hero" src="assets/구내식당_예시_v2.png"
                         alt="구내식당 식수관리 — 좌측 직원전용 QR 스캐너, 우측 키오스크 메뉴(정식·부추전·음료수) 주문·결제">
                     <!-- 확대 콜아웃: 사진 속 장치가 스캐너 82x132 / 키오스크 167x340 px 라
                          화면 글자가 읽히지 않는다. 사진은 그대로 두고 화면만 원본 해상도로 덧댄다. -->
