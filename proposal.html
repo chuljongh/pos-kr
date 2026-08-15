@@ -504,16 +504,16 @@
         }
 
         .scan-stand::before {
-            /* 목 */
+            /* 목 — 실물(두리미가.jpg)의 흰 거치대 기둥 */
             content: "";
             position: absolute;
-            bottom: 18px;
+            bottom: 17px;
             left: 50%;
             transform: translateX(-50%);
-            width: 17px;
-            height: 40px;
-            border-radius: 5px;
-            background: linear-gradient(90deg, #b9bdc4 0%, #eef0f3 42%, #c6cad0 100%);
+            width: 15px;
+            height: 42px;
+            border-radius: 4px;
+            background: linear-gradient(90deg, #d8d4cc 0%, #f7f5f1 40%, #ddd9d1 100%);
         }
 
         .scan-stand::after {
@@ -523,11 +523,31 @@
             bottom: 2px;
             left: 50%;
             transform: translateX(-50%);
-            width: 124px;
-            height: 24px;
+            width: 116px;
+            height: 22px;
             border-radius: 50%;
-            background: linear-gradient(180deg, #eceef1 0%, #c2c6cc 100%);
+            background: linear-gradient(180deg, #f5f3ef 0%, #cfcbc3 100%);
             box-shadow: 0 7px 14px rgba(0, 0, 0, .20);
+        }
+
+        /* 폰 옆면을 물어 주는 좌우 클램프 — 실물의 가장 특징적인 부분 */
+        .clamp {
+            position: absolute;
+            top: 41%;
+            width: 16px;
+            height: 46px;
+            background: linear-gradient(180deg, #f8f6f2 0%, #ded9d0 100%);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, .22);
+        }
+
+        .clamp-l {
+            left: -11px;
+            border-radius: 9px 3px 3px 9px;
+        }
+
+        .clamp-r {
+            right: -11px;
+            border-radius: 3px 9px 9px 3px;
         }
 
         /* 스캐너 화면은 실제 캡쳐 그대로 두고, 폰 본체(베젤)를 CSS 로 덧씌운다.
@@ -564,7 +584,7 @@
             width: 72%;
             height: 15px;
             border-radius: 3px 3px 9px 9px;
-            background: linear-gradient(180deg, #e4e7eb 0%, #b4b9c0 100%);
+            background: linear-gradient(180deg, #f6f4f0 0%, #d3cec5 100%);
         }
 
         .scan-img {
@@ -1537,7 +1557,9 @@
                     <div class="scan-stand">
                         <div class="scan-shell">
                             <img class="scan-img" src="assets/두리미가_스캐너내부.jpg"
-                                alt="인포 데스크 스탠드에 거치된 스마트폰 스캐너 화면 — QR을 보여주시면 지정 금액을 지불해요, 10,000원, 두리미가솥밥">
+                                alt="인포 데스크 거치대에 물려 있는 스마트폰 스캐너 화면 — QR을 보여주시면 지정 금액을 지불해요, 10,000원, 두리미가솥밥">
+                            <span class="clamp clamp-l" aria-hidden="true"></span>
+                            <span class="clamp clamp-r" aria-hidden="true"></span>
                         </div>
                     </div>
                 </div>
