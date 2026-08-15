@@ -97,25 +97,6 @@
             window.addEventListener('scroll', toggleFloatingBtn);
             toggleFloatingBtn(); // Initial check
 
-            // --- GA4 전환 이벤트 ---
-            // GTM 컨테이너(GTM-WV2DSD9V)에 이미 있는 트리거는 "클릭된 요소 자체"가
-            // [data-ga-event^='cta_click'] 에 매칭될 때만 발동한다(자식 요소 클릭은 매칭되지 않음).
-            // 그래서 코드에서 이벤트를 보낼 때는 속성을 단 요소를 만들어 클릭시킨다.
-            // GA4 이벤트 이름 = data-ga-event 값.
-            const sendGaEvent = (name) => {
-                const el = document.createElement('span');
-                el.setAttribute('data-ga-event', name);
-                el.style.display = 'none';
-                document.body.appendChild(el);
-                el.dispatchEvent(new MouseEvent('click', { bubbles: true }));
-                setTimeout(() => el.remove(), 1000);
-            };
-
-            // 전화 걸기 클릭 (아이콘 자식을 눌러도 앵커에서 버블링으로 잡힌다)
-            document.querySelectorAll('a[href^="tel:"]').forEach(link => {
-                link.addEventListener('click', () => sendGaEvent('cta_click_tel'));
-            });
-
             // --- Google Form Submission ---
             const form = document.getElementById('customGoogleForm');
             const popup = document.getElementById('success-popup');
@@ -132,7 +113,8 @@
                         mode: 'no-cors'
                     })
                     .then(() => {
-                        sendGaEvent('cta_click_contact_submit');
+                        // 상담 신청 전환 (js/ga.js)
+                        if (window.sendGaEvent) window.sendGaEvent('cta_click_contact_submit');
                         if (popup) {
                             popup.classList.remove('opacity-0');
                             setTimeout(() => {

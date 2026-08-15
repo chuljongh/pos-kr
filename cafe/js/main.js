@@ -74,6 +74,8 @@
                     const formData = new FormData(form);
                     fetch(googleFormUrl, { method: 'POST', body: formData, mode: 'no-cors' })
                     .then(() => {
+                        // 상담 신청 전환 (js/ga.js)
+                        if (window.sendGaEvent) window.sendGaEvent('cta_click_contact_submit');
                         popup.classList.remove('opacity-0');
                         setTimeout(() => { popup.classList.add('opacity-0'); form.reset(); }, 2500);
                     })
