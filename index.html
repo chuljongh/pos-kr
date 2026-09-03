@@ -603,7 +603,7 @@
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16">
                 <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-8 leading-tight">
-                    구내식당·함바식당 <span class="text-primary">식수관리 방식 5가지 비교</span>
+                    구내식당·함바식당 <span class="text-primary">식수관리 방식 3가지 비교</span>
                 </h2>
                 <p class="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
                     식수관리 프로그램을 고르기 전에, 현재 쓰이는 방식들이 각각 어디서 비용과 시간을 쓰는지 정리했습니다.
@@ -612,7 +612,7 @@
 
             <div class="overflow-x-auto shadow-xl rounded-2xl border border-gray-200">
                 <table class="w-full min-w-[900px] bg-white text-left">
-                    <caption class="sr-only">종이 식권·장부, RFID 카드, 바코드 카드, 지문·생체 인식, 모바일 QR 방식의 초기 비용·분실 대응·정산 공수 비교</caption>
+                    <caption class="sr-only">종이 식권·장부, RFID·바코드 카드, 모바일 QR 방식의 초기 비용·분실 대응·정산 공수 비교</caption>
                     <thead>
                         <tr class="bg-gray-100 border-b-2 border-gray-300">
                             <th scope="col" class="px-6 py-5 text-lg font-extrabold text-gray-800">방식</th>
@@ -633,34 +633,18 @@
                             <td class="px-6 py-5">소규모 함바식당, 임시 현장</td>
                         </tr>
                         <tr class="border-b border-gray-200">
-                            <th scope="row" class="px-6 py-5 font-bold text-gray-900">RFID · RF 카드</th>
+                            <th scope="row" class="px-6 py-5 font-bold text-gray-900">RFID · 바코드 카드</th>
                             <td class="px-6 py-5">약 370~420만원<br><span class="text-gray-500 text-xs">카드 500장 90만원 + 리더기 3대
                                     180만원 + PC 100만원</span></td>
-                            <td class="px-6 py-5">리더기 · Windows PC</td>
-                            <td class="px-6 py-5">분실 재발급이 반복되고, 카드를 빌려주면 구분 불가</td>
+                            <td class="px-6 py-5">리더기 · 스캐너 · Windows PC</td>
+                            <td class="px-6 py-5">개인별 배포가 어려워 팀별 여분 카드로 돌려쓰게 되고, 분실 재발급이 반복</td>
                             <td class="px-6 py-5">중간 — 기기 기록을 받아 대조</td>
                             <td class="px-6 py-5">사내 구내식당, 산업체 급식</td>
-                        </tr>
-                        <tr class="border-b border-gray-200">
-                            <th scope="row" class="px-6 py-5 font-bold text-gray-900">바코드 카드 · 스캐너</th>
-                            <td class="px-6 py-5">RFID보다 낮으나 스캐너·PC 구입 필요</td>
-                            <td class="px-6 py-5">바코드 스캐너 · PC</td>
-                            <td class="px-6 py-5">복사·촬영으로 재사용되기 쉬움</td>
-                            <td class="px-6 py-5">중간</td>
-                            <td class="px-6 py-5">중소 규모 구내식당</td>
-                        </tr>
-                        <tr class="border-b border-gray-200">
-                            <th scope="row" class="px-6 py-5 font-bold text-gray-900">지문 · 생체 인식</th>
-                            <td class="px-6 py-5">가장 높음 — 인식기 단가가 리더기보다 비쌈</td>
-                            <td class="px-6 py-5">생체 인식기 · PC</td>
-                            <td class="px-6 py-5">대리 식수는 막히지만, 생체정보 수집 동의가 필요</td>
-                            <td class="px-6 py-5">중간</td>
-                            <td class="px-6 py-5">대기업 사업장, 보안 요구가 높은 기관</td>
                         </tr>
                         <tr class="bg-primary-light">
                             <th scope="row" class="px-6 py-5 font-extrabold text-primary">모바일 QR (pos.kr)</th>
                             <td class="px-6 py-5 font-bold">50명 이하 0원<br><span class="text-gray-600 text-xs">소속인원 50명
-                                    이하면 가입비·구독료 무료. 초과 시 월 2.9만원~ · <a href="/price" class="text-primary font-bold"
+                                    이하면 가입비·구독료 무료. 초과 시 가입비 29만~150만원 · <a href="/price" class="text-primary font-bold"
                                         style="text-decoration:underline"
                                         data-ga-event="cta_click_compare_to_price">요금제</a></span></td>
                             <td class="px-6 py-5 font-bold">없음 — 스마트폰 1대<br><span class="text-gray-600 text-xs">안 쓰는 폰이
@@ -675,11 +659,11 @@
 
             <p class="mt-8 text-lg text-gray-600 text-center max-w-4xl mx-auto leading-relaxed">
                 정리하면, <strong class="text-gray-900">초기 비용은 종이 장부가 가장 싸지만 정산 공수와 누수가 가장 크고</strong>,
-                <strong class="text-gray-900">RFID·바코드·생체 인식은 통제력을 얻는 대신 장비값과 매장 PC를 떠안습니다.</strong>
+                <strong class="text-gray-900">RFID·바코드는 개인별 배포가 안 되고 비싼 장비값과 매장 PC 비용을 늘립니다.</strong>
                 모바일 QR은 근로자가 이미 가진 스마트폰을 인식 수단으로 써서 <strong class="text-gray-900">장비값과 정산 공수를 동시에 줄이는</strong> 방식입니다.
             </p>
             <p class="mt-4 text-lg text-gray-600 text-center max-w-4xl mx-auto">
-                더 자세히: <a href="/guide/compare-systems" class="text-primary font-bold" style="text-decoration:underline" data-ga-event="cta_click_compare_to_guide_compare">방식 5가지 비교 가이드</a> ·
+                더 자세히: <a href="/guide/compare-systems" class="text-primary font-bold" style="text-decoration:underline" data-ga-event="cta_click_compare_to_guide_compare">방식 3가지 비교 가이드</a> ·
                 <a href="/guide/prevent-proxy-meals" class="text-primary font-bold" style="text-decoration:underline" data-ga-event="cta_click_compare_to_guide_proxy">대리 식수·식권 대여 막는 방법</a>
             </p>
         </div>
@@ -1379,8 +1363,8 @@
                         <span class="text-white font-extrabold text-2xl">→</span>
                     </div>
                     <div>
-                        <p class="text-xl font-extrabold text-gray-900 leading-tight mb-4">식수관리 방식 5가지 비교</p>
-                        <p class="text-lg text-gray-600 leading-tight">종이 식권·RFID·바코드·생체 인식·모바일 QR을 비용·장비·정산 공수로 비교</p>
+                        <p class="text-xl font-extrabold text-gray-900 leading-tight mb-4">식수관리 방식 3가지 비교</p>
+                        <p class="text-lg text-gray-600 leading-tight">종이 식권·RFID·바코드 카드·모바일 QR을 비용·장비·정산 공수로 비교</p>
                     </div>
                 </a>
 
@@ -1843,7 +1827,7 @@
                         <p class="mb-4 font-bold"><a href="/price" data-ga-event="cta_click_footer_to_price">요금제</a> | <a
                                 href="/proposal" data-ga-event="cta_click_footer_to_proposal">도입 제안서</a> | <a
                                 href="/hamba-pos" data-ga-event="cta_click_footer_to_hambapos">함바포스 프로그램</a></p>
-                        <p class="mb-4">가이드: <a href="/guide/hamba-meal-count" data-ga-event="cta_click_footer_to_guide_hamba_meal_count">함바식당 식수관리 방법과 월말 정산 절차</a> | <a href="/guide/compare-systems" data-ga-event="cta_click_footer_to_guide_compare_systems">식수관리 방식 5가지 비교</a> | <a href="/guide/prevent-proxy-meals" data-ga-event="cta_click_footer_to_guide_prevent_proxy_meals">대리 식수·식권 대여 막는 방법</a> | <a href="/guide/vs-meal-voucher-apps" data-ga-event="cta_click_footer_to_guide_vs_meal_voucher_apps">모바일 식권과 식수관리시스템의 차이</a> | <a href="/guide/individual-distribution" data-ga-event="cta_click_footer_to_guide_individual_distribution">식수 카드 개인별 배포의 현실과 그림문자 QR</a></p>
+                        <p class="mb-4">가이드: <a href="/guide/hamba-meal-count" data-ga-event="cta_click_footer_to_guide_hamba_meal_count">함바식당 식수관리 방법과 월말 정산 절차</a> | <a href="/guide/compare-systems" data-ga-event="cta_click_footer_to_guide_compare_systems">식수관리 방식 3가지 비교</a> | <a href="/guide/prevent-proxy-meals" data-ga-event="cta_click_footer_to_guide_prevent_proxy_meals">대리 식수·식권 대여 막는 방법</a> | <a href="/guide/vs-meal-voucher-apps" data-ga-event="cta_click_footer_to_guide_vs_meal_voucher_apps">모바일 식권과 식수관리시스템의 차이</a> | <a href="/guide/individual-distribution" data-ga-event="cta_click_footer_to_guide_individual_distribution">식수 카드 개인별 배포의 현실과 그림문자 QR</a></p>
                         <p><a href="/terms" target="_blank">이용약관</a> | <a href="/privacy" target="_blank">개인정보
                                 처리 방침</a> | <a href="https://giftcoin.kr" target="_blank" rel="noopener"
                                 data-ga-event="cta_click_cross_footer_to_giftcoin">기프트코인 서비스</a></p>
