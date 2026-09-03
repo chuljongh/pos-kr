@@ -49,6 +49,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://pos.kr/guide/individual-distribution</loc>
+    <lastmod>2026-09-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://cafe.pos.kr/</loc>
     <lastmod>2026-04-15</lastmod>
     <changefreq>monthly</changefreq>
