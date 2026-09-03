@@ -1,0 +1,247 @@
+/* ===== PAYCO 디자인 토큰 (pos-kr-DESIGN.md §3) ===== */
+:root {
+    --primary: #FF2233;
+    --primary-darker: #E01E2C;
+    --primary-light: #FFF0F1;
+    --accent: #00AAFF;
+
+    --ink: #111111;
+    --ink-body: #4C4C4C;
+    --ink-soft: #666666;
+
+    --surface: #FFFFFF;
+    --surface-subtle: #FAFAFA;
+    --surface-muted: #F2F2F2;
+    --line: #DADADA;
+
+    --shadow-card: 0 8px 30px rgba(0, 0, 0, 0.06);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --primary: #FF4451;
+        --primary-darker: #FF2233;
+        --primary-light: #2E1A1C;
+        --accent: #4CC2FF;
+
+        --ink: #F5F5F7;
+        --ink-body: #C9C9CF;
+        --ink-soft: #A0A0A8;
+
+        --surface: #161618;
+        --surface-subtle: #1E1E21;
+        --surface-muted: #26262A;
+        --line: #3A3A41;
+
+        --shadow-card: 0 8px 30px rgba(0, 0, 0, 0.4);
+    }
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    background: var(--surface);
+    color: var(--ink-body);
+    font-family: Pretendard, -apple-system, "Noto Sans KR", "Malgun Gothic", sans-serif;
+    font-size: 21px;
+    line-height: 1.85;
+    letter-spacing: -0.025em;
+    -webkit-text-size-adjust: 100%;
+}
+
+/* 읽기 폭: 한 줄 40자 내외 (§2.2 가독성 우선) */
+.wrap { max-width: 880px; margin: 0 auto; padding: 0 22px; }
+
+h1, h2, h3 { color: var(--ink); letter-spacing: -0.04em; line-height: 1.32; }
+
+/* ===== 히어로: 화이트 캔버스 + 레드 1포인트 (§2.1) ===== */
+header.hero { padding: 80px 0 56px; }
+
+.eyebrow {
+    display: inline-block;
+    background: var(--primary-light);
+    color: var(--primary);
+    font-size: 17px;
+    font-weight: 800;
+    letter-spacing: 0;
+    padding: 7px 15px;
+    border-radius: 100px;
+    margin-bottom: 22px;
+}
+
+header.hero h1 { font-size: 70px; font-weight: 800; margin-bottom: 22px; }
+
+header.hero h1 em { font-style: normal; color: var(--primary); }
+
+header.hero .sub { font-size: 25px; margin-bottom: 36px; }
+
+/* ===== 시그니처: 레드 stat 카드 (§5.4) ===== */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 38px;
+}
+
+.stat {
+    background: var(--primary);
+    border-radius: 16px;
+    padding: 26px 12px;
+    text-align: center;
+    color: #fff;
+}
+
+.stat .num {
+    font-size: 74px;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1;
+}
+
+.stat .num span { font-size: 34px; }
+
+.stat p {
+    margin-top: 12px;
+    font-size: 19px;
+    line-height: 1.45;
+    opacity: 0.95;
+}
+
+.btn {
+    display: inline-block;
+    background: var(--primary);
+    color: #fff;
+    font-weight: 800;
+    font-size: 21px;
+    letter-spacing: -0.025em;
+    padding: 20px 42px;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: background-color .15s;
+}
+
+.btn:hover { background: var(--primary-darker); }
+
+/* ===== 섹션 ===== */
+section { padding: 60px 0; }
+
+section.alt { background: var(--surface-subtle); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+
+h2 { font-size: 48px; font-weight: 800; margin-bottom: 14px; }
+
+.lede { font-size: 24px; color: var(--ink-soft); margin-bottom: 30px; }
+
+.card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    box-shadow: var(--shadow-card);
+    padding: 32px 34px;
+    margin-bottom: 14px;
+}
+
+section.alt .card { box-shadow: none; }
+
+.card h3 { font-size: 27px; font-weight: 700; margin-bottom: 7px; }
+
+.card p { font-size: 21px; line-height: 1.8; }
+
+/* ===== 비교표 ===== */
+.table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+table {
+    width: 100%;
+    min-width: 680px;
+    border-collapse: collapse;
+    font-size: 19px;
+}
+
+th, td { border: 1px solid var(--line); padding: 16px 18px; text-align: left; }
+
+thead th { background: var(--surface-muted); color: var(--ink); font-weight: 700; }
+
+thead th:last-child { background: var(--primary); color: #fff; }
+
+tbody th { background: var(--surface-muted); color: var(--ink); font-weight: 700; width: 27%; }
+
+td.ours { background: var(--primary-light); color: var(--ink); font-weight: 700; }
+
+/* ===== FAQ ===== */
+details {
+    border-bottom: 1px solid var(--line);
+    padding: 20px 2px;
+}
+
+details summary {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--ink);
+    cursor: pointer;
+    letter-spacing: -0.03em;
+}
+
+details p { margin-top: 14px; font-size: 21px; }
+
+details a, .card a { color: var(--accent); font-weight: 700; }
+
+/* ===== 마감 CTA (레드 면적은 여기 한 곳) ===== */
+.closer { background: var(--primary); color: #fff; padding: 66px 0; text-align: center; }
+
+.closer h2 { color: #fff; font-size: 48px; margin-bottom: 12px; }
+
+.closer p { font-size: 24px; opacity: 0.95; margin-bottom: 30px; }
+
+.closer .btn { background: #fff; color: var(--primary-darker); }
+
+.closer .btn:hover { background: var(--primary-light); }
+
+/* ===== 푸터 ===== */
+footer { padding: 50px 0 68px; font-size: 18px; color: var(--ink-soft); line-height: 1.7; }
+
+footer a { color: var(--ink-soft); }
+
+.links { margin-bottom: 18px; }
+
+.links a { color: var(--primary); font-weight: 700; text-decoration: none; margin-right: 20px; }
+
+@media (max-width: 640px) {
+    body { font-size: 19px; }
+    header.hero { padding: 56px 0 44px; }
+    header.hero h1 { font-size: 38px; }
+    header.hero .sub { font-size: 20px; }
+    h2 { font-size: 33px; }
+    .stats { grid-template-columns: 1fr; gap: 10px; }
+    .stat { display: flex; align-items: baseline; justify-content: center; gap: 12px; padding: 18px 14px; }
+    .stat .num { font-size: 46px; }
+    .stat p { margin-top: 0; font-size: 19px; }
+}
+    
+
+/* ===== 가이드 본문 ===== */
+.meta { font-size: 17px; color: var(--ink-soft); margin-top: -18px; margin-bottom: 30px; }
+
+article h3 { font-size: 30px; font-weight: 700; margin: 34px 0 10px; }
+
+article p { margin-bottom: 18px; }
+
+article ul, article ol { padding-left: 1.3em; margin-bottom: 18px; }
+
+article li { margin-bottom: 6px; }
+
+article a { color: var(--accent); font-weight: 700; }
+
+.key {
+    border-left: 5px solid var(--primary);
+    background: var(--primary-light);
+    padding: 18px 22px;
+    border-radius: 0 12px 12px 0;
+    margin-bottom: 26px;
+    color: var(--ink);
+    font-weight: 700;
+}
+
+.related { list-style: none; padding: 0; }
+
+.related li { margin-bottom: 10px; }
+
+.related a { color: var(--primary); text-decoration: none; }
