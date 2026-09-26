@@ -33,5 +33,25 @@
       "destination": "https://pos.kr/:path*",
       "permanent": true
     }
+  ],
+  "headers": [
+    {
+      "source": "/docs/:path*",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex"
+        }
+      ]
+    },
+    {
+      "source": "/scripts/:path*",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex"
+        }
+      ]
+    }
   ]
 }

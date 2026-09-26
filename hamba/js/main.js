@@ -23,37 +23,58 @@
         }
 
         function toggleFaq(faqNumber) {
-            const content = document.querySelector(`button[onclick="toggleFaq(${faqNumber})"]`).nextElementSibling;
-            const icon = document.querySelector(`button[onclick="toggleFaq(${faqNumber})"] .faq-icon`);
-            
-            if (content.classList.contains('hidden')) {
-                content.classList.remove('hidden');
-                icon.textContent = '−';
-                icon.style.transform = 'rotate(0deg)';
-            } else {
-                content.classList.add('hidden');
-                icon.textContent = '+';
-                icon.style.transform = 'rotate(0deg)';
-            }
+            const button = document.querySelector(`button[onclick="toggleFaq(${faqNumber})"]`);
+            if (!button) return;
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('.faq-icon');
+            const open = content.classList.contains('hidden');
+            content.classList.toggle('hidden', !open);
+            button.setAttribute('aria-expanded', String(open));
+            if (icon) icon.textContent = open ? '−' : '+';
         }
 
         function loadYouTubeVideo(element, videoId) {
             const iframe = document.createElement('iframe');
             iframe.setAttribute('src', `https://www.youtube.com/embed/${videoId}?autoplay=1`);
-            iframe.setAttribute('title', 'YouTube video player');
+            iframe.setAttribute('title', element.getAttribute('aria-label') || 'YouTube video player');
             iframe.setAttribute('frameborder', '0');
             iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
             iframe.setAttribute('allowfullscreen', '');
             iframe.setAttribute('class', 'absolute inset-0 w-full h-full');
-            element.innerHTML = '';
-            element.appendChild(iframe);
+            if (element.tagName === 'A') {
+                const player = document.createElement('div');
+                player.className = element.className;
+                player.appendChild(iframe);
+                element.replaceWith(player);
+                iframe.focus();
+            } else {
+                element.replaceChildren(iframe);
+            }
         }
 
         document.addEventListener('DOMContentLoaded', () => {
+            // Collapse only after JavaScript is available. Deep links open their answer.
+            const revealLinkedAnswer = () => {
+                const target = document.getElementById(window.location.hash.slice(1));
+                if (!target || !target.matches('.faq-content')) return;
+                const button = document.getElementById(target.getAttribute('aria-labelledby'));
+                if (button && target.classList.contains('hidden')) toggleFaq(button.dataset.faq);
+                target.scrollIntoView();
+            };
+            document.querySelectorAll('button[data-faq]').forEach(button => {
+                const content = document.getElementById(button.getAttribute('aria-controls'));
+                content.classList.add('hidden');
+                button.setAttribute('aria-expanded', 'false');
+                const icon = button.querySelector('.faq-icon');
+                if (icon) icon.textContent = '+';
+            });
+            revealLinkedAnswer();
+            window.addEventListener('hashchange', revealLinkedAnswer);
+
             // --- Mobile Dropdown Menu ---
             const menuToggle = document.getElementById('menu-toggle');
             const dropdownMenu = document.getElementById('mobile-dropdown');
-            const dropdownLinks = dropdownMenu.querySelectorAll('a');
+            const dropdownLinks = dropdownMenu ? dropdownMenu.querySelectorAll('a') : [];
 
             if (menuToggle && dropdownMenu) {
                 // hidden(display:none)은 트랜지션이 안 걸린다.

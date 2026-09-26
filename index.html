@@ -275,6 +275,7 @@
         </div>
     </div>
 
+    <main id="main-content">
     <!-- 히어로 섹션 -->
     <section id="hero"
         class="bg-gray-900 py-40 px-4 relative overflow-hidden bg-[url('../mainImg.jpg')] bg-no-repeat bg-cover bg-center">
@@ -294,7 +295,7 @@
             <!-- 모바일 전용: 히어로 사진을 배경이 아닌 독립 밴드로.
                  텍스트가 히어로 세로 7~93%를 덮어 배경으로는 보이지 않기 때문.
                  타이틀 바로 아래에 두어 헤드라인과 한 덩어리로 읽히게 한다. -->
-            <img id="hero-img" src="mainImg.jpg" width="1600" height="800" class="md:hidden"
+            <img fetchpriority="high" id="hero-img" src="mainImg.jpg" width="1600" height="800" class="md:hidden"
                 alt="근로자가 스마트폰의 QR 식권을 보여주고, 식당에 거치된 스마트폰이 이를 스캔해 10,000원을 결제하는 구내식당 현장">
 
             <p class="text-2xl text-white mb-20 max-w-6xl mx-auto leading-relaxed font-medium">
@@ -729,7 +730,7 @@
                     <div class="sticky top-0 z-10">
                         <div class="-mx-[calc(50vw-50%)]">
                             <div class="w-[100vw] aspect-[2/1] relative">
-                                <img src="hamba/images/qr_payment.webp" alt="함바식당 모바일 식권 QR코드 전용 결제 화면"
+                                <img decoding="async" width="1200" height="800" src="hamba/images/qr_payment.webp" alt="함바식당 모바일 식권 QR코드 전용 결제 화면"
                                     class="absolute inset-0 w-full h-full object-cover" loading="lazy" />
                             </div>
                         </div>
@@ -765,7 +766,7 @@
                     <div class="sticky top-0 z-30">
                         <div class="-mx-[calc(50vw-50%)]">
                             <div class="w-[100vw] aspect-[2/1] relative">
-                                <img src="hamba/images/Kiosk_payment.webp" alt="중형 식당의 키오스크에서 카드 및 스마트폰 QR코드로 결제하는 방식"
+                                <img decoding="async" width="1200" height="900" src="hamba/images/Kiosk_payment.webp" alt="중형 식당의 키오스크에서 카드 및 스마트폰 QR코드로 결제하는 방식"
                                     class="absolute inset-0 w-full h-full object-cover" loading="lazy" />
                             </div>
                         </div>
@@ -802,7 +803,7 @@
                     <div class="sticky top-0 z-30">
                         <div class="-mx-[calc(50vw-50%)]">
                             <div class="w-[100vw] aspect-[2/1] relative">
-                                <img src="hamba/images/kiosk_qr.webp"
+                                <img decoding="async" width="1200" height="800" src="hamba/images/kiosk_qr.webp"
                                     alt="대형 구내식당·함바식당은 키오스크와 스마트폰 QR코드 스캐너를 여러대 설치하여 결제 편의 제공"
                                     class="absolute inset-0 w-full h-full object-cover" loading="lazy" />
                             </div>
@@ -1312,9 +1313,9 @@
 
                 <!-- 동영상 그리드 -->
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
-                    <div class="group aspect-[9/16] relative bg-black rounded-3xl overflow-hidden cursor-pointer"
-                        onclick="loadYouTubeVideo(this, 'JMLHWgSy_oY')">
-                        <img src="https://i.ytimg.com/vi/JMLHWgSy_oY/hqdefault.jpg" alt="함바 식수 관리 QR코드 활용법 1"
+                    <a class="group block aspect-[9/16] relative bg-black rounded-3xl overflow-hidden cursor-pointer"
+                        href="https://www.youtube.com/watch?v=JMLHWgSy_oY" aria-label="함바 식수 관리 QR코드 활용법 1 영상 재생" onclick="event.preventDefault(); loadYouTubeVideo(this, 'JMLHWgSy_oY')">
+                        <img decoding="async" loading="lazy" width="480" height="360" src="https://i.ytimg.com/vi/JMLHWgSy_oY/hqdefault.jpg" alt="함바 식수 관리 QR코드 활용법 1"
                             class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
                         <div class="absolute inset-0 flex items-center justify-center">
                             <div
@@ -1325,11 +1326,11 @@
                                 </svg>
                             </div>
                         </div>
-                    </div>
+                    </a>
 
-                    <div class="group aspect-[9/16] relative bg-black rounded-3xl overflow-hidden cursor-pointer"
-                        onclick="loadYouTubeVideo(this, 'aqZwgKgywVY')">
-                        <img src="https://i.ytimg.com/vi/aqZwgKgywVY/hqdefault.jpg" alt="광주인력개발원 모바일 QR 스캔 및 식사 입장 사례"
+                    <a class="group block aspect-[9/16] relative bg-black rounded-3xl overflow-hidden cursor-pointer"
+                        href="https://www.youtube.com/watch?v=aqZwgKgywVY" aria-label="광주인력개발원 모바일 QR 스캔 및 식사 입장 사례 영상 재생" onclick="event.preventDefault(); loadYouTubeVideo(this, 'aqZwgKgywVY')">
+                        <img decoding="async" loading="lazy" width="480" height="360" src="https://i.ytimg.com/vi/aqZwgKgywVY/hqdefault.jpg" alt="광주인력개발원 모바일 QR 스캔 및 식사 입장 사례"
                             class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
                         <div class="absolute inset-0 flex items-center justify-center">
                             <div
@@ -1340,11 +1341,11 @@
                                 </svg>
                             </div>
                         </div>
-                    </div>
+                    </a>
 
-                    <div class="group aspect-[9/16] relative bg-black rounded-3xl overflow-hidden cursor-pointer"
-                        onclick="loadYouTubeVideo(this, '0WOdIhcEgjY')">
-                        <img src="https://i.ytimg.com/vi/0WOdIhcEgjY/hqdefault.jpg" alt="함바 식수 관리 QR코드 활용법 3"
+                    <a class="group block aspect-[9/16] relative bg-black rounded-3xl overflow-hidden cursor-pointer"
+                        href="https://www.youtube.com/watch?v=0WOdIhcEgjY" aria-label="함바 식수 관리 QR코드 활용법 3 영상 재생" onclick="event.preventDefault(); loadYouTubeVideo(this, '0WOdIhcEgjY')">
+                        <img decoding="async" loading="lazy" width="480" height="360" src="https://i.ytimg.com/vi/0WOdIhcEgjY/hqdefault.jpg" alt="함바 식수 관리 QR코드 활용법 3"
                             class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
                         <div class="absolute inset-0 flex items-center justify-center">
                             <div
@@ -1355,7 +1356,7 @@
                                 </svg>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
 
                 <!-- 섹션 설명 문구 -->
@@ -1455,7 +1456,7 @@
                 <!-- FAQ 1 -->
                 <div class="bg-white rounded-3xl shadow-xl border border-gray-100 animate-slide-up">
                     <button class="faq-toggle w-full p-10 text-left hover:bg-gray-50 transition-colors duration-200"
-                        onclick="toggleFaq(1)">
+                        id="faq-question-1" type="button" aria-expanded="true" aria-controls="faq-answer-1" data-faq="1" onclick="toggleFaq(1)">
                         <div class="flex items-center justify-between">
                             <div class="flex items-start">
                                 <div
@@ -1465,10 +1466,10 @@
                                 <h4 class="text-2xl font-extrabold text-gray-900">구내식당·함바식당 식수 집계, 카드나 리더기 없이 할 수 있나요?
                                 </h4>
                             </div>
-                            <div class="faq-icon text-3xl text-gray-400 transition-transform duration-300">+</div>
+                            <div aria-hidden="true" class="faq-icon text-3xl text-gray-400 transition-transform duration-300">+</div>
                         </div>
                     </button>
-                    <div class="faq-content hidden px-10 pb-10">
+                    <div id="faq-answer-1" class="faq-content px-10 pb-10" role="region" aria-labelledby="faq-question-1">
                         <div class="flex items-start">
                             <div
                                 class="w-16 h-16 bg-accent rounded-full flex items-center justify-center mr-8 mt-1 flex-shrink-0">
@@ -1487,7 +1488,7 @@
                 <!-- FAQ 2 -->
                 <div class="bg-white rounded-3xl shadow-xl border border-gray-100 animate-slide-up">
                     <button class="faq-toggle w-full p-10 text-left hover:bg-gray-50 transition-colors duration-200"
-                        onclick="toggleFaq(2)">
+                        id="faq-question-2" type="button" aria-expanded="true" aria-controls="faq-answer-2" data-faq="2" onclick="toggleFaq(2)">
                         <div class="flex items-center justify-between">
                             <div class="flex items-start">
                                 <div
@@ -1496,10 +1497,10 @@
                                 </div>
                                 <h4 class="text-2xl font-extrabold text-gray-900">구내식당 식수관리시스템 도입 비용은 얼마인가요?</h4>
                             </div>
-                            <div class="faq-icon text-3xl text-gray-400 transition-transform duration-300">+</div>
+                            <div aria-hidden="true" class="faq-icon text-3xl text-gray-400 transition-transform duration-300">+</div>
                         </div>
                     </button>
-                    <div class="faq-content hidden px-10 pb-10">
+                    <div id="faq-answer-2" class="faq-content px-10 pb-10" role="region" aria-labelledby="faq-question-2">
                         <div class="flex items-start">
                             <div
                                 class="w-16 h-16 bg-accent rounded-full flex items-center justify-center mr-8 mt-1 flex-shrink-0">
@@ -1523,7 +1524,7 @@
                 <!-- FAQ 3 -->
                 <div class="bg-white rounded-3xl shadow-xl border border-gray-100 animate-slide-up">
                     <button class="faq-toggle w-full p-10 text-left hover:bg-gray-50 transition-colors duration-200"
-                        onclick="toggleFaq(3)">
+                        id="faq-question-3" type="button" aria-expanded="true" aria-controls="faq-answer-3" data-faq="3" onclick="toggleFaq(3)">
                         <div class="flex items-center justify-between">
                             <div class="flex items-start">
                                 <div
@@ -1532,10 +1533,10 @@
                                 </div>
                                 <h4 class="text-2xl font-extrabold text-gray-900">식수관리시스템 도입 절차는 어떻게 되나요?</h4>
                             </div>
-                            <div class="faq-icon text-3xl text-gray-400 transition-transform duration-300">+</div>
+                            <div aria-hidden="true" class="faq-icon text-3xl text-gray-400 transition-transform duration-300">+</div>
                         </div>
                     </button>
-                    <div class="faq-content hidden px-10 pb-10">
+                    <div id="faq-answer-3" class="faq-content px-10 pb-10" role="region" aria-labelledby="faq-question-3">
                         <div class="flex items-start">
                             <div
                                 class="w-16 h-16 bg-accent rounded-full flex items-center justify-center mr-8 mt-1 flex-shrink-0">
@@ -1552,7 +1553,7 @@
                 <!-- FAQ 4 -->
                 <div class="bg-white rounded-3xl shadow-xl border border-gray-100 animate-slide-up">
                     <button class="faq-toggle w-full p-10 text-left hover:bg-gray-50 transition-colors duration-200"
-                        onclick="toggleFaq(4)">
+                        id="faq-question-4" type="button" aria-expanded="true" aria-controls="faq-answer-4" data-faq="4" onclick="toggleFaq(4)">
                         <div class="flex items-center justify-between">
                             <div class="flex items-start">
                                 <div
@@ -1562,10 +1563,10 @@
                                 <h4 class="text-2xl font-extrabold text-gray-900">RFID 식권 카드를 분실하거나 남에게 빌려주면 어떻게 하나요?
                                 </h4>
                             </div>
-                            <div class="faq-icon text-3xl text-gray-400 transition-transform duration-300">+</div>
+                            <div aria-hidden="true" class="faq-icon text-3xl text-gray-400 transition-transform duration-300">+</div>
                         </div>
                     </button>
-                    <div class="faq-content hidden px-10 pb-10">
+                    <div id="faq-answer-4" class="faq-content px-10 pb-10" role="region" aria-labelledby="faq-question-4">
                         <div class="flex items-start">
                             <div
                                 class="w-16 h-16 bg-accent rounded-full flex items-center justify-center mr-8 mt-1 flex-shrink-0">
@@ -1581,7 +1582,7 @@
                 <!-- FAQ 5 -->
                 <div class="bg-white rounded-3xl shadow-xl border border-gray-100 animate-slide-up">
                     <button class="faq-toggle w-full p-10 text-left hover:bg-gray-50 transition-colors duration-200"
-                        onclick="toggleFaq(5)">
+                        id="faq-question-5" type="button" aria-expanded="true" aria-controls="faq-answer-5" data-faq="5" onclick="toggleFaq(5)">
                         <div class="flex items-center justify-between">
                             <div class="flex items-start">
                                 <div
@@ -1590,10 +1591,10 @@
                                 </div>
                                 <h4 class="text-2xl font-extrabold text-gray-900">근로자가 스마트폰이 없거나 앱 설치를 꺼리면 어떻게 하나요?</h4>
                             </div>
-                            <div class="faq-icon text-3xl text-gray-400 transition-transform duration-300">+</div>
+                            <div aria-hidden="true" class="faq-icon text-3xl text-gray-400 transition-transform duration-300">+</div>
                         </div>
                     </button>
-                    <div class="faq-content hidden px-10 pb-10">
+                    <div id="faq-answer-5" class="faq-content px-10 pb-10" role="region" aria-labelledby="faq-question-5">
                         <div class="flex items-start">
                             <div
                                 class="w-16 h-16 bg-accent rounded-full flex items-center justify-center mr-8 mt-1 flex-shrink-0">
@@ -1609,7 +1610,7 @@
                 <!-- FAQ 6 -->
                 <div class="bg-white rounded-3xl shadow-xl border border-gray-100 animate-slide-up">
                     <button class="faq-toggle w-full p-10 text-left hover:bg-gray-50 transition-colors duration-200"
-                        onclick="toggleFaq(6)">
+                        id="faq-question-6" type="button" aria-expanded="true" aria-controls="faq-answer-6" data-faq="6" onclick="toggleFaq(6)">
                         <div class="flex items-center justify-between">
                             <div class="flex items-start">
                                 <div
@@ -1619,10 +1620,10 @@
                                 <h4 class="text-2xl font-extrabold text-gray-900">구내식당 안의 매점이나 카페 등 부대시설 결제도 함께 처리할 수
                                     있나요?</h4>
                             </div>
-                            <div class="faq-icon text-3xl text-gray-400 transition-transform duration-300">+</div>
+                            <div aria-hidden="true" class="faq-icon text-3xl text-gray-400 transition-transform duration-300">+</div>
                         </div>
                     </button>
-                    <div class="faq-content hidden px-10 pb-10">
+                    <div id="faq-answer-6" class="faq-content px-10 pb-10" role="region" aria-labelledby="faq-question-6">
                         <div class="flex items-start">
                             <div
                                 class="w-16 h-16 bg-accent rounded-full flex items-center justify-center mr-8 mt-1 flex-shrink-0">
@@ -1637,7 +1638,7 @@
                 <!-- FAQ 7 -->
                 <div class="bg-white rounded-3xl shadow-xl border border-gray-100 animate-slide-up">
                     <button class="faq-toggle w-full p-10 text-left hover:bg-gray-50 transition-colors duration-200"
-                        onclick="toggleFaq(7)">
+                        id="faq-question-7" type="button" aria-expanded="true" aria-controls="faq-answer-7" data-faq="7" onclick="toggleFaq(7)">
                         <div class="flex items-center justify-between">
                             <div class="flex items-start">
                                 <div
@@ -1647,10 +1648,10 @@
                                 <h4 class="text-2xl font-extrabold text-gray-900">식권대장·식신e식권·비플식권 같은 모바일 식권 서비스와 무엇이
                                     다른가요?</h4>
                             </div>
-                            <div class="faq-icon text-3xl text-gray-400 transition-transform duration-300">+</div>
+                            <div aria-hidden="true" class="faq-icon text-3xl text-gray-400 transition-transform duration-300">+</div>
                         </div>
                     </button>
-                    <div class="faq-content hidden px-10 pb-10">
+                    <div id="faq-answer-7" class="faq-content px-10 pb-10" role="region" aria-labelledby="faq-question-7">
                         <div class="flex items-start">
                             <div
                                 class="w-16 h-16 bg-accent rounded-full flex items-center justify-center mr-8 mt-1 flex-shrink-0">
@@ -1674,7 +1675,7 @@
                 <!-- FAQ 8 -->
                 <div class="bg-white rounded-3xl shadow-xl border border-gray-100 animate-slide-up">
                     <button class="faq-toggle w-full p-10 text-left hover:bg-gray-50 transition-colors duration-200"
-                        onclick="toggleFaq(8)">
+                        id="faq-question-8" type="button" aria-expanded="true" aria-controls="faq-answer-8" data-faq="8" onclick="toggleFaq(8)">
                         <div class="flex items-center justify-between">
                             <div class="flex items-start">
                                 <div
@@ -1683,10 +1684,10 @@
                                 </div>
                                 <h4 class="text-2xl font-extrabold text-gray-900">신용카드나 체크카드 결제도 병행할 수 있나요?</h4>
                             </div>
-                            <div class="faq-icon text-3xl text-gray-400 transition-transform duration-300">+</div>
+                            <div aria-hidden="true" class="faq-icon text-3xl text-gray-400 transition-transform duration-300">+</div>
                         </div>
                     </button>
-                    <div class="faq-content hidden px-10 pb-10">
+                    <div id="faq-answer-8" class="faq-content px-10 pb-10" role="region" aria-labelledby="faq-question-8">
                         <div class="flex items-start">
                             <div
                                 class="w-16 h-16 bg-accent rounded-full flex items-center justify-center mr-8 mt-1 flex-shrink-0">
@@ -1724,18 +1725,20 @@
                                 <!-- 맞춤형 구글 폼 -->
                                 <form id="customGoogleForm" class="space-y-6">
                                     <div>
+                                        <label for="form-name" class="sr-only">식당 상호명과 담당 성함</label>
                                         <input type="text" id="form-name" name="entry.1950910160" required
                                             class="w-full p-4 bg-gray-800 text-white rounded-xl border border-gray-700 focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all duration-300 placeholder-gray-400 text-lg"
                                             placeholder="구내식당/함바집 상호명과 담당 성함을 입력해요">
                                     </div>
                                     <div>
+                                        <label for="form-contact" class="sr-only">전화번호 또는 이메일</label>
                                         <input type="text" id="form-contact" name="entry.1181158497" required
                                             class="w-full p-4 bg-gray-800 text-white rounded-xl border border-gray-700 focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all duration-300 placeholder-gray-400 text-lg"
                                             placeholder="전화번호 또는 이메일을 입력해요">
                                     </div>
                                     <div>
                                         <label for="form-source" class="sr-only">알게 된 경로</label>
-                                        <select id="form-source" name="entry.1429359743" required
+                                        <select id="form-source" name="entry.1429359743"
                                             class="w-full p-4 bg-gray-800 rounded-xl border border-gray-700 focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all duration-300 text-lg">
                                             <option value="" disabled selected>저희 페이지를 알게 된 경로(선택)</option>
                                             <option value="네이버 검색">네이버 검색</option>
@@ -1748,7 +1751,8 @@
                                         </select>
                                     </div>
                                     <div>
-                                        <textarea id="form-message" name="entry.1270692115" rows="4" required
+                                        <label for="form-message" class="sr-only">희망 일시와 필요 사항 (선택)</label>
+                                        <textarea id="form-message" name="entry.1270692115" rows="4"
                                             class="w-full p-4 bg-gray-800 text-white rounded-xl border border-gray-700 focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all duration-300 placeholder-gray-400 text-lg"
                                             placeholder="희망일시/필요사항을 남기셔도 좋아요 (선택)"></textarea>
                                     </div>
@@ -1794,14 +1798,14 @@
                             <a href="https://play.google.com/store/apps/details?id=com.Gift.GiftCoin&hl=en&gl=US"
                                 target="_blank" rel="noopener" class="inline-block">
                                 <div class="p-0">
-                                    <img src="hamba/images/play_logo.webp" alt="Google Play 스토어에서 앱 다운로드"
+                                    <img decoding="async" width="300" height="89" src="hamba/images/play_logo.webp" alt="Google Play 스토어에서 앱 다운로드"
                                         class="h-12 object-contain" loading="lazy" />
                                 </div>
                             </a>
                             <a href="https://apps.apple.com/kr/app/giftcoin-%EA%B8%B0%ED%94%84%ED%8A%B8%EC%BD%94%EC%9D%B8-%EA%B8%80%ED%94%84%ED%8A%B8%EC%B9%B4%EB%93%9C%EA%B0%80-%EC%82%B4%EC%95%84%EB%82%9C%EB%8B%A4/id1605569286"
                                 target="_blank" rel="noopener" class="inline-block">
                                 <div class="p-0">
-                                    <img src="hamba/images/apple_logo.webp" alt="Apple 앱스토어에서 앱 다운로드"
+                                    <img decoding="async" width="300" height="89" src="hamba/images/apple_logo.webp" alt="Apple 앱스토어에서 앱 다운로드"
                                         class="h-12 object-contain" loading="lazy" />
                                 </div>
                             </a>
@@ -1854,7 +1858,9 @@
                     </a>
                 </section>
 
-                <footer class="bg-gray-100 py-12 px-4">
+                </main>
+
+    <footer class="bg-gray-100 py-12 px-4">
                     <div class="max-w-6xl mx-auto text-center text-gray-700">
                         <p class="mb-4 font-bold"><a href="/price" data-ga-event="cta_click_footer_to_price">요금제</a> | <a
                                 href="/proposal" data-ga-event="cta_click_footer_to_proposal">도입 제안서</a> | <a
