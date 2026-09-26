@@ -49,8 +49,8 @@ body {
     -webkit-text-size-adjust: 100%;
 }
 
-/* 읽기 폭: 한 줄 40자 내외 (§2.2 가독성 우선) */
-.wrap { max-width: 880px; margin: 0 auto; padding: 0 22px; }
+/* 가격표와 같은 본문 폭. 작은 화면에서는 좌우 여백을 유지합니다. */
+.wrap { width: 100%; max-width: 1080px; margin: 0 auto; padding: 0 22px; }
 
 h1, h2, h3 { color: var(--ink); letter-spacing: -0.04em; line-height: 1.32; }
 
