@@ -3,6 +3,11 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/cafe/favicon.webp",
+      "destination": "/favicon.png",
+      "permanent": true
+    },
+    {
       "source": "/hamba",
       "destination": "/",
       "permanent": true

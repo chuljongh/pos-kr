@@ -1367,7 +1367,17 @@
           "@id": "https://pos.kr/#organization",
           "name": "블루칩스",
           "alternateName": "Blue Chips",
-          "url": "https://pos.kr/"
+          "url": "https://pos.kr/",
+          "brand": {
+            "@id": "https://pos.kr/#giftcoin-brand"
+          }
+        },
+        {
+          "@type": "Brand",
+          "@id": "https://pos.kr/#giftcoin-brand",
+          "name": "Giftcoin",
+          "alternateName": "기프트코인",
+          "url": "https://giftcoin.kr/"
         },
         {
           "@type": "SoftwareApplication",
@@ -1375,7 +1385,9 @@
           "name": "Giftcoin 식수관리시스템",
           "applicationCategory": "BusinessApplication",
           "url": "https://pos.kr/",
-          "provider": { "@id": "https://pos.kr/#organization" },
+          "provider": {
+            "@id": "https://pos.kr/#organization"
+          },
           "offers": {
             "@type": "AggregateOffer",
             "priceCurrency": "KRW",
@@ -1383,21 +1395,37 @@
             "highPrice": "590000",
             "offerCount": "5",
             "url": "https://pos.kr/price"
+          },
+          "alternateName": [
+            "기프트코인",
+            "pos.kr 식수관리시스템"
+          ],
+          "publisher": {
+            "@id": "https://pos.kr/#organization"
           }
         },
         {
           "@type": "WebPage",
           "@id": "https://pos.kr/proposal",
           "url": "https://pos.kr/proposal",
-          "name": "모바일 QR 식수관리시스템 제안서",
+          "name": "모바일 QR 식수관리시스템 제안서 | pos.kr",
           "description": "구내식당·함바식당 식수관리시스템 도입 제안서. RFID 카드·리더기·PC 구입비 0원, 스마트폰 QR로 부정식수 차단과 월말 정산 자동화. 선결제·후결제, 횟수·포인트 등 회사 정책에 맞춘 운영 방식을 안내합니다.",
           "inLanguage": "ko-KR",
-          "about": { "@id": "https://pos.kr/#giftcoin" },
-          "publisher": { "@id": "https://pos.kr/#organization" }
+          "about": {
+            "@id": "https://pos.kr/#giftcoin"
+          },
+          "publisher": {
+            "@id": "https://pos.kr/#organization"
+          },
+          "isPartOf": {
+            "@id": "https://pos.kr/#website"
+          },
+          "dateModified": "2026-09-26"
         }
       ]
     }
     </script>
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
 </head>
 
 <body>
@@ -1969,7 +1997,7 @@
                 <b>블루칩스</b> | 대표자 이미경 | 사업자등록번호 558-51-00535<br>
                 경기도 고양시 일산동구 일산로 142, 818-1호 | hi@pos.kr<br>
                 <a href="/" data-ga-event="cta_click_proposal_to_home">식수관리시스템 소개</a> · <a href="/price" data-ga-event="cta_click_proposal_to_price">요금제</a> · <a href="/hamba-pos" data-ga-event="cta_click_proposal_to_hambapos">함바포스 프로그램</a><br>
-                가이드: <a href="/guide/hamba-meal-count" data-ga-event="cta_click_proposal_to_guide_hamba_meal_count">함바식당 식수관리 방법과 월말 정산 절차</a> · <a href="/guide/compare-systems" data-ga-event="cta_click_proposal_to_guide_compare_systems">식수관리 방식 3가지 비교</a> · <a href="/guide/prevent-proxy-meals" data-ga-event="cta_click_proposal_to_guide_prevent_proxy_meals">대리 식수·식권 대여 막는 방법</a> · <a href="/guide/vs-meal-voucher-apps" data-ga-event="cta_click_proposal_to_guide_vs_meal_voucher_apps">모바일 식권과 식수관리시스템의 차이</a> · <a href="/guide/individual-distribution" data-ga-event="cta_click_proposal_to_guide_individual_distribution">식수 카드 개인별 배포의 현실과 그림문자 QR</a>
+                <a href="/guide">가이드 전체 보기</a>: <a href="/guide/hamba-meal-count" data-ga-event="cta_click_proposal_to_guide_hamba_meal_count">함바식당 식수관리 방법과 월말 정산 절차</a> · <a href="/guide/compare-systems" data-ga-event="cta_click_proposal_to_guide_compare_systems">식수관리 방식 3가지 비교</a> · <a href="/guide/prevent-proxy-meals" data-ga-event="cta_click_proposal_to_guide_prevent_proxy_meals">대리 식수·식권 대여 막는 방법</a> · <a href="/guide/vs-meal-voucher-apps" data-ga-event="cta_click_proposal_to_guide_vs_meal_voucher_apps">모바일 식권과 식수관리시스템의 차이</a> · <a href="/guide/individual-distribution" data-ga-event="cta_click_proposal_to_guide_individual_distribution">식수 카드 개인별 배포의 현실과 그림문자 QR</a>
             </div>
         </div>
     </section>

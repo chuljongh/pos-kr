@@ -25,7 +25,7 @@
     <meta property="og:image:height" content="630">
     <meta property="og:url" content="https://pos.kr/guide/individual-distribution">
     <meta property="og:type" content="article">
-    <link rel="icon" href="/cafe/favicon.webp">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -34,7 +34,17 @@
           "@type": "Organization",
           "@id": "https://pos.kr/#organization",
           "name": "블루칩스",
-          "url": "https://pos.kr/"
+          "url": "https://pos.kr/",
+          "brand": {
+            "@id": "https://pos.kr/#giftcoin-brand"
+          }
+        },
+        {
+          "@type": "Brand",
+          "@id": "https://pos.kr/#giftcoin-brand",
+          "name": "Giftcoin",
+          "alternateName": "기프트코인",
+          "url": "https://giftcoin.kr/"
         },
         {
           "@type": "Article",
@@ -53,6 +63,9 @@
           "mainEntityOfPage": "https://pos.kr/guide/individual-distribution",
           "about": {
             "@id": "https://pos.kr/#giftcoin"
+          },
+          "isPartOf": {
+            "@id": "https://pos.kr/guide#collection"
           }
         },
         {
@@ -67,6 +80,12 @@
             {
               "@type": "ListItem",
               "position": 2,
+              "name": "식수관리 가이드",
+              "item": "https://pos.kr/guide"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
               "name": "식수 카드를 개인별로 나눠주는 현실과 그림문자 QR",
               "item": "https://pos.kr/guide/individual-distribution"
             }
@@ -131,6 +150,7 @@
     <!-- End Google Tag Manager (noscript) -->
     <header class="hero">
         <div class="wrap">
+            <nav class="breadcrumb" aria-label="현재 위치"><a href="/">홈</a><span aria-hidden="true"> / </span><a href="/guide">식수관리 가이드</a></nav>
             <div class="eyebrow">가이드 · 개인별 배포</div>
             <h1>수십·수백 명에게 카드를<br><em>개인별로</em> 나눠줄 수 있나요?</h1>
             <p class="sub">카드와 QR을 개인별로 배포할 때 필요한 명단·전달 관리, 앱 없이 사용하는 그림문자 QR의 조건을 정리했습니다.</p>
@@ -236,7 +256,7 @@
             <div class="links">
                 <a href="/">식수관리시스템 소개</a> | <a href="/price">요금제</a> | <a href="/hamba-pos">함바포스 프로그램</a> | <a href="/proposal">도입 제안서</a>
             </div>
-            <p>가이드: <a href="/guide/hamba-meal-count">함바식당 식수관리 방법과 월말 정산 절차</a> | <a href="/guide/compare-systems">구내식당 식수관리 방식 3가지 비교: 비용·장비·정산</a> | <a href="/guide/prevent-proxy-meals">대리 식수·식권 대여를 막는 방법</a> | <a href="/guide/vs-meal-voucher-apps">모바일 식권 서비스와 식수관리시스템의 차이</a> | <a href="/guide/individual-distribution">식수 카드를 개인별로 나눠주는 현실과 그림문자 QR</a></p>
+            <p><a href="/guide">가이드 전체 보기</a>: <a href="/guide/hamba-meal-count">함바식당 식수관리 방법과 월말 정산 절차</a> | <a href="/guide/compare-systems">구내식당 식수관리 방식 3가지 비교: 비용·장비·정산</a> | <a href="/guide/prevent-proxy-meals">대리 식수·식권 대여를 막는 방법</a> | <a href="/guide/vs-meal-voucher-apps">모바일 식권 서비스와 식수관리시스템의 차이</a> | <a href="/guide/individual-distribution">식수 카드를 개인별로 나눠주는 현실과 그림문자 QR</a></p>
             <p>블루칩스가 운영하는 구내식당·함바 식수관리시스템 pos.kr (서비스명 Giftcoin) | 대표자: 이미경 | 사업자등록번호: 558-51-00535</p>
             <p>주소: 경기도 고양시 일산동구 일산로 142, 818-1호 | 연락처: <a data-ga-event="cta_click_guide_mail" href="mailto:hi@pos.kr">hi@pos.kr</a> | 010-5415-4415</p>
         </div>

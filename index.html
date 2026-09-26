@@ -17,17 +17,17 @@
     <meta name="format-detection" content="telephone=no" />
     <title>구내식당·함바 식수관리시스템 | 매장 장비 0원, 스마트폰 QR 식권 · pos.kr</title>
     <meta name="description"
-        content="구내식당 식수관리시스템 도입 비용 0원! 바코드/RFID/리더기 없이 모바일 QR코드 식권, 키오스크 가격 무료. 함바집 식수관리시스템 솔루션까지 자동화하세요.">
+        content="구내식당·함바식당 모바일 QR 식수관리. 등록 소속인원 50명 이하 매장은 Super·Pro 가입비·월 구독료 무료, 초과 시 Super 월 3.9만원부터. MMS 비용은 플랜별 별도·포함이며, 키오스크 기기 구입·임대 조건은 별도 확인하세요.">
     <meta name="keywords"
         content="함바식당, 식수관리, 구내식당 식권, 구내식당 선결제, QR코드식권, 선결제 키오스크, 건설현장 식당, 함바집, RFID카드 무료, 바코드·리더기 무료, 함바 포스, 함바 결제기, 식수관리시스템, 구내식당 키오스크 가격, 함바집 결제 솔루션, 모바일 식수관리, 식권 앱">
     <link rel="canonical" href="https://pos.kr/">
     <meta property="og:title" content="매장에 카드·리더기·PC를 두지 않는 구내식당·함바 식수관리시스템">
     <meta property="og:description"
-        content="구내식당 모바일 식수관리시스템 카드 비용 0원! 바코드/RFID/리더기 없이 모바일 QR코드 식권 무료. 함바집 식수관리를 자동화하세요.">
+        content="구내식당·함바식당 모바일 QR 식수관리. 등록 소속인원 50명 이하 매장은 Super·Pro 가입비·월 구독료 무료, 초과 시 Super 월 3.9만원부터. MMS 비용은 플랜별 별도·포함이며, 키오스크 기기 구입·임대 조건은 별도 확인하세요.">
     <meta property="og:image" content="https://pos.kr/images/scanner.webp">
     <meta property="og:url" content="https://pos.kr/">
     <meta property="og:type" content="website">
-    <link rel="icon" href="/cafe/favicon.webp">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -41,12 +41,6 @@
           "email": "hi@pos.kr",
           "telephone": "+82-10-5415-4415",
           "taxID": "558-51-00535",
-          "sameAs": [
-            "https://giftcoin.kr",
-            "https://cafe.pos.kr/",
-            "https://play.google.com/store/apps/details?id=com.Gift.GiftCoin",
-            "https://apps.apple.com/kr/app/id1605569286"
-          ],
           "address": {
             "@type": "PostalAddress",
             "streetAddress": "일산로 142, 818-1호",
@@ -54,7 +48,16 @@
             "addressRegion": "경기도",
             "addressCountry": "KR"
           },
-          "brand": { "@id": "https://pos.kr/#giftcoin" }
+          "brand": {
+            "@id": "https://pos.kr/#giftcoin-brand"
+          }
+        },
+        {
+          "@type": "Brand",
+          "@id": "https://pos.kr/#giftcoin-brand",
+          "name": "Giftcoin",
+          "alternateName": "기프트코인",
+          "url": "https://giftcoin.kr/"
         },
         {
           "@type": "WebSite",
@@ -63,20 +66,29 @@
           "name": "pos.kr",
           "description": "구내식당·함바식당을 위한 모바일 QR 식수관리시스템 안내 사이트",
           "inLanguage": "ko-KR",
-          "publisher": { "@id": "https://pos.kr/#organization" }
+          "publisher": {
+            "@id": "https://pos.kr/#organization"
+          }
         },
         {
           "@type": "SoftwareApplication",
           "@id": "https://pos.kr/#giftcoin",
           "name": "Giftcoin 식수관리시스템",
-          "alternateName": ["기프트코인", "pos.kr 식수관리시스템"],
+          "alternateName": [
+            "기프트코인",
+            "pos.kr 식수관리시스템"
+          ],
           "applicationCategory": "BusinessApplication",
           "applicationSubCategory": "구내식당·함바식당 식수관리 / 모바일 QR 식권",
           "operatingSystem": "Android, iOS, Web",
           "url": "https://pos.kr/",
           "description": "구내식당·함바식당이 RFID 카드·리더기·PC를 구입하지 않고, 근로자의 스마트폰 QR코드만으로 식수를 집계하고 월말 정산까지 처리하는 식수관리시스템입니다. 선불·후불·횟수제를 한 시스템에서 운영하며, 카드 결제가 필요하면 키오스크를 연동합니다.",
-          "author": { "@id": "https://pos.kr/#organization" },
-          "provider": { "@id": "https://pos.kr/#organization" },
+          "author": {
+            "@id": "https://pos.kr/#organization"
+          },
+          "provider": {
+            "@id": "https://pos.kr/#organization"
+          },
           "featureList": [
             "스마트폰 앱이 QR 리더기 역할 — 전용 스캐너·매장 PC 불필요",
             "개인별 QR 발급으로 카드 분실·대리 식수 차단",
@@ -97,12 +109,17 @@
           "downloadUrl": [
             "https://play.google.com/store/apps/details?id=com.Gift.GiftCoin",
             "https://apps.apple.com/kr/app/id1605569286"
-          ]
+          ],
+          "publisher": {
+            "@id": "https://pos.kr/#organization"
+          }
         },
         {
           "@type": "FAQPage",
           "@id": "https://pos.kr/#faq",
-          "isPartOf": { "@id": "https://pos.kr/#website" },
+          "isPartOf": {
+            "@id": "https://pos.kr/#website"
+          },
           "mainEntity": [
             {
               "@type": "Question",
@@ -117,7 +134,7 @@
               "name": "구내식당 식수관리시스템 도입 비용은 얼마인가요?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "소속인원 50명 이하 매장은 Super·Pro 플랜을 가입비도 월 구독료도 없이 쓰실 수 있습니다. 50명을 넘으면 유료 플랜은 월 2.9만원(Super) · 5.9만원(Pro) · 7.9만원(Plus) · 59만원(Max)이고, 초기 가입비는 Super 15만원, Pro 29만원, Plus 38만원, Max 150만원입니다. Pro·Plus·Max에서는 사용하지 않는 스마트폰이나 태블릿을 QR 스캐너로 활용해 보세요. Super는 별도 QR 리더 기기가 필요 없는 플랜이라 기기를 준비하실 필요가 없습니다. RFID 카드·리더기·PC 구입비는 어느 경우에도 들지 않습니다. 플랜별 상세 비교는 요금제 안내에서 확인하세요."
+                "text": "소속인원 50명 이하 매장은 Super·Pro 플랜을 가입비도 월 구독료도 없이 쓰실 수 있습니다. 50명을 넘으면 유료 플랜은 월 3.9만원(Super) · 5.9만원(Pro) · 7.9만원(Plus) · 59만원(Max)이고, 초기 가입비는 Super 15만원, Pro 29만원, Plus 38만원, Max 150만원입니다. Pro·Plus·Max에서는 사용하지 않는 스마트폰이나 태블릿을 QR 스캐너로 활용해 보세요. Super는 별도 QR 리더 기기가 필요 없는 플랜이라 기기를 준비하실 필요가 없습니다. RFID 카드·리더기·PC 구입비는 어느 경우에도 들지 않습니다. 플랜별 상세 비교는 요금제 안내에서 확인하세요. 무료 혜택은 Super·Pro의 초기 가입비와 월 구독료에 적용됩니다. MMS 등 별도 비용은 플랜 조건을 따릅니다. 키오스크 연동 지원은 기기 무료 제공을 뜻하지 않으며, 기기 구입·임대 조건은 별도로 확인하세요."
               }
             },
             {
@@ -169,6 +186,23 @@
               }
             }
           ]
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://pos.kr/#webpage",
+          "url": "https://pos.kr/",
+          "name": "구내식당·함바 식수관리시스템 | 매장 장비 0원, 스마트폰 QR 식권 · pos.kr",
+          "inLanguage": "ko-KR",
+          "isPartOf": {
+            "@id": "https://pos.kr/#website"
+          },
+          "about": {
+            "@id": "https://pos.kr/#giftcoin"
+          },
+          "publisher": {
+            "@id": "https://pos.kr/#organization"
+          },
+          "dateModified": "2026-09-26"
         }
       ]
     }
@@ -1473,14 +1507,14 @@
                             </div>
                             <p class="text-xl text-gray-700 leading-relaxed"><strong class="text-primary">소속인원 50명 이하
                                     매장은 Super·Pro 플랜을 가입비도 월 구독료도 없이</strong> 쓰실 수 있습니다. 50명을 넘으면 유료 플랜은 월
-                                2.9만원(Super) · 5.9만원(Pro) · 7.9만원(Plus) · 59만원(Max)이고, 초기 가입비는 Super 15만원, Pro 29만원,
+                                3.9만원(Super) · 5.9만원(Pro) · 7.9만원(Plus) · 59만원(Max)이고, 초기 가입비는 Super 15만원, Pro 29만원,
                                 Plus 38만원, Max 150만원입니다.<br><br>
                                 Pro·Plus·Max에서는 <strong class="text-primary">사용하지 않는 스마트폰이나 태블릿을 QR 스캐너로 활용</strong>해 보세요. <strong
                                     class="text-primary">Super는 별도 QR 리더 기기가 필요 없는 플랜</strong>이라 기기를 준비하실 필요가 없습니다.
                                 <strong class="text-primary">RFID 카드·리더기·PC 구입비는 어느 경우에도 들지 않습니다</strong>. 플랜별 상세
                                 비교는 <a href="/price"
                                     class="text-primary font-bold" style="text-decoration:underline"
-                                    data-ga-event="cta_click_faq_to_price">요금제 안내</a>에서 확인하세요.
+                                    data-ga-event="cta_click_faq_to_price">요금제 안내</a>에서 확인하세요.<br><br>무료 혜택은 Super·Pro의 초기 가입비와 월 구독료에 적용됩니다. MMS 등 별도 비용은 플랜 조건을 따릅니다. 키오스크 연동 지원은 기기 무료 제공을 뜻하지 않으며, 기기 구입·임대 조건은 별도로 확인하세요.
                             </p>
                         </div>
                     </div>
@@ -1825,7 +1859,7 @@
                         <p class="mb-4 font-bold"><a href="/price" data-ga-event="cta_click_footer_to_price">요금제</a> | <a
                                 href="/proposal" data-ga-event="cta_click_footer_to_proposal">도입 제안서</a> | <a
                                 href="/hamba-pos" data-ga-event="cta_click_footer_to_hambapos">함바포스 프로그램</a></p>
-                        <p class="mb-4">가이드: <a href="/guide/hamba-meal-count" data-ga-event="cta_click_footer_to_guide_hamba_meal_count">함바식당 식수관리 방법과 월말 정산 절차</a> | <a href="/guide/compare-systems" data-ga-event="cta_click_footer_to_guide_compare_systems">식수관리 방식 3가지 비교</a> | <a href="/guide/prevent-proxy-meals" data-ga-event="cta_click_footer_to_guide_prevent_proxy_meals">대리 식수·식권 대여 막는 방법</a> | <a href="/guide/vs-meal-voucher-apps" data-ga-event="cta_click_footer_to_guide_vs_meal_voucher_apps">모바일 식권과 식수관리시스템의 차이</a> | <a href="/guide/individual-distribution" data-ga-event="cta_click_footer_to_guide_individual_distribution">식수 카드 개인별 배포의 현실과 그림문자 QR</a></p>
+                        <p class="mb-4"><a href="/guide">가이드 전체 보기</a>: <a href="/guide/hamba-meal-count" data-ga-event="cta_click_footer_to_guide_hamba_meal_count">함바식당 식수관리 방법과 월말 정산 절차</a> | <a href="/guide/compare-systems" data-ga-event="cta_click_footer_to_guide_compare_systems">식수관리 방식 3가지 비교</a> | <a href="/guide/prevent-proxy-meals" data-ga-event="cta_click_footer_to_guide_prevent_proxy_meals">대리 식수·식권 대여 막는 방법</a> | <a href="/guide/vs-meal-voucher-apps" data-ga-event="cta_click_footer_to_guide_vs_meal_voucher_apps">모바일 식권과 식수관리시스템의 차이</a> | <a href="/guide/individual-distribution" data-ga-event="cta_click_footer_to_guide_individual_distribution">식수 카드 개인별 배포의 현실과 그림문자 QR</a></p>
                         <p><a href="/terms" target="_blank">이용약관</a> | <a href="/privacy" target="_blank">개인정보
                                 처리 방침</a> | <a href="https://giftcoin.kr" target="_blank" rel="noopener"
                                 data-ga-event="cta_click_cross_footer_to_giftcoin">기프트코인 서비스</a></p>

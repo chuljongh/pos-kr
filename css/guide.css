@@ -245,3 +245,15 @@ article a { color: var(--accent); font-weight: 700; }
 .related li { margin-bottom: 10px; }
 
 .related a { color: var(--primary); text-decoration: none; }
+
+.breadcrumb { margin-bottom: 24px; font-size: 17px; color: var(--ink-soft); }
+.breadcrumb a { color: var(--primary); }
+.guide-list { list-style: none; }
+.guide-list h2 { font-size: 30px; }
+.guide-list h2 a { color: var(--ink); text-decoration: none; }
+.guide-list h2 a:hover { color: var(--primary); text-decoration: underline; }
+
+@media (max-width: 640px) {
+    .guide-list .card { padding: 24px 20px; }
+    .guide-list h2 { font-size: 25px; }
+}
