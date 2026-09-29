@@ -158,11 +158,13 @@ table {
 
 th, td { border: 1px solid var(--line); padding: 16px 18px; text-align: left; }
 
-thead th { background: var(--surface-muted); color: var(--ink); font-weight: 700; }
+thead th { background: var(--surface-muted); color: var(--ink); font-weight: 700; text-align: center; }
 
 thead th:last-child { background: var(--primary); color: #fff; }
 
 tbody th { background: var(--surface-muted); color: var(--ink); font-weight: 700; width: 27%; }
+
+table.compare-systems { table-layout: fixed; }
 
 td.ours { background: var(--primary-light); color: var(--ink); font-weight: 700; }
 
