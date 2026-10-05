@@ -1,0 +1,57 @@
+/* 삼성월렛 이벤트 페이지 디자인 토큰 — 출처: DESIGN.md ([측정] 값 위주) */
+:root {
+  /* 캠페인 테마: 바이올렛(청춘 적립, 1.jpg) */
+  --sw-violet: #7F46F1;
+  --sw-violet-strong: #7324E1;   /* CTA, 유의사항 배경 */
+  --sw-violet-deep: #48169B;     /* 11.jpg 히어로 */
+  --sw-lilac-bg: #F0D0F7;
+  --sw-cream-bg: #FEF8F1;
+  --sw-pink: #F6147D;            /* 강조 텍스트 */
+  --sw-magenta: #D86FCC;
+
+  /* 캠페인 테마: 블루 / 네이비+코랄 / 오렌지 */
+  --sw-blue: #377AFF;
+  --sw-blue-deep: #0065B3;
+  --sw-blue-bg: #DBE8F9;
+  --sw-navy: #1C314F;
+  --sw-coral: #F66C4F;
+  --sw-sky-bg: #D5E2F2;
+  --sw-orange: #F18101;
+  --sw-orange-bg: #F9B449;
+
+  /* 혜택 버튼 카테고리색 (3.jpg) */
+  --sw-btn-violet: #7234F7;
+  --sw-btn-teal: #00ABBC;
+  --sw-btn-blue: #1576FA;
+  --sw-btn-red: #D42D01;
+  --sw-btn-orange: #EF4A08;
+  --sw-btn-green: #33B00E;
+
+  /* 누적 적립 행 배경 (1.jpg) */
+  --sw-row-gray: #EDECF2;
+  --sw-row-blue: #DBE8F9;
+  --sw-row-violet: #E4D9FB;
+  --sw-row-green: #E2F0D9;
+  --sw-table-head: #5F5F5F;
+
+  /* 중립 */
+  --sw-black: #151515;
+  --sw-dark-card: #171717;
+  --sw-text: #333333;
+  --sw-coin-gold: #E6A91A;
+
+  /* 형태 (웹 환산) */
+  --sw-radius-card: 18px;
+  --sw-radius-pill: 999px;
+  --sw-cta-height: 54px;
+  --sw-page-pad: 20px;
+  --sw-section-gap: 56px;
+
+  /* 타이포 (웹 환산) */
+  --sw-fs-hero: 56px;
+  --sw-fs-number: 40px;
+  --sw-fs-section: 22px;
+  --sw-fs-body: 16px;
+  --sw-fs-note: 12px;
+  --sw-fw-hero: 900;
+}
