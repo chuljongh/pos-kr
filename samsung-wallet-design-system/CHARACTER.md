@@ -9,7 +9,7 @@
 
 ## 1. 한 줄 정의
 
-> **"광택이 적은 매트 비닐 피규어(아트토이) 질감의 3D 치비 캐릭터, 약 2.5~3등신, 큰 머리·작은 몸, 검정 단발/긴머리, 점 눈 + 굵은 눈썹, 밝은 웃음, 흰 배경 위 부드러운 스튜디오 조명."**
+> **"광택이 적은 매트 비닐 피규어(아트토이) 질감의 3D 치비 캐릭터, 약 2.5~3등신, 큰 머리·작은 몸, 검정 단발/긴머리, 동그란 유리알 눈 + 굵은 눈썹, 밝은 웃음, 흰 배경 위 부드러운 스튜디오 조명."**
 
 Pop Mart / 블라인드박스 피규어, 혹은 "3D clay-like chibi figure" 계열. 일러스트가 아니라 **렌더링된 입체물**이다.
 
@@ -31,8 +31,11 @@ Pop Mart / 블라인드박스 피규어, 혹은 "3D clay-like chibi figure" 계�
 
 | 부위 | 특징 |
 |---|---|
-| **눈** | 세로로 약간 긴 **검정 타원 점 눈**, 흰자 없음. 각 눈에 **흰색 하이라이트 1개**(좌상단) |
-| 웃는 눈 | 행복 표정은 **∩ 모양 곡선 눈**(바리스타) — 점 눈과 곡선 눈 두 가지 |
+| **눈** | **거의 정원형**(가로:세로 ≈ 1:1.1, 세로로 긴 타원·알약형 아님)의 큰 **유리알 눈**. 한쪽 눈 폭 ≈ 얼굴 폭의 1/5, 두 눈 간격 넓고 얼굴 세로 중앙보다 약간 아래 |
+| 눈 색·광택 | 눈 대부분을 **짙은 흑갈색 홍채**가 채움(위쪽 거의 검정 → 아래쪽 약간 따뜻한 진갈색 그라데이션), 반사 광택 있음 |
+| 하이라이트 | **큰 흰 원 1개**(위쪽, 조명 방향) + **작은 점 1개**(아래쪽) |
+| 흰자·속눈썹 | 흰자는 **바깥 아래 가장자리에 얇은 초승달**로만 보임. 위 가장자리에 **짙은 눈꺼풀/속눈썹 선**, 여성은 바깥 끝이 살짝 올라감 |
+| 웃는 눈 | 행복 표정은 **∩ 모양 곡선 눈**(바리스타) — 유리알 눈과 곡선 눈 두 가지 |
 | **눈썹** | **굵고 짧은 검정 눈썹**, 안쪽이 내려간 "의욕/결의" 각도(학생·취준생). 이 눈썹이 캐릭터 인상의 핵심 |
 | 코 | **아주 작은 둥근 돌기** 또는 생략, 그림자로만 암시 |
 | **입** | 크게 벌린 **D자형 웃는 입**, 안쪽 진한 빨강/자주 + 혀 분홍. 윗니는 표현 안 하거나 얇은 흰 띠 |
@@ -112,7 +115,10 @@ Pop Mart / 블라인드박스 피규어, 혹은 "3D clay-like chibi figure" 계�
 ```
 3D rendered chibi character, collectible vinyl art toy / blind box figure style,
 about 2.5 to 3 heads tall, oversized rounded head, short stubby limbs, round fist hands,
-solid black oval dot eyes with a single white highlight, thick short black eyebrows,
+large nearly perfectly ROUND glossy eyes like glass beads (not vertical ovals, not pill-shaped),
+very dark brown-black iris filling the eye with one large white highlight on top and a tiny one below,
+thin crescent of white sclera at the outer lower edge, thin dark upper lash line,
+thick short black eyebrows,
 big open D-shaped smile with red mouth interior, soft peach blush on cheeks, tiny nose,
 chunky sculpted dark charcoal-brown hair with soft specular highlight,
 matte soft plastic material, all edges rounded, no outlines,
@@ -124,7 +130,8 @@ clean pastel background, high detail, Korean fintech promotion illustration
 
 ```
 realistic human, anime 2D, cel shading, outline, long legs, thin body, detailed fingers,
-wrinkles, glossy chrome skin, horror, uncanny, text, watermark
+wrinkles, glossy chrome skin, horror, uncanny, text, watermark,
+vertical oval eyes, elongated eyes, pill-shaped eyes, capsule eyes, tiny dot eyes, large white sclera
 ```
 
 ### 캐릭터별 추가 블록 예시
