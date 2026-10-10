@@ -3,7 +3,7 @@
 - 원본: `C:\Users\인포시즈\Desktop\samsung.zip` → `삼성월릿/` 모바일 캡처 18장 (2026-10 기준 이벤트 목록 + 상세 17개)
 - 캔버스: 폭 1080px(일부 540px) 세로 롱 페이지, 앱 내 웹뷰
 - 근거 표기: **[측정]** 픽셀 양자화 값 / **[관찰]** 화면 확인 / **[추정]** 해석
-- 하위 문서: [CHARACTER.md](CHARACTER.md) 인물 아이콘 · [OBJECTS.md](OBJECTS.md) 3D 오브젝트 · [design-tokens.css](design-tokens.css)
+- 하위 문서: [CHARACTER.md](../../characters/CHARACTER.md) (`D:\aaa\characters`) 인물 아이콘 · [OBJECTS.md](OBJECTS.md) 3D 오브젝트 · [design-tokens.css](design-tokens.css)
 
 ---
 
@@ -125,4 +125,4 @@
 ## 6. 이미지 스타일 요약
 
 - 3D 렌더 일러스트 + 일부 실사 합성(16번 해변, 15번 폰)
-- 캐릭터 → [CHARACTER.md](CHARACTER.md), 오브젝트 → [OBJECTS.md](OBJECTS.md)
+- 캐릭터 → [CHARACTER.md](../../characters/CHARACTER.md) (`D:\aaa\characters`), 오브젝트 → [OBJECTS.md](OBJECTS.md)
