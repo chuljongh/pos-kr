@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>OG home</title>
+    <meta name="robots" content="noindex">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            position: relative;
+            width: 1200px;
+            height: 630px;
+            overflow: hidden;
+            font-family: Pretendard, "Malgun Gothic", sans-serif;
+            background: linear-gradient(135deg, #FF2233 0%, #C4141F 100%);
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 80px;
+        }
+
+        .eyebrow {
+            font-size: 26px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            opacity: 0.85;
+            margin-bottom: 24px;
+        }
+
+        h1 {
+            font-size: 76px;
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -2px;
+            margin-bottom: 36px;
+        }
+
+        .points {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 44px;
+        }
+
+        .point {
+            border: 2px solid rgba(255, 255, 255, 0.55);
+            border-radius: 14px;
+            padding: 14px 26px;
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        .point.strong {
+            background: #ffffff;
+            color: #C4141F;
+            border-color: #ffffff;
+        }
+
+        .foot {
+            display: flex;
+            align-items: baseline;
+            gap: 20px;
+            font-size: 30px;
+            font-weight: 700;
+        }
+
+        .foot .domain {
+            font-size: 38px;
+            font-weight: 800;
+        }
+
+        .foot .sep { opacity: 0.6; }
+
+        .halo {
+            position: absolute;
+            right: 40px;
+            top: 75px;
+            width: 480px;
+            height: 480px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.16);
+        }
+
+        .character {
+            position: absolute;
+            right: 90px;
+            bottom: -70px;
+            height: 700px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="halo"></div>
+    <img class="character" src="../../characters/transparent/construction-phone-v1.png" alt="">
+    <div class="eyebrow">구내식당·함바 식수관리</div>
+    <h1>스마트폰 QR로<br>식수관리 끝</h1>
+    <div class="points">
+        <div class="point strong">매장 장비 0원</div>
+        <div class="point">카드·리더기·PC 없이</div>
+    </div>
+    <div class="foot">
+        <span class="domain">pos.kr</span>
+        <span class="sep">|</span>
+        <span>50명 이하 매장 구독료 무료</span>
+    </div>
+</body>
+
+</html>
