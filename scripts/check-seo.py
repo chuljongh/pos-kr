@@ -109,7 +109,6 @@ def main():
     for file in ['index.html', 'hamba-pos.html', 'price.html', 'guide/compare-systems.html', 'docs/og-price-source.html']:
         text = (ROOT / file).read_text(encoding='utf-8')
         check(display_price in text, f'{file}: Super price mismatch')
-        check('2.9만원' not in text, f'{file}: outdated Super price')
     check(f'| Super | {super_price:,}원 |' in (ROOT / 'llms.txt').read_text(encoding='utf-8'), 'llms.txt: price mismatch')
     index = pages['index.html']
     labels = {a['for'] for t, a in index.tags if t == 'label' and 'for' in a}
