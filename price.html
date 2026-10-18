@@ -127,6 +127,37 @@
                 "unitCode": "MON",
                 "billingDuration": 1
               }
+            },
+            {
+              "@type": "Offer",
+              "name": "부가 서비스: 회사별 맞춤 식수 리포트",
+              "price": "10000",
+              "priceCurrency": "KRW",
+              "url": "https://pos.kr/price",
+              "description": "월 1만원. 회사가 쓰는 엑셀 양식에 맞춰 식수 보고서 작성. Super·Pro 추가 가능, Plus 이상 포함.",
+              "priceSpecification": {
+                "@type": "UnitPriceSpecification",
+                "price": "10000",
+                "priceCurrency": "KRW",
+                "unitCode": "MON",
+                "billingDuration": 1
+              }
+            },
+            {
+              "@type": "Offer",
+              "name": "부가 서비스: 식수 신청 관리",
+              "price": "990",
+              "priceCurrency": "KRW",
+              "url": "https://pos.kr/price",
+              "description": "1인당 월 990원. 메뉴를 미리 알리고 식사 신청을 받아, 신청자에게만 식사 제공. Pro·Plus 추가 가능, Enterprise 포함.",
+              "priceSpecification": {
+                "@type": "UnitPriceSpecification",
+                "price": "990",
+                "priceCurrency": "KRW",
+                "unitCode": "MON",
+                "billingDuration": 1,
+                "unitText": "1인당 월"
+              }
             }
           ],
           "alternateName": [
@@ -152,7 +183,7 @@
           "publisher": {
             "@id": "https://pos.kr/#organization"
           },
-          "dateModified": "2026-10-12"
+          "dateModified": "2026-10-18"
         }
       ]
     }
@@ -324,6 +355,15 @@
 
         .plan-plus {
             background: var(--highlight-bg);
+        }
+
+        /* 부가 서비스 표 — 4열이라 본표보다 좁게 */
+        table.addon {
+            min-width: 640px;
+        }
+
+        table.addon td.desc {
+            text-align: left;
         }
 
         thead th.plan-plus {
@@ -860,6 +900,41 @@
             </table>
         </div>
 
+        <h2>부가 서비스</h2>
+
+        <div class="table-scroll">
+            <table class="addon">
+                <colgroup>
+                    <col style="width: 22%">
+                    <col style="width: 16%">
+                    <col style="width: 38%">
+                    <col style="width: 24%">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th>부가 서비스</th>
+                        <th>요금</th>
+                        <th>내용</th>
+                        <th>대상</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>회사별 맞춤 식수 리포트</th>
+                        <td class="price">1만원<small>월</small></td>
+                        <td class="desc">회사가 쓰는 엑셀 양식에 맞춰 식수 보고서 작성</td>
+                        <td>Super·Pro 추가 가능 · Plus 이상 포함</td>
+                    </tr>
+                    <tr>
+                        <th>식수 신청 관리</th>
+                        <td class="price">990원<small>1인당 월</small></td>
+                        <td class="desc">메뉴를 미리 알리고 식사 신청을 받아, 신청자에게만 식사 제공</td>
+                        <td>Pro·Plus 추가 가능 · Enterprise 포함</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
         <details class="fold">
             <summary>용어·조건 자세히 보기 <span class="cnt">10개 항목</span></summary>
             <div class="notes">
@@ -897,7 +972,7 @@
             </div>
         </details>
 
-        <p class="updated">2026-10-12 기준</p>
+        <p class="updated">2026-10-18 기준</p>
 
         <footer class="sitefoot">
             <p><a href="/">식수관리시스템 소개</a> | <a data-ga-event="cta_click_price_to_hambapos" href="/hamba-pos">함바포스 프로그램</a> | <a data-ga-event="cta_click_price_to_proposal" href="/proposal">도입 제안서</a> | <a
