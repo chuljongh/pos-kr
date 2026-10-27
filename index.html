@@ -276,6 +276,13 @@
             .char-fig { height: 96px; }
             .char-row--contact .char-fig { height: 110px; }
         }
+        /* 4·6번 카드 여백 (p-16 → 축소) */
+        .card-tight { padding: 2.5rem 3rem; }
+        @media (max-width: 640px) {
+            .card-tight { padding: 1.5rem 1.25rem; }
+            .card-tight li > span:first-child { margin-right: 1rem; }
+        }
+        @media (max-width: 1023px) { .card-tight-grid { gap: 2rem; } }
         @media (max-width: 360px) { .char-icon { height: 72px; margin-right: .75rem; } }
         @media (prefers-reduced-motion: reduce) { .char-fig { transition: none; } .char-row li:hover .char-fig, .char-row--contact .char-fig:hover { transform: none; } }
     </style>
@@ -1075,10 +1082,10 @@
                 </p>
             </div>
 
-            <div class="grid lg:grid-cols-2 gap-20">
+            <div class="grid lg:grid-cols-2 gap-20 card-tight-grid">
                 <div
-                    class="bg-gray-700 p-16 rounded-3xl shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 border border-gray-600 animate-slide-up">
-                    <div class="flex items-center mb-12">
+                    class="bg-gray-700 p-16 card-tight rounded-3xl shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 border border-gray-600 animate-slide-up">
+                    <div class="flex items-center mb-8">
                         <img class="char-icon" src="assets/char/businesswoman-phone-v2-360.webp" width="165" height="360" alt="" loading="lazy" decoding="async">
                         <h4 class="text-3xl font-extrabold text-white">관리자가 좋아하는 이유</h4>
                     </div>
@@ -1111,8 +1118,8 @@
                 </div>
 
                 <div
-                    class="bg-gray-700 p-16 rounded-3xl shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 border border-gray-600 animate-slide-up">
-                    <div class="flex items-center mb-12">
+                    class="bg-gray-700 p-16 card-tight rounded-3xl shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 border border-gray-600 animate-slide-up">
+                    <div class="flex items-center mb-8">
                         <img class="char-icon" src="assets/char/construction-phone-v2-360.webp" width="153" height="360" alt="" loading="lazy" decoding="async">
                         <h4 class="text-3xl font-extrabold text-white">직원들이 좋아하는 이유</h4>
                     </div>
@@ -1273,10 +1280,10 @@
                 </p>
             </div>
 
-            <div class="grid lg:grid-cols-2 gap-20">
+            <div class="grid lg:grid-cols-2 gap-20 card-tight-grid">
                 <div
-                    class="bg-gray-700 p-16 rounded-3xl shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 border border-gray-600 animate-slide-up">
-                    <div class="flex items-center mb-12">
+                    class="bg-gray-700 p-16 card-tight rounded-3xl shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 border border-gray-600 animate-slide-up">
+                    <div class="flex items-center mb-8">
                         <img class="char-icon" src="assets/char/owner-phone-v1-360.webp" width="176" height="360" alt="" loading="lazy" decoding="async">
                         <h4 class="text-3xl font-extrabold text-white">사장님/관리자 사용 방법</h4>
                     </div>
@@ -1310,8 +1317,8 @@
                 </div>
 
                 <div
-                    class="bg-gray-700 p-16 rounded-3xl shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 border border-gray-600 animate-slide-up">
-                    <div class="flex items-center mb-12">
+                    class="bg-gray-700 p-16 card-tight rounded-3xl shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 border border-gray-600 animate-slide-up">
+                    <div class="flex items-center mb-8">
                         <img class="char-icon" src="assets/char/dorm-phone-v2-360.webp" width="156" height="360" alt="" loading="lazy" decoding="async">
                         <h4 class="text-3xl font-extrabold text-white">식당 고객의 사용 방법</h4>
                     </div>
