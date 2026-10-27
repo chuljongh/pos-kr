@@ -74,6 +74,11 @@
         {
           "@type": "SoftwareApplication",
           "@id": "https://pos.kr/#giftcoin",
+          "image": [
+            "https://pos.kr/hamba/images/qr_payment.webp",
+            "https://pos.kr/hamba/images/Kiosk_payment.webp",
+            "https://pos.kr/hamba/images/kiosk_qr.webp"
+          ],
           "name": "Giftcoin 식수관리시스템",
           "alternateName": [
             "기프트코인",
@@ -191,6 +196,12 @@
         {
           "@type": "WebPage",
           "@id": "https://pos.kr/#webpage",
+          "primaryImageOfPage": {
+            "@type": "ImageObject",
+            "url": "https://pos.kr/mainImg.webp",
+            "width": 1600,
+            "height": 800
+          },
           "url": "https://pos.kr/",
           "name": "구내식당·함바 식수관리시스템 | 매장 장비 0원, 스마트폰 QR 식권 · pos.kr",
           "inLanguage": "ko-KR",
@@ -249,6 +260,24 @@
     </noscript>
 
     <link rel="stylesheet" href="css/index_B.css">
+    <style>
+        /* 3D 캐릭터 (assets/char, 원본 D:aa\characters) */
+        .char-icon { width: auto; height: 132px; margin-right: 2rem; flex-shrink: 0; filter: drop-shadow(0 8px 10px rgba(0, 0, 0, .35)); }
+        .char-row { display: flex; justify-content: center; align-items: flex-end; gap: 2.5rem; list-style: none; margin: 0 auto 4rem; padding: 0; }
+        .char-row li { display: flex; flex-direction: column; align-items: center; gap: .75rem; font-weight: 800; font-size: 1.125rem; color: #4b5563; }
+        .char-fig { width: auto; height: 180px; filter: drop-shadow(0 10px 10px rgba(0, 0, 0, .15)); transition: transform .3s; }
+        .char-row li:hover .char-fig, .char-row--contact .char-fig:hover { transform: translateY(-8px) rotate(-2deg); }
+        .char-row--contact { margin-bottom: 3rem; }
+        .char-row--contact .char-fig { height: 160px; filter: drop-shadow(0 10px 12px rgba(0, 0, 0, .5)); }
+        @media (max-width: 640px) {
+            .char-icon { height: 96px; margin-right: 1.25rem; }
+            .char-row { gap: .75rem; margin-bottom: 2.5rem; }
+            .char-row li { font-size: .8125rem; gap: .4rem; }
+            .char-fig { height: 96px; }
+            .char-row--contact .char-fig { height: 110px; }
+        }
+        @media (prefers-reduced-motion: reduce) { .char-fig { transition: none; } .char-row li:hover .char-fig, .char-row--contact .char-fig:hover { transform: none; } }
+    </style>
     <script src="/js/ga.js" defer></script>
 </head>
 
@@ -1049,12 +1078,7 @@
                 <div
                     class="bg-gray-700 p-16 rounded-3xl shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 border border-gray-600 animate-slide-up">
                     <div class="flex items-center mb-12">
-                        <div class="w-24 h-24 bg-primary rounded-3xl flex items-center justify-center mr-8">
-                            <svg class="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                                    clip-rule="evenodd"></path>
-                            </svg>
-                        </div>
+                        <img class="char-icon" src="assets/char/businesswoman-phone-v2-360.webp" width="165" height="360" alt="" loading="lazy" decoding="async">
                         <h4 class="text-3xl font-extrabold text-white">관리자가 좋아하는 이유</h4>
                     </div>
                     <ol class="space-y-10">
@@ -1088,18 +1112,7 @@
                 <div
                     class="bg-gray-700 p-16 rounded-3xl shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 border border-gray-600 animate-slide-up">
                     <div class="flex items-center mb-12">
-                        <div class="w-24 h-24 bg-accent rounded-3xl flex items-center justify-center mr-8">
-                            <svg class="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg">
-
-                                <g>
-                                    <path fill="none" d="M0 0h24v24H0z" />
-
-                                    <path
-                                        d="M12 11a5 5 0 0 1 5 5v6H7v-6a5 5 0 0 1 5-5zm-6.712 3.006a6.983 6.983 0 0 0-.28 1.65L5 16v6H2v-4.5a3.5 3.5 0 0 1 3.119-3.48l.17-.014zm13.424 0A3.501 3.501 0 0 1 22 17.5V22h-3v-6c0-.693-.1-1.362-.288-1.994zM5.5 8a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zm13 0a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM12 2a4 4 0 1 1 0 8 4 4 0 0 1 0-8z" />
-                                </g>
-                            </svg>
-                        </div>
+                        <img class="char-icon" src="assets/char/construction-phone-v2-360.webp" width="153" height="360" alt="" loading="lazy" decoding="async">
                         <h4 class="text-3xl font-extrabold text-white">직원들이 좋아하는 이유</h4>
                     </div>
                     <ol class="space-y-10">
@@ -1151,6 +1164,13 @@
                 </p>
             </div>
 
+            <ul class="char-row char-row--cases">
+                <li><img class="char-fig" src="assets/char/construction-phone-v1-360.webp" width="163" height="360" alt="" loading="lazy" decoding="async"><span>공사 현장</span></li>
+                <li><img class="char-fig" src="assets/char/office-v2-360.webp" width="155" height="360" alt="" loading="lazy" decoding="async"><span>회사</span></li>
+                <li><img class="char-fig" src="assets/char/doctor-phone-v2b-360.webp" width="161" height="360" alt="" loading="lazy" decoding="async"><span>병원</span></li>
+                <li><img class="char-fig" src="assets/char/dorm-phone-v2-360.webp" width="156" height="360" alt="" loading="lazy" decoding="async"><span>기숙사</span></li>
+                <li><img class="char-fig" src="assets/char/student-v2-360.webp" width="151" height="360" alt="" loading="lazy" decoding="async"><span>학교·교육기관</span></li>
+            </ul>
             <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
                 <!-- Items (Card Style) -->
                 <div
@@ -1757,6 +1777,11 @@
                         /%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-40"></div>
 
                     <div class="max-w-6xl mx-auto text-center relative z-10">
+                        <div class="char-row char-row--contact" aria-hidden="true">
+                            <img class="char-fig" src="assets/char/businessman-phone-v1-360.webp" width="166" height="360" alt="" loading="lazy" decoding="async">
+                            <img class="char-fig" src="assets/char/businesswoman-phone-v1-360.webp" width="173" height="360" alt="" loading="lazy" decoding="async">
+                            <img class="char-fig" src="assets/char/office-v1-360.webp" width="156" height="360" alt="" loading="lazy" decoding="async">
+                        </div>
                         <h2 class="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-12 leading-tight">
                             <span class="text-white">RFID카드/리더기 비용 0원! </span><span class="text-primary">맞춤 정산 자동화
                                 데모</span>를 지금 요청하세요!

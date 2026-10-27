@@ -52,6 +52,11 @@
         {
           "@type": "SoftwareApplication",
           "@id": "https://pos.kr/#giftcoin",
+          "image": [
+            "https://pos.kr/hamba/images/qr_payment.webp",
+            "https://pos.kr/hamba/images/Kiosk_payment.webp",
+            "https://pos.kr/hamba/images/kiosk_qr.webp"
+          ],
           "name": "Giftcoin 식수관리시스템",
           "applicationCategory": "BusinessApplication",
           "operatingSystem": "Android, iOS, Web",
@@ -239,6 +244,26 @@
         h1 {
             font-size: 26px;
             margin: 0 0 6px;
+        }
+
+        /* 3D 캐릭터 (assets/char) — 인쇄에서는 숨김 */
+        .price-char {
+            float: right;
+            width: auto;
+            height: 200px;
+            margin: 4px 24px 0 16px;
+            filter: drop-shadow(0 10px 10px rgba(0, 0, 0, .15));
+        }
+
+        .price-char ~ h2 {
+            clear: right;
+        }
+
+        @media (max-width: 640px) {
+            .price-char {
+                height: 96px;
+                margin: 0 0 0 8px;
+            }
         }
 
         /* 가격을 먼저, 조건은 그 아래 — 표에 닿기 전 읽을 글자를 최소화한다 */
@@ -656,6 +681,7 @@
         @media print {
 
             .print-bar,
+            .price-char,
             .sitefoot,
             .menu-fixed,
             details.fold>summary {
@@ -771,6 +797,7 @@
             <button data-ga-event="cta_click_price_print" type="button" onclick="printAs('landscape')">가로 모드 인쇄</button>
             <button data-ga-event="cta_click_price_print" type="button" onclick="printAs('portrait')">세로 모드 인쇄</button>
         </div>
+        <img class="price-char" src="/assets/char/businesswoman-phone-v1-720.webp" width="345" height="720" alt="" decoding="async">
         <h1>구내식당·함바 식수관리시스템 요금제</h1>
 
         <p class="lead">일단 고객을 확보하고 매출부터 만드세요.</p>

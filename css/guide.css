@@ -259,3 +259,20 @@ article a { color: var(--accent); font-weight: 700; }
     .guide-list .card { padding: 24px 20px; }
     .guide-list h2 { font-size: 25px; }
 }
+
+/* ===== 3D 캐릭터 (assets/char) ===== */
+.hero-foot { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; }
+.hero-foot .meta { margin-bottom: 0; }
+.hero-chars { display: flex; align-items: flex-end; gap: 4px; flex-shrink: 0; margin-bottom: -56px; }
+.hero-chars img { width: auto; height: 150px; filter: drop-shadow(0 10px 10px rgba(0, 0, 0, 0.15)); }
+.card--char { display: flex; align-items: center; gap: 22px; }
+.card--char > img { width: auto; height: 110px; flex-shrink: 0; filter: drop-shadow(0 6px 6px rgba(0, 0, 0, 0.12)); }
+
+@media (max-width: 640px) {
+    .hero-chars { margin-bottom: -44px; }
+    .hero-foot { gap: 10px; }
+    .hero-chars { gap: 2px; }
+    .hero-chars img { height: 84px; }
+    .card--char { display: block; }
+    .card--char > img { float: right; height: 64px; margin: 0 0 6px 10px; }
+}

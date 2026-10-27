@@ -52,6 +52,11 @@
         {
           "@type": "SoftwareApplication",
           "@id": "https://pos.kr/#giftcoin",
+          "image": [
+            "https://pos.kr/hamba/images/qr_payment.webp",
+            "https://pos.kr/hamba/images/Kiosk_payment.webp",
+            "https://pos.kr/hamba/images/kiosk_qr.webp"
+          ],
           "name": "Giftcoin 식수관리시스템",
           "alternateName": [
             "기프트코인",
@@ -125,6 +130,12 @@
         {
           "@type": "WebPage",
           "@id": "https://pos.kr/hamba-pos#webpage",
+          "primaryImageOfPage": {
+            "@type": "ImageObject",
+            "url": "https://pos.kr/assets/char/construction-phone-v2-720.webp",
+            "width": 307,
+            "height": 720
+          },
           "url": "https://pos.kr/hamba-pos",
           "name": "함바포스 프로그램 | 매장 PC·스캐너 없이 스마트폰 QR 식수관리 · pos.kr",
           "inLanguage": "ko-KR",
@@ -347,6 +358,15 @@
 
         .closer .btn:hover { background: var(--primary-light); }
 
+        /* ===== 3D 캐릭터 (assets/char) ===== */
+        .hero-foot { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; }
+
+        .hero-chars { display: flex; align-items: flex-end; gap: 6px; margin-bottom: -56px; }
+
+        .hero-chars img { width: auto; height: 170px; filter: drop-shadow(0 10px 10px rgba(0, 0, 0, 0.15)); }
+
+        .closer-char { display: block; width: auto; height: 130px; margin: -20px auto 18px; filter: drop-shadow(0 10px 10px rgba(0, 0, 0, 0.25)); }
+
         /* ===== 푸터 ===== */
         footer { padding: 50px 0 68px; font-size: 18px; color: var(--ink-soft); line-height: 1.7; }
 
@@ -366,6 +386,9 @@
             .stat { display: flex; align-items: baseline; justify-content: center; gap: 12px; padding: 18px 14px; }
             .stat .num { font-size: 46px; }
             .stat p { margin-top: 0; font-size: 19px; }
+            .hero-chars img { height: 120px; }
+            .hero-chars { margin-bottom: -44px; }
+            .closer-char { height: 100px; }
         }
     </style>
     <script src="/js/ga.js" defer></script>
@@ -397,7 +420,13 @@
                 </div>
             </div>
 
-            <a data-ga-event="cta_click_hambapos_to_contact" class="btn" href="/#contact">데모 신청하기 →</a>
+            <div class="hero-foot">
+                <a data-ga-event="cta_click_hambapos_to_contact" class="btn" href="/#contact">데모 신청하기 →</a>
+                <div class="hero-chars">
+                    <img src="/assets/char/construction-phone-v2-360.webp" width="153" height="360" alt="스마트폰 QR을 보여주는 함바식당 이용 근로자 캐릭터" decoding="async">
+                    <img src="/assets/char/construction-phone-v1-360.webp" width="163" height="360" alt="" decoding="async">
+                </div>
+            </div>
         </div>
     </header>
 
@@ -515,6 +544,7 @@
 
     <section class="closer">
         <div class="wrap">
+            <img class="closer-char" src="/assets/char/businessman-phone-v2-360.webp" width="162" height="360" alt="" loading="lazy" decoding="async">
             <h2>먼저 보고 결정하세요</h2>
             <p>현장 상황을 알려주시면 그에 맞춰 시연해 드립니다.</p>
             <a data-ga-event="cta_click_hambapos_to_contact" class="btn" href="/#contact">데모 신청하기 →</a>
