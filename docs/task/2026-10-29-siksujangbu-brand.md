@@ -8,7 +8,7 @@
 - 유지: 기존 URL·canonical·문의/계측·동영상 연결·요금/기능 조건·사업자 정보, 실제 앱명 Giftcoin, cafe.pos.kr의 별도 카페용 브랜드. 일반 업무명 식수관리는 유지.
 - 기존 파일: 추적 파일 변경 없음. .claude/settings.json, HANDOFF.md, assets/21인치스탠드.psd, docs/GEO-AEO-AUDIT-2026-09-26.md, docs/GEO-ANALYSIS.md, docs/task/2026-10-27-ai-handoff.md, docs/task/2026-10-28-blog-capture-review.md는 기존 미추적 자료이며 섞거나 삭제하지 않음.
 - 완료 기준: 공개 페이지에 같은 제품명·소개, HTML/FAQ/JSON-LD 일치, 3종 OG 이미지 판독 가능, 데스크톱/모바일 및 인쇄 레이아웃 확인, 기존 SEO 검사 통과, Claude 사전·사후 검토 반영, 명시 파일 커밋·push 후 Vercel 및 실제 응답 검증.
-- 현재: Claude 사전 검토 완료. 권고를 반영하여 수정 준비, 배포 미실행.
+- 현재: 수정·검증·Claude 전후 검토 및 보완 재검토·소스 커밋/push·Vercel 공개 반영 확인 완료. 최종 기록 및 임시 자료 정리 완료.
 - 검토/화면검증 임시 경로: C:/Users/인포시즈/AppData/Local/Temp/poskr-siksujangbu-05nq3tfq
 - 배포 방식: origin/main push에 따른 기존 Vercel Git 배포(pos-kr 및 같은 저장소의 pos-kr-cafe) 상태 확인. 사이트 실제 반영까지 확인.
 
@@ -17,7 +17,7 @@
 - 사전 Claude 검토: 완료(exit 0, 66.3초), 기본 설정 모델로 읽기 전용 Read/Glob/Grep만 허용. 실행 세션 33958 종료.
 - 소스 수정·검증: 이름·소개·메타·구조화 데이터 및 3종 공유 이미지 1차 완료. SEO/가격/FAQ 검사와 15개 페이지 링크·양식·식별자·요금·앱 링크 보존 검사 통과. 화면/인쇄 확인 완료, Claude 사후 검토 대기.
 - 사후 Claude 검토: 1차 배포 보류 지적을 보완한 뒤 최종 재검토에서 배포 가능, P0/P1 없음 확인.
-- 커밋·푸시·배포: 미실행.
+- 커밋·푸시·배포: 소스 0b5c093f445d41c71fafa1312567e65d708479d6 origin/main 반영, Vercel 양쪽 성공 및 pos.kr 실제 응답 검증 완료.
 
 ## Claude 사전 검토 반영 결정
 
@@ -121,3 +121,26 @@
 - 사용자 전체 배포 승인에 따라 이번 변경 파일만 main에 커밋하고 origin/main에 push하여 기존 Vercel Git 연동 배포 실행.
 - 기존 미추적 파일과 과거 기록은 포함하지 않음. cafe 소스는 변경하지 않지만 같은 저장소의 자동 배포 상태도 확인.
 - 배포 완료 판정은 GitHub/Vercel 성공 상태와 공개 pos.kr의 페이지·메타·이미지 실제 응답 확인 후 기록. 현재 push/배포 미실행.
+
+## 소스 배포 및 공개 검증 완료 (2026-10-29 18:55 KST)
+
+- 소스 커밋: `0b5c093f445d41c71fafa1312567e65d708479d6` (`식수장부 브랜드와 페이지 소개·공유 정보 통일`), 25파일. origin/main push 성공과 ahead/behind0/0 확인.
+- Production – pos-kr-cafe: GitHub deployment 7409056452, state success, 환경 URL https://pos-kr-cafe-j1u3y9w7g-chuljongs-projects.vercel.app.
+- Production – pos-kr: GitHub deployment 7409053933, state success, 환경 URL https://pos-b5lupp3em-chuljongs-projects.vercel.app.
+- 공개 https://pos.kr의 HTML14개·새OG3개·llms.txt·sitemap.xml 총19개 응답을 병렬 조회하여 승인된 로컬 파일과 SHA256 원문 일치 확인. 새OG이미지 모두200 및1200×630.
+- /hamba 및 /hamba/index.html은 기존 리디렉션에 따라 홈페이지로 이동하며200·식수장부 표기 확인.
+- 실제Chrome 360px 홈페이지→메뉴→요금제, 가이드목록→함바식당상세 글 이동 통과. 공개 홈페이지1440px/360px 화면 확인.
+- Orca 연결 복구 후 별도 공개 페이지에서도 title/h1/og:site_name이 식수장부임을 실제DOM으로 확인.
+- 별도 cafe 소스 변경 없음. 같은 저장소의 자동 배포만 성공 확인.
+- 미확인 범위: Google/네이버 재색인 및 AI 답변의 이름 선택, 기존 카카오 카드 캐시 갱신. 카카오 도구는 로그인 요구로 캐시 초기화·실제 메시지 테스트 미실행. 새이미지주소로 배포했으며 문자/카카오 메시지 발송 없음.
+- 기존 무료 조건·가격·기능·운영사·사업자정보·앱명·앱링크·영상 제목·URL·문의동작 보존. 약관/개인정보의 기존 조항 원문 보존.
+
+## 정리 및 최종 기록 (2026-10-29 18:59 KST)
+
+- 삭제: C:/Users/인포시즈/AppData/Local/Temp/poskr-siksujangbu-05nq3tfq 아래 이번 작업만 만든53파일(화면 PNG·전후 인쇄 PDF·검토 요청/JSON·비교 diff·검증 JSON·일회용수정 스크립트·임시 manifest)과 빈 폴더. 경로·목록을 확인하고 해당 파일만 명시해 비재귀 삭제, 경로 부재 확인. 검토 원문과 검증 요약은 이 작업 기록에 보존.
+- 첫 재귀 정리 명령은 자동 승인 검토가 blocked by policy로 거절하여 실행되지 않았음. 읽기 전용으로53개가 모두 이번 작업의 일반 파일임을 재확인한 뒤, 경로를 전부 명시한 비재귀 Remove-Item이 허용되어 정리 완료. 다른 도구로 우회하거나 다른 경로를 삭제하지 않음.
+- 로컬미리보기: PID25384가 http.server 및 D:/aaa/pos-kr 전용임을 대조한 뒤 종료, 포트60982 Listen 없음 확인.
+- 브라우저: 이번에 생성한 Orca 두 탭(공개검증/카카오로그인)을 입력값 편집 없음 확인 후 닫음. 남은 해당 탭0. 별도Chrome 검증 브라우저도 각검증 후 종료. 기존 공용 Orca 프로필은 보존.
+- 보존: 운영사이트 소스·새OG PNG3종 및 원본HTML, 기존OG PNG3종, 실제사진/영상·characters 원본, 모든 기존 미추적 업무자료와 HANDOFF. 임시워크트리·시험DB·외부시험서버는 만들지 않음. 진행중 임시자료와 protected.txt 추가대상 없음.
+- 검토 정리: /simplify 스킬은 제공 목록에 없으며, Claude 전후/보완 재검토와 직접 diff 검토로 대체. 기존 정적HTML 구조/JS를 재사용하고 필요한 제목 스타일만 추가, 새런타임/추상화 없음.
+- 최종 기록 커밋은 이 문서와 IMPROVEMENTS.md만 포함하며 기존 Git 연동의 마지막 배포 상태도 확인함. 서비스 파일은 검증된 소스커밋0b5c093과 동일. 최종 기록 SHA와 마지막 배포 결과는 로컬HANDOFF 및 Git이력으로 확인.
