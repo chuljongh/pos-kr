@@ -1,0 +1,189 @@
+{
+  "sitemap_url_count": 12,
+  "site": "https://pos.kr/",
+  "naver": {
+    "urls": [
+      {
+        "evidence": "네이버 웹 페이지 수집 요청 내역 행",
+        "status": "request_accepted",
+        "url": "https://pos.kr/guide/vs-meal-voucher-apps",
+        "registered_at_kst": "2026-10-29 23:55:20",
+        "crawl_completed_verified": false
+      },
+      {
+        "evidence": "네이버 웹 페이지 수집 요청 내역 행",
+        "status": "request_accepted",
+        "url": "https://pos.kr/guide/hamba-meal-count",
+        "registered_at_kst": "2026-10-29 23:55:11",
+        "crawl_completed_verified": false
+      },
+      {
+        "evidence": "네이버 웹 페이지 수집 요청 내역 행",
+        "status": "request_accepted",
+        "url": "https://pos.kr/guide/compare-systems",
+        "registered_at_kst": "2026-10-29 23:55:03",
+        "crawl_completed_verified": false
+      },
+      {
+        "evidence": "네이버 웹 페이지 수집 요청 내역 행",
+        "status": "request_accepted",
+        "url": "https://pos.kr/proposal",
+        "registered_at_kst": "2026-10-29 23:54:54",
+        "crawl_completed_verified": false
+      },
+      {
+        "evidence": "네이버 웹 페이지 수집 요청 내역 행",
+        "status": "request_accepted",
+        "url": "https://pos.kr/hamba-pos",
+        "registered_at_kst": "2026-10-29 23:54:46",
+        "crawl_completed_verified": false
+      },
+      {
+        "evidence": "네이버 웹 페이지 수집 요청 내역 행",
+        "status": "request_accepted",
+        "url": "https://pos.kr/guide/individual-distribution",
+        "registered_at_kst": "2026-10-29 23:54:37",
+        "crawl_completed_verified": false
+      },
+      {
+        "evidence": "네이버 웹 페이지 수집 요청 내역 행",
+        "status": "request_accepted",
+        "url": "https://pos.kr/guide/prevent-proxy-meals",
+        "registered_at_kst": "2026-10-29 23:54:28",
+        "crawl_completed_verified": false
+      },
+      {
+        "evidence": "네이버 웹 페이지 수집 요청 내역 행",
+        "status": "request_accepted",
+        "url": "https://pos.kr/guide",
+        "registered_at_kst": "2026-10-29 23:54:20",
+        "crawl_completed_verified": false
+      },
+      {
+        "evidence": "네이버 웹 페이지 수집 요청 내역 행",
+        "status": "request_accepted",
+        "url": "https://pos.kr/price",
+        "registered_at_kst": "2026-10-29 23:53:29",
+        "crawl_completed_verified": false
+      },
+      {
+        "evidence": "네이버 웹 페이지 수집 요청 내역 행",
+        "status": "request_accepted",
+        "url": "https://pos.kr/",
+        "registered_at_kst": "2026-10-29 23:48:06",
+        "crawl_completed_verified": false
+      }
+    ],
+    "sitemap": {
+      "resubmitted": false,
+      "status": "registered_existing",
+      "url": "https://pos.kr/sitemap.xml",
+      "registered_at_kst": "2025-10-15 19:10:02"
+    }
+  },
+  "verified_at_kst": "2026-10-30 00:06:44",
+  "note": "요청 접수는 실제 재수집·검색 반영·AI 추천을 보장하지 않음. 사이트맵의 이용약관/개인정보 페이지 2개는 수동 요청 대상에서 제외.",
+  "sitemap_url": "https://pos.kr/sitemap.xml",
+  "source_commit": "5a7e30b65b2dfd18779c52c399c153628a3ae793",
+  "google": {
+    "urls": [
+      {
+        "google_selected_canonical": "https://pos.kr/",
+        "declared_canonical": "https://pos.kr/",
+        "new_brand_indexed_verified": false,
+        "evidence": "색인 생성 요청됨 / 우선순위 크롤링 대기열 추가",
+        "last_indexed_crawl_at_kst": "2026-10-29 09:56:50",
+        "url": "https://pos.kr/",
+        "status": "indexing_request_accepted",
+        "verified_at_kst": "2026-10-29 23:52:40"
+      },
+      {
+        "url": "https://pos.kr/guide/prevent-proxy-meals",
+        "status": "indexing_request_accepted",
+        "request_started_at_kst": "2026-10-29 23:57:02",
+        "new_brand_indexed_verified": false,
+        "verified_at_kst": "2026-10-29 23:57:13",
+        "evidence": "색인 생성 요청됨 / 우선순위 크롤링 대기열 추가"
+      },
+      {
+        "url": "https://pos.kr/guide/individual-distribution",
+        "status": "indexing_request_accepted",
+        "request_started_at_kst": "2026-10-29 23:57:18",
+        "new_brand_indexed_verified": false,
+        "verified_at_kst": "2026-10-29 23:57:29",
+        "evidence": "색인 생성 요청됨 / 우선순위 크롤링 대기열 추가"
+      },
+      {
+        "url": "https://pos.kr/guide",
+        "status": "indexing_request_accepted",
+        "request_started_at_kst": "2026-10-29 23:57:34",
+        "new_brand_indexed_verified": false,
+        "verified_at_kst": "2026-10-29 23:57:43",
+        "evidence": "색인 생성 요청됨 / 우선순위 크롤링 대기열 추가"
+      },
+      {
+        "url": "https://pos.kr/price",
+        "status": "indexing_request_accepted",
+        "request_started_at_kst": "2026-10-29 23:57:47",
+        "new_brand_indexed_verified": false,
+        "verified_at_kst": "2026-10-29 23:58:03",
+        "evidence": "색인 생성 요청됨 / 우선순위 크롤링 대기열 추가"
+      },
+      {
+        "url": "https://pos.kr/hamba-pos",
+        "status": "indexing_request_accepted",
+        "request_started_at_kst": "2026-10-29 23:58:09",
+        "new_brand_indexed_verified": false,
+        "verified_at_kst": "2026-10-29 23:58:24",
+        "evidence": "색인 생성 요청됨 / 우선순위 크롤링 대기열 추가"
+      },
+      {
+        "url": "https://pos.kr/proposal",
+        "status": "indexing_request_accepted",
+        "request_started_at_kst": "2026-10-29 23:58:29",
+        "new_brand_indexed_verified": false,
+        "verified_at_kst": "2026-10-29 23:58:42",
+        "evidence": "색인 생성 요청됨 / 우선순위 크롤링 대기열 추가"
+      },
+      {
+        "url": "https://pos.kr/guide/compare-systems",
+        "status": "indexing_request_accepted",
+        "request_started_at_kst": "2026-10-29 23:58:47",
+        "new_brand_indexed_verified": false,
+        "verified_at_kst": "2026-10-29 23:59:02",
+        "evidence": "색인 생성 요청됨 / 우선순위 크롤링 대기열 추가"
+      },
+      {
+        "url": "https://pos.kr/guide/hamba-meal-count",
+        "status": "indexing_request_accepted",
+        "request_started_at_kst": "2026-10-29 23:59:07",
+        "new_brand_indexed_verified": false,
+        "verified_at_kst": "2026-10-29 23:59:18",
+        "evidence": "색인 생성 요청됨 / 우선순위 크롤링 대기열 추가"
+      },
+      {
+        "url": "https://pos.kr/guide/vs-meal-voucher-apps",
+        "status": "indexing_request_accepted",
+        "request_started_at_kst": "2026-10-29 23:59:23",
+        "new_brand_indexed_verified": false,
+        "verified_at_kst": "2026-10-29 23:59:34",
+        "evidence": "색인 생성 요청됨 / 우선순위 크롤링 대기열 추가"
+      }
+    ],
+    "sitemap": {
+      "previous_discovered_pages": 12,
+      "request_started_at_kst": "2026-10-30 00:02:54",
+      "previous_status": "성공",
+      "previous_last_read_date_kst": "2026-10-20",
+      "url": "https://pos.kr/sitemap.xml",
+      "status": "resubmission_accepted",
+      "verified_at_kst": "2026-10-30 00:03:51",
+      "evidence": "사이트맵이 제출됨 성공 대화상자",
+      "submitted_date_kst": "2026-10-30",
+      "last_read_date_kst": "2026-10-20",
+      "displayed_status": "성공",
+      "discovered_pages": 12,
+      "new_sitemap_read_verified": false
+    }
+  }
+}
