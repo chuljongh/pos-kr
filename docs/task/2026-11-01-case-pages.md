@@ -60,3 +60,17 @@
 - 최종본에서 stdlib SEO16/선택 Pillow 이미지 검사/UTF-8 무결성/git diff --check 재통과. 기존13개 보호 파일이 기준 커밋과 동일함을 재확인. 화면·영상 검사는 앞서 최종 레이아웃 기준 통과했고 이번 변경은 두 페이지의 짧은 문장만 해당.
 - /simplify 스킬이 제공되지 않아 CSS 공통화, 작은 이벤트 위임 JS, 검사 코드의 중복·오탐·불필요한 추상화를 직접 검토하는 대체 검토 수행. 재작업 반영 후 추가 코드 수정 불필요.
 - 다음 실행: 이번32개 산출물만 명시적으로 stage/commit/push하여 기존 Git 연동 Vercel 운영 자동 배포. 실제 성공 및 공개 응답 확인 전 완료로 보고하지 않음. HANDOFF와 기존 미추적8개 및 일회용 사진 변환 스크립트는 커밋 제외.
+
+## 운영 반영·정리 결과 (2026-11-01 01:58:14 KST)
+
+- 소스 커밋 892228b2b25b5a3e8af87f9a7b8e7555b8987247, main → origin/main push 성공. 다른 작업 변경과 기존8개 미추적 파일 제외, 이번32개만 포함.
+- Vercel Production – pos-kr 배포7461525395 success: https://pos-f5y6do8yo-chuljongs-projects.vercel.app (프로젝트 배포 BiRp1wc4DSqGCR1nys49k9gmeXFK).
+- 같은 Git 연동의 Production – pos-kr-cafe 배포7461526340 success: https://pos-kr-cafe-qxd01e89a-chuljongs-projects.vercel.app. 카페 서비스 소스 수정 없음.
+- 공개22개 응답(신규HTML4, 메인/가이드2, CSS/JS2, llms/sitemap2, 현장 이미지12) HTTP200 및 해당 소스 커밋의 실제 바이트와 전부 일치. 네 사례 URL의 최종 주소·canonical·H1·noindex 없음 확인. cafe.pos.kr HTTP200 확인.
+- 공개 주소: https://pos.kr/cases, https://pos.kr/cases/cheongunjae, https://pos.kr/cases/kcci-gwangju, https://pos.kr/cases/durimiga.
+- 실제 소유를 확인해 이번 로컬 미리보기 서버PID27712/port62573 종료, 이번 Orca 탭d9a7c8cb-8ce9-471f-9905-a6654890ff5c 닫기 성공.
+- 삭제 완료: D:/tmp/pos-kr-cases-20261101 안의 이번 시험 스크린샷22개·Gemini 실행 로그5개 및 폴더, 미추적 일회용 scripts/prepare-case-assets.py. 절대경로·파일 목록·원격에 없는 커밋0·추적 변경없음을 확인한 후 native PowerShell로 삭제, 부재 확인. 배포된 코드·사진·업무 기록은 삭제하지 않음.
+- 보존: 바탕화면 실제 원본 사진·영상·원문 엑셀 이미지, 신규 운영 사진12개, 제작/검토/작업 문서, 기존 미추적8개(.claude/settings.json, HANDOFF.md, assets/21인치스탠드.psd, docs/GEO-AEO-AUDIT-2026-09-26.md, docs/GEO-ANALYSIS.md, docs/task/2026-10-27-ai-handoff.md, docs/task/2026-10-28-blog-capture-review.md, docs/task/2026-10-31-search-brand-check.md).
+- 별도 원격 시험 서버·시험 DB·임시 워크트리·영구 브라우저 프로필은 생성하지 않음. 남길 진행 중 임시 자료가 없어 cleanup/protected.txt 추가 대상 없음. 과거 PID가 재사용된 다른 프로세스는 건드리지 않음.
+- 현재 제작·게시 요청은 완료. 청운재의 정확한 시작일은 확인 전이라 생략했으며, 신규 URL의 Google·네이버 색인 및 AI 추천 반영은 아직 확인하지 않음. 검색 순위·AI 인용을 보장하는 표현은 넣지 않음.
+- 이 결과와 IMPROVEMENTS 완료 항목은 문서 전용 후속 커밋으로 보존하며, 해당 push의 자동 배포도 확인한다. 웹 소스는 추가 변경하지 않음.
