@@ -44,17 +44,28 @@ class Page(HTMLParser):
         self.schemas = []
         self.script = None
         self.skip = 0
+        self.guide_list_ul_depth = 0
+        self.guide_list_hrefs = []
         self.feed(text)
 
     def handle_starttag(self, tag, attrs):
         attrs = dict(attrs)
         self.tags.append((tag, attrs))
+        if self.guide_list_ul_depth > 0:
+            if tag == 'ul':
+                self.guide_list_ul_depth += 1
+            elif tag == 'a' and attrs.get('href'):
+                self.guide_list_hrefs.append(attrs['href'])
+        elif tag == 'ul' and 'guide-list' in attrs.get('class', '').split():
+            self.guide_list_ul_depth = 1
         if tag in ('script', 'style'):
             self.skip += 1
         if tag == 'script' and attrs.get('type') == 'application/ld+json':
             self.script = []
 
     def handle_endtag(self, tag):
+        if tag == 'ul' and self.guide_list_ul_depth > 0:
+            self.guide_list_ul_depth -= 1
         if tag == 'script' and self.script is not None:
             self.schemas.append(json.loads(''.join(self.script)))
             self.script = None
@@ -252,15 +263,33 @@ def main():
             ]
             check(len(direct_links) >= 1, f'{rel}: missing direct YouTube watch link with rel=noopener')
 
-    # Verify llms.txt includes all 4 case URLs
+    # Verify llms.txt includes all 4 case URLs and guide collection integrity
     llms_text = (ROOT / 'llms.txt').read_text(encoding='utf-8')
-    for case_url in (
+    for required_url in (
         'https://pos.kr/cases',
         'https://pos.kr/cases/cheongunjae',
         'https://pos.kr/cases/kcci-gwangju',
         'https://pos.kr/cases/durimiga',
+        'https://pos.kr/guide/meal-preorder',
     ):
-        check(case_url in llms_text, f'llms.txt: missing {case_url}')
+        check(required_url in llms_text, f'llms.txt: missing {required_url}')
+
+    guide_hub = pages['guide.html']
+    guide_graph = guide_hub.schemas[0]['@graph']
+    guide_types = {n.get('@type') for n in guide_graph}
+    check({'CollectionPage', 'ItemList', 'BreadcrumbList'} <= guide_types, 'guide.html: missing collection schemas')
+    guide_item_list = next(n for n in guide_graph if n.get('@type') == 'ItemList')
+    guide_files = sorted((ROOT / 'guide').glob('*.html'))
+    expected_guide_paths = ['/' + f.relative_to(ROOT).as_posix().removesuffix('.html') for f in guide_files]
+    expected_guide_urls = {BASE.rstrip('/') + p for p in expected_guide_paths}
+    actual_guide_urls = [item['url'] for item in guide_item_list['itemListElement']]
+    check(guide_item_list.get('numberOfItems') == len(guide_files), 'guide.html: numberOfItems mismatch')
+    check(len(actual_guide_urls) == len(guide_files) and set(actual_guide_urls) == expected_guide_urls, 'guide.html: ItemList URLs mismatch')
+    check(
+        len(guide_hub.guide_list_hrefs) == len(expected_guide_paths)
+        and set(guide_hub.guide_list_hrefs) == set(expected_guide_paths),
+        'guide.html: ul.guide-list card links mismatch',
+    )
 
     price = next(n for n in pages['price.html'].schemas[0]['@graph'] if n['@type'] == 'SoftwareApplication')
     super_price = int(next(o['price'] for o in price['offers'] if o['name'] == 'Super'))

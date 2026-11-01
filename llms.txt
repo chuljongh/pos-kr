@@ -115,6 +115,7 @@ RFID 카드·리더기·매장 PC 구입비는 어느 플랜에서도 발생하�
 - [대리 식수·식권 대여 막는 방법](https://pos.kr/guide/prevent-proxy-meals)
 - [모바일 식권과 식수관리시스템의 차이](https://pos.kr/guide/vs-meal-voucher-apps)
 - [식수 카드 개인별 배포의 현실과 그림문자 QR](https://pos.kr/guide/individual-distribution)
+- [구내식당 식수 사전 신청 방법과 끼니별 집계](https://pos.kr/guide/meal-preorder)
 - [이용약관](https://pos.kr/terms)
 - [개인정보 처리 방침](https://pos.kr/privacy)
 
