@@ -65,7 +65,7 @@ img, iframe {
 
 .wrap {
     width: 100%;
-    max-width: 1100px;
+    max-width: 1080px;
     margin: 0 auto;
     padding: 0 22px;
 }
@@ -318,6 +318,10 @@ header.hero .sub {
 }
 
 /* ===== 본문 섹션 & 카드 ===== */
+main p, main article .wrap > ul, main article .wrap > ol {
+    max-width: 800px;
+}
+
 section {
     padding: 56px 0;
 }

@@ -52,6 +52,9 @@ body {
 /* 가격표와 같은 본문 폭. 작은 화면에서는 좌우 여백을 유지합니다. */
 .wrap { width: 100%; max-width: 1080px; margin: 0 auto; padding: 0 22px; }
 
+/* 카드·표는 기본 폭을 쓰고, 긴 문단·본문 목록은 읽기 폭을 유지합니다. */
+main p, main article .wrap > ul, main article .wrap > ol { max-width: 800px; }
+
 h1, h2, h3 { color: var(--ink); letter-spacing: -0.04em; line-height: 1.32; }
 
 /* ===== 히어로: 화이트 캔버스 + 레드 1포인트 (§2.1) ===== */
