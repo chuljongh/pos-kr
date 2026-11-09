@@ -308,6 +308,8 @@
         @media (prefers-reduced-motion: reduce) { .char-fig { transition: none; } .char-row li:hover .char-fig, .char-row--contact .char-fig:hover { transform: none; } }
         .brand-definition { word-break:keep-all; }
         .brand-category { display:block; margin-top:1rem; font-size:clamp(1.125rem,3.5vw,2rem); line-height:1.5; }
+        .initial-cost-amount { font-weight: 700; color: #d11927; }
+        .initial-cost-note { font-size: 1rem; line-height: 1.5; font-weight: 400; color: #4b5563; }
         /* 운영 목적별 도입 사례 선택 카드 (#case-studies) */
         .case-select-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
         @media (min-width: 1024px) {
@@ -544,8 +546,9 @@
                                                 d="M5 13l4 4L19 7"></path>
                                         </svg>
                                         <div>
-                                            <span class="font-bold text-primary">50명 이하 0원</span><br>
-                                            <span class="text-gray-600">모든 프로그램에 동일 적용</span>
+                                            <span class="initial-cost-amount">15~38만원</span><br>
+                                            <span class="initial-cost-note">50명 이하 0원</span><br>
+                                            <span class="initial-cost-note">모든 프로그램에 동일 적용</span>
                                         </div>
                                     </div>
                                 </td>
@@ -797,8 +800,9 @@
                         </tr>
                         <tr class="bg-primary-light">
                             <th scope="row" class="px-6 py-5 font-extrabold text-primary">식수장부(모바일 QR)</th>
-                            <td class="px-6 py-5 font-bold">50명 이하 0원<br><span class="text-gray-600 text-xs">소속인원 50명
-                                    이하면 가입비·구독료 무료. <a href="/price" class="text-primary font-bold"
+                            <td class="px-6 py-5"><span class="initial-cost-amount">15~38만원</span><br>
+                                <span class="initial-cost-note">50명 이하 0원<br>모든 프로그램에 동일 적용.
+                                    <a href="/price" class="text-primary font-bold"
                                         style="text-decoration:underline"
                                         data-ga-event="cta_click_compare_to_price">요금제</a></span></td>
                             <td class="px-6 py-5 font-bold">없음 — 스마트폰 1대<br><span class="text-gray-600 text-xs">안 쓰는 폰이
