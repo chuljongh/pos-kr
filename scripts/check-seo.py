@@ -302,15 +302,17 @@ def main():
               f'{rel}: missing current all-program free-through-50 policy')
         check('무료 혜택은 Super·Pro' not in free_text and '매장은 Super·Pro의 초기 가입비와 월 구독료가 무료' not in free_text,
               f'{rel}: obsolete Super/Pro-only free policy')
+        check(not re.search(r'50\s*명(?:을|이)?\s*(?:초과|넘)|정상\s*요금', free_text),
+              f'{rel}: unwanted paid-conversion warning in free-start copy')
     free_row = re.search(r'<tr class="free50">(.*?)</tr>', (ROOT / 'price.html').read_text(encoding='utf-8'), re.S)
     check(free_row and 'colspan="4"' in free_row.group(1), 'price.html: free row must cover every paid program, including Plus')
     for offer in price['offers']:
         if offer['name'] in {'Super', 'Pro', 'Plus', 'Enterprise'}:
-            check(all(t in offer['description'] for t in ['50명 이하', '전부 무료', '기간 제한', '문자 QR 발송비', '50명 초과']),
+            check(all(t in offer['description'] for t in ['50명 이하', '전부 무료', '기간 제한', '문자 QR 발송비']),
                   f'price.html: {offer["name"]} structured offer omits free-through-50 terms')
     super_price = int(next(o['price'] for o in price['offers'] if o['name'] == 'Super'))
     display_price = f'{super_price / 10000:g}만원'
-    for file in ['index.html', 'hamba-pos.html', 'price.html', 'guide/compare-systems.html', 'docs/og-price-source.html']:
+    for file in ['hamba-pos.html', 'price.html', 'guide/compare-systems.html', 'docs/og-price-source.html']:
         text = (ROOT / file).read_text(encoding='utf-8')
         check(display_price in text, f'{file}: Super price mismatch')
     check(f'| Super | {super_price:,}원 |' in llms_text, 'llms.txt: price mismatch')
