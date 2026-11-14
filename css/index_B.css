@@ -17,7 +17,7 @@
 #hero {
     background-image:
         linear-gradient(rgba(0, 0, 0, .42), rgba(0, 0, 0, .42)),
-        url(../mainimg.webp);
+        url(../mainimg.webp?v=20261115);
     background-attachment: scroll;
 }
 
