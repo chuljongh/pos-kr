@@ -7,8 +7,9 @@
  * 조상 요소는 보지 않는다. 그래서 <a> 안의 <span>·<svg> 를 누르면 놓친다.
  * GA4 이벤트 이름 = 그 요소의 data-ga-event 값이므로 접두사 cta_click 이 필수다.
  *
- * window.gtag 는 정의되어 있지 않고, 커스텀 dataLayer.push 를 받는 태그도 없다.
- * 따라서 코드에서 이벤트를 보내려면 속성을 단 요소를 만들어 클릭시키는 수밖에 없다.
+ * 이 어댑터는 기존 CTA 클릭 태그와의 호환을 유지한다.
+ * 접수 ID 같은 매개변수가 필요한 이벤트는 contact.js에서 기존 Google tag의
+ * 공용 dataLayer 명령 큐로 전송한다. 별도 config나 태그를 중복 설치하지 않는다.
  */
 (function () {
     'use strict';
