@@ -1,0 +1,77 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/cafe/favicon.webp",
+      "destination": "/favicon.png",
+      "permanent": true
+    },
+    {
+      "source": "/hamba",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/cafe/:path*",
+      "destination": "https://cafe.pos.kr",
+      "permanent": true
+    },
+    {
+      "source": "/cafe",
+      "destination": "https://cafe.pos.kr",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.pos.kr"
+        }
+      ],
+      "destination": "https://pos.kr/:path*",
+      "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)\\.(webp|png|jpg|jpeg|gif|svg|ico)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=604800, stale-while-revalidate=86400"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)\\.(css|js)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, stale-while-revalidate=86400"
+        }
+      ]
+    },
+    {
+      "source": "/docs/:path*",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex"
+        }
+      ]
+    },
+    {
+      "source": "/scripts/:path*",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex"
+        }
+      ]
+    }
+  ],
+  "buildCommand": "node scripts/build-site.mjs",
+  "outputDirectory": "public"
+}
