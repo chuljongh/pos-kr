@@ -119,34 +119,7 @@
             toggleFloatingBtn(); // Initial check
 
             // --- Google Form Submission ---
-            const form = document.getElementById('customGoogleForm');
-            const popup = document.getElementById('success-popup');
-
-            if (form) {
-                form.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    const googleFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSd_1ofOd4BDJW6Y4HrsyQyJbVeA0b7-8jDRtdwRyN-fQqfTww/formResponse';
-                    const formData = new FormData(form);
-
-                    fetch(googleFormUrl, {
-                        method: 'POST',
-                        body: formData,
-                        mode: 'no-cors'
-                    })
-                    .then(() => {
-                        // 상담 신청 전환 (js/ga.js)
-                        if (window.sendGaEvent) window.sendGaEvent('cta_click_contact_submit');
-                        if (popup) {
-                            popup.classList.remove('opacity-0');
-                            setTimeout(() => {
-                                popup.classList.add('opacity-0');
-                                form.reset();
-                            }, 2000);
-                        }
-                    })
-                    .catch(error => console.error('Error submitting to Google Form:', error));
-                });
-            }
+            // Contact submission is handled by /js/contact.js with verified server acknowledgement.
 
             // --- Scrollspy for Floating Navigation ---
             const sections = document.querySelectorAll('section[id]');

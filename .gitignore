@@ -7,6 +7,7 @@ hamba/input.css
 
 # 환경변수 파일
 .env
+public/
 
 # 제안서 작업 참조/소스 파일 (배포 제외)
 참조/

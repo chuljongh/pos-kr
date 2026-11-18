@@ -54,7 +54,7 @@
           "description": "구내식당·함바식당의 식수관리 방식 비교, 월말 정산, 개인별 QR 배포와 대리 사용 관리 가이드를 한곳에서 확인하세요. 식수장부가 제공하는 식수관리 가이드입니다.",
           "inLanguage": "ko-KR",
           "datePublished": "2026-09-26",
-          "dateModified": "2026-11-01",
+          "dateModified": "2026-11-19",
           "isPartOf": {
             "@id": "https://pos.kr/#website"
           },
@@ -71,41 +71,47 @@
         {
           "@type": "ItemList",
           "@id": "https://pos.kr/guide#list",
-          "numberOfItems": 6,
+          "numberOfItems": 7,
           "itemListElement": [
             {
               "@type": "ListItem",
               "position": 1,
+              "name": "스마트폰 QR 스캐너 설정과 식수장부 사용법",
+              "url": "https://pos.kr/guide/qr-scanner-setup"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
               "name": "구내식당 식수관리 방식 3가지 비교: 비용·장비·정산",
               "url": "https://pos.kr/guide/compare-systems"
             },
             {
               "@type": "ListItem",
-              "position": 2,
+              "position": 3,
               "name": "함바식당 식수관리 방법과 월말 정산 절차",
               "url": "https://pos.kr/guide/hamba-meal-count"
             },
             {
               "@type": "ListItem",
-              "position": 3,
+              "position": 4,
               "name": "식수 카드를 개인별로 나눠주는 현실과 그림문자 QR",
               "url": "https://pos.kr/guide/individual-distribution"
             },
             {
               "@type": "ListItem",
-              "position": 4,
+              "position": 5,
               "name": "대리 식수·식권 대여를 막는 방법",
               "url": "https://pos.kr/guide/prevent-proxy-meals"
             },
             {
               "@type": "ListItem",
-              "position": 5,
+              "position": 6,
               "name": "모바일 식권 서비스와 식수관리시스템의 차이",
               "url": "https://pos.kr/guide/vs-meal-voucher-apps"
             },
             {
               "@type": "ListItem",
-              "position": 6,
+              "position": 7,
               "name": "구내식당 식수 사전 신청 방법과 끼니별 집계",
               "url": "https://pos.kr/guide/meal-preorder"
             }
@@ -140,6 +146,7 @@
     </noscript>
     <link rel="stylesheet" href="/css/guide.css?v=20261109-width">
     <script src="/js/ga.js" defer></script>
+    <script src="/js/contact.js?v=20261119" defer></script>
     <meta property="og:site_name" content="식수장부">
 </head>
 
@@ -155,7 +162,7 @@
             <h1>식수관리 가이드</h1>
             <p class="sub">식수 집계부터 월말 정산까지,<br>운영에 필요한 주제를 찾아보세요.</p>
             <div class="hero-foot">
-                <p class="meta">식수장부 편집 · 2026-11-01 수정</p>
+                <p class="meta">식수장부 편집 · 2026-11-19 수정</p>
                 <div class="hero-chars">
                     <img src="/assets/char/office-v2-360.webp" width="155" height="360" alt="" decoding="async">
                     <img src="/assets/char/construction-phone-v1-360.webp" width="163" height="360" alt="" decoding="async">
@@ -169,6 +176,7 @@
         <section>
             <div class="wrap">
                 <ul class="guide-list">
+                    <li class="card"><h2><a href="/guide/qr-scanner-setup">스마트폰 QR 스캐너 설정과 식수장부 사용법</a></h2><p>30초 영상과 함께 준비물, 매장 스캐너 설정, 문자 QR 또는 앱 QR 제시, 앱 활용 순서로 안내합니다.</p></li>
                     <li class="card card--char"><img src="/assets/char/businesswoman-phone-v2-360.webp" width="165" height="360" alt="" loading="lazy" decoding="async"><div><h2><a href="/guide/compare-systems">구내식당 식수관리 방식 3가지 비교: 비용·장비·정산</a></h2><p>종이 식권·수기 장부, RFID·바코드 카드, 식수장부 모바일 QR을 비용 항목·장비·이용자 관리·정산 기준으로 비교합니다. 플랜별 무료 조건과 지원 기능도 확인하세요.</p></div></li>
                     <li class="card card--char"><img src="/assets/char/construction-phone-v2-360.webp" width="153" height="360" alt="" loading="lazy" decoding="async"><div><h2><a href="/guide/hamba-meal-count">함바식당 식수관리 방법과 월말 정산 절차</a></h2><p>함바식당의 이용자·소속 등록, 식수 기록, 업체별 내역 대조와 월말 정산 절차를 안내합니다. 식수장부의 후불 정산 및 그림문자 QR 지원 플랜을 확인하세요.</p></div></li>
                     <li class="card card--char"><img src="/assets/char/dorm-phone-v2-360.webp" width="156" height="360" alt="" loading="lazy" decoding="async"><div><h2><a href="/guide/individual-distribution">식수 카드를 개인별로 나눠주는 현실과 그림문자 QR</a></h2><p>식수 카드와 QR을 개인별로 배포할 때 필요한 명단 관리, 전달 확인과 인원 변경 절차를 안내합니다. 앱 없이 쓰는 그림문자 QR의 조건과 유의점도 확인하세요.</p></div></li>
