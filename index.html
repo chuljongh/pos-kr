@@ -218,7 +218,24 @@
           "publisher": {
             "@id": "https://pos.kr/#organization"
           },
-          "dateModified": "2026-11-09"
+          "dateModified": "2026-11-18"
+        },
+        {
+          "@type": "VideoObject",
+          "@id": "https://pos.kr/#quick-start-video",
+          "name": "식수 장부, 이렇게 써보세요 | 기프트코인 모바일 QR 식수관리",
+          "description": "매장 스캐너 준비부터 문자 QR 이용까지, 30초로 확인하세요.",
+          "thumbnailUrl": "https://pos.kr/assets/video/meal-ledger-quick-start-v4.webp",
+          "uploadDate": "2026-11-18",
+          "duration": "PT29.5S",
+          "embedUrl": "https://www.youtube.com/embed/bcJXkpPL9Ck",
+          "inLanguage": "ko-KR",
+          "isPartOf": {
+            "@id": "https://pos.kr/#webpage"
+          },
+          "publisher": {
+            "@id": "https://pos.kr/#organization"
+          }
         },
         {
           "@type": "VideoObject",
@@ -306,6 +323,10 @@
         @media (max-width: 1023px) { .card-tight-grid { gap: 2rem; } }
         @media (max-width: 360px) { .char-icon { height: 72px; margin-right: .75rem; } }
         @media (prefers-reduced-motion: reduce) { .char-fig { transition: none; } .char-row li:hover .char-fig, .char-row--contact .char-fig:hover { transform: none; } }
+        .quick-start-video { max-width: 960px; margin: 0 auto 5rem; scroll-margin-top: 112px; }
+        .quick-start-player { display: block; position: relative; width: 100%; aspect-ratio: 16 / 9; overflow: hidden; border-radius: 16px; background: #000; }
+        .quick-start-player img { display: block; width: 100%; height: 100%; object-fit: cover; }
+        .quick-start-player:focus-visible, #hero-quick-start:focus-visible { outline: 3px solid #fff; outline-offset: 6px; }
         .brand-definition { word-break:keep-all; }
         .brand-category { display:block; margin-top:1rem; font-size:clamp(1.125rem,3.5vw,2rem); line-height:1.5; }
         .initial-cost-amount { font-weight: 700; color: #d11927; }
@@ -430,9 +451,9 @@
                 <a href="#contact" data-ga-event="cta_click_hero_contact"
                     class="inline-flex items-center justify-center px-10 py-5 rounded-btn bg-primary hover:bg-primary-darker text-white font-extrabold text-lg tracking-basek shadow-card transition-colors">
                     무료 도입 상담</a>
-                <a href="#features"
+                <a id="hero-quick-start" href="#quick-start-video" data-ga-event="cta_click_hero_quick_start"
                     class="inline-flex items-center justify-center px-8 py-5 rounded-btn font-bold text-lg text-white border border-white/40 hover:bg-white/10 transition-colors">
-                    기능 살펴보기</a>
+                    30초 사용법 보기</a>
             </div>
         </div>
     </section>
@@ -1347,6 +1368,24 @@
                     요약하면, 저희 시스템은 안쓰는 스마트폰만으로 우리 식당 전용의 식수 관리 프로그램을 시작하실 수 있도록 설계되었어요.
                 </p>
             </div>
+
+            <article id="quick-start-video" class="quick-start-video text-center" aria-labelledby="quick-start-title">
+                <h4 id="quick-start-title" class="text-3xl md:text-4xl font-extrabold text-white mb-6">식수 장부, 이렇게 써보세요</h4>
+                <p id="quick-start-description" class="text-xl text-gray-300 mb-8 leading-relaxed">매장 스캐너 준비부터 문자 QR 이용까지, 30초로 확인하세요.</p>
+                <a class="quick-start-player group" href="https://www.youtube.com/watch?v=bcJXkpPL9Ck"
+                    aria-label="식수 장부 30초 사용법 영상 재생" aria-describedby="quick-start-description"
+                    data-ga-event="cta_click_quick_start_video" onclick="event.preventDefault(); loadYouTubeVideo(this, 'bcJXkpPL9Ck')">
+                    <img src="assets/video/meal-ledger-quick-start-v4.webp" width="1280" height="720" loading="lazy" decoding="async"
+                        alt="좌우 홀더에 거치한 매장 태블릿에 문자로 받은 개인 QR을 보여주는 식수장부 이용 장면">
+                    <span class="absolute inset-0 flex items-center justify-center" aria-hidden="true">
+                        <span class="w-16 h-16 bg-white rounded-full flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-gray-900 ml-1" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M8 5v14l11-7z"></path>
+                            </svg>
+                        </span>
+                    </span>
+                </a>
+            </article>
 
             <div class="grid lg:grid-cols-2 gap-20 card-tight-grid">
                 <div
