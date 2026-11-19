@@ -6,6 +6,7 @@ Run from any directory:
 No network, credentials or site mutations are required.
 """
 from collections import Counter
+from datetime import datetime
 from html.parser import HTMLParser
 from pathlib import Path
 import json
@@ -190,6 +191,19 @@ def main():
         for schema in page.schemas:
             graph = schema.get('@graph', [schema])
             for node in graph:
+                if node.get('@type') == 'VideoObject':
+                    upload_date = node.get('uploadDate')
+                    check(
+                        isinstance(upload_date, str) and re.fullmatch(
+                            r'\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})',
+                            upload_date,
+                        ),
+                        f'{rel}: VideoObject uploadDate must include time and timezone',
+                    )
+                    try:
+                        datetime.fromisoformat(upload_date.replace('Z', '+00:00'))
+                    except ValueError:
+                        check(False, f'{rel}: invalid VideoObject uploadDate {upload_date!r}')
                 if node.get('@type') == 'FAQPage':
                     for question in node['mainEntity']:
                         check(compact(question['acceptedAnswer']['text']) in visible, f'{rel}: FAQ schema differs from HTML')
