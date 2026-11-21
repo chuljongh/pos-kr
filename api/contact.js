@@ -25,7 +25,9 @@ module.exports = async function contact(req, res) {
     if (!name || !contact || !SOURCES.has(source) || !UUID.test(body.lead_id || '')) {
         return res.status(400).json({ ok: false, error: 'input' });
     }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contact) && !/^\+?[\d\s()-]{8,25}$/.test(contact)) {
+    const phoneDigits = contact.replace(/\D/g, '');
+    const isPhone = /^\+?[\d\s()-]{8,25}$/.test(contact) && /^\d{8,15}$/.test(phoneDigits);
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contact) && !isPhone) {
         return res.status(400).json({ ok: false, error: 'contact' });
     }
     // Only allow a fixed attribution schema; never echo contact details in the response or GA4.

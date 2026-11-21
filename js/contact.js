@@ -49,13 +49,31 @@
         form.appendChild(status);
         form.setAttribute('aria-describedby', status.id);
         let locked = false;
+        let invalidReported = false;
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver(entries => {
+                if (!entries.some(entry => entry.isIntersecting)) return;
+                observer.disconnect();
+                measure('contact_form_view');
+            });
+            observer.observe(form);
+        }
+        form.addEventListener('invalid', () => {
+            if (invalidReported) return;
+            invalidReported = true;
+            measure('contact_validation_error', { error_type: 'browser_constraint' });
+            setTimeout(() => { invalidReported = false; }, 0);
+        }, true);
         form.addEventListener('input', () => measure('contact_form_start'), { once: true });
         form.addEventListener('submit', async event => {
             event.preventDefault();
             if (locked || !form.reportValidity()) return;
             const data = new FormData(form);
             const contact = String(data.get('entry.1181158497') || '').trim();
-            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contact) && !/^\+?[\d\s()-]{8,25}$/.test(contact)) {
+            const phoneDigits = contact.replace(/\D/g, '');
+            const isPhone = /^\+?[\d\s()-]{8,25}$/.test(contact) && /^\d{8,15}$/.test(phoneDigits);
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contact) && !isPhone) {
+                measure('contact_validation_error', { error_type: 'contact_format' });
                 status.textContent = '전화번호 또는 이메일을 정확히 입력해 주세요.';
                 form.querySelector('#form-contact').focus();
                 return;
@@ -88,6 +106,7 @@
                     status.textContent = '신청이 접수되었습니다. 내용을 확인한 뒤 남겨주신 연락처로 안내드리겠습니다.';
                     button.textContent = '접수 완료';
                 } else if (response.status === 400) {
+                    measure('contact_validation_error', { error_type: 'server_input' });
                     status.textContent = '이름과 전화번호 또는 이메일을 확인한 뒤 다시 신청해 주세요.';
                     button.textContent = originalLabel;
                     button.disabled = false;

@@ -16,11 +16,24 @@ async function invoke(body, fetcher, overrides = {}) {
     return res;
 }
 test('Reject invalid contacts and cross-origin requests before any write', async () => {
-    assert.equal((await invoke({ ...valid, contact: 'broken' })).statusCode, 400);
+    for (const contact of ['broken', '--------', '123-4567', '1234567890123456']) {
+        const result = await invoke({ ...valid, contact });
+        assert.equal(result.statusCode, 400);
+        assert.equal(result.body.error, 'contact');
+    }
     assert.equal((await invoke({ ...valid, lead_id: '' })).statusCode, 400);
     assert.equal((await invoke('{')).statusCode, 400);
     assert.equal((await invoke(valid, null, { headers: { host: 'pos.kr', origin: 'https://other.example' } })).statusCode, 403);
     assert.equal((await invoke(valid, null, { method: 'GET' })).statusCode, 405);
+});
+test('Accept formatted domestic and international phone numbers', async () => {
+    for (const contact of ['02-123-4567', '010-0000-0000', '+82 (10) 0000-0000']) {
+        const result = await invoke({ ...valid, contact }, async (_url, options) => {
+            assert.equal(options.body.get('entry.1181158497'), contact);
+            return { ok: true, text: async () => 'Your response has been recorded.' };
+        });
+        assert.equal(result.statusCode, 200);
+    }
 });
 test('Only confirmed acceptance returns success and stores the receipt with attribution', async () => {
     let calls = 0;
